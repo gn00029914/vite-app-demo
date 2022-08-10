@@ -16,7 +16,9 @@ test('mount component', async () => {
   expect(wrapper.html()).toMatchSnapshot()
 
   expect(wrapper.text()).toContain('Home')
-  expect(wrapper.findComponent(RouterLinkStub).props().to).toBe('/')
+  expect(wrapper.findComponent(RouterLinkStub).props().to).toBe(
+    '/vite-app-demo/'
+  )
 
   expect(wrapper.text()).toContain('About')
 })

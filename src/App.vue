@@ -1,8 +1,8 @@
 <template>
   <h1>The APP template</h1>
   <HelloWorld>HelloWorld</HelloWorld>
-  <RouterLink to="/">Home</RouterLink>
-  <RouterLink to="/about">About</RouterLink>
+  <RouterLink to="/vite-app-demo/">Home</RouterLink>
+  <RouterLink to="/vite-app-demo/about">About</RouterLink>
   <!-- <RouterView></RouterView> -->
 </template>
 
