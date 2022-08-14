@@ -2,11 +2,11 @@ export default [
   {
     component: () => import('./pages/HomePage.vue'),
     name: 'home',
-    path: '/vite-app-demo/'
+    path: '/'
   },
   {
     component: () => import('./pages/AboutPage.vue'),
     name: 'about',
-    path: '/vite-app-demo/about'
+    path: '/about'
   }
 ]
