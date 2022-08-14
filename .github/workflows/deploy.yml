@@ -19,11 +19,12 @@ jobs:
       # 步驟二：編譯
       - name: Install and Build
         run: |
-          npm install
-          npm run build
+          npm install --global pnpm
+          pnpm install
+          pnpm run build
       # 步驟三：部署
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@v4.4.0
         with:
           branch: gh-pages
-          folder: ./dist
+          folder: dist
