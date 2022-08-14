@@ -1,6 +1,6 @@
 # Action 名稱
 name: Deploy
-# 觸發時機，當推送到分支 master 時
+# 觸發時機，當推送到分支 main 時
 on:
   push:
     branches: [main]
