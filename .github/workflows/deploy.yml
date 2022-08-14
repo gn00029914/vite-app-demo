@@ -22,8 +22,8 @@ jobs:
           npm install
           npm run build
       # 步驟三：部署
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4.4.0
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
           branch: gh-pages
           folder: ./dist
