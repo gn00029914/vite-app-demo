@@ -15,7 +15,7 @@ export default {
 <script lang="ts" setup>
 // import { useHead } from '@vueuse/head'
 import HelloWorld from './components/HelloWorld.vue'
-
+console.log(import.meta)
 // useHead({
 //   title: 'Default title',
 //   meta: [
