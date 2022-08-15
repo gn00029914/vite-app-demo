@@ -1,3 +1,7 @@
+/**
+ * @vitest-environment happy-dom
+ */
+
 import { mount, RouterLinkStub } from '@vue/test-utils'
 import App from './App.vue'
 

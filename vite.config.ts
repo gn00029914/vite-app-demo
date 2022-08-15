@@ -15,7 +15,7 @@ export default defineConfig({
     }
   },
   test: {
-    environment: 'jsdom', // or happy-dom ???
+    environment: 'happy-dom', // or edge-runtime ???
     globals: true
   }
 })
