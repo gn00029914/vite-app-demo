@@ -8,7 +8,7 @@ specifiers:
   '@typescript-eslint/parser': ^5.31.0
   '@vitejs/plugin-vue': ^3.0.1
   '@vue/test-utils': ^2.0.2
-  '@vueuse/head': ^0.7.8
+  '@vueuse/head': ^0.7.9
   autoprefixer: ^10.4.8
   c8: ^7.12.0
   eslint: ^8.20.0
@@ -34,7 +34,7 @@ specifiers:
   vue-tsc: ^0.39.2
 
 dependencies:
-  '@vueuse/head': 0.7.8_vue@3.2.37
+  '@vueuse/head': 0.7.9_vue@3.2.37
   pinia: 2.0.17_j6bzmzd4ujpabbp5objtwxyjp4
   vue: 3.2.37
   vue-router: 4.1.3_vue@3.2.37
@@ -707,8 +707,8 @@ packages:
       vue: 3.2.37
     dev: true
 
-  /@vueuse/head/0.7.8_vue@3.2.37:
-    resolution: {integrity: sha512-D0lFcCgynjzTVVHM2RsQShDxKfjgbc2vhzeLqkOyH0lKEV3iv4xJ8ZSIW47V4XC6erGpnM2z2XGnwltMZFn7oA==}
+  /@vueuse/head/0.7.9_vue@3.2.37:
+    resolution: {integrity: sha512-5wnRiH2XIUSLLXJDLDDTcpvAg5QXgTIVZl46AU7to/T91KHsdBLHSE4WhRO7kP0jbkAhlxnx64E29cQtwBrMjg==}
     peerDependencies:
       vue: '>=3'
     dependencies:
@@ -1114,8 +1114,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      is-text-path: 1.0.1
       JSONStream: 1.3.5
+      is-text-path: 1.0.1
       lodash: 4.17.21
       meow: 8.1.2
       split2: 3.2.2
