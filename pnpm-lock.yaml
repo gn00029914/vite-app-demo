@@ -6,7 +6,7 @@ specifiers:
   '@types/node': ^18.6.2
   '@typescript-eslint/eslint-plugin': ^5.31.0
   '@typescript-eslint/parser': ^5.31.0
-  '@vitejs/plugin-vue': ^3.0.3
+  '@vitejs/plugin-vue': ^3.0.1
   '@vue/test-utils': ^2.0.2
   '@vueuse/head': ^0.7.8
   autoprefixer: ^10.4.8
@@ -45,7 +45,7 @@ devDependencies:
   '@types/node': 18.6.2
   '@typescript-eslint/eslint-plugin': 5.31.0_d5zwcxr4bwkhmuo464cb3a2puu
   '@typescript-eslint/parser': 5.31.0_he2ccbldppg44uulnyq4rwocfa
-  '@vitejs/plugin-vue': 3.0.3_vite@3.0.4+vue@3.2.37
+  '@vitejs/plugin-vue': 3.0.1_vite@3.0.4+vue@3.2.37
   '@vue/test-utils': 2.0.2_vue@3.2.37
   autoprefixer: 10.4.8_postcss@8.4.14
   c8: 7.12.0
@@ -567,8 +567,8 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vitejs/plugin-vue/3.0.3_vite@3.0.4+vue@3.2.37:
-    resolution: {integrity: sha512-U4zNBlz9mg+TA+i+5QPc3N5lQvdUXENZLO2h0Wdzp56gI1MWhqJOv+6R+d4kOzoaSSq6TnGPBdZAXKOe4lXy6g==}
+  /@vitejs/plugin-vue/3.0.1_vite@3.0.4+vue@3.2.37:
+    resolution: {integrity: sha512-Ll9JgxG7ONIz/XZv3dssfoMUDu9qAnlJ+km+pBA0teYSXzwPCIzS/e1bmwNYl5dcQGs677D21amgfYAnzMl17A==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^3.0.0
@@ -1114,8 +1114,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      JSONStream: 1.3.5
       is-text-path: 1.0.1
+      JSONStream: 1.3.5
       lodash: 4.17.21
       meow: 8.1.2
       split2: 3.2.2
