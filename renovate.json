@@ -8,7 +8,7 @@
   "schedule": ["at any time"],
   "pin": false,
   "constraints": {
-    "pnpm": "7"
+    "pnpm": "^7.9.1"
   },
   "lockFileMaintenance": {
     "enabled": true,
