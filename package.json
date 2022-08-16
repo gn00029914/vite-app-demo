@@ -50,7 +50,7 @@
     "vite": "^3.0.7",
     "vitest": "^0.19.1",
     "vue-eslint-parser": "^9.0.3",
-    "vue-tsc": "^0.39.5"
+    "vue-tsc": "0.40.1"
   },
   "lint-staged": {
     "*.{js,ts,tsx,jsx,vue}": [
