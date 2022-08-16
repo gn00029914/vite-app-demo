@@ -15,7 +15,7 @@ jobs:
       # 步驟一：複製程式碼
       - name: checkout
         # 使用的 actions/checkout 複製程式碼
-        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
+        uses: actions/checkout@v3.0.2
       # 步驟二：編譯
       - name: Install and Build
         run: |
@@ -24,7 +24,7 @@ jobs:
           pnpm run build
       # 步驟三：部署
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@13046b614c663b56cba4dda3f30b9736a748b80d # tag=v4.4.0
+        uses: JamesIves/github-pages-deploy-action@v4.4.0
         with:
           branch: gh-pages
           folder: dist
