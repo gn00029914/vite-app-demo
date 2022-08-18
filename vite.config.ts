@@ -7,7 +7,7 @@ import * as path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
-  base: './',
+  base: '/vite-app-demo/',
   publicDir: 'public',
   resolve: {
     alias: {

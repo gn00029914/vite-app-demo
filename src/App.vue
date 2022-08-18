@@ -1,8 +1,8 @@
 <template>
-  <h1>The APP template</h1>
+  <h1>{{ title }}</h1>
   <HelloWorld>HelloWorld</HelloWorld>
-  <RouterLink to="/">Home</RouterLink>
-  <RouterLink to="/about">About</RouterLink>
+  <RouterLink to="/vite-app-demo/">Home</RouterLink>
+  <RouterLink to="/vite-app-demo/about">About</RouterLink>
   <!-- <RouterView></RouterView> -->
 </template>
 
@@ -15,6 +15,7 @@ export default {
 <script lang="ts" setup>
 // import { useHead } from '@vueuse/head'
 import HelloWorld from './components/HelloWorld.vue'
+const title = import.meta.env.VITE_APP_TITLE
 console.log(import.meta)
 // useHead({
 //   title: 'Default title',
