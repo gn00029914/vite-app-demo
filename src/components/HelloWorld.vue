@@ -1,8 +1,10 @@
 <template>
-  <div>HelloWorld</div>
+  <div>{{ title }}</div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const title = import.meta.env.VITE_APP_TITLE
+</script>
 
 <style scoped>
 /* todo */
