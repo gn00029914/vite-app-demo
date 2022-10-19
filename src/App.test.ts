@@ -2,7 +2,7 @@
  * @vitest-environment happy-dom
  */
 
-import { mount, RouterLinkStub } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import App from './App.vue'
 
 test('mount component', async () => {
@@ -16,7 +16,7 @@ test('mount component', async () => {
     }
   })
 
-  // expect(wrapper.text()).toContain('HomeAbout')
+  expect(wrapper.text()).toContain('Navbar')
   // expect(wrapper.html()).toMatchSnapshot()
 
   // expect(wrapper.text()).toContain('Home')

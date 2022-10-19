@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+.husky
+.pnpm
 
 # Editor directories and files
 .vscode/*

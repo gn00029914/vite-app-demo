@@ -19,7 +19,8 @@ jobs:
       # 步驟二：編譯
       - name: Install and Build
         run: |
-          npm install --global pnpm
+          corepack enable
+          corepack prepare pnpm@latest --activate
           pnpm install
           pnpm run build
       # 步驟三：部署
