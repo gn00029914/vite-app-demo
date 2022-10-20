@@ -20,8 +20,6 @@ jobs:
           node-version: lts/*
       # 步驟二：編譯
       - name: Install and Build
-        with:
-          node-version: lts/*
         run: |
           corepack enable
           corepack prepare pnpm@latest --activate
