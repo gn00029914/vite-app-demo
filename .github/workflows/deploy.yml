@@ -16,8 +16,12 @@ jobs:
       - name: checkout
         # 使用的 actions/checkout 複製程式碼
         uses: actions/checkout@v3.1.0
+        with:
+          node-version: lts/*
       # 步驟二：編譯
       - name: Install and Build
+        with:
+          node-version: lts/*
         run: |
           corepack enable
           corepack prepare pnpm@latest --activate
@@ -27,5 +31,6 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
+          node-version: lts/*
           branch: gh-pages
           folder: dist
