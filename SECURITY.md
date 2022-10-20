@@ -1,19 +1,27 @@
 # Security Policy
 
-## Supported Versions
+> Vulnerabilites were filtered by mininum severity low.
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+## Supported Versions
 
 | Version | Supported          |
 | ------- | ------------------ |
 | 0.0.0   | :x:                |
 | 0.0.1   | :white_check_mark: |
 
-## Reporting a Vulnerability
+## Dependency Review
 
-We could not detect a license for the following dependencies:
+We found 0 vulnerable package(s), 0 package(s) with incompatible licenses, and 0 package(s) with unknown licenses.
 
-@types/node@^18.7.6
-vite@^3.0.8
-Dependency review did not detect any vulnerable packages with severity level "low" or higher.
+## Vulnerabilities
+
+> No vulnerabilities found in added packages.
+
+## Licenses
+
+> No license violations detected.
+
+## Scanned Dependencies
+We scanned 0 manifest files:
+
+[Job summary generated at run-time](https://docs.github.com/actions/using-workflows/workflow-commands-for-github-actions#adding-a-job-summary)
