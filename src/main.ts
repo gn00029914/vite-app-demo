@@ -1,14 +1,17 @@
-import { createHead } from '@vueuse/head'
-import { createApp } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router'
-import { createPinia } from 'pinia'
-
-import './assets/css/reset.less'
+// import './assets/css/reset.less'
+// import '../node_modules/flowbite/dist/flowbite.min.css' //flowbite modified taildwindcss
 import './style.css'
-import '../node_modules/flowbite/dist/flowbite.js'
+
+import { createApp } from 'vue'
+import { createHead } from '@vueuse/head'
+import { createPinia } from 'pinia'
+import { createRouter, createWebHistory } from 'vue-router'
+
 import App from './App.vue'
 import routes from './routes'
-//import { store } from './store'
+// import { store } from './store'
+
+import '../node_modules/flowbite/dist/flowbite.js'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -19,4 +22,4 @@ const head = createHead()
 
 const store = createPinia()
 
-createApp(App).use(head).use(router).use(store).mount('#app')
+createApp(App).use(head).use(store).use(router).mount('#app')
