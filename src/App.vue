@@ -1,6 +1,6 @@
 <template>
   <layout
-    class="boder-gray-200 rounded bg-white px-2 py-2.5 text-gray-900 hover:underline dark:bg-gray-900 dark:text-white sm:px-4"
+    class="boder-gray-200 hover:underline rounded bg-white px-2 py-2.5 text-gray-900 dark:bg-gray-900 dark:text-white sm:px-4"
   >
   </layout>
 </template>

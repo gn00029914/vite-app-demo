@@ -44,6 +44,8 @@
     "cssnano": "^5.1.13",
     "eslint": "^8.26.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-tailwindcss": "^3.6.2",
     "eslint-plugin-vue": "^9.6.0",
     "happy-dom": "^7.6.0",
     "husky": "^8.0.1",
@@ -66,8 +68,7 @@
   "lint-staged": {
     "*.{js,ts,tsx,jsx,vue}": [
       "eslint --fix",
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ],
     "{!(package)*.json,*.code-snippets,.!(browserslist)*rc}": [
       "prettier --write--parser json"
