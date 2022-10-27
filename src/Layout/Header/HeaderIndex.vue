@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav
-      class="boder-gray-200 rounded bg-white px-2 py-2.5 dark:bg-gray-900 sm:px-4"
+      class="boder-gray-200 sm:px-4 rounded bg-white px-2 py-2.5 dark:bg-gray-900"
     >
       <a href="#" class="text-gray-900 hover:underline dark:text-white"
         >Navbar</a
