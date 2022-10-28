@@ -15,11 +15,7 @@ export default defineConfig({
   publicDir: 'public',
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, '/src'),
-      'flowbite-vue': path.resolve(
-        process.cwd(),
-        './node_modules/flowbite-vue/dist_types/index.d.ts'
-      )
+      '@': path.resolve(__dirname, '/src')
     }
   },
   test: {
