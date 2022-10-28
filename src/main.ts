@@ -11,7 +11,7 @@ import App from './App.vue'
 import routes from './routes'
 // import { store } from './store'
 
-import '../node_modules/flowbite/dist/flowbite.js'
+// import '../node_modules/flowbite/dist/flowbite.js'
 
 const router = createRouter({
   history: createWebHistory(),

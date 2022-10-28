@@ -5,6 +5,6 @@ module.exports = {
     //But others, like autoprefixer, need to run after,
     autoprefixer: {},
     cssnano:
-      process.env.NPM_ENV === 'production' ? { preset: 'default' } : false
+      process.env.NPM_ENV === 'production' ? { preset: 'advanced' } : false
   }
 }

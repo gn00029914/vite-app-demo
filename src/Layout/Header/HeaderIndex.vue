@@ -43,11 +43,19 @@
           ></path>
         </svg>
       </button>
+      <dropdown text="Click me" placement="bottom">
+        <list-group>
+          <list-group-item>Item #1</list-group-item>
+          <list-group-item>Item #2</list-group-item>
+          <list-group-item>Item #3</list-group-item>
+        </list-group>
+      </dropdown>
     </nav>
   </div>
 </template>
 
 <script setup lang="ts">
+import { Dropdown, ListGroup, ListGroupItem } from 'flowbite-vue'
 // It's best to inline this in `head` to avoid FOUC (flash of unstyled content) when changing pages or themes
 if (
   localStorage.getItem('color-theme') === 'dark' ||
