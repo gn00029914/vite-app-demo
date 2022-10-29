@@ -34,26 +34,28 @@ module.exports = {
     '@typescript-eslint/consistent-type-imports': 'warn',
     'tailwindcss/classnames-order': 'warn',
     'tailwindcss/no-custom-classname': 'off',
-    'prettier/prettier': ['error', {
-      'endOfLine': 'auto',
-    }
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto'
+      }
     ]
   },
   settings: {
     tailwindcss: {
       // These are the default values but feel free to customize
-      callees: ["classnames", "clsx", "ctl"],
-      config: "tailwind.config.js",
+      callees: ['classnames', 'clsx', 'ctl'],
+      config: 'tailwind.config.js',
       cssFiles: [
-        "**/*.css",
-        "!**/node_modules",
-        "!**/.*",
-        "!**/dist",
-        "!**/build",
+        '**/*.css',
+        '!**/node_modules',
+        '!**/.*',
+        '!**/dist',
+        '!**/build'
       ],
       cssFilesRefreshRate: 1_000,
       removeDuplicates: true,
-      whitelist: [],
-    },
+      whitelist: []
+    }
   }
 }
