@@ -1,21 +1,13 @@
 <template>
   <div>
-    <nav
-      class="boder-gray-200 sm:px-4 rounded bg-white px-2 py-2.5 dark:bg-gray-900"
-    >
+    <nav class="px-1 py-2.5">
       <a href="#" class="text-gray-900 hover:underline dark:text-white"
         >Navbar</a
       >
-      <!-- <button class="text-white px-2.5 py-1.5 mx-10 bg-cyan-500 shadow-lg shadow-cyan-500/50 rounded-md"
-                @click="lightMode">普通模式
-            </button> -->
-      <!-- <button class="text-white px-2.5 py-1.5 mx-10 bg-blue-500 shadow-lg shadow-blue-500/50 rounded-md"
-                @click="darkMode">暗黑模式開關
-            </button> -->
       <button
         id="theme-toggle"
         type="button"
-        class="rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+        class="animate-pulse rounded-lg p-1 text-sm text-gray-500 mx-2 hover:bg-gray-100 focus:outline-none focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
         @click="darkMode"
       >
         <svg
@@ -56,52 +48,25 @@
 
 <script setup lang="ts">
 import { Dropdown, ListGroup, ListGroupItem } from 'flowbite-vue'
-// It's best to inline this in `head` to avoid FOUC (flash of unstyled content) when changing pages or themes
-if (
-  localStorage.getItem('color-theme') === 'dark' ||
-  (!('color-theme' in localStorage) &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches)
-) {
-  document.documentElement.classList.add('dark')
-  document.getElementById('theme-toggle-light-icon')?.classList.add('hidden')
-  document.getElementById('theme-toggle-dark-icon')?.classList.remove('hidden')
-  // localStorage.theme = 'dark'
-} else {
-  document.documentElement.classList.remove('dark')
-  document.getElementById('theme-toggle-dark-icon')?.classList.add('hidden')
-  document.getElementById('theme-toggle-light-icon')?.classList.remove('hidden')
-  // localStorage.theme = 'light'
-}
 
 const darkMode = () => {
-  // themeToggleDarkIcon?.classList.toggle('hidden');
-  // themeToggleLightIcon?.classList.toggle('hidden');
-  //这个条件用于判断当前系统应用模式是否开启了“暗”模式（win10在   个性化-颜色-选择默认应用模式  中修改）
-  // if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-  // if (localStorage.theme === 'dark' || (!('theme' in localStorage))) {
   if (localStorage.theme === 'dark') {
+    document.getElementById('theme-toggle-dark-icon')?.classList.add('hidden')
+    document
+      .getElementById('theme-toggle-light-icon')
+      ?.classList.remove('hidden')
+    document.documentElement.classList.remove('dark')
+    document.documentElement.classList.add('light')
+    localStorage.theme = 'light'
+  } else {
     document.getElementById('theme-toggle-light-icon')?.classList.add('hidden')
     document
       .getElementById('theme-toggle-dark-icon')
       ?.classList.remove('hidden')
     document.documentElement.classList.remove('light')
     document.documentElement.classList.add('dark')
-    localStorage.theme = 'light'
-  } else {
-    document.getElementById('theme-toggle-dark-icon')?.classList.add('hidden')
-    document
-      .getElementById('theme-toggle-light-icon')
-      ?.classList.remove('hidden')
-    document.documentElement.classList.remove('dark')
-    // document.documentElement.classList.add('light')
     localStorage.theme = 'dark'
   }
-
-  // localStorage.theme = 'light'
-
-  // localStorage.theme = 'dark'
-
-  // localStorage.removeItem('theme')
 }
 </script>
 

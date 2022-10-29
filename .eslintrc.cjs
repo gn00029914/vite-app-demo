@@ -51,7 +51,7 @@ module.exports = {
         "!**/dist",
         "!**/build",
       ],
-      cssFilesRefreshRate: 5_000,
+      cssFilesRefreshRate: 1_000,
       removeDuplicates: true,
       whitelist: [],
     },
