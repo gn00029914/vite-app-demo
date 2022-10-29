@@ -12,12 +12,12 @@ export default defineConfig({
   },
   plugins: [vue()],
   base:
-    process.env.npm_lifecycle_event == 'build'
+    process.env.npm_lifecycle_event === 'build'
       ? '/' + process.env.npm_package_name + '/'
-      : process.env.npm_lifecycle_event == 'build:staging' ||
+      : process.env.npm_lifecycle_event === 'build:staging' ||
         process.env.npm_lifecycle_event === 'preview'
       ? '/' + process.env.npm_package_name + '_staging/'
-      : process.env.npm_lifecycle_event == 'dev'
+      : process.env.npm_lifecycle_event === 'dev'
       ? '/' + process.env.npm_package_name + '_dev/'
       : '',
   publicDir: 'public',
