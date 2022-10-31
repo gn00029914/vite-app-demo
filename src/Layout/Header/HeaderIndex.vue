@@ -50,22 +50,24 @@
 import { Dropdown, ListGroup, ListGroupItem } from 'flowbite-vue'
 
 const darkMode = () => {
-  if (localStorage.theme === 'dark') {
-    document.getElementById('theme-toggle-dark-icon')?.classList.add('hidden')
+  if (document.documentElement.classList.contains('dark')) {
     document
       .getElementById('theme-toggle-light-icon')
       ?.classList.remove('hidden')
+    document.getElementById('theme-toggle-dark-icon')?.classList.add('hidden')
     document.documentElement.classList.remove('dark')
     document.documentElement.classList.add('light')
-    localStorage.theme = 'light'
+    // document.documentElement.animate({ easing: ['ease-in'] }, 5000);
+    // localStorage.theme = 'light'
   } else {
-    document.getElementById('theme-toggle-light-icon')?.classList.add('hidden')
     document
       .getElementById('theme-toggle-dark-icon')
       ?.classList.remove('hidden')
+    document.getElementById('theme-toggle-light-icon')?.classList.add('hidden')
     document.documentElement.classList.remove('light')
     document.documentElement.classList.add('dark')
-    localStorage.theme = 'dark'
+    // document.documentElement.animate({ easing: ['ease-in'] }, 5000);
+    // localStorage.theme = 'dark'
   }
 }
 </script>
