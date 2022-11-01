@@ -2,13 +2,8 @@
 <html lang="en" style="background-color:dimgray;">
 
 <head>
-  
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>vite-app-demo</title>
   <script>
-    // document.documentElement.animate([{ opacity: [1, 1], color: ["dimgray", "dimgray"] }], 0);
+    document.documentElement.animate([{ opacity: [1, 1], color: ["dimgray", "dimgray"] }], 0);
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
     if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
@@ -16,6 +11,11 @@
       document.documentElement.classList.remove('dark')
     }
   </script>
+  
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>vite-app-demo</title>
   <script type="module" crossorigin src="/vite-app-demo/assets/index.10c8edc0.js"></script>
   <link rel="stylesheet" href="/vite-app-demo/assets/index.6d77113f.css">
 </head>
