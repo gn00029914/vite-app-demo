@@ -48,7 +48,8 @@
 
 <script setup lang="ts">
 import { Dropdown, ListGroup, ListGroupItem } from 'flowbite-vue'
-window.onload = () => {
+
+document.addEventListener('DOMContentLoaded', () => {
   if (
     localStorage.getItem('color-theme') === 'dark' ||
     (!('color-theme' in localStorage) &&
@@ -64,7 +65,8 @@ window.onload = () => {
       ?.classList.remove('hidden')
     document.getElementById('theme-toggle-light-icon')?.classList.add('hidden')
   }
-}
+})
+
 const darkMode = () => {
   if (document.documentElement.classList.contains('dark')) {
     document
