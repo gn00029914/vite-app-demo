@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" style="opacity:1">
+<html lang="en">
 
-<head style="opacity:0">
+<head>
   <script>
-    // document.documentElement.animate([], 0);
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    document.documentElement.animate([], 0);
     if (
       localStorage.getItem('color-theme') === 'dark' ||
       (!('color-theme' in localStorage) &&
@@ -14,7 +14,6 @@
     } else {
       document.documentElement.classList.remove('dark')
     }
-
   </script>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
