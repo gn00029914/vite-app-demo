@@ -36,7 +36,7 @@ specifiers:
   tailwindcss: ^3.2.1
   typescript: ^4.8.4
   vite: ^3.2.2
-  vitest: ^0.24.4
+  vitest: ^0.24.5
   vue: ^3.2.41
   vue-eslint-parser: ^9.1.0
   vue-router: ^4.1.6
@@ -82,7 +82,7 @@ devDependencies:
   tailwindcss: 3.2.1_postcss@8.4.18
   typescript: 4.8.4
   vite: 3.2.2_less@4.1.3
-  vitest: 0.24.4_happy-dom@7.6.6+less@4.1.3
+  vitest: 0.24.5_happy-dom@7.6.6+less@4.1.3
   vue-eslint-parser: 9.1.0_eslint@8.26.0
   vue-tsc: 1.0.9_typescript@4.8.4
 
@@ -250,7 +250,7 @@ packages:
       lodash: 4.17.21
       resolve-from: 5.0.0
       resolve-global: 1.0.0
-      yargs: 17.6.0
+      yargs: 17.6.1
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -4441,7 +4441,7 @@ packages:
       style-search: 0.1.0
       supports-hyperlinks: 2.3.0
       svg-tags: 1.0.0
-      table: 6.8.0
+      table: 6.8.1
       v8-compile-cache: 2.3.0
       write-file-atomic: 4.0.2
     transitivePeerDependencies:
@@ -4507,8 +4507,8 @@ packages:
       get-port: 3.2.0
     dev: true
 
-  /table/6.8.0:
-    resolution: {integrity: sha512-s/fitrbVeEyHKFa7mFdkuQMWlH1Wgw/yEXMt5xACT4ZpzWFluehAxRtUUQKPuWhaLAWhFcVx6w3oC8VKaUfPGA==}
+  /table/6.8.1:
+    resolution: {integrity: sha512-Y4X9zqrCftUhMeH2EptSSERdVKt/nEdijTOacGD/97EKjhQ/Qs8RTlEGABSJNNN8lac9kheH+af7yAkEWlgneA==}
     engines: {node: '>=10.0.0'}
     dependencies:
       ajv: 8.11.0
@@ -4829,8 +4829,8 @@ packages:
       - terser
     dev: false
 
-  /vitest/0.24.4_happy-dom@7.6.6+less@4.1.3:
-    resolution: {integrity: sha512-4ratHSyVEJPtBLV00uhL4Wj3Pmandc9rsxUkE0q9peNOfaOgGF4lEepdkaXGRi9AGFKr1GRVtjGOJ6Fp2lCpEg==}
+  /vitest/0.24.5_happy-dom@7.6.6+less@4.1.3:
+    resolution: {integrity: sha512-zw6JhPUHtLILQDe5Q39b/SzoITkG+R7hcFjuthp4xsi6zpmfQPOZcHodZ+3bqoWl4EdGK/p1fuMiEwdxgbGLOA==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -5077,8 +5077,8 @@ packages:
       yargs-parser: 20.2.9
     dev: true
 
-  /yargs/17.6.0:
-    resolution: {integrity: sha512-8H/wTDqlSwoSnScvV2N/JHfLWOKuh5MVla9hqLjK3nsfyy6Y4kDSYSvkU5YCUEPOSnRXfIyx3Sq+B/IWudTo4g==}
+  /yargs/17.6.1:
+    resolution: {integrity: sha512-leBuCGrL4dAd6ispNOGsJlhd0uZ6Qehkbu/B9KCR+Pxa/NVdNwi+i31lo0buCm6XxhJQFshXCD0/evfV4xfoUg==}
     engines: {node: '>=12'}
     dependencies:
       cliui: 8.0.1

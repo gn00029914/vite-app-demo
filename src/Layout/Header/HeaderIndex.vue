@@ -12,7 +12,7 @@
       >
         <svg
           id="theme-toggle-dark-icon"
-          class="h-5 w-5"
+          class="hidden h-5 w-5"
           fill="currentColor"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
@@ -48,22 +48,38 @@
 
 <script setup lang="ts">
 import { Dropdown, ListGroup, ListGroupItem } from 'flowbite-vue'
-
-const darkMode = () => {
-  if (document.documentElement.classList.contains('dark')) {
+window.onload = () => {
+  if (
+    localStorage.getItem('color-theme') === 'dark' ||
+    (!('color-theme' in localStorage) &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches)
+  ) {
     document
       .getElementById('theme-toggle-light-icon')
       ?.classList.remove('hidden')
     document.getElementById('theme-toggle-dark-icon')?.classList.add('hidden')
+  } else {
+    document
+      .getElementById('theme-toggle-dark-icon')
+      ?.classList.remove('hidden')
+    document.getElementById('theme-toggle-light-icon')?.classList.add('hidden')
+  }
+}
+const darkMode = () => {
+  if (document.documentElement.classList.contains('dark')) {
+    document
+      .getElementById('theme-toggle-dark-icon')
+      ?.classList.remove('hidden')
+    document.getElementById('theme-toggle-light-icon')?.classList.add('hidden')
     document.documentElement.classList.remove('dark')
     document.documentElement.classList.add('light')
     // document.documentElement.animate({ easing: ['ease-in'] }, 5000);
     // localStorage.theme = 'light'
   } else {
     document
-      .getElementById('theme-toggle-dark-icon')
+      .getElementById('theme-toggle-light-icon')
       ?.classList.remove('hidden')
-    document.getElementById('theme-toggle-light-icon')?.classList.add('hidden')
+    document.getElementById('theme-toggle-dark-icon')?.classList.add('hidden')
     document.documentElement.classList.remove('light')
     document.documentElement.classList.add('dark')
     // document.documentElement.animate({ easing: ['ease-in'] }, 5000);

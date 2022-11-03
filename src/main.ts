@@ -1,5 +1,4 @@
-import './componentsStyle.css'
-import './utilitiesStyle.css'
+import './style.css'
 
 import { createApp } from 'vue'
 import { createHead } from '@vueuse/head'

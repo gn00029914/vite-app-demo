@@ -30,10 +30,10 @@ module.exports = {
   // plugins: ['@typescript-eslint'], // might not be needed
   plugins: ['@typescript-eslint', 'prettier', 'tailwindcss'],
   rules: {
-    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/consistent-type-imports': 'warn',
     'tailwindcss/classnames-order': 'warn',
-    'tailwindcss/no-custom-classname': 'off',
+    'tailwindcss/no-custom-classname': 'warn',
     'prettier/prettier': [
       'error',
       {
