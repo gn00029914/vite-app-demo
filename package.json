@@ -1,0 +1,17 @@
+{
+    "scripts": {
+        "vd": "pnpm --filter vite-app-demo dev",
+        "vl": "pnpm --filter vite-app-demo lint-staged",
+        "vb": "pnpm --filter vite-app-demo build",
+        "vp": "pnpm --filter vite-app-demo preview",
+        "vt": "pnpm --filter vite-app-demo test",
+        "vc": "pnpm --filter vite-app-demo coverage",
+        "nd": "pnpm --filter nestjs-server-demo start:dev",
+        "nl": "pnpm --filter nestjs-server-demo lint",
+        "nf": "pnpm --filter nestjs-server-demo format",
+        "np": "pnpm --filter nestjs-server-demo prebuild",
+        "nb": "pnpm --filter nestjs-server-demo build",
+        "nt": "pnpm --filter nestjs-server-demo test",
+        "nc": "pnpm --filter nestjs-server-demo test:cov"
+    }
+}

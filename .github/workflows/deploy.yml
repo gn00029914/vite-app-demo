@@ -21,8 +21,8 @@ jobs:
         run: |
           corepack enable
           corepack prepare pnpm@latest --activate
-          pnpm install
-          pnpm run build
+          pnpm i
+          pnpm vb
       # 步驟三：部署
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.4.1
