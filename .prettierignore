@@ -1,5 +1,0 @@
-coverage/
-dist/
-__snapshots__/
-pnpm-lock.yaml
-*.md

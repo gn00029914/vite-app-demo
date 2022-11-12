@@ -15,7 +15,7 @@ export default defineConfig({
   publicDir: 'public',
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, '/src')
+      '@': path.resolve(__dirname, './src')
     }
   },
   test: {
@@ -25,7 +25,7 @@ export default defineConfig({
     environment: 'happy-dom', // or edge-runtime ???
     // exclude: ['cypress', 'lib', 'node_modules', 'docs'],
     exclude: ['node_modules'],
-    globals: true,
-    setupFiles: 'src/App.tests.ts'
+    globals: true
+    // setupFiles: './src/App.tests.ts'
   }
 })

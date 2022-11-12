@@ -6,11 +6,12 @@ module.exports = {
     node: true
   },
   extends: [
-    // 'eslint:recommended', // this maybe causes errors in defineEmits<{}>() ???
-    // 'plugin:@typescript-eslint/recommended',
+    'eslint:recommended', // this maybe causes errors in defineEmits<{}>() ???
+    'plugin:@typescript-eslint/recommended',
     'plugin:vue/vue3-recommended',
     'plugin:tailwindcss/recommended',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
+    "prettier"
   ],
   ignorePatterns: ['*.cjs'],
   // /* globals: {
