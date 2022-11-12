@@ -12,12 +12,13 @@
     "build:staging": "vue-tsc --noEmit && vite build --mode staging",
     "build": "vue-tsc --noEmit && vite build --mode production",
     "preview": "vite preview",
-    "lint": "eslint --ext .js,.ts,.vue --ignore-path .gitignore --fix src/",
-    "lint:check": "eslint --ext .js,.ts,.vue --ignore-path .gitignore src/",
-    "format": "prettier . --write",
-    "format:check": "prettier . --check",
-    "lint:style": "stylelint ./src/**/*.{css,vue} --fix",
-    "lint:style:check": "stylelint ./src/**/*.{css,vue}",
+    "lint": "eslint --ext .js,.ts,.vue --ignore-path ../.gitignore --fix src/",
+    "lint:check": "eslint --ext .js,.ts,.vue --ignore-path ../.gitignore src/",
+    "format": "prettier . --write --ignore-path ../.gitignore",
+    "format:check": "prettier . --check --ignore-path ../.gitignore",
+    "lint:style": "stylelint ./src/**/*.{css,vue} --fix --ignore-path ../.gitignore",
+    "lint:style:check": "stylelint ./src/**/*.{css,vue} --ignore-path ../.gitignore",
+    "lint-staged": "lint-staged",
     "prepare": "cd .. && husky install",
     "test": "vitest",
     "coverage": "vitest run --coverage"
@@ -38,6 +39,7 @@
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
     "@vitejs/plugin-vue": "^3.2.0",
+    "@vitest/coverage-c8": "^0.25.1",
     "@vue/test-utils": "^2.2.1",
     "autoprefixer": "^10.4.13",
     "c8": "^7.12.0",
@@ -68,14 +70,16 @@
   },
   "lint-staged": {
     "*.{js,ts,tsx,jsx,vue}": [
-      "eslint --ignore-path .gitignore --fix",
-      "prettier --ignore-path .gitignore --write"
+      "eslint --ignore-path ../.gitignore --fix",
+      "prettier --ignore-path ../.gitignore --write"
     ],
     "{!(package)*.json,*.code-snippets,.!(browserslist)*rc}": [
-      "prettier --ignore-path .gitignore --parser json --write"
+      "prettier --ignore-path ../.gitignore --parser json --write"
     ],
-    "package.json": ["prettier --ignore-path .gitignore --parser json --write"],
-    "*.md": ["prettier --ignore-path .gitignore --write"]
+    "package.json": [
+      "prettier --ignore-path ../.gitignore --parser json --write"
+    ],
+    "*.md": ["prettier --ignore-path ../.gitignore --write"]
   },
   "peerDependencies": {
     "@algolia/client-search": "^4.14.2"
