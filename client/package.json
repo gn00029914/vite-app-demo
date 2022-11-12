@@ -18,7 +18,7 @@
     "format:check": "prettier . --check",
     "lint:style": "stylelint ./src/**/*.{css,vue} --fix",
     "lint:style:check": "stylelint ./src/**/*.{css,vue}",
-    "prepare": "husky install",
+    "prepare": "cd .. && husky install",
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },
