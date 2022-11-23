@@ -2,7 +2,7 @@
   "name": "vite-app-demo",
   "version": "0.0.1",
   "description": "",
-  "main": "ecosystem.config.js",
+  "main": "./server/dist/main.js",
   "scripts": {
     "vd": "pnpm --filter vite-app-demo dev",
     "vl": "pnpm --filter vite-app-demo lint-staged",
