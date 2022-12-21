@@ -1,6 +1,7 @@
 # compiled output
 dist
 node_modules
+admin
 client
 
 # Logs
@@ -11,6 +12,9 @@ pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
+
+.env.development
+.env.production
 
 # OS
 .DS_Store
