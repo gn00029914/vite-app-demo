@@ -16,5 +16,6 @@ module.exports = {
     script: "./server/dist/main.js",
     watch: true,
     log_date_format: "YYYY-MM-DD HH:mm Z"
-  }]
+  } //todo admin, mysql, nginx... via "exec_interpreter" configurations
+  ]
 }
