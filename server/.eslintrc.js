@@ -1,7 +1,7 @@
 // @ts-check
-import { defineConfig } from 'eslint-define-config';
+const { defineConfig } = require('eslint-define-config');
 
-export default defineConfig({
+module.exports = defineConfig({
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: 'tsconfig.json',

@@ -21,7 +21,8 @@
     "pm2d": "pnpm np && pnpm nb && pnpm pm2 start ecosystem.config.js --env development",
     "pm2p": "pnpm vb && pnpm np && pnpm shx cp -r client/dist/ server/client/ && pnpm nb && pnpm pm2 start ./server/dist/main.js --env production",
     "pm2stop": "pnpm pm2 stop all",
-    "pm2cls": "pnpm pm2stop && pnpm pm2 delete all && pnpm pm2 flush"
+    "pm2cls": "pnpm pm2stop && pnpm pm2 delete all && pnpm pm2 flush",
+    "vgi": "pnpm dlx vue-pwa-asset-generator -a .\\client\\public\\vite.svg -o .\\client\\public\\ --no-manifest"
   },
   "keywords": [],
   "author": {
