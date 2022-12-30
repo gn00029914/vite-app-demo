@@ -8,7 +8,7 @@ import { join } from 'path';
   imports: [
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'client'),
-      serveRoot: '/' + process.env.npm_package_name
+      serveRoot: '/' + process.env.npm_package_name,
     }),
   ],
   controllers: [AppController],
