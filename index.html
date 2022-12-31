@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <script>
-      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-      document.documentElement.animate([], 0)
-      if (
-        localStorage.getItem('color-theme') === 'dark' ||
-        (!('color-theme' in localStorage) &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches)
-      ) {
-        document.documentElement.classList.add('dark')
-      } else {
-        document.documentElement.classList.remove('dark')
-      }
-    </script>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite-app-demo/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>vite-app-demo</title>
-    <script type="module" crossorigin src="/vite-app-demo/assets/index.7b299225.js"></script>
-    <link rel="stylesheet" href="/vite-app-demo/assets/index.1c28434b.css">
-  </head>
 
-  <body>
-    <div id="app"></div>
-    
-  </body>
+<head>
+  <script>
+    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    document.documentElement.animate([], 0)
+    if (
+      localStorage.getItem('color-theme') === 'dark' ||
+      (!('color-theme' in localStorage) &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  </script>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite-app-demo/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>vite-app-demo</title>
+  <meta name="description" content="vite-app-demo description">
+  <link rel="icon" href="/vite-app-demo/safari-pinned-tab.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="/vite-app-demo/favicon.ico" type="image/png" sizes="48x48">
+  <link rel="apple-touch-icon" href="/vite-app-demo/apple-touch-icon.png" sizes="180x180">
+  <link rel="mask-icon" href="/vite-app-demo/android-chrome-maskable-192x192.png" color="#00bd7e">
+  <meta name="theme-color" content="#00bd7e">
+  <script type="module" crossorigin src="/vite-app-demo/assets/index-9b9bd722.js"></script>
+  <link rel="stylesheet" href="/vite-app-demo/assets/index-9c0af881.css">
+<link rel="manifest" href="/vite-app-demo/manifest.webmanifest" crossorigin="use-credentials"><script id="vite-plugin-pwa:register-sw" src="/vite-app-demo/registerSW.js"></script></head>
+
+<body>
+  <div id="app"></div>
+  
+</body>
+
 </html>
