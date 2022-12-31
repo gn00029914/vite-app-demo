@@ -15,10 +15,14 @@ export default defineConfig({
   plugins: [
     vue(),
     VitePWA({
+      useCredentials: true,
       manifest: {
         name: process.env.npm_package_name,
         description: process.env.npm_package_name + ' PWA',
         theme_color: '#00bd7e',
+        scope: './',
+        start_url: './',
+        display: 'standalone',
         icons: [
           {
             src: './android-chrome-192x192.png',
