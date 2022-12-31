@@ -1,4 +1,7 @@
-module.exports = {
+// @ts-check
+const { defineConfig } = require('eslint-define-config');
+
+module.exports = defineConfig({
   root: true,
   env: {
     browser: true,
@@ -11,7 +14,7 @@ module.exports = {
     'plugin:vue/vue3-recommended',
     'plugin:tailwindcss/recommended',
     'plugin:prettier/recommended',
-    "prettier"
+    // "prettier"
   ],
   ignorePatterns: ['*.cjs'],
   // /* globals: {
@@ -45,5 +48,7 @@ module.exports = {
     //     endOfLine: 'auto'
     //   }
     // ]
+    "no-empty-function": "off",
+    "@typescript-eslint/no-empty-function": "error"
   }
-}
+});
