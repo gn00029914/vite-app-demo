@@ -7,7 +7,7 @@
       <button
         id="theme-toggle"
         type="button"
-        class="animate-pulse rounded-lg p-1 text-sm text-gray-500 mx-2 hover:bg-gray-100 focus:outline-none focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+        class="mx-2 animate-pulse rounded-lg p-1 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
         @click="darkMode"
       >
         <svg

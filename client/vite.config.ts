@@ -13,7 +13,13 @@ export default defineConfig({
     sourcemap: true
   },
   plugins: [
-    vue(),
+    vue({
+      template: {
+        compilerOptions: {
+          delimiters: ['@{{', '}}']
+        }
+      }
+    }),
     VitePWA({
       useCredentials: true,
       manifest: {
