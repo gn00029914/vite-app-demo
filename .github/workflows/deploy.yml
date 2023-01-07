@@ -15,7 +15,7 @@ jobs:
       # 步驟一：複製程式碼
       - name: checkout
         # 使用的 actions/checkout 複製程式碼
-        uses: actions/checkout@v3.2.0
+        uses: actions/checkout@v3.3.0
       # 步驟二：編譯
       - name: Install and Build
         run: |
