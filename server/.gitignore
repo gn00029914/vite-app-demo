@@ -3,6 +3,8 @@ dist
 node_modules
 admin
 client
+public
+views
 
 # Logs
 logs
