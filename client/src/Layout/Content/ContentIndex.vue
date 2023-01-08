@@ -1,9 +1,7 @@
 <template>
   <div class="content">
     Content
-    <div v-for="item in 100" :key="item" class="content-items">
-      {{ item }}
-    </div>
+    <div v-for="item in 100" :key="item" class="content-items">@{{ item }}</div>
   </div>
 </template>
 

@@ -6,7 +6,7 @@ import {
 import { AppModule } from './app.module';
 import compression from '@fastify/compress';
 import fs from 'fs';
-import path from 'path';
+import path, { join } from 'path';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -22,9 +22,20 @@ async function bootstrap() {
           path.join(__dirname, '..', 'https', 'fastify.cert'), // 參見 ../https/README.md
         ),
       },
+      logger: true,
     }),
   );
+  app.setViewEngine({
+    engine: {
+      handlebars: require('handlebars'),
+    },
+    templates: join(__dirname, '..', 'views'),
+  }); // https://localhost:3000/
+  app.useStaticAssets({
+    root: join(__dirname, '..', 'public'),
+    prefix: '/vite-app-demo/',
+  }); // https://localhost:3000/vite-app-demo/
   await app.register(compression, { encodings: ['gzip', 'deflate'] });
-  await app.listen(3000);
+  await app.listen(3000, '0.0.0.0');
 }
 bootstrap();

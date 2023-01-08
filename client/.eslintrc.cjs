@@ -38,10 +38,12 @@ module.exports = defineConfig({
   // plugins: ['@typescript-eslint'], // might not be needed
   plugins: ['@typescript-eslint', 'vue', 'tailwindcss', 'prettier'],
   rules: {
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
     // '@typescript-eslint/no-explicit-any': 'warn',
     // '@typescript-eslint/consistent-type-imports': 'warn',
     // 'tailwindcss/classnames-order': 'warn',
-    // 'tailwindcss/no-custom-classname': 'warn',
+    'tailwindcss/no-custom-classname': 'off',
     // 'prettier/prettier': [
     //   'error',
     //   {

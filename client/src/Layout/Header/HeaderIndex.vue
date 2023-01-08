@@ -7,7 +7,7 @@
       <button
         id="theme-toggle"
         type="button"
-        class="animate-pulse rounded-lg p-1 text-sm text-gray-500 mx-2 hover:bg-gray-100 focus:outline-none focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+        class="mx-2 animate-pulse rounded-lg p-1 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
         @click="darkMode"
       >
         <svg
@@ -35,20 +35,37 @@
           ></path>
         </svg>
       </button>
-      <dropdown text="Click me" placement="bottom">
-        <list-group>
-          <list-group-item>Item #1</list-group-item>
-          <list-group-item>Item #2</list-group-item>
-          <list-group-item>Item #3</list-group-item>
-        </list-group>
-      </dropdown>
+      <flowbite-themable :theme="theme">
+        <dropdown
+          text="Click me"
+          placement="bottom"
+          class="border-primary-600 border-primary-200"
+        >
+          <list-group>
+            <list-group-item class="bg-primary-300 text-primary-600"
+              >Item #1</list-group-item
+            >
+            <list-group-item class="bg-primary-300 text-primary-600"
+              >Item #2</list-group-item
+            >
+            <list-group-item class="bg-primary-300 text-primary-600"
+              >Item #3</list-group-item
+            >
+          </list-group>
+        </dropdown>
+      </flowbite-themable>
     </nav>
   </div>
 </template>
 
 <script setup lang="ts">
-import { Dropdown, ListGroup, ListGroupItem } from 'flowbite-vue'
-
+import {
+  Dropdown,
+  ListGroup,
+  ListGroupItem,
+  FlowbiteThemable
+} from 'flowbite-vue'
+const theme = 'red' // 'blue', 'green', 'red', 'pink', 'purple'
 document.addEventListener('DOMContentLoaded', () => {
   if (
     localStorage.getItem('color-theme') === 'dark' ||
