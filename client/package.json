@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --mode development",
     "build:staging": "vue-tsc --noEmit && vite build --mode staging",
-    "build": "vite build --mode production",
+    "build": "vite build --mode production --force",
     "preview": "vite preview --port=443",
     "lint": "eslint --ext .js,.ts,.vue --ignore-path .gitignore --fix src/",
     "lint:check": "eslint --ext .js,.ts,.vue --ignore-path .gitignore src/",
@@ -34,6 +34,7 @@
     "@types/node": "^18.11.18",
     "@typescript-eslint/eslint-plugin": "^5.48.0",
     "@typescript-eslint/parser": "^5.48.0",
+    "@vitejs/plugin-basic-ssl": "^1.0.1",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vitest/coverage-c8": "^0.26.3",
     "@vue/test-utils": "^2.2.7",
@@ -53,7 +54,7 @@
     "lint-staged": "^13.1.0",
     "postcss": "^8.4.21",
     "postcss-html": "^1.5.0",
-    "prettier": "^2.8.1",
+    "prettier": "^2.8.2",
     "stylelint": "^14.16.1",
     "stylelint-config-prettier": "^9.0.4",
     "stylelint-config-recommended-vue": "^1.4.0",
@@ -64,7 +65,7 @@
     "vite-plugin-pwa": "^0.14.1",
     "vitest": "^0.26.3",
     "vue-eslint-parser": "^9.1.0",
-    "vue-tsc": "^1.0.22",
+    "vue-tsc": "^1.0.24",
     "workbox-window": "^6.5.4"
   },
   "lint-staged": {

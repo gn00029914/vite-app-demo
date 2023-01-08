@@ -1,12 +1,27 @@
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
 
-import { defineConfig } from 'vite'
+import { Plugin, defineConfig, resolveConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import * as path from 'path'
-import { VitePWA } from 'vite-plugin-pwa'
+import { VitePluginPWAAPI, VitePWA } from 'vite-plugin-pwa'
+import basicSsl from '@vitejs/plugin-basic-ssl'
+
+// vite-rebuild-pwa
+const RebuildPWA = (): Plugin => ({
+  name: 'rebuild-pwa',
+  closeBundle: async () => {
+    const config = await resolveConfig({}, 'build', 'production')
+    const pwaPlugin: VitePluginPWAAPI = config.plugins.find(
+      (i) => i.name === 'vite-plugin-pwa'
+    )?.api
+    if (pwaPlugin && pwaPlugin.generateSW && !pwaPlugin.disabled)
+      await pwaPlugin.generateSW()
+  }
+})
 
 console.log(process.env)
+
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
@@ -125,9 +140,34 @@ export default defineConfig({
         enabled: true
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+        sourcemap: true,
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+        runtimeCaching: [
+          // {
+          //   urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
+          //   handler: 'StaleWhileRevalidate'
+          // },
+          // {
+          //   urlPattern: /.*\.js.*/,
+          //   handler: 'StaleWhileRevalidate'
+          // },
+          // {
+          //   urlPattern: /.*\.css.*/,
+          //   handler: 'StaleWhileRevalidate'
+          // },
+          // {
+          //   urlPattern: /.*\.html.*/,
+          //   handler: 'StaleWhileRevalidate'
+          // },
+          {
+            urlPattern: /\**/,
+            handler: 'StaleWhileRevalidate'
+          }
+        ]
       }
-    })
+    }),
+    RebuildPWA(),
+    basicSsl()
   ],
   base: '/' + process.env.npm_package_name + '/',
   publicDir: 'public',
@@ -143,9 +183,10 @@ export default defineConfig({
     }
   },
   server: {
-    open: true
-    // port: 443,
-    // host: , // ip
+    https: true,
+    open: true,
+    port: 443,
+    host: 'localhost'
   },
   test: {
     coverage: {

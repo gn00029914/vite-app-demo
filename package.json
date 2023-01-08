@@ -23,7 +23,8 @@
     "pm2pwa": "concurrently \"pnpm vb\" \"pnpm np\" && concurrently \"pnpm shx cp -r client/dist/ server/public/\" \"pnpm shx mkdir server/views\" && pnpm shx cp client/dist/index.html server/views/index.hbs && pnpm nb && pnpm pm2 start ./server/dist/main.js --env production",
     "pm2stop": "pnpm pm2 stop all",
     "pm2cls": "concurrently \"pnpm pm2stop\" \"pnpm pm2 delete all\" \"pnpm pm2 flush\"",
-    "vgi": "pnpm dlx vue-pwa-asset-generator -a .\\client\\public\\vite.svg -o .\\client\\public\\ --no-manifest"
+    "vgi": "pnpm dlx vue-pwa-asset-generator -a .\\client\\public\\vite.svg -o .\\client\\public\\ --no-manifest",
+    "sstcs": "pnpm exec shx cat .\/server\/https\/fastify.key .\/server\/https\/fastify.cert > .\/client\/node_modules\/.vite\/basic-ssl\/_cert.pem"
   },
   "keywords": [],
   "author": {
