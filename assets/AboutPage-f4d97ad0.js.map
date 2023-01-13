@@ -1,0 +1,1 @@
+{"version":3,"file":"AboutPage-f4d97ad0.js","sources":["../../src/pages/AboutPage.vue"],"sourcesContent":["<template>\n  <div>About</div>\n</template>\n\n<script setup lang=\"ts\"></script>\n\n<style scoped>\n/* todo */\n</style>\n"],"names":["_sfc_render","_ctx","_cache"],"mappings":"0TACE,SAAAA,EAAAC,EAAAC,EAAA"}
