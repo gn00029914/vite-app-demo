@@ -21,7 +21,9 @@ jobs:
         run: |
           corepack enable
           corepack prepare pnpm@latest --activate
+          pnpm config set shared-workspace-lockfile=false
           pnpm i
+          pnpm store prune
           pnpm vb
       # 步驟三：部署
       - name: Deploy

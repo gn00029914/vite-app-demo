@@ -1,4 +1,5 @@
 /* @import url('../node_modules/flowbite/dist/flowbite.min.css'); */
+@config "../tailwindcss-config.cjs";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

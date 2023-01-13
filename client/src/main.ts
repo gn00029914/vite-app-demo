@@ -1,5 +1,6 @@
 import './style.css'
 
+import 'vite/modulepreload-polyfill'
 import { createApp } from 'vue'
 import { createHead } from '@vueuse/head'
 import { createPinia } from 'pinia'
