@@ -44,27 +44,29 @@ export default defineConfig({
         // nested: resolve(__dirname, './nested/index.html')
       },
       output: {
-        inlineDynamicImports: true // 真 all-in-one
-        // manualChunks(id) {
-        //   if(id.includes('node_modules')) {
-        //     return id.toString().split('node_modules/.pnpm/')[1].split('/')[2];
-        //   }
-        // } // 真 transfer size friendly (powered by pnpm)
+        // inlineDynamicImports: true  // all-in-one, sync render strategy, SPA
+        manualChunks(id) {
+          // Avoid chaining critical requests
+          if (id.includes('node_modules')) {
+            // return id.toString().split('node_modules/.pnpm/')[1].split('/')[0];  // PWA cached friendly, maybe a race condition
+            return id.toString().split('node_modules/.pnpm/')[1].split('/')[2] // transfer chunks size friendly(powered by pnpm), PWA cached friendly, sync render strategy, MPA
+          }
+        }
       }
     }
   },
   plugins: [
-    // chunkSplitPlugin({
-    //   strategy: 'all-in-one' // 與 inlineDynamicImports: true 的差別在每頁CSS拆分
-    //   // strategy: 'unbundle', // 模組循環依賴拆分每頁CSS拆分 (maybe "Total Blocking Time" friendly by HTTP/3)
-    //   // customSplitting: {
-    //   //   '@vueuse/head': ['@vueuse/head'],
-    //   //   'vue': ['vue'],
-    //   //   'flowbite': ['flowbite'],
-    //   //   'flowbite-vue': ['flowbite-vue'],
-    //   //   'vue-router': ['vue-router'],
-    //   //   'pinia': ['pinia']
-    //   //   // 'chunk': ['@vueuse/head', 'vue', 'flowbite', 'flowbite-vue', 'vue-router', 'pinia']
+    // chunkSplitPlugin({  //連線瓶頸查看拆分chunks效益的實驗用對照組
+    //   // strategy: 'all-in-one'  // 與 inlineDynamicImports: true 的差別在每頁CSS拆分, async render(???) strategy
+    //   // strategy: 'unbundle',  // 每頁CSS拆分, 模組循環依賴拆分(maybe "Total Blocking Time" friendly by HTTP/3), async render(???) strategy
+    //   // customSplitting: {  // maybe a race condition
+    //     // '@vueuse/head': ['@vueuse/head'],
+    //     // 'vue': ['vue'],
+    //     // 'flowbite': ['flowbite'],
+    //     // 'flowbite-vue': ['flowbite-vue'],
+    //     // 'vue-router': ['vue-router'],
+    //     // 'pinia': ['pinia']
+    //   //   // 'chunk': ['@vueuse/head', 'vue', 'flowbite', 'flowbite-vue', 'vue-router', 'pinia']  // maybe increase "Total Blocking Time"
     //   // }
     // }),
     vue({
