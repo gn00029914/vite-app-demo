@@ -35,7 +35,7 @@ specifiers:
   rxjs: ^7.8.0
   source-map-support: ^0.5.21
   supertest: ^6.3.3
-  ts-jest: 29.0.4
+  ts-jest: 29.0.5
   ts-loader: ^9.4.2
   ts-node: ^10.9.1
   tsconfig-paths: 4.1.2
@@ -79,7 +79,7 @@ devDependencies:
   prisma: 4.8.1
   source-map-support: 0.5.21
   supertest: 6.3.3
-  ts-jest: 29.0.4_p6ekqnroyms5nhqbfxosryz7rm
+  ts-jest: 29.0.5_p6ekqnroyms5nhqbfxosryz7rm
   ts-loader: 9.4.2_3fkjkrd3audxnith3e7fo4fnxi
   ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
   tsconfig-paths: 4.1.2
@@ -2017,7 +2017,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001443
+      caniuse-lite: 1.0.30001444
       electron-to-chromium: 1.4.284
       node-releases: 2.0.8
       update-browserslist-db: 1.0.10_browserslist@4.21.4
@@ -2078,8 +2078,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /caniuse-lite/1.0.30001443:
-    resolution: {integrity: sha512-jUo8svymO8+Mkj3qbUbVjR8zv8LUGpGkUM/jKvc9SO2BvjCI980dp9fQbf/dyLs6RascPzgR4nhAKFA4OHeSaA==}
+  /caniuse-lite/1.0.30001444:
+    resolution: {integrity: sha512-ecER9xgJQVMqcrxThKptsW0pPxSae8R2RB87LNa+ivW9ppNWRHEplXcDzkCOP4LYWGj8hunXLqaiC41iBATNyg==}
     dev: true
 
   /chalk/2.4.2:
@@ -5490,8 +5490,8 @@ packages:
       tslib: 1.14.1
     dev: false
 
-  /ts-jest/29.0.4_p6ekqnroyms5nhqbfxosryz7rm:
-    resolution: {integrity: sha512-YdNofkoyzeinwjIqLSYQeAM+GTmFQ7xFNtWcR5OyitY5VLzzNINrNmfhP5H3daA/V+RGQR7O3g1K6ysRgu5xIQ==}
+  /ts-jest/29.0.5_p6ekqnroyms5nhqbfxosryz7rm:
+    resolution: {integrity: sha512-PL3UciSgIpQ7f6XjVOmbi96vmDHUqAyqDr8YxzopDqX3kfgYtX1cuNeBjP+L9sFXi6nzsGGA6R3fP3DDDJyrxA==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     hasBin: true
     peerDependencies:
