@@ -35,7 +35,7 @@ async function bootstrap() {
     root: join(__dirname, '..', 'public'),
     prefix: '/vite-app-demo/',
   }); // https://localhost:3000/vite-app-demo/
-  await app.register(compression, { encodings: ['gzip', 'deflate'] });
+  await app.register(compression, { encodings: ['br'] });
   await app.listen(3000, '0.0.0.0');
 }
 bootstrap();

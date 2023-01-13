@@ -1,33 +1,72 @@
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
 
-import { Plugin, defineConfig, resolveConfig } from 'vite'
+import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import * as path from 'path'
-import { VitePluginPWAAPI, VitePWA } from 'vite-plugin-pwa'
+import { VitePWA } from 'vite-plugin-pwa'
 import basicSsl from '@vitejs/plugin-basic-ssl'
+import { resolve } from 'path'
+// import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
 
-// vite-rebuild-pwa
-const RebuildPWA = (): Plugin => ({
-  name: 'rebuild-pwa',
-  closeBundle: async () => {
-    const config = await resolveConfig({}, 'build', 'production')
-    const pwaPlugin: VitePluginPWAAPI = config.plugins.find(
-      (i) => i.name === 'vite-plugin-pwa'
-    )?.api
-    if (pwaPlugin && pwaPlugin.generateSW && !pwaPlugin.disabled)
-      await pwaPlugin.generateSW()
-  }
-})
+// // vite-rebuild-pwa
+// const RebuildPWA = (): Plugin => ({
+//   name: 'rebuild-pwa',
+//   closeBundle: async () => {
+//     const config = await resolveConfig({}, 'build', 'production')
+//     const pwaPlugin: VitePluginPWAAPI = config.plugins.find(
+//       (i) => i.name === 'vite-plugin-pwa'
+//     )?.api
+//     if (pwaPlugin && pwaPlugin.generateSW && !pwaPlugin.disabled)
+//       await pwaPlugin.generateSW()
+//   }
+// })
 
 console.log(process.env)
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  css: {
+    devSourcemap: true
+  },
+  // optimizeDeps: {
+  //   disabled: false,
+  // },
   build: {
-    sourcemap: true
+    modulePreload: true,
+    sourcemap: true,
+    target: 'esnext',
+    manifest: true,
+    cssCodeSplit: true,
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, './index.html')
+        // nested: resolve(__dirname, './nested/index.html')
+      },
+      output: {
+        inlineDynamicImports: true // 真 all-in-one
+        // manualChunks(id) {
+        //   if(id.includes('node_modules')) {
+        //     return id.toString().split('node_modules/.pnpm/')[1].split('/')[2];
+        //   }
+        // } // 真 transfer size friendly (powered by pnpm)
+      }
+    }
   },
   plugins: [
+    // chunkSplitPlugin({
+    //   strategy: 'all-in-one' // 與 inlineDynamicImports: true 的差別在每頁CSS拆分
+    //   // strategy: 'unbundle', // 模組循環依賴拆分每頁CSS拆分 (maybe "Total Blocking Time" friendly by HTTP/3)
+    //   // customSplitting: {
+    //   //   '@vueuse/head': ['@vueuse/head'],
+    //   //   'vue': ['vue'],
+    //   //   'flowbite': ['flowbite'],
+    //   //   'flowbite-vue': ['flowbite-vue'],
+    //   //   'vue-router': ['vue-router'],
+    //   //   'pinia': ['pinia']
+    //   //   // 'chunk': ['@vueuse/head', 'vue', 'flowbite', 'flowbite-vue', 'vue-router', 'pinia']
+    //   // }
+    // }),
     vue({
       template: {
         compilerOptions: {
@@ -141,32 +180,32 @@ export default defineConfig({
       },
       workbox: {
         sourcemap: true,
-        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+        globPatterns: ['**'],
         runtimeCaching: [
           // {
           //   urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
-          //   handler: 'StaleWhileRevalidate'
+          //   handler: 'NetworkFirst'
           // },
           // {
           //   urlPattern: /.*\.js.*/,
-          //   handler: 'StaleWhileRevalidate'
+          //   handler: 'NetworkFirst'
           // },
           // {
           //   urlPattern: /.*\.css.*/,
-          //   handler: 'StaleWhileRevalidate'
+          //   handler: 'NetworkFirst'
           // },
           // {
           //   urlPattern: /.*\.html.*/,
-          //   handler: 'StaleWhileRevalidate'
+          //   handler: 'NetworkFirst'
           // },
           {
-            urlPattern: /\**/,
-            handler: 'StaleWhileRevalidate'
+            urlPattern: /.*/g,
+            handler: 'NetworkFirst'
           }
         ]
       }
     }),
-    RebuildPWA(),
+    // RebuildPWA(),
     basicSsl()
   ],
   base: '/' + process.env.npm_package_name + '/',
