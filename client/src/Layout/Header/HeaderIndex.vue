@@ -36,19 +36,17 @@
         </svg>
       </button>
       <flowbite-themable :theme="theme">
-        <dropdown
-          text="Click me"
-          placement="bottom"
-          class="border-primary-600 border-primary-200"
-        >
+        <dropdown text="Click me">
           <list-group>
-            <list-group-item class="bg-primary-300 text-primary-600"
+            <list-group-item
+              class="bg-primary-200 text-primary-700"
+              :hover="hover"
               >Item #1</list-group-item
             >
-            <list-group-item class="bg-primary-300 text-primary-600"
+            <list-group-item class="bg-primary-200 text-primary-700"
               >Item #2</list-group-item
             >
-            <list-group-item class="bg-primary-300 text-primary-600"
+            <list-group-item class="bg-primary-200 text-primary-700"
               >Item #3</list-group-item
             >
           </list-group>
@@ -66,6 +64,8 @@ import {
   FlowbiteThemable
 } from 'flowbite-vue'
 const theme = 'red' // 'blue', 'green', 'red', 'pink', 'purple'
+// const placement = 'bottom'
+const hover = false
 document.addEventListener('DOMContentLoaded', () => {
   if (
     localStorage.getItem('color-theme') === 'dark' ||

@@ -177,10 +177,15 @@ export default defineConfig({
         // ],
       },
       registerType: 'autoUpdate',
-      devOptions: {
-        enabled: true
-      },
+      // devOptions: {
+      //   enabled: true,
+      //   navigateFallbackAllowlist: [/^index.html/]
+      // },
       workbox: {
+        skipWaiting: true,
+        clientsClaim: true,
+        cleanupOutdatedCaches: true,
+        inlineWorkboxRuntime: true,
         sourcemap: true,
         globPatterns: ['**'],
         runtimeCaching: [
@@ -228,6 +233,9 @@ export default defineConfig({
     open: true,
     port: 443,
     host: 'localhost'
+    // headers: {
+    //   'Content-Encoding': 'gzip, deflate, br'
+    // }
   },
   test: {
     coverage: {
