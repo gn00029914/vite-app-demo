@@ -1,2 +1,0 @@
-import{_ as e}from"./main-53695c8a.js";import{f as o,j as t}from"./@vue-7e6bdc84.js";import"./@vueuse-5edf2960.js";import"./@unhead-62e64392.js";import"./hookable-48cbdad6.js";import"./pinia-2064b5aa.js";import"./vue-demi-71ba0ef2.js";import"./vue-router-507df064.js";import"./flowbite-vue-e3ac2b3a.js";const r={};function _(c,m){return o(),t("div",null,"Home")}const v=e(r,[["render",_],["__scopeId","data-v-35c462de"]]);export{v as default};
-//# sourceMappingURL=HomePage-f57ec5a5.js.map

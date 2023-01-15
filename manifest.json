@@ -4,7 +4,7 @@
     "src": "src/pages/AboutPage.css"
   },
   "index.css": {
-    "file": "assets/index-d0dd4467.css",
+    "file": "assets/index-b07eebac.css",
     "src": "index.css"
   },
   "_@unhead-62e64392.js": {
@@ -24,17 +24,17 @@
   "_vue-4ed993c7.js": {
     "file": "assets/vue-4ed993c7.js"
   },
-  "_@vue-7e6bdc84.js": {
-    "file": "assets/@vue-7e6bdc84.js"
+  "_vue-demi-71ba0ef2.js": {
+    "file": "assets/vue-demi-71ba0ef2.js"
   },
-  "_vue-router-507df064.js": {
-    "file": "assets/vue-router-507df064.js",
+  "_flowbite-vue-e3ac2b3a.js": {
+    "file": "assets/flowbite-vue-e3ac2b3a.js",
     "imports": [
       "_@vue-7e6bdc84.js"
     ]
   },
   "src/pages/AboutPage.vue": {
-    "file": "assets/AboutPage-f4d97ad0.js",
+    "file": "assets/AboutPage-fe84d7b8.js",
     "src": "src/pages/AboutPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -43,7 +43,7 @@
       "_@vueuse-5edf2960.js",
       "_@unhead-62e64392.js",
       "_hookable-48cbdad6.js",
-      "_pinia-2064b5aa.js",
+      "_pinia-21f51a13.js",
       "_vue-demi-71ba0ef2.js",
       "_vue-router-507df064.js",
       "_flowbite-vue-e3ac2b3a.js"
@@ -52,8 +52,14 @@
       "assets/HomePage-e3b0c442.css"
     ]
   },
+  "_@vue-7e6bdc84.js": {
+    "file": "assets/@vue-7e6bdc84.js"
+  },
+  "_hookable-48cbdad6.js": {
+    "file": "assets/hookable-48cbdad6.js"
+  },
   "src/pages/HomePage.vue": {
-    "file": "assets/HomePage-f57ec5a5.js",
+    "file": "assets/HomePage-5ba90bc5.js",
     "src": "src/pages/HomePage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -62,7 +68,7 @@
       "_@vueuse-5edf2960.js",
       "_@unhead-62e64392.js",
       "_hookable-48cbdad6.js",
-      "_pinia-2064b5aa.js",
+      "_pinia-21f51a13.js",
       "_vue-demi-71ba0ef2.js",
       "_vue-router-507df064.js",
       "_flowbite-vue-e3ac2b3a.js"
@@ -71,27 +77,27 @@
       "assets/HomePage-e3b0c442.css"
     ]
   },
-  "_vue-demi-71ba0ef2.js": {
-    "file": "assets/vue-demi-71ba0ef2.js"
-  },
-  "_hookable-48cbdad6.js": {
-    "file": "assets/hookable-48cbdad6.js"
-  },
-  "_pinia-2064b5aa.js": {
-    "file": "assets/pinia-2064b5aa.js",
+  "_pinia-21f51a13.js": {
+    "file": "assets/pinia-21f51a13.js",
     "imports": [
       "_vue-demi-71ba0ef2.js",
       "_@vue-7e6bdc84.js"
     ]
   },
+  "_vue-router-507df064.js": {
+    "file": "assets/vue-router-507df064.js",
+    "imports": [
+      "_@vue-7e6bdc84.js"
+    ]
+  },
   "index.html": {
-    "file": "assets/main-53695c8a.js",
+    "file": "assets/main-dbc9c221.js",
     "src": "index.html",
     "isEntry": true,
     "imports": [
       "_@vue-7e6bdc84.js",
       "_@vueuse-5edf2960.js",
-      "_pinia-2064b5aa.js",
+      "_pinia-21f51a13.js",
       "_vue-router-507df064.js",
       "_flowbite-vue-e3ac2b3a.js",
       "_@unhead-62e64392.js",
@@ -103,13 +109,7 @@
       "src/pages/AboutPage.vue"
     ],
     "css": [
-      "assets/index-d0dd4467.css"
-    ]
-  },
-  "_flowbite-vue-e3ac2b3a.js": {
-    "file": "assets/flowbite-vue-e3ac2b3a.js",
-    "imports": [
-      "_@vue-7e6bdc84.js"
+      "assets/index-b07eebac.css"
     ]
   },
   "src/pages/HomePage.css": {

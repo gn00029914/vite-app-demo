@@ -1,1 +1,0 @@
-{"version":3,"file":"HomePage-f57ec5a5.js","sources":["../../src/pages/HomePage.vue"],"sourcesContent":["<template>\n  <div>Home</div>\n</template>\n\n<script setup lang=\"ts\"></script>\n\n<style scoped>\n/* todo */\n</style>\n"],"names":["_sfc_render","_ctx","_cache"],"mappings":"0TACE,SAAAA,EAAAC,EAAAC,EAAA"}
