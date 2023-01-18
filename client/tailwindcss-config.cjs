@@ -3,12 +3,74 @@ module.exports = {
   darkMode: 'class',
   content: [
     './index.html',
+    './src/*.{js,ts,vue}',
     './src/**/*.{js,ts,vue}',
     // './node_modules/flowbite/**/*.js',
     './node_modules/flowbite-vue/**/*.{js,jsx,ts,tsx}'
   ],
   theme: {
+    animatedSettings: {
+      animatedSpeed: 1000,
+      heartBeatSpeed: 1000,
+      hingeSpeed: 1000,
+      bounceInSpeed: 1000,
+      bounceOutSpeed: 1000,
+      animationDelaySpeed: 1000,
+      classes: ['bounce', 'heartBeat']
+    },
     extend: {
+      animation: {
+        'spinBounce': 'spinBounce 0.96s infinite',
+      },
+      keyframes: {
+        spinBounce: {
+          '0%': {
+            transform: 'translateY(0%) rotate(0deg)'
+          },
+          '12%': {
+            transform: 'translateY(-4.99%) rotate(120deg)'
+          },
+          '24%': {
+            transform: 'translateY(-10.01%) rotate(240deg)'
+          },
+          '36%': {
+            transform: 'translateY(-0.17%) rotate(360deg)'
+          },
+          '54%': {
+            transform: 'translateY(69.85%) rotate(540deg)'
+          },
+          '74%': {
+            transform: 'translateY(109.81%) rotate(740deg)'
+          },
+          '82%': {
+            transform: 'translateY(108.43%) rotate(820deg)'
+          },
+          '92%': {
+            transform: 'translateY(102.59%) rotate(920deg)'
+          },
+          '96%': {
+            transform: 'translateY(100.74%) rotate(960deg)'
+          },
+          '100%': {
+            transform: 'translateY(100%) rotate(1000deg)'
+          }
+        }
+      },
+      dropShadow: {
+        '3xl': '0 35px 35px rgba(0, 0, 0, 0.25)',
+        '4xl': [
+          '0 35px 35px rgba(0, 0, 0, 0.25)',
+          '0 45px 65px rgba(0, 0, 0, 0.15)'
+        ]
+      },
+      boxShadow: {
+        '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
+      },
+      transitionTimingFunction: {
+        'in-expo': 'cubic-bezier(0.95, 0.05, 0.795, 0.035)',
+        'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
+        'easeInOutBack': 'cubic-bezier(0.68, -0.6, 0.32, 1.6)'
+      },
       colors: {
         // rose
         primary: {
@@ -91,6 +153,7 @@ module.exports = {
   },
   plugins: [
     // require('flowbite/plugin'),
-    require('flowbite-vue')
+    require('flowbite-vue'),
+    require('tailwindcss-animatecss')
   ]
 }
