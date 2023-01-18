@@ -1,18 +1,21 @@
 {
+  "accessible-nprogress.css": {
+    "file": "assets/accessible-nprogress-4c26ca5b.css",
+    "src": "accessible-nprogress.css"
+  },
   "src/pages/AboutPage.css": {
     "file": "assets/HomePage-e3b0c442.css",
     "src": "src/pages/AboutPage.css"
   },
   "index.css": {
-    "file": "assets/index-b07eebac.css",
+    "file": "assets/index-eb77c4ea.css",
     "src": "index.css"
   },
-  "_@unhead-62e64392.js": {
-    "file": "assets/@unhead-62e64392.js",
-    "imports": [
-      "_hookable-48cbdad6.js",
-      "_@vue-7e6bdc84.js"
-    ]
+  "_vue-4ed993c7.js": {
+    "file": "assets/vue-4ed993c7.js"
+  },
+  "_vue-demi-71ba0ef2.js": {
+    "file": "assets/vue-demi-71ba0ef2.js"
   },
   "_@vueuse-5edf2960.js": {
     "file": "assets/@vueuse-5edf2960.js",
@@ -21,61 +24,8 @@
       "_@vue-7e6bdc84.js"
     ]
   },
-  "_vue-4ed993c7.js": {
-    "file": "assets/vue-4ed993c7.js"
-  },
-  "_vue-demi-71ba0ef2.js": {
-    "file": "assets/vue-demi-71ba0ef2.js"
-  },
-  "_flowbite-vue-e3ac2b3a.js": {
-    "file": "assets/flowbite-vue-e3ac2b3a.js",
-    "imports": [
-      "_@vue-7e6bdc84.js"
-    ]
-  },
-  "src/pages/AboutPage.vue": {
-    "file": "assets/AboutPage-fe84d7b8.js",
-    "src": "src/pages/AboutPage.vue",
-    "isDynamicEntry": true,
-    "imports": [
-      "index.html",
-      "_@vue-7e6bdc84.js",
-      "_@vueuse-5edf2960.js",
-      "_@unhead-62e64392.js",
-      "_hookable-48cbdad6.js",
-      "_pinia-21f51a13.js",
-      "_vue-demi-71ba0ef2.js",
-      "_vue-router-507df064.js",
-      "_flowbite-vue-e3ac2b3a.js"
-    ],
-    "css": [
-      "assets/HomePage-e3b0c442.css"
-    ]
-  },
-  "_@vue-7e6bdc84.js": {
-    "file": "assets/@vue-7e6bdc84.js"
-  },
   "_hookable-48cbdad6.js": {
     "file": "assets/hookable-48cbdad6.js"
-  },
-  "src/pages/HomePage.vue": {
-    "file": "assets/HomePage-5ba90bc5.js",
-    "src": "src/pages/HomePage.vue",
-    "isDynamicEntry": true,
-    "imports": [
-      "index.html",
-      "_@vue-7e6bdc84.js",
-      "_@vueuse-5edf2960.js",
-      "_@unhead-62e64392.js",
-      "_hookable-48cbdad6.js",
-      "_pinia-21f51a13.js",
-      "_vue-demi-71ba0ef2.js",
-      "_vue-router-507df064.js",
-      "_flowbite-vue-e3ac2b3a.js"
-    ],
-    "css": [
-      "assets/HomePage-e3b0c442.css"
-    ]
   },
   "_pinia-21f51a13.js": {
     "file": "assets/pinia-21f51a13.js",
@@ -84,17 +34,25 @@
       "_@vue-7e6bdc84.js"
     ]
   },
-  "_vue-router-507df064.js": {
-    "file": "assets/vue-router-507df064.js",
+  "_@unhead-62e64392.js": {
+    "file": "assets/@unhead-62e64392.js",
+    "imports": [
+      "_hookable-48cbdad6.js",
+      "_@vue-7e6bdc84.js"
+    ]
+  },
+  "_flowbite-vue-e3ac2b3a.js": {
+    "file": "assets/flowbite-vue-e3ac2b3a.js",
     "imports": [
       "_@vue-7e6bdc84.js"
     ]
   },
   "index.html": {
-    "file": "assets/main-dbc9c221.js",
+    "file": "assets/main-3a8c4a56.js",
     "src": "index.html",
     "isEntry": true,
     "imports": [
+      "_accessible-nprogress-8193e51f.js",
       "_@vue-7e6bdc84.js",
       "_@vueuse-5edf2960.js",
       "_pinia-21f51a13.js",
@@ -109,8 +67,63 @@
       "src/pages/AboutPage.vue"
     ],
     "css": [
-      "assets/index-b07eebac.css"
+      "assets/index-eb77c4ea.css"
     ]
+  },
+  "src/pages/HomePage.vue": {
+    "file": "assets/HomePage-d9ac3f69.js",
+    "src": "src/pages/HomePage.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html",
+      "_@vue-7e6bdc84.js",
+      "_accessible-nprogress-8193e51f.js",
+      "_@vueuse-5edf2960.js",
+      "_@unhead-62e64392.js",
+      "_hookable-48cbdad6.js",
+      "_pinia-21f51a13.js",
+      "_vue-demi-71ba0ef2.js",
+      "_vue-router-507df064.js",
+      "_flowbite-vue-e3ac2b3a.js"
+    ],
+    "css": [
+      "assets/HomePage-e3b0c442.css"
+    ]
+  },
+  "src/pages/AboutPage.vue": {
+    "file": "assets/AboutPage-9ac7fa25.js",
+    "src": "src/pages/AboutPage.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html",
+      "_@vue-7e6bdc84.js",
+      "_accessible-nprogress-8193e51f.js",
+      "_@vueuse-5edf2960.js",
+      "_@unhead-62e64392.js",
+      "_hookable-48cbdad6.js",
+      "_pinia-21f51a13.js",
+      "_vue-demi-71ba0ef2.js",
+      "_vue-router-507df064.js",
+      "_flowbite-vue-e3ac2b3a.js"
+    ],
+    "css": [
+      "assets/HomePage-e3b0c442.css"
+    ]
+  },
+  "_accessible-nprogress-8193e51f.js": {
+    "file": "assets/accessible-nprogress-8193e51f.js",
+    "css": [
+      "assets/accessible-nprogress-4c26ca5b.css"
+    ]
+  },
+  "_vue-router-507df064.js": {
+    "file": "assets/vue-router-507df064.js",
+    "imports": [
+      "_@vue-7e6bdc84.js"
+    ]
+  },
+  "_@vue-7e6bdc84.js": {
+    "file": "assets/@vue-7e6bdc84.js"
   },
   "src/pages/HomePage.css": {
     "file": "assets/HomePage-e3b0c442.css",
