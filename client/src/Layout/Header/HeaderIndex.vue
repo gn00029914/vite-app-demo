@@ -8,6 +8,8 @@
         id="theme-toggle"
         type="button"
         class="mx-2 animate-pulse rounded-lg p-1 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+        role="button"
+        aria-label="darkMode"
         @click="darkMode"
       >
         <svg

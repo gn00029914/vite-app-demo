@@ -7,68 +7,37 @@ import * as path from 'path'
 import { VitePWA } from 'vite-plugin-pwa'
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import { resolve } from 'path'
-// import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
-
-// // vite-rebuild-pwa
-// const RebuildPWA = (): Plugin => ({
-//   name: 'rebuild-pwa',
-//   closeBundle: async () => {
-//     const config = await resolveConfig({}, 'build', 'production')
-//     const pwaPlugin: VitePluginPWAAPI = config.plugins.find(
-//       (i) => i.name === 'vite-plugin-pwa'
-//     )?.api
-//     if (pwaPlugin && pwaPlugin.generateSW && !pwaPlugin.disabled)
-//       await pwaPlugin.generateSW()
-//   }
-// })
 
 console.log(process.env)
 
 // https://vitejs.dev/config/
 export default defineConfig({
   css: {
-    devSourcemap: true
+    devSourcemap: process.env.NPM_ENV === 'development' ? true : false
   },
-  // optimizeDeps: {
-  //   disabled: false,
-  // },
+  optimizeDeps: {
+    force: true
+  },
   build: {
     modulePreload: true,
-    sourcemap: true,
+    sourcemap: process.env.NPM_ENV === 'development' ? true : false,
     target: 'esnext',
     manifest: true,
     cssCodeSplit: true,
     rollupOptions: {
       input: {
         main: resolve(__dirname, './index.html')
-        // nested: resolve(__dirname, './nested/index.html')
       },
       output: {
-        // inlineDynamicImports: true  // all-in-one, sync render strategy, SPA
         manualChunks(id) {
-          // Avoid chaining critical requests
           if (id.includes('node_modules')) {
-            // return id.toString().split('node_modules/.pnpm/')[1].split('/')[0];  // PWA cached friendly, maybe a race condition
-            return id.toString().split('node_modules/.pnpm/')[1].split('/')[2] // transfer chunks size friendly(powered by pnpm), PWA cached friendly, sync render strategy, MPA
+            return id.toString().split('node_modules/.pnpm/')[1].split('/')[2]
           }
         }
       }
     }
   },
   plugins: [
-    // chunkSplitPlugin({  //連線瓶頸查看拆分chunks效益的實驗用對照組
-    //   // strategy: 'all-in-one'  // 與 inlineDynamicImports: true 的差別在每頁CSS拆分, async render(???) strategy
-    //   // strategy: 'unbundle',  // 每頁CSS拆分, 模組循環依賴拆分(maybe "Total Blocking Time" friendly by HTTP/3), async render(???) strategy
-    //   // customSplitting: {  // maybe a race condition
-    //     // '@vueuse/head': ['@vueuse/head'],
-    //     // 'vue': ['vue'],
-    //     // 'flowbite': ['flowbite'],
-    //     // 'flowbite-vue': ['flowbite-vue'],
-    //     // 'vue-router': ['vue-router'],
-    //     // 'pinia': ['pinia']
-    //   //   // 'chunk': ['@vueuse/head', 'vue', 'flowbite', 'flowbite-vue', 'vue-router', 'pinia']  // maybe increase "Total Blocking Time"
-    //   // }
-    // }),
     vue({
       template: {
         compilerOptions: {
@@ -177,10 +146,6 @@ export default defineConfig({
         // ],
       },
       registerType: 'autoUpdate',
-      // devOptions: {
-      //   enabled: true,
-      //   navigateFallbackAllowlist: [/^index.html/]
-      // },
       workbox: {
         skipWaiting: true,
         clientsClaim: true,
@@ -206,13 +171,12 @@ export default defineConfig({
           //   handler: 'NetworkFirst'
           // },
           {
-            urlPattern: /.*/g,
+            urlPattern: /.*/,
             handler: 'NetworkFirst'
           }
         ]
       }
     }),
-    // RebuildPWA(),
     basicSsl()
   ],
   base: '/' + process.env.npm_package_name + '/',
