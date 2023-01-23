@@ -14,6 +14,8 @@ module.exports = {
     name: "nestjs-server-demo",
     cwd: "./server/",
     script: "./server/dist/main.js",
+    node_args: "--expose-gc",
+    exec_mode: "cluster",
     watch: true,
     log_date_format: "YYYY-MM-DD HH:mm Z"
   } //todo admin, mysql, nginx... via "exec_interpreter" configurations
