@@ -29,11 +29,16 @@ export default defineConfig({
         main: resolve(__dirname, './index.html')
       },
       output: {
+        compact: true,
         manualChunks(id) {
           if (id.includes('node_modules')) {
             return id.toString().split('node_modules/.pnpm/')[1].split('/')[2]
           }
-        }
+        },
+        chunkFileNames:
+          process.env.NPM_ENV === 'development'
+            ? '[format]-[name]-[hash].js'
+            : '[hash].js'
       }
     }
   },

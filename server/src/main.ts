@@ -7,6 +7,7 @@ import { AppModule } from './app.module';
 import compression from '@fastify/compress';
 import fs from 'fs';
 import path, { join } from 'path';
+import { constants } from 'zlib';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -35,7 +36,11 @@ async function bootstrap() {
     root: join(__dirname, '..', 'public'),
     prefix: '/vite-app-demo/',
   }); // https://localhost:3000/vite-app-demo/
-  await app.register(compression, { encodings: ['br'] });
+  await app.register(compression, {
+    encodings: ['br'],
+    requestEncodings: ['br'],
+    brotliOptions: { params: { [constants.BROTLI_PARAM_QUALITY]: 3 } },
+  }); // https://quixdb.github.io/squash-benchmark/ https://tools.paulcalvano.com/compression.php
   await app.listen(3000, '0.0.0.0');
 }
 bootstrap();
