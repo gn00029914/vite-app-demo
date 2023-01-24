@@ -15,7 +15,7 @@ async function bootstrap() {
     new FastifyAdapter({
       http2: true,
       https: {
-        allowHTTP1: true, // fallback support for HTTP1
+        allowHTTP1: false, // fallback support for HTTP1
         key: fs.readFileSync(
           path.join(__dirname, '..', 'https', 'fastify.key'), // 參見 ../https/README.md
         ),
@@ -42,7 +42,7 @@ async function bootstrap() {
         [constants.BROTLI_PARAM_QUALITY]: 1,
       },
     },
-    encodings: ['deflate', 'gzip', 'br'], // Compress replies
+    encodings: ['deflate'], // Compress replies ['deflate', 'gzip', 'br']
     inflateIfDeflated: true,
     onInvalidRequestPayload: (_request, encoding, error) => {
       return {
@@ -68,7 +68,7 @@ async function bootstrap() {
         message: 'We do not support the ' + encoding + ' encoding.',
       };
     },
-    requestEncodings: ['br', 'deflate', 'gzip'], // Decompress request payloads
+    requestEncodings: ['br'], // Decompress request payloads ['br', 'deflate', 'gzip']
     zlibOptions: { level: 1 },
   }); // https://quixdb.github.io/squash-benchmark/ https://tools.paulcalvano.com/compression.php
   await app.listen(3000, '0.0.0.0');
