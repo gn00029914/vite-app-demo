@@ -32,7 +32,8 @@ export default defineConfig({
         compact: true,
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            return id.toString().split('node_modules/.pnpm/')[1].split('/')[2]
+            // return id.toString().split('node_modules/.pnpm/')[1].split('/')[0] // avoid stackoverflow
+            return id.toString().split('node_modules/.pnpm/')[1].split('/')[2] // for simple app
           }
         },
         chunkFileNames:
