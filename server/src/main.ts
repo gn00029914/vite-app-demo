@@ -15,7 +15,7 @@ async function bootstrap() {
     new FastifyAdapter({
       http2: true,
       https: {
-        allowHTTP1: false, // fallback support for HTTP1
+        minVersion: 'TLSv1.3',
         key: fs.readFileSync(
           path.join(__dirname, '..', 'https', 'fastify.key'), // 參見 ../https/README.md
         ),
@@ -39,10 +39,10 @@ async function bootstrap() {
   await app.register(compression, {
     brotliOptions: {
       params: {
-        [constants.BROTLI_PARAM_QUALITY]: 1,
+        [constants.BROTLI_PARAM_QUALITY]: 11,
       },
     },
-    encodings: ['deflate'], // Compress replies ['deflate', 'gzip', 'br']
+    encodings: ['br'], // Compress replies
     inflateIfDeflated: true,
     onInvalidRequestPayload: (_request, encoding, error) => {
       return {
@@ -68,8 +68,8 @@ async function bootstrap() {
         message: 'We do not support the ' + encoding + ' encoding.',
       };
     },
-    requestEncodings: ['br'], // Decompress request payloads ['br', 'deflate', 'gzip']
-    zlibOptions: { level: 1 },
+    requestEncodings: ['br'], // Decompress request payloads
+    zlibOptions: { level: 9 },
   }); // https://quixdb.github.io/squash-benchmark/ https://tools.paulcalvano.com/compression.php
   await app.listen(3000, '0.0.0.0');
 }
