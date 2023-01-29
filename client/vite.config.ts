@@ -2,6 +2,7 @@
 /// <reference types="vite/client" />
 
 import { defineConfig } from 'vite'
+import webfontDownload from 'vite-plugin-webfont-dl'
 import vue from '@vitejs/plugin-vue'
 import * as path from 'path'
 import { VitePWA } from 'vite-plugin-pwa'
@@ -44,6 +45,17 @@ export default defineConfig({
     }
   },
   plugins: [
+    webfontDownload(
+      [
+        'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap'
+      ], // https://fonts.google.com/share?selection.family=Source%20Sans%20Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900
+      {
+        injectAsStyleTag: false,
+        minifyCss: true,
+        async: true,
+        cache: true // node_modules\.pnpm\vite-plugin-webfont-dl@3.6.0_vite@4.0.4\node_modules\flat-cache\.cache\vite-plugin-webfont-dl
+      }
+    ),
     vue({
       template: {
         compilerOptions: {
