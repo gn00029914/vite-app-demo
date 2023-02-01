@@ -2,11 +2,15 @@
 /// <reference types="vite/client" />
 
 import { defineConfig } from 'vite'
+import webfontDownload from 'vite-plugin-webfont-dl'
 import vue from '@vitejs/plugin-vue'
 import * as path from 'path'
 import { VitePWA } from 'vite-plugin-pwa'
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import { resolve } from 'path'
+import Components from 'unplugin-vue-components/vite'
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
 
 console.log(process.env)
 
@@ -32,7 +36,8 @@ export default defineConfig({
         compact: true,
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            return id.toString().split('node_modules/.pnpm/')[1].split('/')[2]
+            // return id.toString().split('node_modules/.pnpm/')[1].split('/')[0] // avoid stackoverflow
+            return id.toString().split('node_modules/.pnpm/')[1].split('/')[2] // for simple app
           }
         },
         chunkFileNames:
@@ -43,6 +48,20 @@ export default defineConfig({
     }
   },
   plugins: [
+    webfontDownload(
+      [
+        'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap'
+      ], // https://fonts.google.com/share?selection.family=Source%20Sans%20Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900
+      {
+        injectAsStyleTag: false,
+        minifyCss: true,
+        async: true,
+        cache: true // node_modules\.pnpm\vite-plugin-webfont-dl@3.6.0_vite@4.0.4\node_modules\flat-cache\.cache\vite-plugin-webfont-dl
+      }
+    ),
+    Icons({
+      scale: 3
+    }),
     vue({
       template: {
         compilerOptions: {
@@ -182,7 +201,23 @@ export default defineConfig({
         ]
       }
     }),
-    basicSsl()
+    basicSsl(),
+    Components({
+      dirs: ['src'],
+      deep: true,
+      resolvers: [
+        IconsResolver(),
+        (componentName) => {
+          // console.log(componentName) // 先查components.d.ts按需過濾及清除
+          // where `componentName` is always CapitalCase
+          // if (componentName.startsWith('Dropdown'))
+          return {
+            name: componentName,
+            from: 'flowbite-vue'
+          }
+        }
+      ]
+    })
   ],
   base: '/' + process.env.npm_package_name + '/',
   publicDir: 'public',

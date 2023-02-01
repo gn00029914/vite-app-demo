@@ -59,12 +59,6 @@
 </template>
 
 <script setup lang="ts">
-import {
-  Dropdown,
-  ListGroup,
-  ListGroupItem,
-  FlowbiteThemable
-} from 'flowbite-vue'
 const theme = 'red' // 'blue', 'green', 'red', 'pink', 'purple'
 // const placement = 'bottom'
 const hover = false
