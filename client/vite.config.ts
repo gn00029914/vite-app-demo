@@ -8,6 +8,9 @@ import * as path from 'path'
 import { VitePWA } from 'vite-plugin-pwa'
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import { resolve } from 'path'
+import Components from 'unplugin-vue-components/vite'
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
 
 console.log(process.env)
 
@@ -56,6 +59,9 @@ export default defineConfig({
         cache: true // node_modules\.pnpm\vite-plugin-webfont-dl@3.6.0_vite@4.0.4\node_modules\flat-cache\.cache\vite-plugin-webfont-dl
       }
     ),
+    Icons({
+      scale: 3
+    }),
     vue({
       template: {
         compilerOptions: {
@@ -195,7 +201,23 @@ export default defineConfig({
         ]
       }
     }),
-    basicSsl()
+    basicSsl(),
+    Components({
+      dirs: ['src'],
+      deep: true,
+      resolvers: [
+        IconsResolver(),
+        (componentName) => {
+          // console.log(componentName) // 先查components.d.ts按需過濾及清除
+          // where `componentName` is always CapitalCase
+          // if (componentName.startsWith('Dropdown'))
+          return {
+            name: componentName,
+            from: 'flowbite-vue'
+          }
+        }
+      ]
+    })
   ],
   base: '/' + process.env.npm_package_name + '/',
   publicDir: 'public',
