@@ -12,6 +12,7 @@ import App from './App.vue'
 import routes from './routes'
 // import { store } from './store'
 import NProgress from 'accessible-nprogress'
+import { registerSW } from 'virtual:pwa-register'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -23,5 +24,7 @@ const head = createHead()
 const store = createPinia()
 
 createApp(App).use(head).use(store).use(router).mount('#app')
+
+registerSW({ immediate: true })
 
 NProgress.configure({ easing: 'ease', speed: 1200 }).start().done()
