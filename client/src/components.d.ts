@@ -7,18 +7,18 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    AboutPage: typeof import('./src/pages/AboutPage.vue')['default']
-    App: typeof import('./src/App.vue')['default']
-    ContentIndex: typeof import('./src/Layout/Content/ContentIndex.vue')['default']
+    AboutPage: typeof import('./pages/AboutPage.vue')['default']
+    App: typeof import('./App.vue')['default']
+    ContentIndex: typeof import('./Layout/Content/ContentIndex.vue')['default']
     Dropdown: typeof import('flowbite-vue')['Dropdown']
     FlowbiteThemable: typeof import('flowbite-vue')['FlowbiteThemable']
-    HeaderIndex: typeof import('./src/Layout/Header/HeaderIndex.vue')['default']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
-    HomePage: typeof import('./src/pages/HomePage.vue')['default']
-    LayoutIndex: typeof import('./src/Layout/LayoutIndex.vue')['default']
+    HeaderIndex: typeof import('./Layout/Header/HeaderIndex.vue')['default']
+    HelloWorld: typeof import('./components/HelloWorld.vue')['default']
+    HomePage: typeof import('./pages/HomePage.vue')['default']
+    LayoutIndex: typeof import('./Layout/LayoutIndex.vue')['default']
     ListGroup: typeof import('flowbite-vue')['ListGroup']
     ListGroupItem: typeof import('flowbite-vue')['ListGroupItem']
-    MenuIndex: typeof import('./src/Layout/Menu/MenuIndex.vue')['default']
+    MenuIndex: typeof import('./Layout/Menu/MenuIndex.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
