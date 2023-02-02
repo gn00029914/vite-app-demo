@@ -11,11 +11,13 @@ module.exports = defineConfig({
   extends: [
     'eslint:recommended', // this maybe causes errors in defineEmits<{}>() ???
     'plugin:@typescript-eslint/recommended',
+    './.eslintrc-auto-import.json',
     'plugin:vue/vue3-recommended',
     'plugin:tailwindcss/recommended',
     'plugin:prettier/recommended',
     // "prettier"
-    "plugin:vuejs-accessibility/recommended"
+    "plugin:vuejs-accessibility/recommended",
+    './.eslintrc-auto-import.json'
   ],
   ignorePatterns: ['*.cjs'],
   // /* globals: {

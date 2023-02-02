@@ -8,11 +8,12 @@ import * as path from 'path'
 import { VitePWA } from 'vite-plugin-pwa'
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import { resolve } from 'path'
+import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 
-console.log(process.env)
+// console.log(process.env) // environment variables log for nodejs
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -202,15 +203,53 @@ export default defineConfig({
       }
     }),
     basicSsl(),
+    AutoImport({
+      include: [
+        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+        /\.vue$/,
+        /\.vue\?vue/, // .vue
+        /\.md$/ // .md
+      ],
+      // global imports to register
+      imports: [
+        // presets
+        'vue',
+        'vue-router'
+        // 'vuex', // 以下按需引入
+        // {
+        //   // custom
+        //   '@vueuse/core': [
+        //     // named imports
+        //     'useMouse', // import { useMouse } from '@vueuse/core',
+        //     // alias
+        //     ['useFetch', 'useMyFetch']
+        //   ],
+        //   axios: [
+        //     // default imports
+        //     ['default', 'axios']
+        //   ]
+        // }
+      ],
+      resolvers: [
+        // (autoImportName) => {
+        //   console.log(autoImportName) // 先查auto-import.d.ts再看runtime log
+        // }
+      ],
+      dts: 'src/auto-import.d.ts',
+      eslintrc: {
+        enabled: true
+      }
+    }),
     Components({
       dirs: ['src'],
       deep: true,
+      dts: 'src/components.d.ts',
       resolvers: [
         IconsResolver(),
         (componentName) => {
-          // console.log(componentName) // 先查components.d.ts按需過濾及清除
+          // console.log(componentName) // 先查components.d.ts再看runtime log
           // where `componentName` is always CapitalCase
-          // if (componentName.startsWith('Dropdown'))
+          // if (componentName.startsWith('Dropdown')) // 按需過濾
           return {
             name: componentName,
             from: 'flowbite-vue'
@@ -238,7 +277,7 @@ export default defineConfig({
     port: 443,
     host: 'localhost'
     // headers: {
-    //   'Content-Encoding': 'gzip, deflate, br'
+    //   'Content-Encoding': 'br'
     // }
   },
   test: {

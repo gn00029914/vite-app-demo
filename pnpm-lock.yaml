@@ -1,23 +1,16 @@
 lockfileVersion: 5.4
 
-importers:
+specifiers:
+  concurrently: ^7.6.0
+  pm2: ^5.2.2
+  shx: ^0.3.4
 
-  .:
-    specifiers:
-      concurrently: ^7.6.0
-      pm2: ^5.2.2
-      shx: ^0.3.4
-    dependencies:
-      pm2: 5.2.2
-    devDependencies:
-      concurrently: 7.6.0
-      shx: 0.3.4
+dependencies:
+  pm2: 5.2.2
 
-  client:
-    specifiers: {}
-
-  server:
-    specifiers: {}
+devDependencies:
+  concurrently: 7.6.0
+  shx: 0.3.4
 
 packages:
 
