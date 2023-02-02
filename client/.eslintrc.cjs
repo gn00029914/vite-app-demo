@@ -15,6 +15,7 @@ module.exports = defineConfig({
     'plugin:tailwindcss/recommended',
     'plugin:prettier/recommended',
     // "prettier"
+    "plugin:vuejs-accessibility/recommended"
   ],
   ignorePatterns: ['*.cjs'],
   // /* globals: {
@@ -36,7 +37,7 @@ module.exports = defineConfig({
     // project: ['tsconfig.json', 'tsconfig.node.json'],
   },
   // plugins: ['@typescript-eslint'], // might not be needed
-  plugins: ['@typescript-eslint', 'vue', 'tailwindcss', 'prettier'],
+  plugins: ['@typescript-eslint', 'vue', 'tailwindcss', 'prettier', 'vuejs-accessibility'],
   rules: {
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "warn",
@@ -51,6 +52,7 @@ module.exports = defineConfig({
     //   }
     // ]
     "no-empty-function": "off",
-    "@typescript-eslint/no-empty-function": "error"
+    "@typescript-eslint/no-empty-function": "error",
+    // "vuejs-accessibility/rule-name": "error"
   }
 });
