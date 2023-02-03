@@ -35,7 +35,6 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
           architecture: ${{ matrix.architecture }}
-          cache: 'pnpm'
       # 步驟三：生成快取初始值
       - name: Generate Cache Prime Numbers
         id: cache-primes
