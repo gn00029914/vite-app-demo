@@ -12,6 +12,8 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
+import { compression } from 'vite-plugin-compression2'
+import { brotliCompress, constants } from 'zlib'
 
 // console.log(process.env) // environment variables log for nodejs
 
@@ -256,6 +258,27 @@ export default defineConfig({
           }
         }
       ]
+    }),
+    compression({
+      // algorithm: brotliCompress || deflateRaw || deflate || gzip,
+      algorithm: brotliCompress,
+      compressionOptions: {
+        brotliCompress: {
+          params: { [constants.BROTLI_PARAM_QUALITY]: 11 }
+        },
+        deflateRaw: { level: 9 },
+        deflate: { level: 9 },
+        gzip: { level: 9 }
+      },
+      filename: '[path][base].br',
+      exclude: [
+        /\.(html)$/,
+        /\.(css)$/,
+        /\.(js)$/,
+        /\.(json)$/,
+        /\.(webmanifest)$/
+      ], // 解/壓縮導致'content-type'資訊無法被瀏覽器識別而發生 404 Not Found 用戶端錯誤回應碼需排除的檔案
+      deleteOriginalAssets: true
     })
   ],
   base: '/' + process.env.npm_package_name + '/',
@@ -277,7 +300,7 @@ export default defineConfig({
     port: 443,
     host: 'localhost'
     // headers: {
-    //   'Content-Encoding': 'br'
+    //   'content-encoding': 'br, deflate, gzip, identity'
     // }
   },
   test: {

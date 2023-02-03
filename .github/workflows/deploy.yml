@@ -29,7 +29,7 @@ jobs:
       # 步驟一：複製程式碼
       - name: Checkout
         uses: actions/checkout@v3.3.0
-      # 步驟二：設置 Node.js
+      # 步驟二：裝設 Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
