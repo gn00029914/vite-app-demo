@@ -13,7 +13,7 @@ import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import { compression } from 'vite-plugin-compression2'
-import { brotliCompress, constants } from 'zlib'
+import { constants, gzip } from 'zlib'
 
 // console.log(process.env) // environment variables log for nodejs
 
@@ -261,7 +261,8 @@ export default defineConfig({
     }),
     compression({
       // algorithm: brotliCompress || deflateRaw || deflate || gzip,
-      algorithm: brotliCompress,
+      // algorithm: brotliCompress, // 設置br要檢查伺服器政策是否有優先支援否則可能發生資源存取問題
+      algorithm: gzip, // for GitHub
       compressionOptions: {
         brotliCompress: {
           params: { [constants.BROTLI_PARAM_QUALITY]: 11 }
