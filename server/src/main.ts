@@ -42,7 +42,7 @@ async function bootstrap() {
         [constants.BROTLI_PARAM_QUALITY]: 11,
       },
     },
-    encodings: ['br'], // Compress replies
+    encodings: ['br', 'deflate', 'gzip', 'identity'], // Compress replies
     inflateIfDeflated: true,
     onInvalidRequestPayload: (_request, encoding, error) => {
       return {
@@ -68,7 +68,7 @@ async function bootstrap() {
         message: 'We do not support the ' + encoding + ' encoding.',
       };
     },
-    requestEncodings: ['br'], // Decompress request payloads
+    requestEncodings: ['br', 'deflate', 'gzip', 'identity'], // Decompress request payloads
     zlibOptions: { level: 9 },
   }); // https://quixdb.github.io/squash-benchmark/ https://tools.paulcalvano.com/compression.php
   await app.listen(3000, '0.0.0.0');
