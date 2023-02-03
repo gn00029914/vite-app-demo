@@ -271,7 +271,7 @@ export default defineConfig({
         deflate: { level: 9 },
         gzip: { level: 9 }
       },
-      filename: '[path][base].br',
+      filename: '[path][base].gz',
       exclude: [
         /\.(html)$/,
         /\.(css)$/,
