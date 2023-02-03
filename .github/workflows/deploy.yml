@@ -1,33 +1,99 @@
 # Action 名稱
-name: Deploy
+name: GitHub Pages
 # 觸發時機，當推送到分支 main 時
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 # 執行的工作
 jobs:
   # 工作名稱
   deploy:
     # 執行工作的虛擬機作業系統
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    # 策略矩陣
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        node_version:
+          - 'lts/*'
+        architecture:
+          - x64
+    name: Node ${{ matrix.node_version }} - ${{ matrix.architecture }} on ${{ matrix.os }}
+    # 並行
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     # 工作步驟
     steps:
       # 步驟一：複製程式碼
-      - name: checkout
-        # 使用的 actions/checkout 複製程式碼
+      - name: Checkout
         uses: actions/checkout@v3.3.0
-      # 步驟二：編譯
+      # 步驟二：設置 Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node_version }}
+          architecture: ${{ matrix.architecture }}
+          cache: 'pnpm'
+      # 步驟三：生成快取初始值
+      - name: Generate Cache Prime Numbers
+        id: cache-primes
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules/.pnpm
+            client/node_modules/.pnpm
+            server/node_modules/.pnpm
+          key: ${{ runner.os }}-node-primes
+      # 步驟四：檢查快取命中否則安裝
+      - name: Check Cache Hit
+        if: steps.cache-primes.outputs.cache-hit != 'true'
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
+          pnpm config set shared-workspace-lockfile=false
+          pnpm i --frozen-lockfile
+      # 步驟五：讀取原先的快取
+      - name: Restore cached Primes
+        id: cache-primes-restore
+        uses: actions/cache/restore@v3
+        with:
+          path: |
+            node_modules/.pnpm
+            client/node_modules/.pnpm
+            server/node_modules/.pnpm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      # 步驟六：安裝及編譯
       - name: Install and Build
         run: |
           corepack enable
           corepack prepare pnpm@latest --activate
           pnpm config set shared-workspace-lockfile=false
           pnpm i
-          pnpm store prune
           pnpm vb
-      # 步驟三：部署
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
+      # 步驟七：快取存檔
+      - name: Save Primes
+        id: cache-primes-save
+        uses: actions/cache/save@v3
+        if: always()
         with:
-          branch: gh-pages
-          folder: client/dist
+          path: |
+            node_modules/.pnpm
+            client/node_modules/.pnpm
+            server/node_modules/.pnpm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
+      # 步驟八：部署
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: client/dist
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: Deploying to gh-pages from @ ${GITHUB_SHA} 🚀
+          full_commit_message: ${{ github.event.head_commit.message }}

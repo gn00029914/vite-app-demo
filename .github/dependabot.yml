@@ -10,3 +10,7 @@ updates:
     directory: '/' # Location of package manifests
     schedule:
       interval: 'daily'
+    labels:
+    - "CI/CD"
+    commit-message:
+      prefix: ci
