@@ -8,8 +8,10 @@ import fs from 'fs';
 import path, { join } from 'path';
 // import { fastifyHelmet } from '@fastify/helmet';
 import fastifyCsrf from '@fastify/csrf-protection';
+import { allowInsecurePrototypeAccess } from '@handlebars/allow-prototype-access';
 import compression from '@fastify/compress';
 import { constants } from 'zlib';
+import handlebars from 'handlebars';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -29,52 +31,72 @@ async function bootstrap() {
     }),
   );
   app.enableCors(); // 開啟server site跨域連線資源請求
-  // await app.register(
-  //   fastifyHelmet,
-  //     {
-  //     global: true,
-  //     enableCSPNonces: true,
-  //     contentSecurityPolicy: {
-  //       directives: {
-  //         defaultSrc: [
-  //           `'self'`,
-  //           // 'unpkg.com'
-  //         ],
-  //         styleSrc: [
-  //           `'self'`,
-  //           `'unsafe-inline'`,
-  //           // 'cdn.jsdelivr.net',
-  //           'fonts.googleapis.com', // return @font-face
-  //           // 'unpkg.com',
-  //         ],
-  //         fontSrc: [
-  //           `'self'`,
-  //           'fonts.gstatic.com', // return .woff2
-  //           // 'data:'
-  //         ],
-  //         imgSrc: [
-  //           `'self'`,
-  //           // 'data:',
-  //           // 'cdn.jsdelivr.net'
-  //         ],
-  //         scriptSrc: [
-  //           `'self'`,
-  //           `https: 'unsafe-inline'`, // link webfonts.css return minified @font-face
-  //           // `cdn.jsdelivr.net`,
-  //           // `'unsafe-eval'`,
-  //         ],
-  //         // requireTrustedTypesFor: [`'script'`],
-  //       },
+  // await app.register(fastifyHelmet, {
+  //   // global: true, // 這會影響 browser 的媒體查詢
+  //   // enableCSPNonces: true, // content-security-policy headers 在不同src生成不同的雜湊值
+  //   contentSecurityPolicy: {
+  //     directives: {
+  //       defaultSrc: [
+  //         `'self'`,
+  //         // 'unpkg.com'
+  //       ],
+  //       styleSrc: [
+  //         `'self'`,
+  //         `'unsafe-inline'`,
+  //         // 'cdn.jsdelivr.net',
+  //         'fonts.googleapis.com', // return @font-face
+  //         // 'unpkg.com',
+  //       ],
+  //       fontSrc: [
+  //         `'self'`,
+  //         'fonts.gstatic.com', // return .woff2
+  //         // 'data:'
+  //       ],
+  //       imgSrc: [
+  //         `'self'`,
+  //         // 'data:',
+  //         // 'cdn.jsdelivr.net'
+  //       ],
+  //       scriptSrc: [
+  //         `'self'`,
+  //         `https: 'unsafe-inline'`, // link webfonts.css return minified @font-face
+  //         // "'nonce-" + ??? + "'",
+  //         // `cdn.jsdelivr.net`,
+  //         // `'unsafe-eval'`,
+  //       ],
+  //       // requireTrustedTypesFor: [`'script'`],
   //     },
-  //   }
-  // ); // client site 如有支援 link script 的 CSPNonces 驗證時, server site 再開啟白名單限制連線資源, 這還會影響 browser 的媒體查詢
+  //   },
+  // }); // 如果 fastify adapter 的 response.view 修復 issues 時, server site 再開啟白名單限制連線資源
   await app.register(fastifyCsrf); // 驗證 cookie 跟 session 資料安全的 key
   app.setViewEngine({
     engine: {
-      handlebars: require('handlebars'),
+      handlebars: handlebars,
     },
     templates: join(__dirname, '..', 'views'),
-  }); // https://localhost:3000/
+    options: {
+      // allowProtoPropertiesByDefault: true,
+      // allowProtoMethodsByDefault: true,
+      allowInsecurePrototypeAccess, //內容同上兩行
+      helpers: {
+        ['lookupOrDefault']: (
+          object: any,
+          propertyName: any,
+          defaultValue: any,
+          options: { lookupProperty: (arg0: any, arg1: any) => any },
+        ) => {
+          const result = options.lookupProperty(object, propertyName);
+          if (result != null) {
+            console.log(result);
+            return result;
+          }
+          console.log(defaultValue);
+          return defaultValue;
+        },
+      },
+    },
+    propertyName: 'nonce',
+  }); // https://localhost:3000/ issues:https://discord.com/channels/520622812742811698/628197700474634250/1025098517410230342
   app.useStaticAssets({
     root: join(__dirname, '..', 'public'),
     prefix: '/vite-app-demo/',
