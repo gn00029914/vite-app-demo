@@ -1,17 +1,20 @@
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
 
-import { defineConfig } from 'vite'
-import webfontDownload from 'vite-plugin-webfont-dl'
-import vue from '@vitejs/plugin-vue'
-import * as path from 'path'
-import { VitePWA } from 'vite-plugin-pwa'
-import basicSsl from '@vitejs/plugin-basic-ssl'
+import { defineConfig, splitVendorChunkPlugin } from 'vite'
 import { resolve } from 'path'
+import basicSsl from '@vitejs/plugin-basic-ssl'
+import { ViteMinifyPlugin } from 'vite-plugin-minify'
+import { VitePWA } from 'vite-plugin-pwa'
+import { ViteWebfontDownload } from 'vite-plugin-webfont-dl'
+import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-import Icons from 'unplugin-icons/vite'
+import { SchemaOrgResolver, schemaAutoImports } from '@vueuse/schema-org'
 import IconsResolver from 'unplugin-icons/resolver'
+import Icons from 'unplugin-icons/vite'
+// loader helpers
+import { FileSystemIconLoader } from 'unplugin-icons/loaders'
 
 // console.log(process.env) // environment variables log for nodejs
 
@@ -35,12 +38,12 @@ export default defineConfig({
       },
       output: {
         compact: true,
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            // return id.toString().split('node_modules/.pnpm/')[1].split('/')[0] // avoid stackoverflow
-            return id.toString().split('node_modules/.pnpm/')[1].split('/')[2] // for simple app
-          }
-        },
+        // manualChunks(id) {
+        //   if (id.includes('node_modules')) {
+        //     // return id.toString().split('node_modules/.pnpm/')[1].split('/')[0] // avoid stackoverflow
+        //     return id.toString().split('node_modules/.pnpm/')[1].split('/')[2] // for simple app
+        //   }
+        // }, // 改用vite內建splitVendorChunkPlugin
         chunkFileNames:
           process.env.NPM_ENV === 'development'
             ? '[format]-[name]-[hash].js'
@@ -49,27 +52,9 @@ export default defineConfig({
     }
   },
   plugins: [
-    webfontDownload(
-      [
-        'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap'
-      ], // https://fonts.google.com/share?selection.family=Source%20Sans%20Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900
-      {
-        injectAsStyleTag: false,
-        minifyCss: true,
-        async: true,
-        cache: true // node_modules\.pnpm\vite-plugin-webfont-dl@3.6.0_vite@4.0.4\node_modules\flat-cache\.cache\vite-plugin-webfont-dl
-      }
-    ),
-    Icons({
-      scale: 3
-    }),
-    vue({
-      template: {
-        compilerOptions: {
-          delimiters: ['@{{', '}}']
-        }
-      }
-    }),
+    splitVendorChunkPlugin(),
+    basicSsl(),
+    process.env.NPM_ENV === 'development' ? false : ViteMinifyPlugin({}),
     VitePWA({
       useCredentials: true,
       manifest: {
@@ -176,7 +161,7 @@ export default defineConfig({
         clientsClaim: true,
         cleanupOutdatedCaches: true,
         inlineWorkboxRuntime: true,
-        sourcemap: true,
+        sourcemap: process.env.NPM_ENV === 'development' ? true : false,
         globPatterns: ['**'],
         runtimeCaching: [
           // {
@@ -201,8 +186,26 @@ export default defineConfig({
           }
         ]
       }
+    }), // 有 race condition 的宣告要在PWA後呼叫
+    ViteWebfontDownload(
+      [
+        'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap'
+      ], // https://fonts.google.com/share?selection.family=Source%20Sans%20Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900
+      {
+        injectAsStyleTag: false,
+        minifyCss: process.env.NPM_ENV === 'development' ? false : true,
+        async: true,
+        cache: true // node_modules\.pnpm\vite-plugin-webfont-dl@3.6.0_vite@4.0.4\node_modules\flat-cache\.cache\vite-plugin-webfont-dl
+      }
+    ), // 注意網路連線特別是IPv6租約期限
+
+    vue({
+      template: {
+        compilerOptions: {
+          delimiters: ['@{{', '}}']
+        }
+      }
     }),
-    basicSsl(),
     AutoImport({
       include: [
         /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
@@ -212,6 +215,10 @@ export default defineConfig({
       ],
       // global imports to register
       imports: [
+        // auto-import schema-org composables
+        {
+          '@vueuse/schema-org': schemaAutoImports
+        },
         // presets
         'vue',
         'vue-router'
@@ -234,8 +241,11 @@ export default defineConfig({
         // (autoImportName) => {
         //   console.log(autoImportName) // 先查auto-import.d.ts再看runtime log
         // }
+        IconsResolver({
+          prefix: 'Icon'
+        })
       ],
-      dts: 'src/auto-import.d.ts',
+      dts: 'src/auto-import.d.ts', // 變更路徑需手動清除舊檔
       eslintrc: {
         enabled: true
       }
@@ -243,9 +253,10 @@ export default defineConfig({
     Components({
       dirs: ['src'],
       deep: true,
-      dts: 'src/components.d.ts',
+      dts: 'src/components.d.ts', // 變更路徑需手動清除舊檔
       resolvers: [
-        IconsResolver(),
+        // auto-import schema-org components
+        SchemaOrgResolver(),
         (componentName) => {
           // console.log(componentName) // 先查components.d.ts再看runtime log
           // where `componentName` is always CapitalCase
@@ -256,6 +267,26 @@ export default defineConfig({
           }
         }
       ]
+    }),
+    Icons({
+      // scale: 3, // a11y 最小要求 48x48 px
+      customCollections: {
+        // key as the collection name
+        // a helper to load icons from the file system
+        // files under `./assets/icons` with `.svg` extension will be loaded as it's file name
+        // you can also provide a transform callback to change each icon (optional)
+        'my-icons': FileSystemIconLoader(
+          './assets/icons'
+          // , (svg) => svg.replace(/^<svg /, '<svg fill="currentColor" ')
+        )
+      },
+      iconCustomizer(collection, icon, props) {
+        // customize this @iconify icon in this collection
+        if (collection === 'mdi' && icon === 'my-icons') {
+          props.width = '3em'
+          props.height = '3em'
+        }
+      }
     })
   ],
   base: '/' + process.env.npm_package_name + '/',
@@ -263,12 +294,12 @@ export default defineConfig({
   resolve: {
     alias: {
       //resolve.alias
-      '@': path.resolve(__dirname, 'src'),
-      '@assets': path.resolve(__dirname, 'src/assets'),
-      '@components': path.resolve(__dirname, 'src/components'),
-      '@images': path.resolve(__dirname, 'src/assets/images'),
-      '@views': path.resolve(__dirname, 'src/views'),
-      '@store': path.resolve(__dirname, 'src/store')
+      '@': resolve(__dirname, 'src'),
+      '@assets': resolve(__dirname, 'src/assets'),
+      '@components': resolve(__dirname, 'src/components'),
+      '@images': resolve(__dirname, 'src/assets/images'),
+      '@views': resolve(__dirname, 'src/views'),
+      '@store': resolve(__dirname, 'src/store')
     }
   },
   server: {
