@@ -7,8 +7,7 @@ export class AppController {
 
   @Get()
   @Render('index.hbs')
-  root(): { message: string } {
-    // res.status(302).redirect('/vite-app-demo/');
-    return this.appService.getViewName();
+  root(): { nonce: string } {
+    return this.appService.getNonce();
   }
 }
