@@ -1,98 +1,103 @@
 lockfileVersion: 5.4
 
-specifiers:
-  '@fastify/compress': ^6.2.0
-  '@fastify/csrf-protection': ^6.1.0
-  '@fastify/helmet': ^10.1.0
-  '@fastify/static': ^6.8.0
-  '@fastify/view': ^7.4.1
-  '@handlebars/allow-prototype-access': ^1.0.5
-  '@nestjs/cli': ^9.2.0
-  '@nestjs/common': ^9.3.2
-  '@nestjs/config': ^2.3.0
-  '@nestjs/core': ^9.3.2
-  '@nestjs/platform-fastify': ^9.3.2
-  '@nestjs/schematics': ^9.0.4
-  '@nestjs/serve-static': ^3.0.0
-  '@nestjs/testing': ^9.3.2
-  '@nestjs/throttler': ^4.0.0
-  '@prisma/client': ^4.9.0
-  '@types/express': ^4.17.17
-  '@types/jest': 29.4.0
-  '@types/node': ^18.11.19
-  '@types/supertest': ^2.0.12
-  '@typescript-eslint/eslint-plugin': ^5.50.0
-  '@typescript-eslint/parser': ^5.50.0
-  dotenv-cli: ^7.0.0
-  eslint: ^8.33.0
-  eslint-config-prettier: ^8.6.0
-  eslint-define-config: ^1.15.0
-  eslint-plugin-prettier: ^4.2.1
-  handlebars: ^4.7.7
-  jest: 29.4.1
-  point-of-view: ^6.3.0
-  prettier: ^2.8.3
-  prisma: ^4.9.0
-  prisma-binding: ^2.3.16
-  reflect-metadata: ^0.1.13
-  rimraf: ^4.1.2
-  rxjs: ^7.8.0
-  source-map-support: ^0.5.21
-  supertest: ^6.3.3
-  ts-jest: 29.0.5
-  ts-loader: ^9.4.2
-  ts-node: ^10.9.1
-  tsconfig-paths: 4.1.2
-  typescript: ^4.9.5
-  webpack: ^5.75.0
+importers:
 
-dependencies:
-  '@fastify/compress': 6.2.0
-  '@fastify/csrf-protection': 6.1.0
-  '@fastify/helmet': 10.1.0
-  '@fastify/static': 6.8.0
-  '@fastify/view': 7.4.1
-  '@handlebars/allow-prototype-access': 1.0.5_handlebars@4.7.7
-  '@nestjs/common': 9.3.2_mnr6j2del53muneqly5h4y27ai
-  '@nestjs/config': 2.3.0_faw27zmqjaamnhwhsycb5q3sc4
-  '@nestjs/core': 9.3.2_faw27zmqjaamnhwhsycb5q3sc4
-  '@nestjs/platform-fastify': 9.3.2_zjpcdijlppnyj3sacbv6rbf2he
-  '@nestjs/serve-static': 3.0.0_fnnujyxcjtinmcbby3pisnawpe
-  '@nestjs/throttler': 4.0.0_dvs6bzzwlxted5pypaoawo6uwu
-  '@prisma/client': 4.9.0_prisma@4.9.0
-  handlebars: 4.7.7
-  point-of-view: 6.3.0
-  prisma-binding: 2.3.16
-  reflect-metadata: 0.1.13
-  rimraf: 4.1.2
-  rxjs: 7.8.0
+  .:
+    specifiers:
+      '@fastify/compress': ^6.2.0
+      '@fastify/csrf-protection': ^6.1.0
+      '@fastify/helmet': ^10.1.0
+      '@fastify/static': ^6.8.0
+      '@fastify/view': ^7.4.1
+      '@nestjs/cli': ^9.2.0
+      '@nestjs/common': ^9.3.2
+      '@nestjs/config': ^2.3.0
+      '@nestjs/core': ^9.3.2
+      '@nestjs/platform-fastify': ^9.3.2
+      '@nestjs/schematics': ^9.0.4
+      '@nestjs/serve-static': ^3.0.0
+      '@nestjs/testing': ^9.3.2
+      '@nestjs/throttler': ^4.0.0
+      '@prisma/client': ^4.9.0
+      '@types/express': ^4.17.17
+      '@types/jest': 29.4.0
+      '@types/node': ^18.11.19
+      '@types/supertest': ^2.0.12
+      '@typescript-eslint/eslint-plugin': ^5.50.0
+      '@typescript-eslint/parser': ^5.50.0
+      dotenv-cli: ^7.0.0
+      eslint: ^8.33.0
+      eslint-config-prettier: ^8.6.0
+      eslint-define-config: ^1.15.0
+      eslint-plugin-prettier: ^4.2.1
+      handlebars: ^4.7.7
+      jest: 29.4.1
+      point-of-view: ^6.3.0
+      prettier: ^2.8.3
+      prisma: ^4.9.0
+      prisma-binding: ^2.3.16
+      reflect-metadata: ^0.1.13
+      rimraf: ^4.1.2
+      rxjs: ^7.8.0
+      source-map-support: ^0.5.21
+      supertest: ^6.3.3
+      ts-jest: 29.0.5
+      ts-loader: ^9.4.2
+      ts-node: ^10.9.1
+      tsconfig-paths: 4.1.2
+      typescript: ^4.9.5
+      webpack: ^5.75.0
+    dependencies:
+      '@fastify/compress': 6.2.0
+      '@fastify/csrf-protection': 6.1.0
+      '@fastify/helmet': 10.1.0
+      '@fastify/static': 6.8.0
+      '@fastify/view': 7.4.1
+      '@nestjs/common': 9.3.2_mnr6j2del53muneqly5h4y27ai
+      '@nestjs/config': 2.3.0_faw27zmqjaamnhwhsycb5q3sc4
+      '@nestjs/core': 9.3.2_faw27zmqjaamnhwhsycb5q3sc4
+      '@nestjs/platform-fastify': 9.3.2_zjpcdijlppnyj3sacbv6rbf2he
+      '@nestjs/serve-static': 3.0.0_fnnujyxcjtinmcbby3pisnawpe
+      '@nestjs/throttler': 4.0.0_dvs6bzzwlxted5pypaoawo6uwu
+      '@prisma/client': 4.9.0_prisma@4.9.0
+      handlebars: 4.7.7
+      point-of-view: 6.3.0
+      prisma-binding: 2.3.16
+      reflect-metadata: 0.1.13
+      rimraf: 4.1.2
+      rxjs: 7.8.0
+    devDependencies:
+      '@nestjs/cli': 9.2.0
+      '@nestjs/schematics': 9.0.4_typescript@4.9.5
+      '@nestjs/testing': 9.3.2_fnnujyxcjtinmcbby3pisnawpe
+      '@types/express': 4.17.17
+      '@types/jest': 29.4.0
+      '@types/node': 18.11.19
+      '@types/supertest': 2.0.12
+      '@typescript-eslint/eslint-plugin': 5.50.0_go4drrxstycfikanvu45pi4vgq
+      '@typescript-eslint/parser': 5.50.0_4vsywjlpuriuw3tl5oq6zy5a64
+      dotenv-cli: 7.0.0
+      eslint: 8.33.0
+      eslint-config-prettier: 8.6.0_eslint@8.33.0
+      eslint-define-config: 1.15.0
+      eslint-plugin-prettier: 4.2.1_jqplj6qf3uqpxpu4gdyhwwasnq
+      jest: 29.4.1_qnch7tm6w36cvfoqlc3v7gbphu
+      prettier: 2.8.3
+      prisma: 4.9.0
+      source-map-support: 0.5.21
+      supertest: 6.3.3
+      ts-jest: 29.0.5_wrz2f4catxnbofknv5bs36jgqa
+      ts-loader: 9.4.2_hhrrucqyg4eysmfpujvov2ym5u
+      ts-node: 10.9.1_qqdszkrtcshgbphghj7vnvrrby
+      tsconfig-paths: 4.1.2
+      typescript: 4.9.5
+      webpack: 5.75.0
 
-devDependencies:
-  '@nestjs/cli': 9.2.0
-  '@nestjs/schematics': 9.0.4_typescript@4.9.5
-  '@nestjs/testing': 9.3.2_fnnujyxcjtinmcbby3pisnawpe
-  '@types/express': 4.17.17
-  '@types/jest': 29.4.0
-  '@types/node': 18.11.19
-  '@types/supertest': 2.0.12
-  '@typescript-eslint/eslint-plugin': 5.50.0_go4drrxstycfikanvu45pi4vgq
-  '@typescript-eslint/parser': 5.50.0_4vsywjlpuriuw3tl5oq6zy5a64
-  dotenv-cli: 7.0.0
-  eslint: 8.33.0
-  eslint-config-prettier: 8.6.0_eslint@8.33.0
-  eslint-define-config: 1.15.0
-  eslint-plugin-prettier: 4.2.1_jqplj6qf3uqpxpu4gdyhwwasnq
-  jest: 29.4.1_qnch7tm6w36cvfoqlc3v7gbphu
-  prettier: 2.8.3
-  prisma: 4.9.0
-  source-map-support: 0.5.21
-  supertest: 6.3.3
-  ts-jest: 29.0.5_wrz2f4catxnbofknv5bs36jgqa
-  ts-loader: 9.4.2_hhrrucqyg4eysmfpujvov2ym5u
-  ts-node: 10.9.1_qqdszkrtcshgbphghj7vnvrrby
-  tsconfig-paths: 4.1.2
-  typescript: 4.9.5
-  webpack: 5.75.0
+  ..:
+    specifiers: {}
+
+  ../client:
+    specifiers: {}
 
 packages:
 
@@ -679,14 +684,6 @@ packages:
     dependencies:
       fastify-plugin: 4.5.0
       hashlru: 2.3.0
-    dev: false
-
-  /@handlebars/allow-prototype-access/1.0.5_handlebars@4.7.7:
-    resolution: {integrity: sha512-D5AJO9dM6B+1scVVQ4ma05cAku5M2dEnlycggIg6RW539TdQlgbNg1G1r86fNqqNI0CHv/TVwKEB9M6ILJQCWQ==}
-    peerDependencies:
-      handlebars: ^4.7.2
-    dependencies:
-      handlebars: 4.7.7
     dev: false
 
   /@humanwhocodes/config-array/0.11.8:

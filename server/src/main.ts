@@ -6,12 +6,11 @@ import {
 import { AppModule } from './app.module';
 import fs from 'fs';
 import path, { join } from 'path';
-// import { fastifyHelmet } from '@fastify/helmet';
+import { createHmac, randomBytes } from 'crypto';
+import { fastifyHelmet } from '@fastify/helmet';
 import fastifyCsrf from '@fastify/csrf-protection';
-import { allowInsecurePrototypeAccess } from '@handlebars/allow-prototype-access';
 import compression from '@fastify/compress';
 import { constants } from 'zlib';
-import handlebars from 'handlebars';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -31,72 +30,89 @@ async function bootstrap() {
     }),
   );
   app.enableCors(); // 開啟server site跨域連線資源請求
-  // await app.register(fastifyHelmet, {
-  //   // global: true, // 這會影響 browser 的媒體查詢
-  //   // enableCSPNonces: true, // content-security-policy headers 在不同src生成不同的雜湊值
-  //   contentSecurityPolicy: {
-  //     directives: {
-  //       defaultSrc: [
-  //         `'self'`,
-  //         // 'unpkg.com'
-  //       ],
-  //       styleSrc: [
-  //         `'self'`,
-  //         `'unsafe-inline'`,
-  //         // 'cdn.jsdelivr.net',
-  //         'fonts.googleapis.com', // return @font-face
-  //         // 'unpkg.com',
-  //       ],
-  //       fontSrc: [
-  //         `'self'`,
-  //         'fonts.gstatic.com', // return .woff2
-  //         // 'data:'
-  //       ],
-  //       imgSrc: [
-  //         `'self'`,
-  //         // 'data:',
-  //         // 'cdn.jsdelivr.net'
-  //       ],
-  //       scriptSrc: [
-  //         `'self'`,
-  //         `https: 'unsafe-inline'`, // link webfonts.css return minified @font-face
-  //         // "'nonce-" + ??? + "'",
-  //         // `cdn.jsdelivr.net`,
-  //         // `'unsafe-eval'`,
-  //       ],
-  //       // requireTrustedTypesFor: [`'script'`],
-  //     },
-  //   },
-  // }); // 如果 fastify adapter 的 response.view 修復 issues 時, server site 再開啟白名單限制連線資源
+  const seed = Date.now();
+  const body = { identity: 'gn00029914', seed };
+  const payload = Buffer.from(JSON.stringify(body)).toString('base64');
+  const nonce = createHmac('sha512', randomBytes(512))
+    .update(payload)
+    .digest('hex');
+  (global as any).nonce = nonce;
+  await app.register(fastifyHelmet, {
+    global: true, // 這會影響 browser 的媒體查詢
+    // enableCSPNonces: true, // content-security-policy headers 在不同 src 動態生成不同的雜湊值還未支援 Nest.js https://github.com/fastify/fastify-helmet/issues/209
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: [
+          `'self'`,
+          // "'nonce-" + nonce + "'",
+          // `'unsafe-hashes'`,
+          // `'unsafe-inline'`,
+          // 'unpkg.com'
+        ],
+        styleSrc: [
+          `'self'`,
+          "'nonce-" + nonce + "'",
+          // `'unsafe-hashes'`,
+          // `'unsafe-inline'`,
+          // 'fonts.googleapis.com', // return @font-face
+          // 'unpkg.com',
+          // 'cdn.jsdelivr.net' // 引用外部資源要小心
+        ],
+        fontSrc: [
+          `'self'`,
+          // "'nonce-" + nonce + "'",
+          // `'unsafe-hashes'`,
+          // `'unsafe-inline'`,
+          // 'fonts.gstatic.com', // return .woff2
+          // 'data:' // 瀏覽器擴充功能的引用要小心
+        ],
+        imgSrc: [
+          `'self'`,
+          // "'nonce-" + nonce + "'",
+          // `'unsafe-hashes'`,
+          // `'unsafe-inline'`,
+          // 'cdn.jsdelivr.net'
+          // 'data:'
+        ],
+        scriptSrc: [
+          `'self'`,
+          "'nonce-" + nonce + "'",
+          // `'unsafe-hashes'`,
+          // `'unsafe-inline'`,
+          // `cdn.jsdelivr.net`,
+          // `'unsafe-eval'`,  // deprecated
+        ], // link webfonts.css return minified @font-face
+        scriptSrcAttr: [
+          `'self'`,
+          // "'nonce-" + nonce + "'",
+          // `'unsafe-hashes'`,
+          `'unsafe-inline'`,
+        ],
+        baseUri: [
+          `'self'`,
+          // "'nonce-" + nonce + "'",
+          // `'unsafe-hashes'`,
+          // `'unsafe-inline'`,
+        ],
+        frameAncestors: [`'self'`],
+        objectSrc: [
+          `'self'`,
+          // "'nonce-" + nonce + "'",
+          // `'unsafe-hashes'`,
+          // `'unsafe-inline'`,
+        ],
+        upgradeInsecureRequests: [],
+        // requireTrustedTypesFor: [`'script'`],
+      },
+    },
+  });
   await app.register(fastifyCsrf); // 驗證 cookie 跟 session 資料安全的 key
   app.setViewEngine({
     engine: {
-      handlebars: handlebars,
+      handlebars: await import('handlebars'),
     },
     templates: join(__dirname, '..', 'views'),
-    options: {
-      // allowProtoPropertiesByDefault: true,
-      // allowProtoMethodsByDefault: true,
-      allowInsecurePrototypeAccess, //內容同上兩行
-      helpers: {
-        ['lookupOrDefault']: (
-          object: any,
-          propertyName: any,
-          defaultValue: any,
-          options: { lookupProperty: (arg0: any, arg1: any) => any },
-        ) => {
-          const result = options.lookupProperty(object, propertyName);
-          if (result != null) {
-            console.log(result);
-            return result;
-          }
-          console.log(defaultValue);
-          return defaultValue;
-        },
-      },
-    },
-    propertyName: 'nonce',
-  }); // https://localhost:3000/ issues:https://discord.com/channels/520622812742811698/628197700474634250/1025098517410230342
+  }); // https://localhost:3000/
   app.useStaticAssets({
     root: join(__dirname, '..', 'public'),
     prefix: '/vite-app-demo/',
@@ -139,6 +155,6 @@ async function bootstrap() {
     requestEncodings: ['br', 'deflate', 'gzip', 'identity'], // Decompress request payloads
     zlibOptions: { level: 9 },
   }); // 需考慮對 server 之間的連線 https://quixdb.github.io/squash-benchmark/ https://tools.paulcalvano.com/compression.php
-  await app.listen(3000, '0.0.0.0');
+  await app.listen(443, '0.0.0.0');
 }
 bootstrap();
