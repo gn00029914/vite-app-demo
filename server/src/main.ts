@@ -1,45 +1,61 @@
+import { createHmac, randomBytes } from 'crypto';
 import { NestFactory } from '@nestjs/core';
 import {
   FastifyAdapter,
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
 import { AppModule } from './app.module';
-import fs from 'fs';
-import path, { join } from 'path';
-import { createHmac, randomBytes } from 'crypto';
-import { fastifyHelmet } from '@fastify/helmet';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+import Handlebars from 'handlebars';
 import fastifyCsrf from '@fastify/csrf-protection';
+import { fastifyHelmet } from '@fastify/helmet';
 import compression from '@fastify/compress';
 import { constants } from 'zlib';
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestFastifyApplication>(
-    AppModule,
-    new FastifyAdapter({
-      http2: true,
-      https: {
-        minVersion: 'TLSv1.3',
-        key: fs.readFileSync(
-          path.join(__dirname, '..', 'https', 'fastify.key'), // 參見 ../https/README.md
-        ),
-        cert: fs.readFileSync(
-          path.join(__dirname, '..', 'https', 'fastify.cert'), // 參見 ../https/README.md
-        ),
-      }, // 傳輸安全的 key
-      logger: true,
-    }),
-  );
-  app.enableCors(); // 開啟server site跨域連線資源請求
   const seed = Date.now();
   const body = { identity: 'gn00029914', seed };
   const payload = Buffer.from(JSON.stringify(body)).toString('base64');
   const nonce = createHmac('sha512', randomBytes(512))
     .update(payload)
     .digest('hex');
-  (global as any).nonce = nonce;
+  (global as any).nonce = nonce; // 將 nonce 存到全域變數每次重啟server時更新
+  const app = await NestFactory.create<NestFastifyApplication>(
+    AppModule,
+    new FastifyAdapter({
+      http2: true,
+      https: {
+        minVersion: 'TLSv1.3',
+        key: readFileSync(
+          join(__dirname, '..', 'https', 'fastify.key'), // 參見 ../https/README.md
+        ),
+        cert: readFileSync(
+          join(__dirname, '..', 'https', 'fastify.cert'), // 參見 ../https/README.md
+        ),
+      }, // 傳輸安全的 key
+      logger: true,
+    }),
+  );
+  app.enableCors(); // 開啟 server site 跨域連線資源請求
+  app.setViewEngine({
+    engine: {
+      handlebars: Handlebars,
+    },
+    templates: join(__dirname, '..', 'views'),
+  }); // https://localhost:3000/
+  app.useStaticAssets({
+    root: join(__dirname, '..', 'public'),
+    prefix: '/vite-app-demo/',
+    preCompressed: true, // 檢查哪些檔案預壓縮可獲得瀏覽器支援
+    immutable: true,
+    maxAge: 31536000,
+  }); // https://localhost:3000/vite-app-demo/
+  await app.register(fastifyCsrf); // 驗證 cookie 跟 session 資料安全的 key
   await app.register(fastifyHelmet, {
-    global: true, // 這會影響 browser 的媒體查詢
-    // enableCSPNonces: true, // content-security-policy headers 在不同 src 動態生成不同的雜湊值還未支援 Nest.js https://github.com/fastify/fastify-helmet/issues/209
+    // fastifyHelmet 還未支援具有業務邏輯隔離特性的 Nest.js 框架 https://github.com/fastify/fastify-helmet/issues/209
+    global: true,
+    // enableCSPNonces: true, // fastifyHelmet 預設會存到 cspNonce 傳給 FastifyReply 每次頁面重整都會動態更新
     contentSecurityPolicy: {
       directives: {
         defaultSrc: [
@@ -106,20 +122,6 @@ async function bootstrap() {
       },
     },
   });
-  await app.register(fastifyCsrf); // 驗證 cookie 跟 session 資料安全的 key
-  app.setViewEngine({
-    engine: {
-      handlebars: await import('handlebars'),
-    },
-    templates: join(__dirname, '..', 'views'),
-  }); // https://localhost:3000/
-  app.useStaticAssets({
-    root: join(__dirname, '..', 'public'),
-    prefix: '/vite-app-demo/',
-    preCompressed: true, // 檢查哪些檔案預壓縮可獲得瀏覽器支援
-    immutable: true,
-    maxAge: 31536000,
-  }); // https://localhost:3000/vite-app-demo/
   await app.register(compression, {
     brotliOptions: {
       params: {
