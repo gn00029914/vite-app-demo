@@ -12,6 +12,7 @@ import { AppService } from './app.service';
     // rootPath: join(__dirname, '..', 'client'),
     //   serveRoot: '/' + process.env.npm_package_name,
     // }),
+    // 節流.防抖
     ThrottlerModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -24,4 +25,4 @@ import { AppService } from './app.service';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
