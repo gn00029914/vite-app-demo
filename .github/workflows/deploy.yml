@@ -41,13 +41,10 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            node_modules/.pnpm
             pnpm-lock.yaml
             node_modules
-            client/node_modules/.pnpm
             client/pnpm-lock.yaml
             client/node_modules
-            server/node_modules/.pnpm
             server/pnpm-lock.yaml
             server/node_modules
           key: ${{ runner.os }}-node-primes
@@ -65,13 +62,10 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           path: |
-            node_modules/.pnpm
             pnpm-lock.yaml
             node_modules
-            client/node_modules/.pnpm
             client/pnpm-lock.yaml
             client/node_modules
-            server/node_modules/.pnpm
             server/pnpm-lock.yaml
             server/node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -92,13 +86,10 @@ jobs:
         if: always()
         with:
           path: |
-            node_modules/.pnpm
             pnpm-lock.yaml
             node_modules
-            client/node_modules/.pnpm
             client/pnpm-lock.yaml
             client/node_modules
-            server/node_modules/.pnpm
             server/pnpm-lock.yaml
             server/node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
