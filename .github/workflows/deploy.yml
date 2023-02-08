@@ -77,7 +77,7 @@ jobs:
           corepack enable
           corepack prepare pnpm@latest --activate
           pnpm config set shared-workspace-lockfile=false
-          pnpm i
+          pnpm i --no-frozen-lockfile
           pnpm vb
       # 步驟七：快取存檔
       - name: Save Primes
