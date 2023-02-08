@@ -315,19 +315,19 @@
     "file": "35aa2874.js"
   },
   "index.css": {
-    "file": "assets/index-57f05e02.css",
+    "file": "assets/index-96e2e369.css",
     "src": "index.css"
   },
   "index.html": {
     "css": [
-      "assets/index-57f05e02.css"
+      "assets/index-96e2e369.css"
     ],
     "dynamicImports": [
       "node_modules/.pnpm/workbox-window@6.5.4/node_modules/workbox-window/build/workbox-window.prod.es5.mjs",
       "src/pages/HomePage.vue",
       "src/pages/AboutPage.vue"
     ],
-    "file": "assets/main-f4aea502.js",
+    "file": "assets/main-4882b18b.js",
     "imports": [
       "_35aa2874.js"
     ],
@@ -347,7 +347,7 @@
     "css": [
       "assets/HomePage-e3b0c442.css"
     ],
-    "file": "8a6be659.js",
+    "file": "61f076a2.js",
     "imports": [
       "index.html",
       "_35aa2874.js"
@@ -363,7 +363,7 @@
     "css": [
       "assets/HomePage-e3b0c442.css"
     ],
-    "file": "8f52c6c7.js",
+    "file": "926ac0ec.js",
     "imports": [
       "index.html",
       "_35aa2874.js"
