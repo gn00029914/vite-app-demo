@@ -151,9 +151,14 @@ module.exports = {
       }
     }
   },
+  corePlugins: {
+    aspectRatio: false,
+  },
   plugins: [
-    // require('flowbite/plugin'),
+    require('flowbite/plugin'),
     require('flowbite-vue'),
-    require('tailwindcss-animatecss')
+    require('tailwindcss-animatecss'),
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/line-clamp'),
   ]
 }
