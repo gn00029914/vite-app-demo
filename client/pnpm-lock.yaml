@@ -51,7 +51,7 @@ specifiers:
   unplugin-vue-components: ^0.23.0
   vite: ^4.1.1
   vite-plugin-minify: ^1.5.2
-  vite-plugin-pwa: ^0.14.1
+  vite-plugin-pwa: ^0.14.2
   vite-plugin-webfont-dl: ^3.6.0
   vitest: ^0.28.4
   vue: ^3.2.47
@@ -115,7 +115,7 @@ devDependencies:
   unplugin-vue-components: 0.23.0_vue@3.2.47
   vite: 4.1.1_edl3ajnhen4c5iqs57t4gqrzly
   vite-plugin-minify: 1.5.2_vite@4.1.1
-  vite-plugin-pwa: 0.14.1_xp2zqafvd45jbxqxxvnpcv3lzm
+  vite-plugin-pwa: 0.14.2_xp2zqafvd45jbxqxxvnpcv3lzm
   vite-plugin-webfont-dl: 3.6.0_vite@4.1.1
   vitest: 0.28.4_happy-dom@8.2.6+less@4.1.3
   vue-eslint-parser: 9.1.0_eslint@8.33.0
@@ -1893,7 +1893,7 @@ packages:
       scule: 1.0.0
       semver: 7.3.8
       unctx: 2.1.1
-      unimport: 2.1.0
+      unimport: 2.2.4
       untyped: 1.2.2
     transitivePeerDependencies:
       - rollup
@@ -1915,7 +1915,7 @@ packages:
       scule: 1.0.0
       std-env: 3.3.2
       ufo: 1.0.1
-      unimport: 2.1.0
+      unimport: 2.2.4
       untyped: 1.2.2
     transitivePeerDependencies:
       - rollup
@@ -2514,7 +2514,7 @@ packages:
   /@vitest/spy/0.28.4:
     resolution: {integrity: sha512-8WuhfXLlvCXpNXEGJW6Gc+IKWI32435fQJLh43u70HnZ1otJOa2Cmg2Wy2Aym47ZnNCP4NolF+8cUPwd0MigKQ==}
     dependencies:
-      tinyspy: 1.1.0
+      tinyspy: 1.1.1
     dev: true
 
   /@vitest/utils/0.28.4:
@@ -6287,8 +6287,8 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /minipass/4.0.2:
-    resolution: {integrity: sha512-4Hbzei7ZyBp+1aw0874YWpKOubZd/jc53/XU+gkYry1QV+VvrbO8icLM5CUtm4F0hyXn85DXYKEMIS26gitD3A==}
+  /minipass/4.0.3:
+    resolution: {integrity: sha512-OW2r4sQ0sI+z5ckEt5c1Tri4xTgZwYDxpE54eqWlQloQRoWtXjqt9udJ5Z4dSv7wK+nfFI7FRXyCpBSft+gpFw==}
     engines: {node: '>=8'}
     dev: true
 
@@ -8331,7 +8331,7 @@ packages:
     dependencies:
       chownr: 2.0.0
       fs-minipass: 2.1.0
-      minipass: 4.0.2
+      minipass: 4.0.3
       minizlib: 2.1.2
       mkdirp: 1.0.4
       yallist: 4.0.0
@@ -8404,8 +8404,8 @@ packages:
     engines: {node: '>=14.0.0'}
     dev: true
 
-  /tinyspy/1.1.0:
-    resolution: {integrity: sha512-xdHzOlnGb1hxNdgO/45hp9ngVKhyN9fD1LH/3059kmHyUT/qZ+ee2y8F/BuaIQpK2r6l/kLLXwezfMpedc5Ycw==}
+  /tinyspy/1.1.1:
+    resolution: {integrity: sha512-UVq5AXt/gQlti7oxoIg5oi/9r0WpF7DGEVwXgqWSMmyN16+e3tl5lIvTaOpJ3TAtu5xFzWccFRM4R5NaWHF+4g==}
     engines: {node: '>=14.0.0'}
     dev: true
 
@@ -8627,8 +8627,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /unimport/2.1.0:
-    resolution: {integrity: sha512-GDVIxATluUquX8EqelT6DtnmnZaXGID1jsO9IXwlnxb0OIEqKAxTOnTlnGmHbseoGTh+ZC9kcNDaO18HYQj9KA==}
+  /unimport/2.2.4:
+    resolution: {integrity: sha512-qMgmeEGqqrrmEtm0dqxMG37J6xBtrriqxq9hILvDb+e6l2F0yTnJomLoCCp0eghLR7bYGeBsUU5Y0oyiUYhViw==}
     dependencies:
       '@rollup/pluginutils': 5.0.2
       escape-string-regexp: 5.0.0
@@ -8691,7 +8691,7 @@ packages:
       '@rollup/pluginutils': 5.0.2
       local-pkg: 0.4.3
       magic-string: 0.27.0
-      unimport: 2.1.0
+      unimport: 2.2.4
       unplugin: 1.0.1
     transitivePeerDependencies:
       - rollup
@@ -8878,8 +8878,8 @@ packages:
       vite: 4.1.1_edl3ajnhen4c5iqs57t4gqrzly
     dev: true
 
-  /vite-plugin-pwa/0.14.1_xp2zqafvd45jbxqxxvnpcv3lzm:
-    resolution: {integrity: sha512-5zx7yhQ8RTLwV71+GA9YsQQ63ALKG8XXIMqRJDdZkR8ZYftFcRgnzM7wOWmQZ/DATspyhPih5wCdcZnAIsM+mA==}
+  /vite-plugin-pwa/0.14.2_xp2zqafvd45jbxqxxvnpcv3lzm:
+    resolution: {integrity: sha512-3nTW1LX5i4l2qeuT0ypGyo52KtXagQoW4qdpMxHyUS/qvloa3BHLytQQfdNbU3cXTqV+cfuN99RXXKHiYDiLTA==}
     peerDependencies:
       vite: ^3.1.0 || ^4.0.0
       workbox-window: ^6.5.4
@@ -8989,7 +8989,7 @@ packages:
       strip-literal: 1.0.1
       tinybench: 2.3.1
       tinypool: 0.3.1
-      tinyspy: 1.1.0
+      tinyspy: 1.1.1
       vite: 4.1.1_edl3ajnhen4c5iqs57t4gqrzly
       vite-node: 0.28.4_edl3ajnhen4c5iqs57t4gqrzly
       why-is-node-running: 2.2.2
