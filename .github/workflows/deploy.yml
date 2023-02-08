@@ -42,8 +42,14 @@ jobs:
         with:
           path: |
             node_modules/.pnpm
+            pnpm-lock.yaml
+            node_modules
             client/node_modules/.pnpm
+            client/pnpm-lock.yaml
+            client/node_modules
             server/node_modules/.pnpm
+            server/pnpm-lock.yaml
+            server/node_modules
           key: ${{ runner.os }}-node-primes
       # 步驟四：檢查快取命中否則安裝
       - name: Check Cache Hit
@@ -60,8 +66,14 @@ jobs:
         with:
           path: |
             node_modules/.pnpm
+            pnpm-lock.yaml
+            node_modules
             client/node_modules/.pnpm
+            client/pnpm-lock.yaml
+            client/node_modules
             server/node_modules/.pnpm
+            server/pnpm-lock.yaml
+            server/node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-node-
@@ -81,8 +93,14 @@ jobs:
         with:
           path: |
             node_modules/.pnpm
+            pnpm-lock.yaml
+            node_modules
             client/node_modules/.pnpm
+            client/pnpm-lock.yaml
+            client/node_modules
             server/node_modules/.pnpm
+            server/pnpm-lock.yaml
+            server/node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
       # 步驟八：部署
       - name: Deploy
