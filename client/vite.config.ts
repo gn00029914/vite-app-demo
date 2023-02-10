@@ -15,6 +15,8 @@ import IconsResolver from 'unplugin-icons/resolver'
 import Icons from 'unplugin-icons/vite'
 // loader helpers
 import { FileSystemIconLoader } from 'unplugin-icons/loaders'
+import { compression } from 'vite-plugin-compression2'
+import { constants } from 'zlib'
 
 // console.log(process.env) // environment variables log for nodejs
 
@@ -163,6 +165,7 @@ export default defineConfig({
         inlineWorkboxRuntime: true,
         sourcemap: process.env.NPM_ENV === 'development' ? true : false,
         globPatterns: ['**'],
+        globIgnores: ['**/*.br'],
         runtimeCaching: [
           // {
           //   urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
@@ -285,6 +288,19 @@ export default defineConfig({
         if (collection === 'mdi' && icon === 'my-icons') {
           props.width = '3em'
           props.height = '3em'
+        }
+      }
+    }),
+    compression({
+      algorithm: 'brotliCompress',
+      exclude: /.*?(?<=.html)$/,
+      compressionOptions: {
+        params: {
+          [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
+          [constants.BROTLI_PARAM_LGWIN]: constants.BROTLI_MAX_WINDOW_BITS,
+          [constants.BROTLI_PARAM_LGBLOCK]:
+            constants.BROTLI_MAX_INPUT_BLOCK_BITS,
+          [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY
         }
       }
     })

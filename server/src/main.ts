@@ -39,7 +39,7 @@ async function bootstrap() {
   app.useStaticAssets({
     root: join(__dirname, '..', 'public'),
     prefix: '/vite-app-demo/',
-    preCompressed: true, // 檢查哪些檔案預壓縮可獲得瀏覽器支援
+    preCompressed: true, // 優先 ( br -> gzip -> original ) 將含有預壓縮的檔案透過對應的 encoding headers 傳送, 且瀏覽器解壓縮後按照 content-type 可正確解碼
     immutable: true,
     maxAge: 31536000,
   }); // https://localhost:3000/vite-app-demo/
@@ -121,7 +121,10 @@ async function bootstrap() {
   await app.register(compression, {
     brotliOptions: {
       params: {
-        [constants.BROTLI_PARAM_QUALITY]: 11,
+        [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
+        [constants.BROTLI_PARAM_LGWIN]: constants.BROTLI_MAX_WINDOW_BITS,
+        [constants.BROTLI_PARAM_LGBLOCK]: constants.BROTLI_MAX_INPUT_BLOCK_BITS,
+        [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY
       },
     },
     encodings: ['br', 'deflate', 'gzip', 'identity'], // Compress replies
@@ -151,7 +154,12 @@ async function bootstrap() {
       };
     },
     requestEncodings: ['br', 'deflate', 'gzip', 'identity'], // Decompress request payloads
-    zlibOptions: { level: 9 },
+    zlibOptions: {
+      windowBits: constants.Z_MAX_WINDOWBITS,
+      level: constants.Z_BEST_COMPRESSION,
+      memLevel: constants.Z_MAX_MEMLEVEL,
+      strategy: constants.Z_FIXED
+    },
   }); // 需考慮對 server 之間的連線 https://quixdb.github.io/squash-benchmark/ https://tools.paulcalvano.com/compression.php
   await app.listen(443, '0.0.0.0');
 }
