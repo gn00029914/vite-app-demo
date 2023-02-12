@@ -10,6 +10,7 @@ import Handlebars from 'handlebars';
 import fastifyCsrf from '@fastify/csrf-protection';
 import { createHmac, randomBytes } from 'crypto';
 import { fastifyHelmet } from '@fastify/helmet';
+import { PrismaClient } from '@prisma/client'
 import compression from '@fastify/compress';
 import { constants } from 'zlib';
 
@@ -121,6 +122,9 @@ async function bootstrap() {
     },
   });
   app.enableCors(); // 開啟 server site 跨域連線資源請求
+  const prisma = new PrismaClient()
+  const allUsers = await prisma.user.findMany()
+  console.log(allUsers)
   await app.register(compression, {
     brotliOptions: {
       params: {

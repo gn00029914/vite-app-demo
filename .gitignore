@@ -6,6 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+.dccache
 
 node_modules
 dist
@@ -63,3 +64,4 @@ coverage
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+server/.env

@@ -2,12 +2,14 @@
 /// <reference types="vite/client" />
 
 import { defineConfig, splitVendorChunkPlugin } from 'vite'
-import { resolve } from 'path'
+import { dirname, resolve } from 'path'
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import { ViteMinifyPlugin } from 'vite-plugin-minify'
 import { VitePWA } from 'vite-plugin-pwa'
 import { ViteWebfontDownload } from 'vite-plugin-webfont-dl'
 import vue from '@vitejs/plugin-vue'
+import VueI18nVitePlugin from '@intlify/unplugin-vue-i18n/vite'
+import { fileURLToPath } from 'url'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { SchemaOrgResolver, schemaAutoImports } from '@vueuse/schema-org'
@@ -201,13 +203,23 @@ export default defineConfig({
         cache: true // node_modules\.pnpm\vite-plugin-webfont-dl@3.6.0_vite@4.0.4\node_modules\flat-cache\.cache\vite-plugin-webfont-dl
       }
     ), // 注意網路連線特別是IPv6租約期限
-
     vue({
       template: {
         compilerOptions: {
           delimiters: ['@{{', '}}']
         }
       }
+    }),
+    VueI18nVitePlugin({
+      /* options */
+      // locale messages resource pre-compile option
+      runtimeOnly: true,
+      compositionOnly: true,
+      include: resolve(__dirname, './src/locales/**')
+      // resolve(
+      //   dirname(fileURLToPath(import.meta.url)),
+      //   './src/locales/**'
+      // )
     }),
     AutoImport({
       include: [
@@ -224,7 +236,10 @@ export default defineConfig({
         },
         // presets
         'vue',
-        'vue-router'
+        'vue-router',
+        'vue-i18n',
+        '@vueuse/head',
+        '@vueuse/core'
         // 'vuex', // 以下按需引入
         // {
         //   // custom
@@ -315,7 +330,9 @@ export default defineConfig({
       '@components': resolve(__dirname, 'src/components'),
       '@images': resolve(__dirname, 'src/assets/images'),
       '@views': resolve(__dirname, 'src/views'),
-      '@store': resolve(__dirname, 'src/store')
+      '@store': resolve(__dirname, 'src/store'),
+      find: 'vue-i18n',
+      replacement: 'vue-i18n/dist/vue-i18n.cjs.js'
     }
   },
   server: {

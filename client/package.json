@@ -20,12 +20,14 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@vueuse/core": "^9.12.0",
     "accessible-nprogress": "^2.1.2",
     "flowbite": "^1.6.3",
     "flowbite-vue": "^0.0.10",
     "pinia": "^2.0.30",
     "tailwindcss-animatecss": "^3.0.2",
     "vue": "^3.2.47",
+    "vue-i18n": "^9.2.2",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
@@ -33,6 +35,7 @@
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
     "@iconify/json": "^2.2.20",
+    "@intlify/unplugin-vue-i18n": "^0.8.2",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@types/node": "^18.13.0",
@@ -51,7 +54,7 @@
     "c8": "^7.12.0",
     "cssnano": "^5.1.14",
     "cssnano-preset-advanced": "^5.3.9",
-    "eslint": "^8.33.0",
+    "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-define-config": "^1.15.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -65,8 +68,9 @@
     "postcss": "^8.4.21",
     "postcss-html": "^1.5.0",
     "prettier": "^2.8.4",
-    "stylelint": "^15.0.0",
+    "stylelint": "^15.1.0",
     "stylelint-config-prettier": "^9.0.4",
+    "stylelint-config-recommended": "10.0.1",
     "stylelint-config-recommended-vue": "^1.4.0",
     "stylelint-config-standard": "^30.0.1",
     "tailwindcss": "^3.2.6",
@@ -75,9 +79,9 @@
     "unplugin-icons": "^0.15.2",
     "unplugin-vue-components": "^0.23.0",
     "vite": "^4.1.1",
-    "vite-plugin-compression2": "^0.7.0",
+    "vite-plugin-compression2": "^0.8.0",
     "vite-plugin-minify": "^1.5.2",
-    "vite-plugin-pwa": "^0.14.3",
+    "vite-plugin-pwa": "^0.14.4",
     "vite-plugin-webfont-dl": "^3.6.0",
     "vitest": "^0.28.4",
     "vue-eslint-parser": "^9.1.0",
@@ -100,7 +104,8 @@
     "@unhead/vue": ">=1.0.10",
     "@vue/compiler-dom": "^3.0.1",
     "@vue/compiler-sfc": "^3.2.45",
-    "postcss": "^8.0.0"
+    "postcss": "^8.0.0",
+    "stylelint-config-prettier": "^9.0.4"
   },
   "cssnano": {
     "preset": "advanced"
