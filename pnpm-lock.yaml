@@ -4,7 +4,6 @@ specifiers:
   concurrently: ^7.6.0
   pm2: ^5.2.2
   shx: ^0.3.4
-  snyk: ^1.1100.0
 
 dependencies:
   pm2: 5.2.2
@@ -12,7 +11,6 @@ dependencies:
 devDependencies:
   concurrently: 7.6.0
   shx: 0.3.4
-  snyk: 1.1100.0
 
 packages:
 
@@ -943,7 +941,7 @@ packages:
       async: 3.2.4
       debug: 4.3.4
       pidusage: 2.0.21
-      systeminformation: 5.17.9
+      systeminformation: 5.17.8
       tx2: 1.0.5
     transitivePeerDependencies:
       - supports-color
@@ -1173,12 +1171,6 @@ packages:
     engines: {node: '>= 6.0.0', npm: '>= 3.0.0'}
     dev: false
 
-  /snyk/1.1100.0:
-    resolution: {integrity: sha512-f+k5tc3mU4Y48aZKLo1lM5Z7k+LlymGBQvxKXTzvQawmK6tMvbYgV1hn0JbVHDgdLeCrPpvxsTthDa75L8kteg==}
-    engines: {node: '>=12'}
-    hasBin: true
-    dev: true
-
   /socks-proxy-agent/5.0.1:
     resolution: {integrity: sha512-vZdmnjb9a2Tz6WEQVIurybSwElwPxMZaIc7PzqbJTrezcKNznv6giT7J7tZDZ1BojVaa1jvO/UiUdhDVB0ACoQ==}
     engines: {node: '>= 6'}
@@ -1264,8 +1256,8 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  /systeminformation/5.17.9:
-    resolution: {integrity: sha512-inxwRLI/4qpx4o85R54/zdhNagdBGBgs0la7Vl3qBorRVKRDk0nNsDTCGzG4lOITsw1gl7LRWeG4Zsp1pC8nfg==}
+  /systeminformation/5.17.8:
+    resolution: {integrity: sha512-kMQsCOFQXqEjoDWKpYkC+ezJImrOnyTL3FZnYDZdWLTZcMW7Gomdp8zH9ztGlSo2L1iCAQXZ8HlV1bI8/Ts64g==}
     engines: {node: '>=8.0.0'}
     os: [darwin, linux, win32, freebsd, openbsd, netbsd, sunos, android]
     hasBin: true

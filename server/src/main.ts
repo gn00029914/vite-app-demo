@@ -10,7 +10,6 @@ import Handlebars from 'handlebars';
 import fastifyCsrf from '@fastify/csrf-protection';
 import { createHmac, randomBytes } from 'crypto';
 import { fastifyHelmet } from '@fastify/helmet';
-import { PrismaClient } from '@prisma/client'
 import compression from '@fastify/compress';
 import { constants } from 'zlib';
 
@@ -36,17 +35,14 @@ async function bootstrap() {
       handlebars: Handlebars,
     },
     templates: join(__dirname, '..', 'views'),
-    defaultContext: {
-
-    }
-  }); // https://localhost:443/
+  }); // https://localhost:3000/
   app.useStaticAssets({
     root: join(__dirname, '..', 'public'),
     prefix: '/vite-app-demo/',
     preCompressed: true, // 優先 ( br -> gzip -> original ) 將含有預壓縮的檔案透過對應的 encoding headers 傳送, 且瀏覽器解壓縮後按照 content-type 可正確解碼
     immutable: true,
     maxAge: 31536000,
-  }); // https://localhost:443/vite-app-demo/
+  }); // https://localhost:3000/vite-app-demo/
   await app.register(fastifyCsrf); // 驗證 cookie 跟 session 資料安全的 key 視驗證資料多少向後調順序
   (global as any).nonce = createHmac('sha256', randomBytes(256)).digest(
     'base64',
@@ -122,9 +118,6 @@ async function bootstrap() {
     },
   });
   app.enableCors(); // 開啟 server site 跨域連線資源請求
-  const prisma = new PrismaClient()
-  const allUsers = await prisma.user.findMany()
-  console.log(allUsers)
   await app.register(compression, {
     brotliOptions: {
       params: {

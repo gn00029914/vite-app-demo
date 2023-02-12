@@ -21,7 +21,6 @@
       "vite/client",
       "vitest/globals",
       "vite-plugin-pwa/client",
-      "@intlify/unplugin-vue-i18n/messages",
       "unplugin-icons/types/vue"
     ]
   },
