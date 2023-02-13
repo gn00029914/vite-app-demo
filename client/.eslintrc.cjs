@@ -15,11 +15,11 @@ module.exports = defineConfig({
     'plugin:vue/vue3-recommended',
     'plugin:tailwindcss/recommended',
     'plugin:prettier/recommended',
-    // "prettier"
+    "prettier",
     "plugin:vuejs-accessibility/recommended",
     './.eslintrc-auto-import.json'
   ],
-  ignorePatterns: ['*.cjs'],
+  ignorePatterns: ['*.cjs', 'auto-import.d.ts'],
   // /* globals: {
   //     defineEmits: 'readonly',
   //     defineProps: 'readonly',

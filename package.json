@@ -18,6 +18,10 @@
     "ns": "pnpm --filter nestjs-server-demo start:prod",
     "nt": "pnpm --filter nestjs-server-demo test",
     "nc": "pnpm --filter nestjs-server-demo test:cov",
+    "npri": "pnpm --filter nestjs-server-demo prei",
+    "npg": "pnpm --filter nestjs-server-demo pg",
+    "nppus": "pnpm --filter nestjs-server-demo ppush",
+    "nppul": "pnpm --filter nestjs-server-demo ppull",
     "pm2dev": "pnpm np && pnpm nb && pnpm pm2 start ecosystem.config.js --env development",
     "pm2pdyn": "concurrently \"pnpm vb\" \"pnpm np\" && concurrently \"pnpm shx cp -r client/dist/ server/public/\" \"pnpm shx mkdir server/views\" && concurrently \"pnpm shx rm server/public/index.html\" \"pnpm shx cp client/dist/index.html server/views/index.hbs\" && pnpm nb && pnpm pm2 start ./server/dist/main.js --env production",
     "pm2pwa": "concurrently \"pnpm vb\" \"pnpm np\" && concurrently \"pnpm shx cp -r client/dist/ server/public/\" \"pnpm shx mkdir server/views\" && pnpm shx cp client/dist/index.html server/views/index.hbs && pnpm nb && pnpm pm2 start ./server/dist/main.js --env production",
@@ -25,7 +29,9 @@
     "pm2stop": "pnpm pm2 stop all",
     "pm2cls": "concurrently \"pnpm pm2stop\" \"pnpm pm2 delete all\" \"pnpm pm2 flush\"",
     "vgi": "pnpm dlx vue-pwa-asset-generator -a .\\client\\public\\vite.svg -o .\\client\\public\\ --no-manifest",
-    "sstcs": "pnpm exec shx cat ./server/https/fastify.key ./server/https/fastify.cert > ./client/node_modules/.vite/basic-ssl/_cert.pem"
+    "sstcs": "pnpm exec shx cat server/https/fastify.key server/https/fastify.cert > client/node_modules/.vite/basic-ssl/_cert.pem",
+    "npreg": "pnpm npri && concurrently \"pnpm shx cp ./server/.env.development ./server/.env\" \"pnpm shx sed -i \"s/postgresql/mysql/g\" server/prisma/schema.prisma\" && pnpm nppul && pnpm npg",
+    "st": "pnpm snyk test --all-projects"
   },
   "keywords": [],
   "author": {

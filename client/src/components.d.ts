@@ -9,7 +9,6 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AboutPage: typeof import('./pages/AboutPage.vue')['default']
     App: typeof import('./App.vue')['default']
-    Banana: typeof import('flowbite-vue')['Banana']
     ContentIndex: typeof import('./Layout/Content/ContentIndex.vue')['default']
     Dropdown: typeof import('flowbite-vue')['Dropdown']
     FlowbiteThemable: typeof import('flowbite-vue')['FlowbiteThemable']

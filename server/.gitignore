@@ -16,6 +16,7 @@ yarn-error.log*
 lerna-debug.log*
 
 .env
+.env.development
 https/*
 !https/*.md
 
