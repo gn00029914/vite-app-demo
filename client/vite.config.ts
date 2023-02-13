@@ -2,14 +2,13 @@
 /// <reference types="vite/client" />
 
 import { defineConfig, splitVendorChunkPlugin } from 'vite'
-import { dirname, resolve } from 'path'
+import { resolve } from 'path'
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import { ViteMinifyPlugin } from 'vite-plugin-minify'
 import { VitePWA } from 'vite-plugin-pwa'
 import { ViteWebfontDownload } from 'vite-plugin-webfont-dl'
 import vue from '@vitejs/plugin-vue'
 import VueI18nVitePlugin from '@intlify/unplugin-vue-i18n/vite'
-import { fileURLToPath } from 'url'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { SchemaOrgResolver, schemaAutoImports } from '@vueuse/schema-org'
@@ -42,12 +41,6 @@ export default defineConfig({
       },
       output: {
         compact: true,
-        // manualChunks(id) {
-        //   if (id.includes('node_modules')) {
-        //     // return id.toString().split('node_modules/.pnpm/')[1].split('/')[0] // avoid stackoverflow
-        //     return id.toString().split('node_modules/.pnpm/')[1].split('/')[2] // for simple app
-        //   }
-        // }, // 改用vite內建splitVendorChunkPlugin
         chunkFileNames:
           process.env.NPM_ENV === 'development'
             ? '[format]-[name]-[hash].js'
@@ -308,7 +301,7 @@ export default defineConfig({
     }),
     compression({
       algorithm: 'brotliCompress',
-      exclude: /.*?(?<=.html)$/,
+      // exclude: /.*?(?<=.html)$/,
       compressionOptions: {
         params: {
           [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
