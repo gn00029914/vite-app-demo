@@ -87,7 +87,7 @@ async function bootstrap() {
           // `'unsafe-hashes'`,
           // `'unsafe-inline'`,
           // 'cdn.jsdelivr.net'
-          // 'data:'
+          'data:' // tailwindcss inline svg
         ],
         scriptSrc: [
           `'self'`,
