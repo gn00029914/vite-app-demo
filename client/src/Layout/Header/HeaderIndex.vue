@@ -1,6 +1,3 @@
-<!-- eslint-disable vuejs-accessibility/form-control-has-label -->
-<!-- eslint-disable vuejs-accessibility/label-has-for -->
-<!-- eslint-disable vuejs-accessibility/no-onchange -->
 <template>
   <div class="header">
     <nav class="header-nav px-1 py-2.5">
@@ -773,14 +770,12 @@
       <p>@{{ $t('message.Home') }} | @{{ $t('message.About') }}</p>
       <select
         v-model="$i18n.locale"
+        aria-label="languages"
         class="dark:bg-gray-700"
-        @change="handleChangeLanguage"
+        @blur="handleChangeLanguage"
       >
         <option value="zh-TW">繁體中文</option>
         <option value="en-US">English</option>
-        <!-- <option v-for="(message, lang) in messages" :key="message" :value="lang">
-        @{{ lang }}
-      </option> -->
       </select>
     </nav>
   </div>
