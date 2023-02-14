@@ -15,33 +15,16 @@ import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
 // import { store } from './store'
 import routes from './routes'
-// import en from './locales/en.json'
-// import zh_tw from './locales/zh_tw.json'
 const i18n = createI18n({
   // something vue-i18n options here ...
   legacy: false, // you must specify 'legacy: false' option
+  mode: 'composition',
   globalInjection: true,
-  locale: 'zh_tw',
+  locale: 'zh-TW',
+  fallbackLocale: 'en-US',
   messages
 })
-
-export default {
-  name: 'App',
-  components: {
-    App
-  },
-  setup() {
-    const { t, messages } = useI18n({
-      // inheritLocale: true,
-      // useScope: 'local'
-    })
-    return { t, messages }
-  }
-}
-// change locale via `global` property
-
-// when vue-i18n is being used with legacy: false, note that i18n.global.locale is a ref, so we must set it via .value:
-// i18n.global.locale.value = 'en'
+export default i18n
 
 useSchemaOrg([
   // @todo Select Identity: https://unhead-schema-org.harlanzw.com//guide/guides/identity

@@ -10,6 +10,5 @@
   @apply -translate-x-1/2 -translate-y-1/2;
 }
 #nprogress .spinner-icon {
-  @apply animate-spinBounce border-t-primary-500 border-r-transparent border-b-transparent border-l-primary-500;
-  margin: auto;
+  @apply m-auto animate-spinBounce border-t-primary-500 border-r-transparent border-b-transparent border-l-primary-500;
 }
