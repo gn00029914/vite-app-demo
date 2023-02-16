@@ -67,11 +67,12 @@ async function bootstrap() {
         styleSrc: [
           `'self'`,
           "'nonce-" + (global as any).nonce + "'",
+          // 'esm.sh', // 支援從 HTTP/2 回傳 HTTP 301, 然後重新導向至 HTTP/3 再回傳(稍慢)
           // `'unsafe-hashes'`,
           // `'unsafe-inline'`,
           // 'fonts.googleapis.com', // return @font-face
           // 'unpkg.com',
-          // 'cdn.jsdelivr.net' // 引用外部資源要小心
+          'cdn.jsdelivr.net' // (較快)支援先從 HTTP/2 或直接連 HTTP/3 輪詢
         ],
         fontSrc: [
           `'self'`,
@@ -92,9 +93,10 @@ async function bootstrap() {
         scriptSrc: [
           `'self'`,
           "'nonce-" + (global as any).nonce + "'",
+          // 'esm.sh',
           // `'unsafe-hashes'`,
           // `'unsafe-inline'`,
-          // `cdn.jsdelivr.net`,
+          'cdn.jsdelivr.net'
           // `'unsafe-eval'`,  // deprecated
         ], // link webfonts.css return minified @font-face
         scriptSrcAttr: [
