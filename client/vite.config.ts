@@ -171,7 +171,7 @@ export default defineConfig({
                 inlineWorkboxRuntime: true,
                 sourcemap: process.env.NPM_ENV === 'development' ? true : false,
                 globPatterns: ['**'],
-                globIgnores: ['**.br'],
+                globIgnores: ['**/*.br'],
                 runtimeCaching: [
                     // {
                     //   urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
