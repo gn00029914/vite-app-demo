@@ -1,5 +1,5 @@
 import './style.css'
-import '../node_modules/accessible-nprogress/dist/accessible-nprogress.min.css'
+// import '../node_modules/accessible-nprogress/dist/accessible-nprogress.min.css' // 轉移到 index.html 由 CDN 引入
 import './nprogress-custom.css'
 
 import 'vite/modulepreload-polyfill'
@@ -15,49 +15,51 @@ import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
 // import { store } from './store'
 import routes from './routes'
+
 const i18n = createI18n({
-  // something vue-i18n options here ...
-  legacy: false, // you must specify 'legacy: false' option
-  mode: 'composition',
-  globalInjection: true,
-  locale: 'zh-TW',
-  fallbackLocale: 'en-US',
-  messages
+    // something vue-i18n options here ...
+    legacy: false, // you must specify 'legacy: false' option
+    mode: 'composition',
+    globalInjection: true,
+    locale: 'zh-TW',
+    fallbackLocale: 'en-US',
+    messages
 })
 export default i18n
 
 useSchemaOrg([
-  // @todo Select Identity: https://unhead-schema-org.harlanzw.com//guide/guides/identity
-  defineWebSite({
-    name: 'My Awesome Website'
-  }),
-  defineWebPage()
+    // @todo Select Identity: https://unhead-schema-org.harlanzw.com//guide/guides/identity
+    defineWebSite({
+        name: 'My Awesome Website'
+    }),
+    defineWebPage()
 ])
 
 registerSW({ immediate: true })
-NProgress.configure({ easing: 'ease', speed: 1200 }).start().done()
+
 const head = createHead()
 head.use(
-  SchemaOrgUnheadPlugin(
-    {
-      // config
-      host: 'https://example.com'
-    },
-    () => {
-      const route = router.currentRoute.value
-      return {
-        path: route.path,
-        ...route.meta
-      }
-    }
-  )
+    SchemaOrgUnheadPlugin(
+        {
+            // config
+            host: 'https://example.com'
+        },
+        () => {
+            const route = router.currentRoute.value
+            return {
+                path: route.path,
+                ...route.meta
+            }
+        }
+    )
 )
 const store = createPinia()
 const router = createRouter({
-  history: createWebHistory(),
-  routes
+    history: createWebHistory(),
+    routes
 })
 
+NProgress.configure({ easing: 'ease', speed: 1200 }).start().done()
 createApp(App).use(i18n).use(head).use(store).use(router).mount('#app')
 
 import { Drawer } from 'flowbite'
@@ -66,26 +68,26 @@ import type { DrawerOptions, DrawerInterface } from 'flowbite'
 // set the drawer menu element
 const $targetEl: HTMLElement | null = document.getElementById('drawer-button')
 const $buttonElement: HTMLElement | null = document.querySelector(
-  '#drawer-hide-button'
+    '#drawer-hide-button'
 )
 // options with default values
 const options: DrawerOptions = {
-  placement: 'right',
-  backdrop: true,
-  bodyScrolling: false,
-  edge: false,
-  edgeOffset: '',
-  backdropClasses:
-    'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-30',
-  onHide: () => {
-    console.log('drawer is hidden')
-  },
-  onShow: () => {
-    console.log('drawer is shown')
-  },
-  onToggle: () => {
-    console.log('drawer has been toggled')
-  }
+    placement: 'right',
+    backdrop: true,
+    bodyScrolling: false,
+    edge: true,
+    edgeOffset: 'bottom-[60px]',
+    backdropClasses:
+        'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-30',
+    onHide: () => {
+        console.log('drawer is hidden')
+    },
+    onShow: () => {
+        console.log('drawer is shown')
+    },
+    onToggle: () => {
+        console.log('drawer has been toggled')
+    }
 }
 
 /*
@@ -93,6 +95,9 @@ const options: DrawerOptions = {
  * options: optional
  */
 const drawer: DrawerInterface = new Drawer($targetEl, options)
-$buttonElement?.addEventListener('click', () => drawer.hide())
+$buttonElement?.addEventListener('click', () => {
+    drawer.hide()
+    $targetEl?.classList.remove('-translate-x-full')
+})
 // show the drawer
 // drawer.show()
