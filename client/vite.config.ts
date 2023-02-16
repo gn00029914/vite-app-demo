@@ -1,11 +1,8 @@
-/* eslint-disable prettier/prettier */
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
 
 import { defineConfig, splitVendorChunkPlugin } from 'vite'
-import { visualizer } from 'rollup-plugin-visualizer'
 import { resolve } from 'path'
-import externalGlobals from 'rollup-plugin-external-globals' //打包後使用cdn
 import { Plugin as importToCDN } from 'vite-plugin-cdn-import'
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import { ViteMinifyPlugin } from 'vite-plugin-minify'
@@ -40,43 +37,6 @@ export default defineConfig({
         manifest: true,
         cssCodeSplit: true,
         rollupOptions: {
-            external: [
-                // 不打包的 packages' name 從 cdn 引入記得在 index.html 掛上 cdn 不然會出錯
-                // 'accessible-nprogress',
-                // 'vue',
-                // 'hookable',
-                // 'vue-i18n',
-                // '@intlify/unplugin-vue-i18n',
-                // '@vueuse/head',
-                // '@vueuse/core',
-                // '@vueuse/schema-org',
-                // 'vue-demi',
-                // 'pinia',
-                // 'vue-router',
-                // 'flowbite',
-                // 'flowbite-vue',
-                // 'tailwindcss-animatecss'
-            ],
-            plugins: [
-                externalGlobals({
-                    // // key 是引入時的 package name，value 是 import ... from "" <- 的全域變數
-                    // 'accessible-nprogress': 'accessible-nprogress',
-                    // vue: 'vue',
-                    // hookable: 'hookable',
-                    // 'vue-i18n': 'vue-i18n',
-                    // '@intlify/unplugin-vue-i18n': '@intlify/unplugin-vue-i18n',
-                    // '@vueuse/head': '@vueuse/head',
-                    // '@vueuse/core': '@vueuse/core',
-                    // '@vueuse/schema-org': '@vueuse/schema-org',
-                    // 'vue-demi': 'vue-demi',
-                    // pinia: 'pinia',
-                    // 'vue-router': 'vue-router',
-                    // flowbite: 'flowbite',
-                    // 'flowbite-vue': 'flowbite-vue',
-                    // 'tailwindcss-animatecss': 'tailwindcss-animatecss'
-                }),
-                visualizer({ brotliSize: true, open: true })
-            ],
             input: {
                 main: resolve(__dirname, './index.html')
             },
@@ -98,68 +58,6 @@ export default defineConfig({
                     path: 'dist/accessible-nprogress.min.js',
                     css: 'dist/accessible-nprogress.min.css'
                 }
-                // autoComplete('vue'),
-                // {
-                //   name: 'vue',
-                //   var: 'vue',
-                //   path: '+esm'
-                // },
-                // {
-                //   name: 'hookable',
-                //   var: 'hookable',
-                //   path: 'dist/hookable.min.js'
-                // },
-                // {
-                //   name: 'vue-i18n',
-                //   var: 'vue-i18n',
-                //   path: 'dist/vue-i18n.global.js'
-                // },
-                // {
-                //   name: '@intlify/unplugin-vue-i18n',
-                //   var: '@intlify/unplugin-vue-i18n',
-                //   path: 'dist/@intlify/unplugin-vue-i18n.min.js'
-                // },
-                // {
-                //   name: '@vueuse/head',
-                //   var: '@vueuse/head',
-                //   path: 'dist/index.mjs'
-                // },
-                // autoComplete('@vueuse/core'),
-                // {
-                //   name: '@vueuse/core',
-                //   var: '@vueuse/core',
-                //   path: '+esm'
-                // },
-                // {
-                //   name: '@vueuse/schema-org',
-                //   var: '@vueuse/schema-org',
-                //   path: 'dist/@vueuse/schema-org.min.js'
-                // },
-                // {
-                //   name: 'pinia',
-                //   var: 'pinia',
-                //   path: 'dist/pinia.min.js'
-                // },
-                // {
-                //   name: 'vue-router',
-                //   var: 'vue-router',
-                //   path: 'dist/vue-router.min.js'
-                // },
-                // {
-                //   name: 'flowbite',
-                //   var: 'flowbite',
-                //   path: 'dist/flowbite.min.js'
-                // },
-                // {
-                //   name: 'flowbite-vue',
-                //   var: 'flowbite-vue',
-                //   path: 'dist/flowbite-vue.min.js'
-                // },
-                // {
-                //   name: 'tailwindcss-animatecss',
-                //   var: 'tailwindcss-animatecss',
-                //   path: 'dist/tailwindcss-animatecss.min.js'
-                // }
             ]
         }),
         splitVendorChunkPlugin(),
@@ -431,42 +329,17 @@ export default defineConfig({
     base: '/' + process.env.npm_package_name + '/',
     publicDir: 'public',
     resolve: {
-        // resolve.alias
-        alias:
-            process.env.NPM_ENV === 'development'
-                ? {
-                      '@': resolve(__dirname, 'src'),
-                      '@assets': resolve(__dirname, 'src/assets'),
-                      '@components': resolve(__dirname, 'src/components'),
-                      '@images': resolve(__dirname, 'src/assets/images'),
-                      '@views': resolve(__dirname, 'src/views'),
-                      '@store': resolve(__dirname, 'src/store'),
-                      find: 'vue-i18n',
-                      replacement: 'vue-i18n/dist/vue-i18n.cjs.js'
-                  }
-                : {
-                      '@': resolve(__dirname, 'src')
-                      // 'vite': 'https://esm.sh/vite',
-                      // 'accessible-nprogress': 'https://esm.sh/accessible-nprogress',
-                      // 'vue': 'https://esm.sh/vue@3.2.47',
-                      // 'hookable': 'https://esm.sh/hookable',
-                      // '@intlify/core-base': 'https://esm.sh/@intlify/core-base',
-                      // '@intlify/shared': 'https://esm.sh/@intlify/shared',
-                      // '@intlify/unplugin-vue-i18n': 'https://esm.sh/@intlify/unplugin-vue-i18n',
-                      // '@intlify/message-compiler': 'https://esm.sh/@intlify/message-compiler',
-                      // '@intlify/devtools-if': 'https://esm.sh/@intlify/devtools-if',
-                      // 'vue-i18n': 'https://esm.sh/vue-i18n@9.2.2/dist/vue-i18n.runtime.esm-bundler.js?deps=vue@3.2.47',
-                      // 'workbox-window': 'https://esm.sh/workbox-window/build/workbox-window.prod.es5.mjs',
-                      // '@vueuse/head': 'https://esm.sh/@vueuse/head',
-                      // '@vueuse/core': 'https://esm.sh/@vueuse/core',
-                      // '@vueuse/schema-org': 'https://esm.sh/@vueuse/schema-org',
-                      // 'vue-demi': 'https://esm.sh/vue-demi',
-                      // 'pinia': 'https://esm.sh/pinia',
-                      // 'vue-router': 'https://esm.sh/vue-router',
-                      // 'flowbite': 'https://esm.sh/flowbite',
-                      // 'flowbite-vue': 'https://esm.sh/flowbite-vue',
-                      // 'tailwindcss-animatecss': 'https://esm.sh/tailwindcss-animatecss',
-                  }
+        alias: {
+            // resolve.alias
+            '@': resolve(__dirname, 'src'),
+            '@assets': resolve(__dirname, 'src/assets'),
+            '@components': resolve(__dirname, 'src/components'),
+            '@images': resolve(__dirname, 'src/assets/images'),
+            '@views': resolve(__dirname, 'src/views'),
+            '@store': resolve(__dirname, 'src/store'),
+            find: 'vue-i18n',
+            replacement: 'vue-i18n/dist/vue-i18n.cjs.js'
+        }
     },
     server: {
         https: true,

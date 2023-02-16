@@ -67,7 +67,7 @@ async function bootstrap() {
         styleSrc: [
           `'self'`,
           "'nonce-" + (global as any).nonce + "'",
-          // 'esm.sh', // 支援從 HTTP/2 回傳 HTTP 301, 然後重新導向至 HTTP/3 再回傳
+          // 'esm.sh', // 支援從 HTTP/2 回傳 HTTP 301, 然後重新導向至 HTTP/3 再回傳(稍慢)
           // `'unsafe-hashes'`,
           // `'unsafe-inline'`,
           // 'fonts.googleapis.com', // return @font-face
