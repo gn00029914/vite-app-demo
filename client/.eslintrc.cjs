@@ -11,13 +11,12 @@ module.exports = defineConfig({
   extends: [
     'eslint:recommended', // this maybe causes errors in defineEmits<{}>() ???
     'plugin:@typescript-eslint/recommended',
-    './.eslintrc-auto-import.json',
     'plugin:vue/vue3-recommended',
     'plugin:tailwindcss/recommended',
     'plugin:prettier/recommended',
     "prettier",
     "plugin:vuejs-accessibility/recommended",
-    './.eslintrc-auto-import.json'
+    process.env.NPM_ENV === 'development' ? './.eslintrc-auto-import.json' : ''
   ],
   ignorePatterns: ['*.cjs', 'auto-import.d.ts'],
   // /* globals: {
@@ -41,6 +40,7 @@ module.exports = defineConfig({
   // plugins: ['@typescript-eslint'], // might not be needed
   plugins: ['@typescript-eslint', 'vue', 'tailwindcss', 'prettier', 'vuejs-accessibility'],
   rules: {
+    "no-undef": "off", // https://github.com/antfu/unplugin-auto-import#eslint
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "warn",
     // '@typescript-eslint/no-explicit-any': 'warn',

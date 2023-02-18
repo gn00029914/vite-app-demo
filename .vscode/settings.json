@@ -2,5 +2,6 @@
   "[shellscript]": {
     "files.eol": "\n"
   },
-  "files.eol": "auto"
+  "files.eol": "auto",
+  "findUnusedExports.detectCircularImports": true
 }
