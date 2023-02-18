@@ -2,10 +2,11 @@
 module.exports = {
   darkMode: 'class',
   content: [
+    // https://github.com/vitejs/vite/issues/11652
     './index.html',
     './src/*.{js,ts,vue}',
     './src/**/*.{js,ts,vue}',
-    // './node_modules/flowbite/**/*.js',
+    './node_modules/flowbite/**/*.js',
     './node_modules/flowbite-vue/**/*.{js,jsx,ts,tsx}'
   ],
   theme: {

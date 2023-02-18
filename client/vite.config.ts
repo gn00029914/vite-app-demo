@@ -50,6 +50,18 @@ export default defineConfig({
         }
     },
     plugins: [
+        // 解決 HMR 遺失 CSS 問題 https://github.com/vitejs/vite/issues/3033#issuecomment-1360691044
+        {
+            name: 'singleHMR',
+            handleHotUpdate({ modules }) {
+                modules.map((m) => {
+                    m.importedModules = new Set()
+                    m.importers = new Set()
+                })
+
+                return modules
+            }
+        },
         importToCDN({
             modules: [
                 {
@@ -269,7 +281,9 @@ export default defineConfig({
             ],
             dts: 'src/auto-import.d.ts', // 變更路徑需手動清除舊檔
             eslintrc: {
-                enabled: true
+                /* 不能在 pm2 runtime 開啟, 會造成語法檢查物件動態變更語法檢查條件且不斷觸發 HMR,
+                只能在非輪詢的單元環境開發時更新 .eslintrc-auto-import.json 配置和提交前才能手動開啟 */
+                enabled: false
             }
         }),
         Components({
@@ -346,6 +360,7 @@ export default defineConfig({
         open: true,
         port: 443,
         host: 'localhost',
+        origin: 'https://localhost:443',
         headers: {
             'content-encoding': 'br, deflate, gzip, identity'
         }
