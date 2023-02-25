@@ -10,6 +10,7 @@ import { createI18n } from 'vue-i18n'
 import messages from '@intlify/unplugin-vue-i18n/messages'
 import { createHead } from '@vueuse/head'
 import { SchemaOrgUnheadPlugin } from '@vueuse/schema-org'
+import EventCounter from './components/EventCounter.vue'
 import { createPinia } from 'pinia'
 import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
@@ -42,7 +43,8 @@ head.use(
     SchemaOrgUnheadPlugin(
         {
             // config
-            host: 'https://example.com'
+            host: 'https://example.com',
+            title: 'My awesome site'
         },
         () => {
             const route = router.currentRoute.value
@@ -60,44 +62,50 @@ const router = createRouter({
 })
 
 NProgress.configure({ easing: 'ease', speed: 1200 }).start().done()
-createApp(App).use(i18n).use(head).use(store).use(router).mount('#app')
+createApp(App)
+    .use(i18n)
+    .use(head)
+    .use(store)
+    .use(router)
+    .component('EventCounter', EventCounter)
+    .mount('#app')
 
-import { Drawer } from 'flowbite'
-import type { DrawerOptions, DrawerInterface } from 'flowbite'
+// import { Drawer } from 'flowbite'
+// import type { DrawerOptions, DrawerInterface } from 'flowbite'
 
 // set the drawer menu element
-const $targetEl: HTMLElement | null = document.getElementById('drawer-button')
-const $buttonElement: HTMLElement | null = document.querySelector(
-    '#drawer-hide-button'
-)
+// const $targetEl: HTMLElement | null = document.getElementById('drawer-button')
+// const $buttonElement: HTMLElement | null = document.querySelector(
+//     '#drawer-hide-button'
+// )
 // options with default values
-const options: DrawerOptions = {
-    placement: 'right',
-    backdrop: true,
-    bodyScrolling: false,
-    edge: true,
-    edgeOffset: 'bottom-[60px]',
-    backdropClasses:
-        'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-30',
-    onHide: () => {
-        console.log('drawer is hidden')
-    },
-    onShow: () => {
-        console.log('drawer is shown')
-    },
-    onToggle: () => {
-        console.log('drawer has been toggled')
-    }
-}
+// const options: DrawerOptions = {
+//     placement: 'right',
+//     backdrop: true,
+//     bodyScrolling: false,
+//     edge: true,
+//     edgeOffset: 'bottom-[60px]',
+//     backdropClasses:
+//         'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-30',
+//     onHide: () => {
+//         console.log('drawer is hidden')
+//     },
+//     onShow: () => {
+//         console.log('drawer is shown')
+//     },
+//     onToggle: () => {
+//         console.log('drawer has been toggled')
+//     }
+// }
 
 /*
  * $targetEl: required
  * options: optional
  */
-const drawer: DrawerInterface = new Drawer($targetEl, options)
-$buttonElement?.addEventListener('click', () => {
-    drawer.hide()
-    $targetEl?.classList.remove('-translate-x-full')
-})
+// const drawer: DrawerInterface = new Drawer($targetEl, options)
+// $buttonElement?.addEventListener('click', () => {
+//     drawer.hide()
+//     $targetEl?.classList.remove('-translate-x-full')
+// })
 // show the drawer
 // drawer.show()

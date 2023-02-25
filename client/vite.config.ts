@@ -10,6 +10,9 @@ import { VitePWA } from 'vite-plugin-pwa'
 import { ViteWebfontDownload } from 'vite-plugin-webfont-dl'
 import vue from '@vitejs/plugin-vue'
 import VueI18nVitePlugin from '@intlify/unplugin-vue-i18n/vite'
+import Markdown from 'vite-plugin-vue-markdown'
+import anchor from 'markdown-it-anchor'
+import prism from 'markdown-it-prism'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { SchemaOrgResolver, schemaAutoImports } from '@vueuse/schema-org'
@@ -220,6 +223,7 @@ export default defineConfig({
             }
         ), // 注意網路連線特別是IPv6租約期限
         vue({
+            include: [/\.vue$/, /\.md$/],
             template: {
                 compilerOptions: {
                     delimiters: ['@{{', '}}']
@@ -290,6 +294,10 @@ export default defineConfig({
             dirs: ['src'],
             deep: true,
             dts: 'src/components.d.ts', // 變更路徑需手動清除舊檔
+            // allow auto load markdown components under `./src/components/`
+            extensions: ['vue', 'md'],
+            // allow auto import and register components used in markdown
+            include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
             resolvers: [
                 // auto-import schema-org components
                 SchemaOrgResolver(),
@@ -297,12 +305,37 @@ export default defineConfig({
                     // console.log(componentName) // 先查components.d.ts再看runtime log
                     // where `componentName` is always CapitalCase
                     // if (componentName.startsWith('Dropdown')) // 按需過濾
-                    return {
-                        name: componentName,
-                        from: 'flowbite-vue'
-                    }
+                    if (componentName.startsWith('Route'))
+                        return {
+                            name: componentName,
+                            from: 'vue-router'
+                        }
+                    if (componentName.startsWith('EventCounter'))
+                        return {
+                            name: componentName,
+                            from: '@components/EventCounter.vue'
+                        }
+                    else
+                        return {
+                            name: componentName,
+                            from: 'flowbite-vue'
+                        }
                 }
             ]
+        }),
+        Markdown({
+            headEnabled: true,
+            // default options passed to markdown-it
+            // see: https://markdown-it.github.io/markdown-it/
+            markdownItOptions: {
+                html: true,
+                linkify: true,
+                typographer: true
+            },
+            // A function providing the Markdown It instance gets the ability to apply custom settings/plugins
+            markdownItUses: [anchor, prism],
+            // Class names for the wrapper div
+            wrapperClasses: 'markdown-body'
         }),
         Icons({
             // scale: 3, // a11y 最小要求 48x48 px
@@ -348,6 +381,7 @@ export default defineConfig({
             '@': resolve(__dirname, 'src'),
             '@assets': resolve(__dirname, 'src/assets'),
             '@components': resolve(__dirname, 'src/components'),
+            '@pages': resolve(__dirname, 'src/pages'),
             '@images': resolve(__dirname, 'src/assets/images'),
             '@views': resolve(__dirname, 'src/views'),
             '@store': resolve(__dirname, 'src/store'),
@@ -362,11 +396,13 @@ export default defineConfig({
         host: 'localhost',
         origin: 'https://localhost:443',
         headers: {
-            'content-encoding': 'br, deflate, gzip, identity'
+            // 'content-encoding': 'br, deflate, gzip, identity', // Firefox 不支援
+            'accept-encoding': 'br, deflate, gzip, identity'
         }
     },
     test: {
         coverage: {
+            provider: 'c8',
             reporter: ['html', 'json', 'text']
         },
         environment: 'happy-dom', // or edge-runtime ???

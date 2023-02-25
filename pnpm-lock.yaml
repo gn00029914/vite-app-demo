@@ -4,7 +4,7 @@ specifiers:
   concurrently: ^7.6.0
   pm2: ^5.2.2
   shx: ^0.3.4
-  snyk: ^1.1105.0
+  snyk: ^1.1109.0
 
 dependencies:
   pm2: 5.2.2
@@ -12,7 +12,7 @@ dependencies:
 devDependencies:
   concurrently: 7.6.0
   shx: 0.3.4
-  snyk: 1.1105.0
+  snyk: 1.1109.0
 
 packages:
 
@@ -327,7 +327,7 @@ packages:
       spawn-command: 0.0.2-1
       supports-color: 8.1.1
       tree-kill: 1.2.2
-      yargs: 17.7.0
+      yargs: 17.7.1
     dev: true
 
   /continuation-local-storage/3.2.1:
@@ -855,7 +855,7 @@ packages:
       http-proxy-agent: 4.0.1
       https-proxy-agent: 5.0.1
       pac-resolver: 5.0.1
-      raw-body: 2.5.1
+      raw-body: 2.5.2
       socks-proxy-agent: 5.0.1
     transitivePeerDependencies:
       - supports-color
@@ -943,7 +943,7 @@ packages:
       async: 3.2.4
       debug: 4.3.4
       pidusage: 2.0.21
-      systeminformation: 5.17.9
+      systeminformation: 5.17.10
       tx2: 1.0.5
     transitivePeerDependencies:
       - supports-color
@@ -1023,8 +1023,8 @@ packages:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
     dev: false
 
-  /raw-body/2.5.1:
-    resolution: {integrity: sha512-qqJBtEyVgS0ZmPGdCFPWJ3FreoqvG4MVQln/kCgF7Olq95IbOp0/BWyMwbdtn4VTvkM8Y7khCQ2Xgk/tcrCXig==}
+  /raw-body/2.5.2:
+    resolution: {integrity: sha512-8zGqypfENjCIqGhgXToC8aB2r7YrBX+AQAfIPs/Mlk+BtPTztOvTS01NRW/3Eh60J+a48lt8qsCzirQ6loCVfA==}
     engines: {node: '>= 0.8'}
     dependencies:
       bytes: 3.1.2
@@ -1173,8 +1173,8 @@ packages:
     engines: {node: '>= 6.0.0', npm: '>= 3.0.0'}
     dev: false
 
-  /snyk/1.1105.0:
-    resolution: {integrity: sha512-/6udYGBIp6jfAIfyMEdEO8Nl2UDhFa+1KwgI6cEPmwOswn7Be9b0ax0buw8x7TWuG6NfjioXddgssdAoiz2nbg==}
+  /snyk/1.1109.0:
+    resolution: {integrity: sha512-sBcibkAfcq6nXr6t0GieDjdc8kQfEf429+M1VKavGfLaJPQNIqSjtOhQJ5FcZqaB/mCWa1szektkHeyAiB4m9A==}
     engines: {node: '>=12'}
     hasBin: true
     dev: true
@@ -1264,8 +1264,8 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  /systeminformation/5.17.9:
-    resolution: {integrity: sha512-inxwRLI/4qpx4o85R54/zdhNagdBGBgs0la7Vl3qBorRVKRDk0nNsDTCGzG4lOITsw1gl7LRWeG4Zsp1pC8nfg==}
+  /systeminformation/5.17.10:
+    resolution: {integrity: sha512-FUm264baeDpruTw4P50BRRmYHD39D3jkOQ0VpNIkp8CdNejQbsp4Me18jacGBc/mWSVxKdQw4wSHmcL7ERxrNg==}
     engines: {node: '>=8.0.0'}
     os: [darwin, linux, win32, freebsd, openbsd, netbsd, sunos, android]
     hasBin: true
@@ -1423,8 +1423,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /yargs/17.7.0:
-    resolution: {integrity: sha512-dwqOPg5trmrre9+v8SUo2q/hAwyKoVfu8OC1xPHKJGNdxAvPl4sKxL4vBnh3bQz/ZvvGAFeA5H3ou2kcOY8sQQ==}
+  /yargs/17.7.1:
+    resolution: {integrity: sha512-cwiTb08Xuv5fqF4AovYacTFNxk62th7LKJ6BL9IGUpTJrWoU7/7WdQGTP2SjKf1dUNBGzDd28p/Yfs/GI6JrLw==}
     engines: {node: '>=12'}
     dependencies:
       cliui: 8.0.1
