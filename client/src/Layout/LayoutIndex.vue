@@ -1,15 +1,15 @@
 <template>
-  <div class="layout">
-    <div class="layout-header">
-      <Header></Header>
+    <div class="layout">
+        <div class="layout-header">
+            <Header></Header>
+        </div>
+        <div class="layout-content">
+            <div class="layout-menu">
+                <Menu></Menu>
+            </div>
+            <Content></Content>
+        </div>
     </div>
-    <div class="layout-content">
-      <div class="layout-menu">
-        <Menu></Menu>
-      </div>
-      <Content></Content>
-    </div>
-  </div>
 </template>
 
 <script setup lang="ts">
@@ -20,21 +20,21 @@ import Content from './Content/ContentIndex.vue'
 
 <style lang="less" scoped>
 .layout {
-  &-header {
-    border-bottom: 1px solid #ccc;
-  }
-
-  &-content {
-    flex: 1;
-    height: 100vh;
-    display: flex;
-    overflow: hidden;
-
-    &-menu {
-      height: 100vh;
-      display: flex;
-      overflow: hidden;
+    &-header {
+        border-bottom: 1px solid #ccc;
     }
-  }
+
+    &-content {
+        flex: 1;
+        height: 100vh;
+        display: flex;
+        overflow: hidden;
+
+        &-menu {
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+        }
+    }
 }
 </style>

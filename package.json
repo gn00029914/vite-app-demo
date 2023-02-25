@@ -44,6 +44,6 @@
   "devDependencies": {
     "concurrently": "^7.6.0",
     "shx": "^0.3.4",
-    "snyk": "^1.1105.0"
+    "snyk": "^1.1109.0"
   }
 }
