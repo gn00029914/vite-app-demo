@@ -160,7 +160,6 @@ module.exports = {
         require('flowbite-vue'),
         require('tailwindcss-animatecss'),
         require('@tailwindcss/typography'),
-        require('@tailwindcss/aspect-ratio'),
-        require('@tailwindcss/line-clamp')
+        require('@tailwindcss/aspect-ratio')
     ]
 }
