@@ -3,6 +3,7 @@
 
 import { defineConfig, splitVendorChunkPlugin } from 'vite'
 import { resolve } from 'path'
+import { warmup } from 'vite-plugin-warmup'
 import { Plugin as importToCDN } from 'vite-plugin-cdn-import'
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import { ViteMinifyPlugin } from 'vite-plugin-minify'
@@ -53,18 +54,24 @@ export default defineConfig({
         }
     },
     plugins: [
+        // 優先由 non-blocking 方式載入
+        warmup({
+            // warm up the files and its imported JS modules recursively
+            clientFiles: ['./*.html']
+        }),
         // 解決 HMR 遺失 CSS 問題 https://github.com/vitejs/vite/issues/3033#issuecomment-1360691044
-        {
-            name: 'singleHMR',
-            handleHotUpdate({ modules }) {
-                modules.map((m) => {
-                    m.importedModules = new Set()
-                    m.importers = new Set()
-                })
+        // 如果有不同步的問題發生可改由 blocking 方式載入
+        // {
+        //     name: 'singleHMR',
+        //     handleHotUpdate({ modules }) {
+        //         modules.map((m) => {
+        //             m.importedModules = new Set()
+        //             m.importers = new Set()
+        //         })
 
-                return modules
-            }
-        },
+        //         return modules
+        //     }
+        // },
         importToCDN({
             modules: [
                 {
