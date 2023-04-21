@@ -27,7 +27,7 @@ module.exports = defineConfig({
     "prettier/prettier": [
       "error",
       {
-        'bracketSpacing': 'off',
+        'bracketSpacing': true,
       }
     ],
   },
