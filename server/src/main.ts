@@ -10,7 +10,7 @@ import Handlebars from 'handlebars';
 import fastifyCsrf from '@fastify/csrf-protection';
 import { createHmac, randomBytes } from 'crypto';
 import { fastifyHelmet } from '@fastify/helmet';
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client';
 import compression from '@fastify/compress';
 import { constants } from 'zlib';
 
@@ -36,9 +36,7 @@ async function bootstrap() {
       handlebars: Handlebars,
     },
     templates: join(__dirname, '..', 'views'),
-    defaultContext: {
-
-    }
+    defaultContext: {},
   }); // https://localhost:443/
   app.useStaticAssets({
     root: join(__dirname, '..', 'public'),
@@ -72,7 +70,7 @@ async function bootstrap() {
           // `'unsafe-inline'`,
           // 'fonts.googleapis.com', // return @font-face
           // 'unpkg.com',
-          'cdn.jsdelivr.net' // (較快)支援先從 HTTP/2 或直接連 HTTP/3 輪詢
+          'cdn.jsdelivr.net', // (較快)支援先從 HTTP/2 或直接連 HTTP/3 輪詢
         ],
         fontSrc: [
           `'self'`,
@@ -88,7 +86,7 @@ async function bootstrap() {
           // `'unsafe-hashes'`,
           // `'unsafe-inline'`,
           // 'cdn.jsdelivr.net'
-          'data:' // tailwindcss inline svg
+          'data:', // tailwindcss inline svg
         ],
         scriptSrc: [
           `'self'`,
@@ -96,7 +94,7 @@ async function bootstrap() {
           // 'esm.sh',
           // `'unsafe-hashes'`,
           // `'unsafe-inline'`,
-          'cdn.jsdelivr.net'
+          'cdn.jsdelivr.net',
           // `'unsafe-eval'`,  // deprecated
         ], // link webfonts.css return minified @font-face
         scriptSrcAttr: [
@@ -124,16 +122,16 @@ async function bootstrap() {
     },
   });
   app.enableCors(); // 開啟 server site 跨域連線資源請求
-  const prisma = new PrismaClient()
-  const allUsers = await prisma.user.findMany()
-  console.log(allUsers)
+  const prisma = new PrismaClient();
+  const allUsers = await prisma.user.findMany();
+  console.log(allUsers);
   await app.register(compression, {
     brotliOptions: {
       params: {
         [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
         [constants.BROTLI_PARAM_LGWIN]: constants.BROTLI_MAX_WINDOW_BITS,
         [constants.BROTLI_PARAM_LGBLOCK]: constants.BROTLI_MAX_INPUT_BLOCK_BITS,
-        [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY
+        [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
       },
     },
     encodings: ['br', 'deflate', 'gzip', 'identity'], // Compress replies
@@ -167,7 +165,7 @@ async function bootstrap() {
       windowBits: constants.Z_MAX_WINDOWBITS,
       level: constants.Z_BEST_COMPRESSION,
       memLevel: constants.Z_MAX_MEMLEVEL,
-      strategy: constants.Z_FIXED
+      strategy: constants.Z_FIXED,
     },
   }); // 需考慮對 server 之間的連線 https://quixdb.github.io/squash-benchmark/ https://tools.paulcalvano.com/compression.php
   await app.listen(443, '0.0.0.0');
