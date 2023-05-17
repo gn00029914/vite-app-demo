@@ -10,6 +10,11 @@ module.exports = {
         './node_modules/flowbite-vue/**/*.{js,jsx,ts,tsx}'
     ],
     theme: {
+        screens: {
+            'xs': '320px',
+            'md': '744px',
+            'xl': '1280px'
+        },
         animatedSettings: {
             animatedSpeed: 1000,
             heartBeatSpeed: 1000,

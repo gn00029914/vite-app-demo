@@ -22,7 +22,7 @@
             <!-- drawer component -->
             <div
                 id="drawer-navigation"
-                class="fixed top-0 left-0 z-40 h-screen w-80 -translate-x-full overflow-y-auto bg-white p-4 transition-transform dark:bg-gray-800"
+                class="fixed left-0 top-0 z-40 h-screen w-80 -translate-x-full overflow-y-auto bg-white p-4 transition-transform dark:bg-gray-800"
                 tabindex="-1"
                 aria-labelledby="drawer-navigation-label"
             >
@@ -37,7 +37,7 @@
                     type="button"
                     data-drawer-hide="drawer-navigation"
                     aria-controls="drawer-navigation"
-                    class="absolute top-2.5 right-2.5 inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                    class="absolute right-2.5 top-2.5 inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                     <svg
                         aria-hidden="true"
@@ -294,7 +294,7 @@
             <!-- drawer init and toggle -->
             <div class="text-center">
                 <button
-                    class="mr-2 mb-2 overflow-y-auto rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    class="mb-2 mr-2 overflow-y-auto rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     type="button"
                     data-drawer-target="drawer-top-example"
                     data-drawer-show="drawer-top-example"
@@ -335,7 +335,7 @@
                     type="button"
                     data-drawer-hide="drawer-top-example"
                     aria-controls="drawer-top-example"
-                    class="absolute top-2.5 right-2.5 inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                    class="absolute right-2.5 top-2.5 inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                     <svg
                         aria-hidden="true"
@@ -392,7 +392,7 @@
             <!-- drawer init and toggle -->
             <div class="text-center">
                 <button
-                    class="mr-2 mb-2 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    class="mb-2 mr-2 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     type="button"
                     data-drawer-target="drawer-right-example"
                     data-drawer-show="drawer-right-example"
@@ -406,7 +406,7 @@
             <!-- drawer component -->
             <div
                 id="drawer-right-example"
-                class="fixed top-0 right-0 z-40 h-screen w-80 translate-x-full overflow-y-auto bg-white p-4 transition-transform dark:bg-gray-800"
+                class="fixed right-0 top-0 z-40 h-screen w-80 translate-x-full overflow-y-auto bg-white p-4 transition-transform dark:bg-gray-800"
                 tabindex="-1"
                 aria-labelledby="drawer-right-label"
             >
@@ -433,7 +433,7 @@
                     type="button"
                     data-drawer-hide="drawer-right-example"
                     aria-controls="drawer-right-example"
-                    class="absolute top-2.5 right-2.5 inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                    class="absolute right-2.5 top-2.5 inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                     <svg
                         aria-hidden="true"
@@ -490,7 +490,7 @@
             <!-- drawer init and toggle -->
             <div class="text-center">
                 <button
-                    class="mr-2 mb-2 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    class="mb-2 mr-2 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     type="button"
                     data-drawer-target="drawer-swipe"
                     data-drawer-show="drawer-swipe"
@@ -506,7 +506,7 @@
             <!-- drawer component -->
             <div
                 id="drawer-swipe"
-                class="fixed inset-x-0 bottom-0 z-40 w-full translate-y-full overflow-y-auto rounded-t-lg border-t border-gray-200 bg-white transition-transform dark:border-gray-700 dark:bg-gray-800"
+                class="fixed inset-x-0 bottom-[60px] z-40 w-full translate-y-full overflow-y-auto rounded-t-lg border-t border-gray-200 bg-white transition-transform dark:border-gray-700 dark:bg-gray-800"
                 tabindex="-1"
                 aria-labelledby="drawer-swipe-label"
             >
@@ -515,7 +515,7 @@
                     data-drawer-toggle="drawer-swipe"
                 >
                     <span
-                        class="absolute top-3 left-1/2 h-1 w-8 -translate-x-1/2 rounded-lg bg-gray-300 dark:bg-gray-600"
+                        class="absolute left-1/2 top-3 h-1 w-8 -translate-x-1/2 rounded-lg bg-gray-300 dark:bg-gray-600"
                     ></span>
                     <h5
                         id="drawer-swipe-label"

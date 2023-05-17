@@ -61,17 +61,17 @@ export default defineConfig({
         }),
         // 解決 HMR 遺失 CSS 問題 https://github.com/vitejs/vite/issues/3033#issuecomment-1360691044
         // 如果有不同步的問題發生可改由 blocking 方式載入
-        // {
-        //     name: 'singleHMR',
-        //     handleHotUpdate({ modules }) {
-        //         modules.map((m) => {
-        //             m.importedModules = new Set()
-        //             m.importers = new Set()
-        //         })
+        {
+            name: 'singleHMR',
+            handleHotUpdate({ modules }) {
+                modules.map((m) => {
+                    m.importedModules = new Set()
+                    m.importers = new Set()
+                })
 
-        //         return modules
-        //     }
-        // },
+                return modules
+            }
+        },
         importToCDN({
             modules: [
                 {
@@ -286,9 +286,6 @@ export default defineConfig({
                 // (autoImportName) => {
                 //   console.log(autoImportName) // 先查auto-import.d.ts再看runtime log
                 // }
-                IconsResolver({
-                    prefix: 'Icon'
-                })
             ],
             dts: 'src/auto-import.d.ts', // 變更路徑需手動清除舊檔
             eslintrc: {
@@ -308,6 +305,9 @@ export default defineConfig({
             resolvers: [
                 // auto-import schema-org components
                 SchemaOrgResolver(),
+                IconsResolver({
+                    prefix: 'i'
+                }),
                 (componentName) => {
                     // console.log(componentName) // 先查components.d.ts再看runtime log
                     // where `componentName` is always CapitalCase
