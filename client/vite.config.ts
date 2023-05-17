@@ -286,9 +286,6 @@ export default defineConfig({
                 // (autoImportName) => {
                 //   console.log(autoImportName) // 先查auto-import.d.ts再看runtime log
                 // }
-                IconsResolver({
-                    prefix: 'Icon'
-                })
             ],
             dts: 'src/auto-import.d.ts', // 變更路徑需手動清除舊檔
             eslintrc: {
@@ -308,6 +305,9 @@ export default defineConfig({
             resolvers: [
                 // auto-import schema-org components
                 SchemaOrgResolver(),
+                IconsResolver({
+                    prefix: 'i'
+                }),
                 (componentName) => {
                     // console.log(componentName) // 先查components.d.ts再看runtime log
                     // where `componentName` is always CapitalCase
