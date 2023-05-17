@@ -1,1 +1,0 @@
-import{_ as e}from"./assets/main-fa2fcdc3.js";import{o as _,c as o}from"./c786c433.js";const c={};function t(a,n){return _(),o("div",null,"Home123")}const m=e(c,[["render",t],["__scopeId","data-v-325ae098"]]);export{m as default};

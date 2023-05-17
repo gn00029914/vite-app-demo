@@ -1,0 +1,1 @@
+import{_ as e}from"./assets/main-bb6d192a.js";import{o as _,c as o}from"./bb508747.js";const c={};function t(a,n){return _(),o("div",null,"Home123")}const m=e(c,[["render",t],["__scopeId","data-v-325ae098"]]);export{m as default};

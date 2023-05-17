@@ -311,25 +311,25 @@
     "file": "assets/6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwmxduz8A-4c2cab12.woff2",
     "src": "6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwmxduz8A.woff2"
   },
-  "_c786c433.js": {
-    "file": "c786c433.js"
+  "_bb508747.js": {
+    "file": "bb508747.js"
   },
   "index.css": {
-    "file": "assets/index-bc9d7468.css",
+    "file": "assets/index-45f8a589.css",
     "src": "index.css"
   },
   "index.html": {
     "css": [
-      "assets/index-bc9d7468.css"
+      "assets/index-45f8a589.css"
     ],
     "dynamicImports": [
       "node_modules/.pnpm/workbox-window@6.5.4/node_modules/workbox-window/build/workbox-window.prod.es5.mjs",
       "src/pages/HomePage.vue",
       "src/pages/AboutPage.vue"
     ],
-    "file": "assets/main-fa2fcdc3.js",
+    "file": "assets/main-bb6d192a.js",
     "imports": [
-      "_c786c433.js"
+      "_bb508747.js"
     ],
     "isEntry": true,
     "src": "index.html"
@@ -347,10 +347,10 @@
     "css": [
       "assets/HomePage-e3b0c442.css"
     ],
-    "file": "85ccb3bf.js",
+    "file": "f5475b0f.js",
     "imports": [
       "index.html",
-      "_c786c433.js"
+      "_bb508747.js"
     ],
     "isDynamicEntry": true,
     "src": "src/pages/AboutPage.vue"
@@ -363,16 +363,16 @@
     "css": [
       "assets/HomePage-e3b0c442.css"
     ],
-    "file": "c3c56528.js",
+    "file": "715b6333.js",
     "imports": [
       "index.html",
-      "_c786c433.js"
+      "_bb508747.js"
     ],
     "isDynamicEntry": true,
     "src": "src/pages/HomePage.vue"
   },
   "webfonts.css": {
-    "file": "assets/webfonts-a6fef582.css",
+    "file": "assets/webfonts-905bb062.css",
     "src": "webfonts.css"
   }
 }
