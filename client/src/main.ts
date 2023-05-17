@@ -70,42 +70,42 @@ createApp(App)
     .component('EventCounter', EventCounter)
     .mount('#app')
 
-// import { Drawer } from 'flowbite'
-// import type { DrawerOptions, DrawerInterface } from 'flowbite'
+import { Drawer } from 'flowbite'
+import type { DrawerOptions, DrawerInterface } from 'flowbite'
 
 // set the drawer menu element
-// const $targetEl: HTMLElement | null = document.getElementById('drawer-button')
-// const $buttonElement: HTMLElement | null = document.querySelector(
-//     '#drawer-hide-button'
-// )
+const $targetEl: HTMLElement | null = document.getElementById('drawer-button')
+const $buttonElement: HTMLElement | null = document.querySelector(
+    '#drawer-hide-button'
+)
 // options with default values
-// const options: DrawerOptions = {
-//     placement: 'right',
-//     backdrop: true,
-//     bodyScrolling: false,
-//     edge: true,
-//     edgeOffset: 'bottom-[60px]',
-//     backdropClasses:
-//         'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-30',
-//     onHide: () => {
-//         console.log('drawer is hidden')
-//     },
-//     onShow: () => {
-//         console.log('drawer is shown')
-//     },
-//     onToggle: () => {
-//         console.log('drawer has been toggled')
-//     }
-// }
+const options: DrawerOptions = {
+    placement: 'right',
+    backdrop: true,
+    bodyScrolling: false,
+    edge: true,
+    edgeOffset: 'bottom-[60px]',
+    backdropClasses:
+        'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-30',
+    onHide: () => {
+        console.log('drawer is hidden')
+    },
+    onShow: () => {
+        console.log('drawer is shown')
+    },
+    onToggle: () => {
+        console.log('drawer has been toggled')
+    }
+}
 
 /*
  * $targetEl: required
  * options: optional
  */
-// const drawer: DrawerInterface = new Drawer($targetEl, options)
-// $buttonElement?.addEventListener('click', () => {
-//     drawer.hide()
-//     $targetEl?.classList.remove('-translate-x-full')
-// })
+const drawer: DrawerInterface = new Drawer($targetEl, options)
+$buttonElement?.addEventListener('click', () => {
+    drawer.hide()
+    $targetEl?.classList.remove('-translate-x-full')
+})
 // show the drawer
 // drawer.show()
