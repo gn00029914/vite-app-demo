@@ -55,7 +55,7 @@ jobs:
           corepack enable
           corepack prepare pnpm@latest --activate
           pnpm config set shared-workspace-lockfile=false
-          pnpm i
+          pnpm i --no-frozen-lockfile
       # 步驟五：讀取原先的快取
       - name: Restore cached Primes
         id: cache-primes-restore
