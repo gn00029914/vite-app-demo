@@ -42,8 +42,8 @@
     "pm2": "^5.3.0"
   },
   "devDependencies": {
-    "concurrently": "^8.0.1",
+    "concurrently": "^8.1.0",
     "shx": "^0.3.4",
-    "snyk": "^1.1156.0"
+    "snyk": "^1.1176.0"
   }
 }
