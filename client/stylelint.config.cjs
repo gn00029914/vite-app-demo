@@ -18,8 +18,5 @@ module.exports = {
         'selector-class-pattern': null,
         'value-keyword-case': null
     },
-    extends: [
-        'stylelint-config-standard',
-        'stylelint-config-recommended-vue'
-    ]
+    extends: ['stylelint-config-standard', 'stylelint-config-recommended-vue']
 }

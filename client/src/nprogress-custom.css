@@ -9,6 +9,7 @@
 #nprogress .spinner {
     top: 50%;
     left: 50%;
+
     @apply -translate-x-1/2 -translate-y-1/2;
 }
 

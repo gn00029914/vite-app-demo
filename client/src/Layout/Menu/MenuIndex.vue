@@ -20,15 +20,15 @@ function toggleMenu() {
     if (
         document
             .getElementsByClassName('menu')[0]
-            .style.getPropertyValue('width') === '9vw'
+            .style.getPropertyValue('width') === '18vw'
     ) {
         document
             .getElementsByClassName('menu')[0]
-            .style.setProperty('width', '75px')
+            .style.setProperty('width', '85px')
     } else {
         document
             .getElementsByClassName('menu')[0]
-            .style.setProperty('width', '9vw')
+            .style.setProperty('width', '18vw')
     }
     // console.log(
     //     document
@@ -41,7 +41,7 @@ function toggleMenu() {
 <style lang="less" scoped>
 .menu {
     flex: 1;
-    width: 75px;
+    width: 85px;
     height: 100%;
     border-right: 1px solid #ccc;
     display: flex;

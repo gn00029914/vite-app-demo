@@ -11,9 +11,9 @@ module.exports = {
     ],
     theme: {
         screens: {
-            'xs': '320px',
-            'md': '744px',
-            'xl': '1280px'
+            xs: '320px',
+            md: '744px',
+            xl: '1280px'
         },
         animatedSettings: {
             animatedSpeed: 1000,

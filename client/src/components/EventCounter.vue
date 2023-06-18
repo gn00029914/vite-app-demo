@@ -15,6 +15,6 @@ const counter = ref(props.init || 0)
 <style scoped>
 .counter {
     border: 2px dashed skyblue;
-    padding: 5px 10px 10px 10px;
+    padding: 5px 10px 10px;
 }
 </style>
