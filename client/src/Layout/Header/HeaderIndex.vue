@@ -1,12 +1,79 @@
 <template>
-    <div class="header">
-        <nav class="header-nav px-1 py-2.5">
-            <!-- <a href="#" class="text-gray-900 hover:underline dark:text-white"
+    <div class="border-b">
+        <nav class="px-1 py-2.5">
+            <div class="flex flex-row">
+                <!-- <a href="#" class="text-gray-900 hover:underline dark:text-white"
         >Navbar |</a
       > -->
-            <p>@{{ $t('message.Home') }} | @{{ $t('message.About') }}&nbsp;</p>
+                <div class="xs:hidden flex-1"></div>
+                <p class="flex-1">
+                    @{{ $t('message.Home') }} | @{{ $t('message.About') }}&nbsp;
+                </p>
+                <select
+                    v-model="$i18n.locale"
+                    aria-label="languages"
+                    class="dark:bg-gray-700"
+                    @blur="handleChangeLanguage"
+                >
+                    <option value="zh-TW">繁體中文</option>
+                    <option value="en-US">English</option>
+                </select>
+                <flowbite-themable :theme="theme" class="">
+                    <dropdown text="Click me">
+                        <list-group>
+                            <list-group-item
+                                class="bg-primary-200 text-primary-700"
+                                :hover="hover"
+                                >Item #1</list-group-item
+                            >
+                            <list-group-item
+                                class="bg-primary-200 text-primary-700"
+                                >Item #2</list-group-item
+                            >
+                            <list-group-item
+                                class="bg-primary-200 text-primary-700"
+                                >Item #3</list-group-item
+                            >
+                        </list-group>
+                    </dropdown>
+                </flowbite-themable>
+                <!-- darkMode button -->
+                <button
+                    id="theme-toggle"
+                    type="button"
+                    class="mx-2 animate-pulse rounded-lg p-1 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+                    aria-label="darkMode"
+                    @click="darkMode"
+                >
+                    <svg
+                        id="theme-toggle-dark-icon"
+                        class="hidden h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+                        ></path>
+                    </svg>
+                    <svg
+                        id="theme-toggle-light-icon"
+                        class="hidden h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                        ></path>
+                    </svg>
+                </button>
+            </div>
+            <br />
             <!-- drawer init and show -->
-            <div class="text-center">
+            <div class="inline-block text-center">
                 <button
                     id="drawer-button"
                     class="mr-2 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -292,7 +359,7 @@
             </div>
 
             <!-- drawer init and toggle -->
-            <div class="text-center">
+            <div class="xs:invisible xs:w-0 xs:hidden inline text-center">
                 <button
                     class="mb-2 mr-2 overflow-y-auto rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     type="button"
@@ -390,7 +457,7 @@
             </div>
 
             <!-- drawer init and toggle -->
-            <div class="text-center">
+            <div class="xs:invisible xs:w-0 xs:hidden inline text-center">
                 <button
                     class="mb-2 mr-2 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     type="button"
@@ -488,7 +555,7 @@
             </div>
 
             <!-- drawer init and toggle -->
-            <div class="text-center">
+            <div class="inline text-center">
                 <button
                     class="mb-2 mr-2 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     type="button"
@@ -747,67 +814,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <p>@{{ $t('message.Home') }} | @{{ $t('message.About') }}</p> -->
-            <select
-                v-model="$i18n.locale"
-                aria-label="languages"
-                class="dark:bg-gray-700"
-                @blur="handleChangeLanguage"
-            >
-                <option value="zh-TW">繁體中文</option>
-                <option value="en-US">English</option>
-            </select>
-
-            <!-- darkMode button -->
-            <button
-                id="theme-toggle"
-                type="button"
-                class="mx-2 animate-pulse rounded-lg p-1 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-                aria-label="darkMode"
-                @click="darkMode"
-            >
-                <svg
-                    id="theme-toggle-dark-icon"
-                    class="hidden h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
-                    ></path>
-                </svg>
-                <svg
-                    id="theme-toggle-light-icon"
-                    class="hidden h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                    ></path>
-                </svg>
-            </button>
-            <flowbite-themable :theme="theme">
-                <dropdown text="Click me">
-                    <list-group>
-                        <list-group-item
-                            class="bg-primary-200 text-primary-700"
-                            :hover="hover"
-                            >Item #1</list-group-item
-                        >
-                        <list-group-item class="bg-primary-200 text-primary-700"
-                            >Item #2</list-group-item
-                        >
-                        <list-group-item class="bg-primary-200 text-primary-700"
-                            >Item #3</list-group-item
-                        >
-                    </list-group>
-                </dropdown>
-            </flowbite-themable>
         </nav>
     </div>
 </template>
@@ -854,6 +860,9 @@ const darkMode = () => {
             ?.classList.add('hidden')
         document.documentElement.classList.remove('dark')
         document.documentElement.classList.add('light')
+        document.documentElement.style.background =
+            "linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('./src/assets/lightbg.jpg') no-repeat center center"
+        document.documentElement.style.backgroundSize = 'cover'
         // document.documentElement.animate({ easing: ['ease-in'] }, 5000);
         // localStorage.theme = 'light'
     } else {
@@ -865,6 +874,9 @@ const darkMode = () => {
             ?.classList.add('hidden')
         document.documentElement.classList.remove('light')
         document.documentElement.classList.add('dark')
+        document.documentElement.style.background =
+            "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./src/assets/darkbg.jpg') no-repeat center center"
+        document.documentElement.style.backgroundSize = 'cover'
         // document.documentElement.animate({ easing: ['ease-in'] }, 5000);
         // localStorage.theme = 'dark'
     }
@@ -872,11 +884,11 @@ const darkMode = () => {
 </script>
 
 <style lang="less" scoped>
-.header {
-    border-bottom: 1px solid #ccc;
-    &-nav {
-        display: flex;
-        flex-wrap: wrap;
-    }
-}
+// .header {
+//     border-bottom: 1px solid #ccc;
+//     &-nav {
+//         display: flex;
+//         flex-wrap: wrap;
+//     }
+// }
 </style>
