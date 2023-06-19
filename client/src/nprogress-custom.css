@@ -1,9 +1,9 @@
 #nprogress .bar {
-    @apply h-1 bg-primary-500;
+    @apply h-1 bg-tertiary-500;
 }
 
 #nprogress .peg {
-    @apply shadow-primary-500 shadow-inner;
+    @apply shadow-tertiary-500 shadow-inner;
 }
 
 #nprogress .spinner {
@@ -14,5 +14,5 @@
 }
 
 #nprogress .spinner-icon {
-    @apply m-auto animate-spinBounce border-t-primary-500 border-r-transparent border-b-transparent border-l-primary-500;
+    @apply m-auto animate-spinBounce border-t-tertiary-500 border-r-transparent border-b-transparent border-l-tertiary-500;
 }

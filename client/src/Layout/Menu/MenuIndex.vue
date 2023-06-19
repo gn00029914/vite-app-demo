@@ -1,17 +1,17 @@
 <template>
-    <div class="menu">
+    <div class="menu xs:invisible xs:w-0 xs:hidden w-fit">
         <div class="menu-bar">
             Menu
             <label for="check">
                 <input id="check" type="checkbox" @click="toggleMenu" />
-                <span></span>
-                <span></span>
-                <span></span>
+                <span class="bg-gray-900 dark:bg-white"></span>
+                <span class="bg-gray-900 dark:bg-white"></span>
+                <span class="bg-gray-900 dark:bg-white"></span>
             </label>
         </div>
         <br />
-        <i-carbon-accessibility />
-        作者外出取材...
+        <i-carbon-terminal />
+        作者外出取材... =======
     </div>
 </template>
 
@@ -20,15 +20,15 @@ function toggleMenu() {
     if (
         document
             .getElementsByClassName('menu')[0]
-            .style.getPropertyValue('width') === '18vw'
+            .style.getPropertyValue('width') === '5rem'
     ) {
         document
             .getElementsByClassName('menu')[0]
-            .style.setProperty('width', '85px')
+            .style.setProperty('width', 'fit-content')
     } else {
         document
             .getElementsByClassName('menu')[0]
-            .style.setProperty('width', '18vw')
+            .style.setProperty('width', '5rem')
     }
     // console.log(
     //     document
@@ -41,7 +41,7 @@ function toggleMenu() {
 <style lang="less" scoped>
 .menu {
     flex: 1;
-    width: 85px;
+    // width: 85px;
     height: 100%;
     border-right: 1px solid #ccc;
     display: flex;
@@ -60,7 +60,7 @@ label {
 }
 
 label span {
-    background: #fff;
+    // background: #fff;
     border-radius: 10px;
     height: 2px;
     margin: 2px 0;

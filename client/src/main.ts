@@ -86,7 +86,7 @@ const options: DrawerOptions = {
     edge: true,
     edgeOffset: 'bottom-[60px]',
     backdropClasses:
-        'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-30',
+        'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40',
     onHide: () => {
         console.log('drawer is hidden')
     },

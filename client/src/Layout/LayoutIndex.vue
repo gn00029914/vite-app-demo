@@ -1,9 +1,11 @@
 <template>
     <div class="layout">
-        <div class="layout-header">
+        <div
+            class="from-primary-500/70 to-secondary-500/70 dark:from-tertiary-500/70 dark:to-quaternary-500/70 bg-gradient-to-r"
+        >
             <Header></Header>
         </div>
-        <div class="layout-content">
+        <div class="layout-content mb-16">
             <div class="layout-menu">
                 <Menu></Menu>
             </div>
@@ -20,18 +22,14 @@ import Content from './Content/ContentIndex.vue'
 
 <style lang="less" scoped>
 .layout {
-    &-header {
-        border-bottom: 1px solid #ccc;
-    }
-
     &-content {
         flex: 1;
-        height: 100vh;
+        // height: 50%;
         display: flex;
         overflow: hidden;
 
         &-menu {
-            height: 100vh;
+            // height: 100vh;
             display: flex;
             overflow: hidden;
         }
