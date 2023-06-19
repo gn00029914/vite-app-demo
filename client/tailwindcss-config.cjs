@@ -24,10 +24,10 @@ module.exports = {
             classes: ['bounce', 'heartBeat']
         },
         extend: {
-            backgroundImage: {
-                'lightbg': "url('./assets/lightbg.jpg')",
-                'darkbg': "url('./assets/darkbg.jpg')",
-            },
+            // backgroundImage: {
+            //     'lightbg': "url('./assets/lightbg.jpg')",
+            //     'darkbg': "url('./assets/darkbg.jpg')",
+            // },
             animation: {
                 spinBounce: 'spinBounce 0.96s infinite'
             },

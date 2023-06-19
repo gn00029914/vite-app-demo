@@ -861,7 +861,7 @@ const darkMode = () => {
         document.documentElement.classList.remove('dark')
         document.documentElement.classList.add('light')
         document.documentElement.style.background =
-            "linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('./src/assets/lightbg.jpg') no-repeat center center"
+            "linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('./lightbg.jpg') no-repeat center center"
         document.documentElement.style.backgroundSize = 'cover'
         // document.documentElement.animate({ easing: ['ease-in'] }, 5000);
         // localStorage.theme = 'light'
@@ -875,7 +875,7 @@ const darkMode = () => {
         document.documentElement.classList.remove('light')
         document.documentElement.classList.add('dark')
         document.documentElement.style.background =
-            "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./src/assets/darkbg.jpg') no-repeat center center"
+            "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./darkbg.jpg') no-repeat center center"
         document.documentElement.style.backgroundSize = 'cover'
         // document.documentElement.animate({ easing: ['ease-in'] }, 5000);
         // localStorage.theme = 'dark'
