@@ -1,0 +1,1 @@
+import{_ as e}from"./assets/main-e4f6a192.js";import{o as _,c as o}from"./7511f839.js";const t={};function c(n,a){return _(),o("div",null,"About")}const d=e(t,[["render",c],["__scopeId","data-v-765fd751"]]);export{d as default};
