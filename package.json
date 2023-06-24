@@ -29,7 +29,7 @@
     "pm2stop": "pnpm pm2 stop all",
     "pm2cls": "concurrently \"pnpm pm2stop\" \"pnpm pm2 delete all\" \"pnpm pm2 flush\"",
     "vgi": "pnpm dlx vue-pwa-asset-generator -a .\\client\\public\\vite.svg -o .\\client\\public\\ --no-manifest",
-    "sstcs": "pnpm exec shx cat server/https/fastify.key server/https/fastify.cert > client/node_modules/.vite/basic-ssl/_cert.pem",
+    "sstcs": "pnpm shx mkdir -p client/node_modules/.vite/basic-ssl && pnpm exec shx cat server/https/fastify.key server/https/fastify.cert > client/node_modules/.vite/basic-ssl/_cert.pem",
     "npreg": "pnpm npri && concurrently \"pnpm shx cp ./server/.env.development ./server/.env\" \"pnpm shx sed -i \"s/postgresql/mysql/g\" server/prisma/schema.prisma\" && pnpm nppul && pnpm npg",
     "st": "pnpm snyk test --all-projects"
   },
@@ -42,8 +42,8 @@
     "pm2": "^5.3.0"
   },
   "devDependencies": {
-    "concurrently": "^8.1.0",
+    "concurrently": "^8.2.0",
     "shx": "^0.3.4",
-    "snyk": "^1.1176.0"
+    "snyk": "^1.1182.0"
   }
 }

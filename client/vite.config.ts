@@ -4,7 +4,6 @@
 import { defineConfig, splitVendorChunkPlugin } from 'vite'
 import { resolve } from 'path'
 import { warmup } from 'vite-plugin-warmup'
-import { Plugin as importToCDN } from 'vite-plugin-cdn-import'
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import { ViteMinifyPlugin } from 'vite-plugin-minify'
 import { VitePWA } from 'vite-plugin-pwa'
@@ -72,16 +71,6 @@ export default defineConfig({
                 return modules
             }
         },
-        importToCDN({
-            modules: [
-                {
-                    name: 'accessible-nprogress',
-                    var: 'NProgress',
-                    path: 'dist/accessible-nprogress.min.js',
-                    css: 'dist/accessible-nprogress.min.css'
-                }
-            ]
-        }),
         splitVendorChunkPlugin(),
         basicSsl(),
         process.env.NPM_ENV === 'development' ? false : ViteMinifyPlugin({}),
@@ -290,7 +279,7 @@ export default defineConfig({
             dts: 'src/auto-import.d.ts', // 變更路徑需手動清除舊檔
             eslintrc: {
                 /* 不能在 pm2 runtime 開啟, 會造成語法檢查物件動態變更語法檢查條件且不斷觸發 HMR,
-                只能在非輪詢的單元環境開發時更新 .eslintrc-auto-import.json 配置和提交前才能手動開啟 */
+                        只能在非輪詢的單元環境開發時更新 .eslintrc-auto-import.json 配置和提交前才能手動開啟 */
                 enabled: false
             }
         }),

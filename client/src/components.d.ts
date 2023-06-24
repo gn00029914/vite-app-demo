@@ -16,7 +16,7 @@ declare module 'vue' {
         HeaderIndex: typeof import('./Layout/Header/HeaderIndex.vue')['default']
         HelloWorld: typeof import('./components/HelloWorld.vue')['default']
         HomePage: typeof import('./pages/HomePage.vue')['default']
-        ICarbonAccessibility: typeof import('~icons/carbon/accessibility')['default']
+        ICarbonTerminal: typeof import('~icons/carbon/terminal')['default']
         LayoutIndex: typeof import('./Layout/LayoutIndex.vue')['default']
         ListGroup: typeof import('flowbite-vue')['ListGroup']
         ListGroupItem: typeof import('flowbite-vue')['ListGroupItem']

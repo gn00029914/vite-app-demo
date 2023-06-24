@@ -1,5 +1,5 @@
 import './style.css'
-// import '../node_modules/accessible-nprogress/dist/accessible-nprogress.min.css' // 轉移到 index.html 由 CDN 引入
+import '../node_modules/accessible-nprogress/dist/accessible-nprogress.min.css' // 不建議直接由 CDN 引入, 待完成專案部署後再由 CDN 重新導向
 import './nprogress-custom.css'
 
 import 'vite/modulepreload-polyfill'
@@ -86,7 +86,7 @@ const options: DrawerOptions = {
     edge: true,
     edgeOffset: 'bottom-[60px]',
     backdropClasses:
-        'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-30',
+        'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40',
     onHide: () => {
         console.log('drawer is hidden')
     },

@@ -11,9 +11,8 @@ module.exports = {
     ],
     theme: {
         screens: {
-            'xs': '320px',
-            'md': '744px',
-            'xl': '1280px'
+            md: { max: '1366px' }, // iPad Pro (5th generation)
+            xs: { max: '926px' } // iPhone 14 Pro Max
         },
         animatedSettings: {
             animatedSpeed: 1000,
@@ -25,6 +24,10 @@ module.exports = {
             classes: ['bounce', 'heartBeat']
         },
         extend: {
+            // backgroundImage: {
+            //     'lightbg': "url('./assets/lightbg.jpg')",
+            //     'darkbg': "url('./assets/darkbg.jpg')",
+            // },
             animation: {
                 spinBounce: 'spinBounce 0.96s infinite'
             },
@@ -78,18 +81,17 @@ module.exports = {
                 easeInOutBack: 'cubic-bezier(0.68, -0.6, 0.32, 1.6)'
             },
             colors: {
-                // rose
                 primary: {
-                    50: '#fff1f2',
-                    100: '#ffe4e6',
-                    200: '#fecdd3',
-                    300: '#fda4af',
-                    400: '#fb7185',
-                    500: '#f43f5e',
-                    600: '#e11d48',
-                    700: '#be123c',
-                    800: '#9f1239',
-                    900: '#881337'
+                    500: '#00F9FF'
+                },
+                secondary: {
+                    500: '#7AFF00'
+                },
+                tertiary: {
+                    500: '#FF0600'
+                },
+                quaternary: {
+                    500: '#8500FF'
                 }
 
                 // pink
