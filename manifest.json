@@ -335,8 +335,8 @@
     "file": "assets/6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwmxduz8A-4c2cab12.woff2",
     "src": "6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwmxduz8A.woff2"
   },
-  "_7511f839.js": {
-    "file": "7511f839.js"
+  "_7a6cd4ff.js": {
+    "file": "7a6cd4ff.js"
   },
   "index.css": {
     "file": "assets/index-57503f7c.css",
@@ -351,9 +351,9 @@
       "src/pages/HomePage.vue",
       "src/pages/AboutPage.vue"
     ],
-    "file": "assets/main-806dccc9.js",
+    "file": "assets/main-fff4d15d.js",
     "imports": [
-      "_7511f839.js"
+      "_7a6cd4ff.js"
     ],
     "isEntry": true,
     "src": "index.html"
@@ -371,10 +371,10 @@
     "css": [
       "assets/HomePage-e3b0c442.css"
     ],
-    "file": "114608cd.js",
+    "file": "e2e3e6b7.js",
     "imports": [
       "index.html",
-      "_7511f839.js"
+      "_7a6cd4ff.js"
     ],
     "isDynamicEntry": true,
     "src": "src/pages/AboutPage.vue"
@@ -387,16 +387,16 @@
     "css": [
       "assets/HomePage-e3b0c442.css"
     ],
-    "file": "323fd0a5.js",
+    "file": "7b98c0d2.js",
     "imports": [
       "index.html",
-      "_7511f839.js"
+      "_7a6cd4ff.js"
     ],
     "isDynamicEntry": true,
     "src": "src/pages/HomePage.vue"
   },
   "webfonts.css": {
-    "file": "assets/webfonts-997962fa.css",
+    "file": "assets/webfonts-437cb5ff.css",
     "src": "webfonts.css"
   }
 }
