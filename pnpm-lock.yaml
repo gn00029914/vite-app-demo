@@ -17,8 +17,8 @@ devDependencies:
     specifier: ^0.3.4
     version: 0.3.4
   snyk:
-    specifier: ^1.1184.0
-    version: 1.1184.0
+    specifier: ^1.1185.0
+    version: 1.1185.0
 
 packages:
 
@@ -238,7 +238,7 @@ packages:
     resolution: {integrity: sha512-x1FCFnFifvYDDzTaLII71vG5uvDwgtmDTEVWAxrgeiR8VjMONcCXJx7E+USjDtHlwFmt9MysbqgF9b9Vjr6w+w==}
     engines: {node: '>=4'}
     dependencies:
-      tslib: 2.5.3
+      tslib: 2.6.0
     dev: false
 
   /async-listener@0.6.10:
@@ -1083,7 +1083,7 @@ packages:
       async: 3.2.4
       debug: 4.3.4
       pidusage: 2.0.21
-      systeminformation: 5.18.4
+      systeminformation: 5.18.5
       tx2: 1.0.5
     transitivePeerDependencies:
       - supports-color
@@ -1250,7 +1250,7 @@ packages:
   /rxjs@7.8.1:
     resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
     dependencies:
-      tslib: 2.5.3
+      tslib: 2.6.0
     dev: true
 
   /safe-buffer@5.2.1:
@@ -1339,8 +1339,8 @@ packages:
     engines: {node: '>= 6.0.0', npm: '>= 3.0.0'}
     dev: false
 
-  /snyk@1.1184.0:
-    resolution: {integrity: sha512-UtvKyXQLfIsDDpjfgBXU3aiEP5JycOd2HVm6W3wCC5QBTvIQRbYG4y66xlZ7bhCWybOyktHsDgrfBNYE51Etig==}
+  /snyk@1.1185.0:
+    resolution: {integrity: sha512-fV5UgDSnXa/JliSeR2nzPopdTLLO0g20sEqOSo0ZeMSLcAoh2teHZ4eHgGEej0IwYx6Ne/z17sKEwm5nbuAaIA==}
     engines: {node: '>=12'}
     hasBin: true
     requiresBuild: true
@@ -1435,8 +1435,8 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  /systeminformation@5.18.4:
-    resolution: {integrity: sha512-x1MHqHooJ2n9fmQRngH5TdSk/BcPAPLBBBmS7BSTkALRT56RlgiiNPP7HKoNu2SIFXSG4nPfi1gWh8ASmHPCrA==}
+  /systeminformation@5.18.5:
+    resolution: {integrity: sha512-es2jgMdpjNv9B/sQc0afGlnS2ip7/Nzlo9hAgkaq22NZftQuqHTnf/CuBadzOwl/DZB2aCTLDtzw83nAnT2owg==}
     engines: {node: '>=8.0.0'}
     os: [darwin, linux, win32, freebsd, openbsd, netbsd, sunos, android]
     hasBin: true
@@ -1468,8 +1468,8 @@ packages:
     resolution: {integrity: sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==}
     dev: false
 
-  /tslib@2.5.3:
-    resolution: {integrity: sha512-mSxlJJwl3BMEQCUNnxXBU9jP4JBktcEGhURcPR6VQVlnP0FdDEsIaz0C35dXNGLyRfrATNofF0F5p2KPxQgB+w==}
+  /tslib@2.6.0:
+    resolution: {integrity: sha512-7At1WUettjcSRHXCyYtTselblcHl9PJFFVKiCAy/bY97+BPZXSQ2wbq0P9s8tK2G7dFQfNnlJnPAiArVBVBsfA==}
 
   /tv4@1.3.0:
     resolution: {integrity: sha512-afizzfpJgvPr+eDkREK4MxJ/+r8nEEHcmitwgnPUqpaP+FpwQyadnxNoSACbgc/b1LsZYtODGoPiFxQrgJgjvw==}

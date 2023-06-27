@@ -3,6 +3,7 @@
 
 import { defineConfig, splitVendorChunkPlugin } from 'vite'
 import { resolve } from 'path'
+import { cdn } from 'vite-plugin-cdn2'
 import { warmup } from 'vite-plugin-warmup'
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import { ViteMinifyPlugin } from 'vite-plugin-minify'
@@ -53,6 +54,7 @@ export default defineConfig({
         }
     },
     plugins: [
+        cdn(),
         // 優先由 non-blocking 方式載入
         warmup({
             // warm up the files and its imported JS modules recursively

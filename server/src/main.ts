@@ -70,7 +70,7 @@ async function bootstrap() {
           // `'unsafe-inline'`,
           // 'fonts.googleapis.com', // return @font-face
           // 'unpkg.com',
-          // 'cdn.jsdelivr.net', // (較快)支援先從 HTTP/2 或直接連 HTTP/3 輪詢, 建議完整專案部署後再由 CDN 重新導向
+          'cdn.jsdelivr.net', // (較快)支援先從 HTTP/2 或直接連 HTTP/3 輪詢, 建議完整專案部署後再由 CDN 重新導向
         ],
         fontSrc: [
           `'self'`,
