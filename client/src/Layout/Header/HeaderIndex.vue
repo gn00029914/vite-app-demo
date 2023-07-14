@@ -884,7 +884,7 @@ const darkMode = () => {
 }
 // import { useGeolocation } from '@vueuse/core'
 // import { useFetch } from '@vueuse/core'
-let { coords } = useGeolocation({ enableHighAccuracy: true })
+const { coords } = useGeolocation({ enableHighAccuracy: true })
 function hour24() {
     return !isNaN(
         parseFloat(
@@ -922,120 +922,25 @@ function hour24() {
               })
               .slice(0, -1)
 }
-// let aqi = ref()
-// // 定義一個接口，描述jsonp函數的參數類型
-// interface JsonpOptions {
-//     url: string // 請求的url
-//     params: Record<string, unknown> // 請求的參數
-//     callback: (data: unknown) => void // 回調函數
-// }
 
-// // 封裝一個function jsonp({ url, params, callback })
-// function jsonp({ url, params, callback }: JsonpOptions) {
-//     // 創建一個script標籤
-//     const script = document.createElement('script')
-//     // 生成一個隨機的回調函數名稱
-//     const cbName = 'jsonp_' + Math.random().toString(36).substr(2)
-//     // 將回調函數掛載到window對象上
-//     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-//     ;(window as any)[cbName] = function (data: unknown) {
-//         // 執行回調函數
-//         callback(data)
-//         // 刪除script標籤
-//         document.body.removeChild(script)
-//         // 刪除window上的回調函數
-//         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-//         delete (window as any)[cbName]
-//     }
-//     // 將參數對象轉換為查詢字符串
-//     const queryStr = Object.keys(params)
-//         .map((key) => `${key}=${params[key]}`)
-//         .join('&')
-//     // 設置script的src屬性，拼接url和查詢字符串，並添加回調函數名稱
-//     script.src = `${url}?${queryStr}&callback=${cbName}`
-//     // 將script插入到文檔中
-//     document.body.appendChild(script)
-// }
-let aqi = ref()
+const aqi = ref()
 onBeforeMount(() => {
     setTimeout(() => {
-        // let options = {
-        //     enableHighAccuracy: true,
-        //     timeout: 4500,
-        //     maximumAge: 0
-        // }
-
-        // // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        // function success(pos: { coords: any }) {
-        //     var crd = pos.coords
-
-        //     console.log('Your current position is:')
-        //     console.log('Latitude : ' + crd.latitude)
-        //     console.log('Longitude: ' + crd.longitude)
-        //     console.log('More or less ' + crd.accuracy + ' meters.')
-        // }
-
-        // // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        // function error(_positionError: any) {
-        //     console.warn(
-        //         'ERROR(' + _positionError.code + '): ' + _positionError.message
-        //     )
-        // }
-
-        // navigator.geolocation.getCurrentPosition(success, error, options)
-
-        // let url = ref(
-        //     '/aqi?latitude=' +
-        //         coords.value.latitude +
-        //         '&longitude=' +
-        //         coords.value.longitude +
-        //         '&hourly=us_aqi' +
-        //         '&timezone=' +
-        //         Intl.DateTimeFormat().resolvedOptions().timeZone
-        // )
-        // let { data, execute } = useFetch(
-        //     url,
-        //     { method: 'GET' },
-        //     { immediate: false, refetch: true }
-        // ).json()
-        // console.log(
-        //     coords.value.latitude,
-        //     coords.value.longitude,
-        //     locatedAt.value
-        // )
-        // watch(data, (value) => {
-        //     console.log(value)
-        //     console.log(value.hourly.us_aqi[hour24.value])
-        //     aqi.value = ref(value.hourly.us_aqi[hour24.value])
-        //     console.log(aqi.value)
-        // })
-        // execute()
-        // 定義一個接口，描述jsonp函數的參數類型
+        // 定義一個介面，描述fetch函數的參數類型
         interface FetchOptions {
             url: string // 請求的url
             params: Record<string, unknown> // 請求的參數
         }
         const refetch = ref(true)
-        // const toggleRefetch = useToggle(refetch)
         // 封裝一個function fetchAQI({ url, params })
         function fetchAQI({ url, params }: FetchOptions) {
-            // 將參數對象轉換為查詢字符串
+            // 將參數對象轉換為查詢字串
             const queryStr = Object.keys(params)
                 .map((key) => `${key}=${params[key]}`)
                 .join('&')
-            // 設置script的src屬性，拼接url和查詢字符串，並添加回調函數名稱
+            // 設置fetchURL，拼接url和查詢字串，並添加回調函數名稱
             const fetchURL = `${url}?${queryStr}`
-            // const url = ref('https://air-quality-api.open-meteo.com/v1/air-quality')
-            const {
-                data
-                // error,
-                // abort,
-                // statusCode,
-                // isFetching,
-                // isFinished,
-                // canAbort,
-                // execute
-            } = useFetch(fetchURL, { refetch }).get()
+            const { data } = useFetch(fetchURL, { refetch }).get()
             aqi.value = computed(() => {
                 try {
                     return JSON.parse(data.value as string).hourly.us_aqi[
@@ -1048,7 +953,6 @@ onBeforeMount(() => {
         }
         let oldHour: string
         let newHour: string
-        // console.log(hour24())
         newHour = hour24()
         oldHour = newHour
         setInterval(() => {
@@ -1069,24 +973,6 @@ onBeforeMount(() => {
                 })
             }
         }, 1000)
-        // // 定義一個響應式的數組，用於存儲用戶數據
-        // // let users = ref<unknown[]>([])
-        // // 調用function jsonp({ url, params, callback })
-        // jsonp({
-        //     url: 'https://air-quality-api.open-meteo.com/v1/air-quality', // 請求的url
-        //     params: {
-        //         latitude: coords.value.latitude,
-        //         longitude: coords.value.longitude,
-        //         hourly: 'us_aqi',
-        //         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
-        //     }, // 請求的參數
-        //     callback: function (data: unknown) {
-        //         // 回調函數，處理服務器返回的數據
-        //         // users.value = data // 將數據賦值給users
-        //         console.log('jsonp', data) // 打印數據到控制台
-        //     }
-        // })
-        // 調用function fetchAQI({ url, params })
         fetchAQI({
             url: 'https://air-quality-api.open-meteo.com/v1/air-quality', // 請求的url
             params: {
@@ -1097,8 +983,6 @@ onBeforeMount(() => {
             } // 請求的參數
         })
     }, 4500)
-    // console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)
-    // console.log(hour24.value)
 })
 </script>
 
