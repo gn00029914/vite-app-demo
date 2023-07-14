@@ -10,7 +10,7 @@ import Handlebars from 'handlebars';
 import fastifyCsrf from '@fastify/csrf-protection';
 import { createHmac, randomBytes } from 'crypto';
 import { fastifyHelmet } from '@fastify/helmet';
-import proxy from '@fastify/http-proxy';
+// import proxy from '@fastify/http-proxy';
 import { PrismaClient } from '@prisma/client';
 import compression from '@fastify/compress';
 import { constants } from 'zlib';

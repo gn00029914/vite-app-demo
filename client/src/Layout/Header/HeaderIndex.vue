@@ -884,9 +884,9 @@ const darkMode = () => {
 }
 // import { useGeolocation } from '@vueuse/core'
 // import { useFetch } from '@vueuse/core'
-let { coords, locatedAt } = useGeolocation({ enableHighAccuracy: true })
-let hour24 = ref(
-    !isNaN(
+let { coords } = useGeolocation({ enableHighAccuracy: true })
+function hour24() {
+    return !isNaN(
         parseFloat(
             new Date().toLocaleString(
                 Intl.DateTimeFormat().resolvedOptions().locale,
@@ -921,7 +921,7 @@ let hour24 = ref(
                   hour: 'numeric'
               })
               .slice(0, -1)
-)
+}
 // let aqi = ref()
 // // 定義一個接口，描述jsonp函數的參數類型
 // interface JsonpOptions {
@@ -1016,7 +1016,7 @@ onBeforeMount(() => {
             params: Record<string, unknown> // 請求的參數
         }
         const refetch = ref(true)
-        const toggleRefetch = useToggle(refetch)
+        // const toggleRefetch = useToggle(refetch)
         // 封裝一個function fetchAQI({ url, params })
         function fetchAQI({ url, params }: FetchOptions) {
             // 將參數對象轉換為查詢字符串
@@ -1039,45 +1039,34 @@ onBeforeMount(() => {
             aqi.value = computed(() => {
                 try {
                     return JSON.parse(data.value as string).hourly.us_aqi[
-                        hour24.value
+                        hour24()
                     ]
                 } catch (e) {
                     return null
                 }
             })
         }
-        // 調用function fetchAQI({ url, params })
-        fetchAQI({
-            url: 'https://air-quality-api.open-meteo.com/v1/air-quality', // 請求的url
-            params: {
-                latitude: coords.value.latitude,
-                longitude: coords.value.longitude,
-                hourly: 'us_aqi',
-                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
-            } // 請求的參數
-        })
-
         let oldHour: string
         let newHour: string
-        newHour = new Date().toLocaleString(
-            Intl.DateTimeFormat().resolvedOptions().locale,
-            {
-                hour: 'numeric'
-            }
-        )
+        // console.log(hour24())
+        newHour = hour24()
         oldHour = newHour
         setInterval(() => {
             // 更新newHour的值
-            newHour = new Date().toLocaleString(
-                Intl.DateTimeFormat().resolvedOptions().locale,
-                {
-                    hour: 'numeric'
-                }
-            )
+            newHour = hour24()
             // 比對新舊小時數
             if (oldHour != newHour) {
                 oldHour = newHour
-                toggleRefetch()
+                fetchAQI({
+                    url: 'https://air-quality-api.open-meteo.com/v1/air-quality', // 請求的url
+                    params: {
+                        latitude: coords.value.latitude,
+                        longitude: coords.value.longitude,
+                        hourly: 'us_aqi',
+                        timezone:
+                            Intl.DateTimeFormat().resolvedOptions().timeZone
+                    } // 請求的參數
+                })
             }
         }, 1000)
         // // 定義一個響應式的數組，用於存儲用戶數據
@@ -1097,6 +1086,16 @@ onBeforeMount(() => {
         //         console.log('jsonp', data) // 打印數據到控制台
         //     }
         // })
+        // 調用function fetchAQI({ url, params })
+        fetchAQI({
+            url: 'https://air-quality-api.open-meteo.com/v1/air-quality', // 請求的url
+            params: {
+                latitude: coords.value.latitude,
+                longitude: coords.value.longitude,
+                hourly: 'us_aqi',
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+            } // 請求的參數
+        })
     }, 4500)
     // console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)
     // console.log(hour24.value)
