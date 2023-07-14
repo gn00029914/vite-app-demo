@@ -71,9 +71,6 @@
     "typescript": "^5.1.6",
     "webpack": "^5.88.1"
   },
-  "peerDependencies": {
-    "@fastify/view": "^7.0.0"
-  },
   "jest": {
     "moduleFileExtensions": [
       "js",

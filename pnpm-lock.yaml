@@ -4,27 +4,21 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-importers:
+dependencies:
+  pm2:
+    specifier: ^5.3.0
+    version: 5.3.0
 
-  .:
-    dependencies:
-      pm2:
-        specifier: ^5.3.0
-        version: 5.3.0
-    devDependencies:
-      concurrently:
-        specifier: ^8.2.0
-        version: 8.2.0
-      shx:
-        specifier: ^0.3.4
-        version: 0.3.4
-      snyk:
-        specifier: ^1.1189.0
-        version: 1.1189.0
-
-  client: {}
-
-  server: {}
+devDependencies:
+  concurrently:
+    specifier: ^8.2.0
+    version: 8.2.0
+  shx:
+    specifier: ^0.3.4
+    version: 0.3.4
+  snyk:
+    specifier: ^1.1189.0
+    version: 1.1189.0
 
 packages:
 
