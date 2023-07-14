@@ -10,6 +10,7 @@ import Handlebars from 'handlebars';
 import fastifyCsrf from '@fastify/csrf-protection';
 import { createHmac, randomBytes } from 'crypto';
 import { fastifyHelmet } from '@fastify/helmet';
+import proxy from '@fastify/http-proxy';
 import { PrismaClient } from '@prisma/client';
 import compression from '@fastify/compress';
 import { constants } from 'zlib';
@@ -60,7 +61,8 @@ async function bootstrap() {
           // "'nonce-" + nonce + "'",
           // `'unsafe-hashes'`,
           // `'unsafe-inline'`,
-          // 'unpkg.com'
+          // 'unpkg.com',
+          'air-quality-api.open-meteo.com',
         ],
         styleSrc: [
           `'self'`,
@@ -122,6 +124,13 @@ async function bootstrap() {
     },
   });
   app.enableCors(); // 開啟 server site 跨域連線資源請求
+  // app.register(proxy, {
+  //   upstream: 'https://air-quality-api.open-meteo.com',
+  //   prefix: '/aqi',
+  //   rewritePrefix: '/v1/air-quality',
+  //   http2: false,
+  //   httpMethods: ['GET'],
+  // });
   const prisma = new PrismaClient();
   const allUsers = await prisma.user.findMany();
   console.log(allUsers);
