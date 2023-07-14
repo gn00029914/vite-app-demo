@@ -3,7 +3,6 @@
 
 import { defineConfig, splitVendorChunkPlugin } from 'vite'
 import { resolve } from 'path'
-import { cdn } from 'vite-plugin-cdn2'
 import { warmup } from 'vite-plugin-warmup'
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import { ViteMinifyPlugin } from 'vite-plugin-minify'
@@ -54,7 +53,6 @@ export default defineConfig({
         }
     },
     plugins: [
-        cdn(),
         // 優先由 non-blocking 方式載入
         warmup({
             // warm up the files and its imported JS modules recursively
@@ -66,7 +64,7 @@ export default defineConfig({
             name: 'singleHMR',
             handleHotUpdate({ modules }) {
                 modules.map((m) => {
-                    m.importedModules = new Set()
+                    // m.importedModules = new Set() // vite v4.4.0 具有修正機制故交由框架隱式轉換 https://github.com/vitejs/vite/pull/13024
                     m.importers = new Set()
                 })
 
@@ -396,7 +394,15 @@ export default defineConfig({
         headers: {
             // 'content-encoding': 'br, deflate, gzip, identity', // Firefox 不支援
             'accept-encoding': 'br, deflate, gzip, identity'
+            // 'content-type': 'X-Content-Type-Options: nosniff'
         }
+        // proxy: {
+        //     '/aqi': {
+        //         target: 'https://air-quality-api.open-meteo.com',
+        //         changeOrigin: true,
+        //         rewrite: (path) => path.replace(/^\/aqi/, '/v1/air-quality')
+        //     }
+        // }
     },
     test: {
         coverage: {
