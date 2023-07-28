@@ -11,9 +11,9 @@ module.exports = {
     ],
     theme: {
         screens: {
-            md: { max: '1366px' }, // iPad Pro (5th generation)
-            xs: { max: '926px' } // iPhone 14 Pro Max
-        },
+            md: { max: '1366px' }, // Apple iPad Pro 12.9" (2020)
+            xs: { max: '932px' } // Apple iPhone 14 Pro Max (2022)
+        }, // https://yesviz.com/devices.php
         animatedSettings: {
             animatedSpeed: 1000,
             heartBeatSpeed: 1000,

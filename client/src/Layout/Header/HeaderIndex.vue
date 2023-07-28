@@ -882,47 +882,11 @@ const darkMode = () => {
         // localStorage.theme = 'dark'
     }
 }
+/* 
 // import { useGeolocation } from '@vueuse/core'
 // import { useFetch } from '@vueuse/core'
+ */
 const { coords } = useGeolocation({ enableHighAccuracy: true })
-function hour24() {
-    return !isNaN(
-        parseFloat(
-            new Date().toLocaleString(
-                Intl.DateTimeFormat().resolvedOptions().locale,
-                {
-                    hour12: false,
-                    hour: 'numeric'
-                }
-            )
-        )
-    ) &&
-        isFinite(
-            Number(
-                new Date().toLocaleString(
-                    Intl.DateTimeFormat().resolvedOptions().locale,
-                    {
-                        hour12: false,
-                        hour: 'numeric'
-                    }
-                )
-            )
-        )
-        ? new Date().toLocaleString(
-              Intl.DateTimeFormat().resolvedOptions().locale,
-              {
-                  hour12: false,
-                  hour: 'numeric'
-              }
-          )
-        : new Date()
-              .toLocaleString(Intl.DateTimeFormat().resolvedOptions().locale, {
-                  hour12: false,
-                  hour: 'numeric'
-              })
-              .slice(0, -1)
-}
-
 const aqi = ref()
 onBeforeMount(() => {
     setTimeout(() => {
@@ -932,6 +896,9 @@ onBeforeMount(() => {
             params: Record<string, unknown> // 請求的參數
         }
         const refetch = ref(true)
+        function hour24() {
+            return new Date().getHours().toString()
+        }
         // 封裝一個function fetchAQI({ url, params })
         function fetchAQI({ url, params }: FetchOptions) {
             // 將參數對象轉換為查詢字串
