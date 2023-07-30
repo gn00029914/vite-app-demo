@@ -61,7 +61,16 @@ const router = createRouter({
     routes
 })
 
-NProgress.configure({ easing: 'ease', speed: 1200 }).start().done()
+NProgress.configure({
+    easing: 'ease',
+    speed: 1200,
+    showSpinner: window.matchMedia(`(prefers-reduced-motion: reduce)`).matches
+        ? false
+        : true
+})
+    .start()
+    .done()
+
 createApp(App)
     .use(i18n)
     .use(head)
