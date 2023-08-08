@@ -439,7 +439,7 @@ export default defineConfig({
     },
     test: {
         coverage: {
-            provider: 'c8',
+            provider: 'v8',
             reporter: ['html', 'json', 'text']
         },
         environment: 'happy-dom', // or edge-runtime ???
