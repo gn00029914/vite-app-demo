@@ -3,5 +3,8 @@
     "files.eol": "\n"
   },
   "files.eol": "auto",
-  "findUnusedExports.detectCircularImports": true
+  "findUnusedExports.detectCircularImports": true,
+  "typescript.preferences.autoImportFileExcludePatterns": [
+    "vue-router"
+  ]
 }

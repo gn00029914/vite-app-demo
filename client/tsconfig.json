@@ -22,10 +22,18 @@
             "vitest/globals",
             "vite-plugin-pwa/client",
             "@intlify/unplugin-vue-i18n/messages",
-            "unplugin-icons/types/vue"
+            "unplugin-icons/types/vue",
+            "vite-plugin-pages/client",
+            "vite-plugin-vue-layouts/client"
         ]
     },
-    "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.d.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue",
+        "typed-router.d.ts"
+    ],
     "references": [
         {
             "path": "./tsconfig.node.json"
