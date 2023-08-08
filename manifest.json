@@ -335,25 +335,30 @@
     "file": "assets/6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwmxduz8A-4c2cab12.woff2",
     "src": "6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwmxduz8A.woff2"
   },
-  "_40d90ab4.js": {
-    "file": "40d90ab4.js"
+  "_39ab9a0c.js": {
+    "file": "39ab9a0c.js"
   },
   "index.css": {
-    "file": "assets/index-2418884a.css",
+    "file": "assets/index-5335ee25.css",
     "src": "index.css"
   },
   "index.html": {
     "css": [
-      "assets/index-2418884a.css"
+      "assets/index-5335ee25.css"
     ],
     "dynamicImports": [
       "node_modules/.pnpm/workbox-window@7.0.0/node_modules/workbox-window/build/workbox-window.prod.es5.mjs",
+      "src/pages/AboutPage.vue",
+      "src/pages/HomePage.vue",
+      "src/Layout/Header/HeaderIndex.vue",
+      "src/pages/HomePage.vue",
+      "src/pages/AboutPage.vue",
       "src/pages/HomePage.vue",
       "src/pages/AboutPage.vue"
     ],
-    "file": "assets/main-14bb880d.js",
+    "file": "assets/main-fab79982.js",
     "imports": [
-      "_40d90ab4.js"
+      "_39ab9a0c.js"
     ],
     "isEntry": true,
     "src": "index.html"
@@ -363,6 +368,15 @@
     "isDynamicEntry": true,
     "src": "node_modules/.pnpm/workbox-window@7.0.0/node_modules/workbox-window/build/workbox-window.prod.es5.mjs"
   },
+  "src/Layout/Header/HeaderIndex.vue": {
+    "file": "c39d9cbe.js",
+    "imports": [
+      "index.html",
+      "_39ab9a0c.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/Layout/Header/HeaderIndex.vue"
+  },
   "src/pages/AboutPage.css": {
     "file": "assets/HomePage-e3b0c442.css",
     "src": "src/pages/AboutPage.css"
@@ -371,10 +385,10 @@
     "css": [
       "assets/HomePage-e3b0c442.css"
     ],
-    "file": "82ecee8e.js",
+    "file": "705fc060.js",
     "imports": [
       "index.html",
-      "_40d90ab4.js"
+      "_39ab9a0c.js"
     ],
     "isDynamicEntry": true,
     "src": "src/pages/AboutPage.vue"
@@ -387,10 +401,10 @@
     "css": [
       "assets/HomePage-e3b0c442.css"
     ],
-    "file": "e5adb215.js",
+    "file": "2bb7bf26.js",
     "imports": [
       "index.html",
-      "_40d90ab4.js"
+      "_39ab9a0c.js"
     ],
     "isDynamicEntry": true,
     "src": "src/pages/HomePage.vue"
