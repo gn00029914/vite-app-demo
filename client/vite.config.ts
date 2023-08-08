@@ -8,12 +8,17 @@ import basicSsl from '@vitejs/plugin-basic-ssl'
 import { ViteMinifyPlugin } from 'vite-plugin-minify'
 import { VitePWA } from 'vite-plugin-pwa'
 import { ViteWebfontDownload } from 'vite-plugin-webfont-dl'
+import VueRouter from 'unplugin-vue-router/vite'
 import vue from '@vitejs/plugin-vue'
+import Pages from 'vite-plugin-pages'
+import generateSitemap from 'vite-plugin-pages-sitemap'
+import ClientSideLayout from 'vite-plugin-vue-layouts'
 import VueI18nVitePlugin from '@intlify/unplugin-vue-i18n/vite'
 import Markdown from 'vite-plugin-vue-markdown'
 import anchor from 'markdown-it-anchor'
 import prism from 'markdown-it-prism'
 import AutoImport from 'unplugin-auto-import/vite'
+import { VueRouterAutoImports } from 'unplugin-vue-router'
 import Components from 'unplugin-vue-components/vite'
 import { SchemaOrgResolver, schemaAutoImports } from '@vueuse/schema-org'
 import IconsResolver from 'unplugin-icons/resolver'
@@ -218,6 +223,16 @@ export default defineConfig({
                 cache: true // node_modules\.pnpm\vite-plugin-webfont-dl@3.6.0_vite@4.0.4\node_modules\flat-cache\.cache\vite-plugin-webfont-dl
             }
         ), // 注意網路連線特別是IPv6租約期限
+        VueRouter({
+            routesFolder: [
+                {
+                    src: 'src/pages/',
+                    path: 'vite-app-demo/'
+                }
+            ],
+            dts: './src/typed-router.d.ts',
+            importMode: () => 'async'
+        }),
         vue({
             include: [/\.vue$/, /\.md$/],
             template: {
@@ -225,6 +240,23 @@ export default defineConfig({
                     delimiters: ['@{{', '}}']
                 }
             }
+        }),
+        Pages({
+            caseSensitive: true,
+            importMode: 'async',
+            syncIndex: false,
+            onRoutesGenerated: (routes) =>
+                generateSitemap({
+                    hostname:
+                        'https://localhost/' + process.env.npm_package_name,
+                    routes
+                    // readable: true
+                })
+        }),
+        ClientSideLayout({
+            layoutsDirs: 'src/Layout',
+            defaultLayout: 'LayoutIndex',
+            importMode: () => 'async'
         }),
         VueI18nVitePlugin({
             /* options */
@@ -252,7 +284,8 @@ export default defineConfig({
                 },
                 // presets
                 'vue',
-                'vue-router',
+                // 'vue-router',
+                VueRouterAutoImports,
                 'vue-i18n',
                 '@vueuse/head',
                 '@vueuse/core'
@@ -406,7 +439,7 @@ export default defineConfig({
     },
     test: {
         coverage: {
-            provider: 'c8',
+            provider: 'v8',
             reporter: ['html', 'json', 'text']
         },
         environment: 'happy-dom', // or edge-runtime ???

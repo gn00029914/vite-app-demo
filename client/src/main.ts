@@ -12,10 +12,12 @@ import { createHead } from '@vueuse/head'
 import { SchemaOrgUnheadPlugin } from '@vueuse/schema-org'
 import EventCounter from './components/EventCounter.vue'
 import { createPinia } from 'pinia'
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router/auto'
+import { setupLayouts } from 'virtual:generated-layouts'
+import generatedRoutes from 'virtual:generated-pages'
 import App from './App.vue'
 // import { store } from './store'
-import routes from './routes'
+// import routes from './routes'
 
 const i18n = createI18n({
     // something vue-i18n options here ...
@@ -56,12 +58,37 @@ head.use(
     )
 )
 const store = createPinia()
+
 const router = createRouter({
     history: createWebHistory(),
-    routes
+    extendRoutes: (router) => {
+        router.push(
+            {
+                component: () => import('./pages/HomePage.vue'),
+                name: 'home',
+                path: '/vite-app-demo/'
+            },
+            {
+                component: () => import('./pages/AboutPage.vue'),
+                name: 'about',
+                path: '/vite-app-demo/about'
+            }
+        )
+        setupLayouts(generatedRoutes)
+        return router
+    }
 })
 
-NProgress.configure({ easing: 'ease', speed: 1200 }).start().done()
+NProgress.configure({
+    easing: 'ease',
+    speed: 1200,
+    showSpinner: window.matchMedia(`(prefers-reduced-motion: reduce)`).matches
+        ? false
+        : true
+})
+    .start()
+    .done()
+
 createApp(App)
     .use(i18n)
     .use(head)
