@@ -248,7 +248,8 @@ export default defineConfig({
             onRoutesGenerated: (routes) =>
                 generateSitemap({
                     hostname:
-                        'https://localhost/' + process.env.npm_package_name,
+                        'https://gn00029914.github.io/' +
+                        process.env.npm_package_name,
                     routes
                     // readable: true
                 })
