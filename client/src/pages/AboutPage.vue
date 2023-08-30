@@ -1,5 +1,5 @@
 <template>
-    <div>About</div>
+    <div>關於頁頁面內容 AboutPage Content</div>
 </template>
 
 <script setup lang="ts"></script>

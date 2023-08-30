@@ -11,37 +11,89 @@
         </div>
         <br />
         <i-carbon-terminal />
-        作者外出取材... =======
+        <!-- <RouterLink v-slot="{ route }"></RouterLink> -->
+        <!-- <RouterLink v-slot="{ href, route, navigate }" to="HomePage">
+            <a :href="href" @click="navigate">
+                <span>@{{ route.fullPath.slice(15, -4) }}</span>
+            </a>
+        </RouterLink>
+        <RouterLink v-slot="{ href, route, navigate }" to="AboutPage">
+            <a :href="href" @click="navigate">
+                <span>@{{ route.fullPath.slice(15, -4) }}</span>
+            </a>
+        </RouterLink> -->
+        <ul>
+            <li v-for="item in items" :key="item.id">
+                <RouterLink v-slot="{ href, route, navigate }" :to="item.url">
+                    <a :href="href" @click="navigate">
+                        <span
+                            >@{{
+                                $t('message.' + route.fullPath.slice(15, -4))
+                            }}</span
+                        >
+                    </a>
+                </RouterLink>
+            </li>
+        </ul>
     </div>
 </template>
 
 <script setup lang="ts">
+import messages from '@intlify/unplugin-vue-i18n/messages'
+let mql = window.matchMedia('(max-width: 932px)')
 function toggleMenu() {
-    if (
+    if (document.getElementById('check')?.getAttribute('checked') === 'null') {
         document
             .getElementsByClassName('menu')[0]
-            .style.getPropertyValue('width') === '5rem'
+            .setAttribute('style', 'width: 10rem')
+        document.getElementById('check')?.setAttribute('checked', 'true')
+    } else if (
+        document.getElementById('check')?.getAttribute('checked') === 'true'
     ) {
         document
             .getElementsByClassName('menu')[0]
-            .style.setProperty('width', 'fit-content')
+            .setAttribute('style', 'width: fit-content')
+        document.getElementById('check')?.setAttribute('checked', 'fit')
     } else {
         document
             .getElementsByClassName('menu')[0]
-            .style.setProperty('width', '5rem')
+            .setAttribute('style', 'width: 10rem')
+        document.getElementById('check')?.setAttribute('checked', 'true')
     }
-    // console.log(
-    //     document
-    //         .getElementsByClassName('menu')[0]
-    //         .style.getPropertyValue('width')
-    // )
 }
+mql.onchange = (e) => {
+    if (e.matches) {
+        document
+            .getElementsByClassName('menu')[0]
+            .setAttribute('style', 'width: 0rem')
+    } else if (
+        document.getElementById('check')?.getAttribute('checked') === 'true'
+    ) {
+        document.getElementById('check')?.click()
+        document
+            .getElementsByClassName('menu')[0]
+            .setAttribute('style', 'width: fit-content')
+        document.getElementById('check')?.setAttribute('checked', 'fit')
+    } else {
+        document
+            .getElementsByClassName('menu')[0]
+            .setAttribute('style', 'width: fit-content')
+    }
+}
+const items: [
+    { id: number; name: unknown; url: string },
+    { id: number; name: unknown; url: string }
+] = [
+    { id: 1, name: messages.Home, url: '/vite-app-demo/HomePage' },
+    { id: 2, name: messages.About, url: '/vite-app-demo/AboutPage' }
+    // { id: 3, name: '聯繫我們', url: 'contact' }
+]
 </script>
 
 <style lang="less" scoped>
 .menu {
     flex: 1;
-    // width: 85px;
+    width: auto;
     height: 100%;
     border-right: 1px solid #ccc;
     display: flex;

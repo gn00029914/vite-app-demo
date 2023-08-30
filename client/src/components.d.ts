@@ -22,6 +22,7 @@ declare module 'vue' {
         ListGroupItem: (typeof import('flowbite-vue'))['ListGroupItem']
         MenuIndex: (typeof import('./Layout/Menu/MenuIndex.vue'))['default']
         Pages: (typeof import('./pages/index.md'))['default']
+        Routerink: (typeof import('vue-router'))['Routerink']
         RouterLink: (typeof import('vue-router'))['RouterLink']
         RouterView: (typeof import('vue-router'))['RouterView']
     }

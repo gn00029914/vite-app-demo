@@ -1,5 +1,5 @@
 <template>
-    <div>Home123</div>
+    <div>首頁內容 HomePage Content</div>
 </template>
 
 <script setup lang="ts"></script>
