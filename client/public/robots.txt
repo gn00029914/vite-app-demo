@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://localhost/vite-app-demo/sitemap.xml
+Sitemap: https://gn00029914.github.io/vite-app-demo/sitemap.xml

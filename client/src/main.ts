@@ -45,7 +45,7 @@ head.use(
     SchemaOrgUnheadPlugin(
         {
             // config
-            host: 'https://example.com',
+            host: 'https://gn00029914.github.io',
             title: 'My awesome site'
         },
         () => {

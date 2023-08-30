@@ -7,9 +7,9 @@
         >Navbar |</a
       > -->
                 <div class="xs:hidden flex-1"></div>
-                <p class="flex-1">
+                <!-- <p class="flex-1">
                     @{{ $t('message.Home') }} | @{{ $t('message.About') }}&nbsp;
-                </p>
+                </p> -->
                 <select
                     v-model="$i18n.locale"
                     aria-label="languages"

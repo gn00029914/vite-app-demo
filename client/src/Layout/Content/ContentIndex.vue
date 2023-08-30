@@ -4,6 +4,10 @@
         <!-- <div v-for="item in 100" :key="item" class="content-items">
             @{{ item }}
         </div> -->
+        <!-- <HomePage></HomePage> -->
+        <section>
+            <RouterView></RouterView>
+        </section>
         <EventCounter :init="init" />
         ==================1
         <ComponentA class="prose lg:prose-xl dark:prose-invert" />

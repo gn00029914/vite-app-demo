@@ -330,6 +330,7 @@ declare global {
         InjectionKey,
         PropType,
         Ref,
-        VNode
+        VNode,
+        WritableComputedRef
     } from 'vue'
 }
