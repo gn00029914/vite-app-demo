@@ -1,1 +1,0 @@
-import{_ as e}from"./assets/main-6fa48392.js";import{o as t,c as o}from"./64aa11a9.js";const _={};function c(n,a){return t(),o("div",null,"關於頁頁面內容 AboutPage Content")}const d=e(_,[["render",c],["__scopeId","data-v-b80791ed"]]);export{d as default};
