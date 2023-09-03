@@ -24,7 +24,7 @@
         </RouterLink> -->
         <ul>
             <li v-for="item in items" :key="item.id">
-                <RouterLink v-slot="{ href, route, navigate }" :to="item.url">
+                <router-link v-slot="{ href, route, navigate }" :to="item.url">
                     <a :href="href" @click="navigate">
                         <span
                             >@{{
@@ -32,7 +32,7 @@
                             }}</span
                         >
                     </a>
-                </RouterLink>
+                </router-link>
             </li>
         </ul>
     </div>
@@ -84,8 +84,8 @@ const items: [
     { id: number; name: unknown; url: string },
     { id: number; name: unknown; url: string }
 ] = [
-    { id: 1, name: messages.Home, url: '/vite-app-demo/HomePage' },
-    { id: 2, name: messages.About, url: '/vite-app-demo/AboutPage' }
+    { id: 1, name: messages?.Home, url: '/vite-app-demo/HomePage' },
+    { id: 2, name: messages?.About, url: '/vite-app-demo/AboutPage' }
     // { id: 3, name: '聯繫我們', url: 'contact' }
 ]
 </script>
