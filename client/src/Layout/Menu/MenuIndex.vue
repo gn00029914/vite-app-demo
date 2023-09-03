@@ -11,17 +11,17 @@
         </div>
         <br />
         <i-carbon-terminal />
-        <!-- <RouterLink v-slot="{ route }"></RouterLink> -->
-        <!-- <RouterLink v-slot="{ href, route, navigate }" to="HomePage">
+        <!-- <router-link v-slot="{ route }"></router-link> -->
+        <!-- <router-link v-slot="{ href, route, navigate }" to="HomePage">
             <a :href="href" @click="navigate">
                 <span>@{{ route.fullPath.slice(15, -4) }}</span>
             </a>
-        </RouterLink>
-        <RouterLink v-slot="{ href, route, navigate }" to="AboutPage">
+        </router-link>
+        <router-link v-slot="{ href, route, navigate }" to="AboutPage">
             <a :href="href" @click="navigate">
                 <span>@{{ route.fullPath.slice(15, -4) }}</span>
             </a>
-        </RouterLink> -->
+        </router-link> -->
         <ul>
             <li v-for="item in items" :key="item.id">
                 <router-link v-slot="{ href, route, navigate }" :to="item.url">
@@ -41,43 +41,32 @@
 <script setup lang="ts">
 import messages from '@intlify/unplugin-vue-i18n/messages'
 let mql = window.matchMedia('(max-width: 932px)')
+// https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/style-src
 function toggleMenu() {
     if (document.getElementById('check')?.getAttribute('checked') === 'null') {
-        document
-            .getElementsByClassName('menu')[0]
-            .setAttribute('style', 'width: 10rem')
+        document.getElementsByClassName('menu')[0].style.width = '10rem'
         document.getElementById('check')?.setAttribute('checked', 'true')
     } else if (
         document.getElementById('check')?.getAttribute('checked') === 'true'
     ) {
-        document
-            .getElementsByClassName('menu')[0]
-            .setAttribute('style', 'width: fit-content')
+        document.getElementsByClassName('menu')[0].style.width = 'fit-content'
         document.getElementById('check')?.setAttribute('checked', 'fit')
     } else {
-        document
-            .getElementsByClassName('menu')[0]
-            .setAttribute('style', 'width: 10rem')
+        document.getElementsByClassName('menu')[0].style.width = '10rem'
         document.getElementById('check')?.setAttribute('checked', 'true')
     }
 }
 mql.onchange = (e) => {
     if (e.matches) {
-        document
-            .getElementsByClassName('menu')[0]
-            .setAttribute('style', 'width: 0rem')
+        document.getElementsByClassName('menu')[0].style.width = '0rem'
     } else if (
         document.getElementById('check')?.getAttribute('checked') === 'true'
     ) {
         document.getElementById('check')?.click()
-        document
-            .getElementsByClassName('menu')[0]
-            .setAttribute('style', 'width: fit-content')
+        document.getElementsByClassName('menu')[0].style.width = 'fit-content'
         document.getElementById('check')?.setAttribute('checked', 'fit')
     } else {
-        document
-            .getElementsByClassName('menu')[0]
-            .setAttribute('style', 'width: fit-content')
+        document.getElementsByClassName('menu')[0].style.width = 'fit-content'
     }
 }
 const items: [
