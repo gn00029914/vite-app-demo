@@ -6,7 +6,7 @@ const counter = ref(props.init || 0)
 
 <template>
     <div class="counter">
-        <div>Counter 2: @{{ counter }}</div>
+        <div>Counter: @{{ counter }}</div>
         <button type="button" @click="counter += 1">Inc</button>
         <button type="button" @click="counter -= 1">Dec</button>
     </div>

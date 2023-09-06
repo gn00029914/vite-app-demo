@@ -19,17 +19,12 @@ I looked a bit closer and realized I could **press** this counter and it would c
 
 # Hello World
 
-This is @{{frontmatter.name}}
-@{{ frontmatter }}
+This is @{{ frontmatter.name }}  
+frontmatter: @{{ frontmatter }}
 
 # Wow this is Amazing!
 
-@{{frontmatter.name}}
-
-<style> h1 { color: cadetblue; } </style>
-<EventCounter />
 <router-link to="/vite-app-demo/">Home</router-link>
 
-<script lang="ts" setup>
-
-</script>
+<style></style>
+<script lang="ts" setup></script>
