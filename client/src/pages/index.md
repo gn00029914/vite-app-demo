@@ -6,7 +6,7 @@ tags: the site's tagline
 meta:
     - name: description
       content: Hello World
-      test: test
+test: test
 ---
 
 # My Page
