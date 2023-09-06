@@ -8,7 +8,6 @@
         <section>
             <router-view></router-view>
         </section>
-        <EventCounter />
         <EventCounter :init="init" />
         ==================1
         <ComponentA
