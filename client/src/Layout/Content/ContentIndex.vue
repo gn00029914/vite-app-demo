@@ -6,30 +6,19 @@
         </div> -->
         <!-- <HomePage></HomePage> -->
         <section>
-            <RouterView></RouterView>
+            <router-view></router-view>
         </section>
         <EventCounter :init="init" />
         ==================1
-        <ComponentA class="prose lg:prose-xl dark:prose-invert" />
-        ==================2
-        <router-view v-slot="{ Component }">
-            <component :is="Component" ref="current" />
-        </router-view>
-        ==================3
-        <div v-if="current">
-            accessing frontmatter from outside via expose API: @{{
-                current.frontmatter
-            }}
-        </div>
-        ==================4
-        <ComponentA style="padding: 20px 40px" />
+        <ComponentA
+            class="prose lg:prose-xl dark:prose-invert prose-h1:text-[cadetblue] px-10 py-5"
+        />
     </div>
 </template>
 
 <script setup lang="ts">
 import ComponentA from '@pages/index.md'
 import EventCounter from '@components/EventCounter.vue'
-const current = ref()
 const init = 6
 </script>
 

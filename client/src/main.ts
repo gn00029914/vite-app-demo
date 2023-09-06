@@ -8,7 +8,7 @@ import NProgress from 'accessible-nprogress'
 import { createApp } from 'vue'
 import { createI18n } from 'vue-i18n'
 import messages from '@intlify/unplugin-vue-i18n/messages'
-import { createHead } from '@vueuse/head'
+import { createHead } from '@unhead/vue'
 import { SchemaOrgUnheadPlugin } from '@vueuse/schema-org'
 import EventCounter from './components/EventCounter.vue'
 import { createPinia } from 'pinia'
@@ -17,7 +17,6 @@ import { setupLayouts } from 'virtual:generated-layouts'
 import generatedRoutes from 'virtual:generated-pages'
 import App from './App.vue'
 // import { store } from './store'
-// import routes from './routes'
 
 const i18n = createI18n({
     // something vue-i18n options here ...
@@ -29,14 +28,6 @@ const i18n = createI18n({
     messages
 })
 export default i18n
-
-useSchemaOrg([
-    // @todo Select Identity: https://unhead-schema-org.harlanzw.com//guide/guides/identity
-    defineWebSite({
-        name: 'My Awesome Website'
-    }),
-    defineWebPage()
-])
 
 registerSW({ immediate: true })
 
@@ -58,7 +49,6 @@ head.use(
     )
 )
 const store = createPinia()
-
 const router = createRouter({
     history: createWebHistory(),
     extendRoutes: (router) => {
@@ -85,9 +75,7 @@ NProgress.configure({
     showSpinner: window.matchMedia(`(prefers-reduced-motion: reduce)`).matches
         ? false
         : true
-})
-    .start()
-    .done()
+}).start()
 
 createApp(App)
     .use(i18n)
@@ -96,6 +84,8 @@ createApp(App)
     .use(router)
     .component('EventCounter', EventCounter)
     .mount('#app')
+
+NProgress.done()
 
 import { Drawer } from 'flowbite'
 import type { DrawerOptions, DrawerInterface } from 'flowbite'
@@ -124,7 +114,6 @@ const options: DrawerOptions = {
         console.log('drawer has been toggled')
     }
 }
-
 /*
  * $targetEl: required
  * options: optional
