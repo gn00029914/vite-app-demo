@@ -284,6 +284,41 @@ export default defineConfig({
             //   './src/locales/**'
             // )
         }),
+        Icons({
+            // scale: 3, // a11y 最小要求 48x48 px
+            customCollections: {
+                // key as the collection name
+                // a helper to load icons from the file system
+                // files under `./assets/icons` with `.svg` extension will be loaded as it's file name
+                // you can also provide a transform callback to change each icon (optional)
+                'my-icons': FileSystemIconLoader(
+                    './assets/icons'
+                    // , (svg) => svg.replace(/^<svg /, '<svg fill="currentColor" ')
+                )
+            },
+            iconCustomizer(collection, icon, props) {
+                // customize this @iconify icon in this collection
+                if (collection === 'mdi' && icon === 'my-icons') {
+                    props.width = '3em'
+                    props.height = '3em'
+                }
+            }
+        }),
+        compression({
+            algorithm: 'brotliCompress',
+            // exclude: /.*?(?<=.html)$/,
+            compressionOptions: {
+                params: {
+                    [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
+                    [constants.BROTLI_PARAM_LGWIN]:
+                        constants.BROTLI_MAX_WINDOW_BITS,
+                    [constants.BROTLI_PARAM_LGBLOCK]:
+                        constants.BROTLI_MAX_INPUT_BLOCK_BITS,
+                    [constants.BROTLI_PARAM_QUALITY]:
+                        constants.BROTLI_MAX_QUALITY
+                }
+            }
+        }),
         AutoImport({
             include: [
                 /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
@@ -366,41 +401,6 @@ export default defineConfig({
                         }
                 }
             ]
-        }),
-        Icons({
-            // scale: 3, // a11y 最小要求 48x48 px
-            customCollections: {
-                // key as the collection name
-                // a helper to load icons from the file system
-                // files under `./assets/icons` with `.svg` extension will be loaded as it's file name
-                // you can also provide a transform callback to change each icon (optional)
-                'my-icons': FileSystemIconLoader(
-                    './assets/icons'
-                    // , (svg) => svg.replace(/^<svg /, '<svg fill="currentColor" ')
-                )
-            },
-            iconCustomizer(collection, icon, props) {
-                // customize this @iconify icon in this collection
-                if (collection === 'mdi' && icon === 'my-icons') {
-                    props.width = '3em'
-                    props.height = '3em'
-                }
-            }
-        }),
-        compression({
-            algorithm: 'brotliCompress',
-            // exclude: /.*?(?<=.html)$/,
-            compressionOptions: {
-                params: {
-                    [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
-                    [constants.BROTLI_PARAM_LGWIN]:
-                        constants.BROTLI_MAX_WINDOW_BITS,
-                    [constants.BROTLI_PARAM_LGBLOCK]:
-                        constants.BROTLI_MAX_INPUT_BLOCK_BITS,
-                    [constants.BROTLI_PARAM_QUALITY]:
-                        constants.BROTLI_MAX_QUALITY
-                }
-            }
         })
     ],
     base: '/' + process.env.npm_package_name + '/',
