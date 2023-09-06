@@ -280,7 +280,9 @@ export default defineConfig({
                 typographer: true
             },
             // A function providing the Markdown It instance gets the ability to apply custom settings/plugins
-            markdownItUses: [anchor, prism]
+            markdownItUses: [anchor, prism],
+            // Class names for the wrapper div
+            wrapperClasses: null
         }),
         Icons({
             // scale: 3, // a11y 最小要求 48x48 px
