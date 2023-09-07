@@ -16,10 +16,12 @@ import { AppService } from './app.service';
     ThrottlerModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: (config: ConfigService) => ({
-        ttl: config.get('60'),
-        limit: config.get('10'),
-      }),
+      useFactory: (config: ConfigService) => [
+        {
+          ttl: config.get('60'),
+          limit: config.get('10'),
+        },
+      ],
     }),
   ],
   controllers: [AppController],

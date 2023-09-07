@@ -41,32 +41,35 @@
 <script setup lang="ts">
 import messages from '@intlify/unplugin-vue-i18n/messages'
 let mql = window.matchMedia('(max-width: 932px)')
+const MenuDrawer = document.getElementsByClassName(
+    'menu'
+) as unknown as NodeListOf<HTMLElement>
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/style-src
 function toggleMenu() {
     if (document.getElementById('check')?.getAttribute('checked') === 'null') {
-        document.getElementsByClassName('menu')[0].style.width = '10rem'
+        MenuDrawer.item(0).style.width = '10rem'
         document.getElementById('check')?.setAttribute('checked', 'true')
     } else if (
         document.getElementById('check')?.getAttribute('checked') === 'true'
     ) {
-        document.getElementsByClassName('menu')[0].style.width = 'fit-content'
+        MenuDrawer.item(0).style.width = 'fit-content'
         document.getElementById('check')?.setAttribute('checked', 'fit')
     } else {
-        document.getElementsByClassName('menu')[0].style.width = '10rem'
+        MenuDrawer.item(0).style.width = '10rem'
         document.getElementById('check')?.setAttribute('checked', 'true')
     }
 }
 mql.onchange = (e) => {
     if (e.matches) {
-        document.getElementsByClassName('menu')[0].style.width = '0rem'
+        MenuDrawer.item(0).style.width = '0rem'
     } else if (
         document.getElementById('check')?.getAttribute('checked') === 'true'
     ) {
         document.getElementById('check')?.click()
-        document.getElementsByClassName('menu')[0].style.width = 'fit-content'
+        MenuDrawer.item(0).style.width = 'fit-content'
         document.getElementById('check')?.setAttribute('checked', 'fit')
     } else {
-        document.getElementsByClassName('menu')[0].style.width = 'fit-content'
+        MenuDrawer.item(0).style.width = 'fit-content'
     }
 }
 const items: [
