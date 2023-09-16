@@ -8,8 +8,8 @@ import NProgress from 'accessible-nprogress'
 import { createApp } from 'vue'
 import { createI18n } from 'vue-i18n'
 import messages from '@intlify/unplugin-vue-i18n/messages'
+import { SchemaOrgUnheadPlugin } from '@unhead/schema-org-vue'
 import { createHead } from '@unhead/vue'
-import { SchemaOrgUnheadPlugin } from '@vueuse/schema-org'
 import EventCounter from './components/EventCounter.vue'
 import { createPinia } from 'pinia'
 import { createRouter, createWebHistory } from 'vue-router/auto'
@@ -36,8 +36,7 @@ head.use(
     SchemaOrgUnheadPlugin(
         {
             // config
-            host: 'https://gn00029914.github.io',
-            title: 'My awesome site'
+            host: 'https://gn00029914.github.io/vite-app-demo/'
         },
         () => {
             const route = router.currentRoute.value
@@ -48,6 +47,7 @@ head.use(
         }
     )
 )
+
 const store = createPinia()
 const router = createRouter({
     history: createWebHistory(),

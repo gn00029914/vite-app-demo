@@ -18,9 +18,10 @@ import Markdown from 'unplugin-vue-markdown/vite'
 import anchor from 'markdown-it-anchor'
 import prism from 'markdown-it-prism'
 import AutoImport from 'unplugin-auto-import/vite'
+import { SchemaOrgResolver, schemaAutoImports } from '@unhead/schema-org-vue'
+import { unheadVueComposablesImports } from '@unhead/vue'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import Components from 'unplugin-vue-components/vite'
-import { SchemaOrgResolver, schemaAutoImports } from '@vueuse/schema-org'
 import IconsResolver from 'unplugin-icons/resolver'
 import Icons from 'unplugin-icons/vite'
 // loader helpers
@@ -242,7 +243,7 @@ export default defineConfig({
             }
         }),
         Markdown({
-            headEnabled: true,
+            headEnabled: 'unhead',
             // default options passed to markdown-it
             // see: https://markdown-it.github.io/markdown-it/
             markdownItOptions: {
@@ -330,14 +331,14 @@ export default defineConfig({
             imports: [
                 // auto-import schema-org composables
                 {
-                    '@vueuse/schema-org': schemaAutoImports
+                    '@unhead/schema-org-vue': schemaAutoImports
                 },
+                unheadVueComposablesImports,
                 // presets
                 'vue',
                 // 'vue-router',
                 VueRouterAutoImports,
                 'vue-i18n',
-                '@vueuse/head',
                 '@vueuse/core'
                 // 'vuex', // 以下按需引入
                 // {

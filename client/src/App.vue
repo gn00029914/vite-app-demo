@@ -4,12 +4,21 @@
 
 <script lang="ts" setup>
 import layout from './Layout/LayoutIndex.vue'
+import { useServerSeoMeta } from '@unhead/vue'
 useSchemaOrg([
-    // @todo Select Identity: https://unhead-schema-org.harlanzw.com//guide/guides/identity
+    // @todo Select Identity: http://unhead.unjs.io/schema-org/guides/identity
     defineWebSite({
         name: 'My Awesome Website'
     }),
     defineWebPage()
 ])
+useServerSeoMeta({
+    title: 'My Cool App title',
+    description: 'My Cool App description',
+    ogDescription: 'My Cool App ogDescription',
+    ogTitle: 'My Cool App ogTitle',
+    ogImage: '/vite-app-demo/android-chrome-512x512.png',
+    twitterCard: 'summary_large_image'
+})
 </script>
 <style lang="less" scoped></style>
