@@ -1,12 +1,12 @@
 ---
-name: My Cool App name
-title: My Cool App title
+name: MyCoolApp name
+title: MyCoolApp title
 description: MyCoolApp description
 tags: the site's tagline
 meta:
     - name: description
-      content: Hello World
-test: test
+      content: HelloWorld
+      test: test
 ---
 
 # My Page
