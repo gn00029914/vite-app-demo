@@ -7,6 +7,7 @@
         >Navbar |</a
       > -->
                 <div class="xs:hidden flex-1"></div>
+                <a href="#" @click="showModal">註冊</a>
                 <!-- <p class="flex-1">
                     @{{ $t('message.Home') }} | @{{ $t('message.About') }}&nbsp;
                 </p> -->
@@ -313,6 +314,7 @@
                             <a
                                 href="#"
                                 class="flex items-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                @click="showModal"
                             >
                                 <svg
                                     aria-hidden="true"
@@ -327,9 +329,9 @@
                                         clip-rule="evenodd"
                                     ></path>
                                 </svg>
-                                <span class="ml-3 flex-1 whitespace-nowrap"
-                                    >Sign In</span
-                                >
+                                <span class="ml-3 flex-1 whitespace-nowrap">
+                                    Sign In
+                                </span>
                             </a>
                         </li>
                         <li>
@@ -817,6 +819,148 @@
             </div>
         </nav>
     </div>
+    <Modal v-if="isShowModal" :size="size" @close="closeModal">
+        <template #header>
+            <div class="flex items-center text-lg">Sign In</div>
+        </template>
+        <template #body>
+            <form novalidate @submit="signinStore.signin">
+                <div class="field">
+                    <Input
+                        required
+                        placeholder="enter your first name"
+                        label="First name"
+                        v-bind="signinStore.firstName"
+                        :validation-status="
+                            signinStore.errors.firstName?.length > 0
+                                ? 'error'
+                                : 'success'
+                        "
+                    >
+                        <template #validationMessage
+                            >@{{ signinStore.errors.firstName }}</template
+                        >
+                    </Input>
+                    <br />
+                    <Input
+                        required
+                        placeholder="enter your last name"
+                        label="Last name"
+                        v-bind="signinStore.lastName"
+                        :validation-status="
+                            signinStore.errors.lastName?.length > 0
+                                ? 'error'
+                                : 'success'
+                        "
+                    >
+                        <template #validationMessage
+                            >@{{ signinStore.errors.lastName }}</template
+                        >
+                    </Input>
+                    <br />
+                    <Input
+                        required
+                        placeholder="enter your user name"
+                        label="User name"
+                        v-bind="signinStore.userName"
+                        :validation-status="
+                            signinStore.errors.userName?.length > 0
+                                ? 'error'
+                                : 'success'
+                        "
+                    >
+                        <template #suffix>
+                            <Button size="xs">Check</Button>
+                        </template>
+                        <template #validationMessage
+                            >@{{ signinStore.errors.userName }}</template
+                        >
+                    </Input>
+                    <br />
+                    <Input
+                        required
+                        placeholder="enter your password"
+                        label="Password"
+                        v-bind="signinStore.password"
+                        :validation-status="
+                            signinStore.errors.password?.length > 0
+                                ? 'error'
+                                : 'success'
+                        "
+                    >
+                        <template #validationMessage
+                            >@{{ signinStore.errors.password }}</template
+                        >
+                    </Input>
+                    <br />
+                    <Input
+                        required
+                        placeholder="enter your E-mail"
+                        label="E-mail"
+                        v-bind="signinStore.email"
+                        :validation-status="
+                            signinStore.errors.email?.length > 0
+                                ? 'error'
+                                : 'success'
+                        "
+                    >
+                        <template #validationMessage
+                            >@{{ signinStore.errors.email }}</template
+                        >
+                    </Input>
+                    <br />
+                    <Input
+                        required
+                        placeholder="enter your phone number"
+                        label="Phone number"
+                        v-bind="signinStore.phoneNumber"
+                        :validation-status="
+                            signinStore.errors.phoneNumber?.length > 0
+                                ? 'error'
+                                : 'success'
+                        "
+                    >
+                        <template #validationMessage
+                            >@{{ signinStore.errors.phoneNumber }}</template
+                        >
+                    </Input>
+                </div>
+            </form>
+            <!-- <p
+                class="text-base leading-relaxed text-gray-500 dark:text-gray-400"
+            >
+                With less than a month to go before the European Union enacts
+                new consumer privacy laws for its citizens, companies around the
+                world are updating their terms of service agreements to comply.
+            </p>
+            <p
+                class="text-base leading-relaxed text-gray-500 dark:text-gray-400"
+            >
+                The European Union’s General Data Protection Regulation
+                (G.D.P.R.) goes into effect on May 25 and is meant to ensure a
+                common set of data rights in the European Union. It requires
+                organizations to notify users as soon as possible of high-risk
+                data breaches that could personally affect them.
+            </p> -->
+        </template>
+        <template #footer>
+            <div class="flex justify-between">
+                <button
+                    type="button"
+                    class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600"
+                    @click="closeModal"
+                >
+                    Decline
+                </button>
+                <button
+                    type="submit"
+                    class="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                    Submit
+                </button>
+            </div>
+        </template>
+    </Modal>
 </template>
 
 <script setup lang="ts">
@@ -951,6 +1095,16 @@ onBeforeMount(() => {
         })
     }, 4500)
 })
+const size = 'md'
+const isShowModal = ref(false)
+function closeModal() {
+    isShowModal.value = false
+}
+function showModal() {
+    isShowModal.value = true
+}
+import { useSigninStore } from '@/store'
+const signinStore = useSigninStore()
 </script>
 
 <style lang="less" scoped></style>
