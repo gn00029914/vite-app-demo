@@ -21,9 +21,9 @@ jobs:
         architecture:
           - x64
     name: Node ${{ matrix.node_version }} - ${{ matrix.architecture }} on ${{ matrix.os }}
-    # 並行
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
+    # 並行化(暫時取消)
+    # concurrency:
+    #   group: ${{ github.workflow }}-${{ github.ref }}
     # 工作步驟
     steps:
       # 步驟一：複製程式碼
