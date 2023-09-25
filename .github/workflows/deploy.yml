@@ -28,7 +28,7 @@ jobs:
     steps:
       # 步驟一：複製程式碼
       - name: Checkout
-        uses: actions/checkout@v4.0.0
+        uses: actions/checkout@v4.1.0
       # 步驟二：裝設 Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
