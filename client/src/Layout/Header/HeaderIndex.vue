@@ -830,12 +830,16 @@
                         required
                         placeholder="enter your first name"
                         label="First name"
-                        v-bind="signinStore.firstName"
+                        aria-label="First name"
                         :validation-status="
-                            signinStore.errors.firstName?.length > 0
-                                ? 'error'
-                                : 'success'
+                            signinStore.errors.firstName
+                                ? ValidationStatus.Error
+                                : signinStore.firstName.value
+                                ? ValidationStatus.Success
+                                : undefined
                         "
+                        v-bind="signinStore.firstName"
+                        type="text"
                     >
                         <template #validationMessage
                             >@{{ signinStore.errors.firstName }}</template
@@ -846,12 +850,16 @@
                         required
                         placeholder="enter your last name"
                         label="Last name"
-                        v-bind="signinStore.lastName"
+                        aria-label="Last name"
                         :validation-status="
-                            signinStore.errors.lastName?.length > 0
-                                ? 'error'
-                                : 'success'
+                            signinStore.errors.lastName
+                                ? ValidationStatus.Error
+                                : signinStore.lastName.value
+                                ? ValidationStatus.Success
+                                : undefined
                         "
+                        v-bind="signinStore.lastName"
+                        type="text"
                     >
                         <template #validationMessage
                             >@{{ signinStore.errors.lastName }}</template
@@ -862,12 +870,16 @@
                         required
                         placeholder="enter your user name"
                         label="User name"
-                        v-bind="signinStore.userName"
+                        aria-label="User name"
                         :validation-status="
-                            signinStore.errors.userName?.length > 0
-                                ? 'error'
-                                : 'success'
+                            signinStore.errors.userName
+                                ? ValidationStatus.Error
+                                : signinStore.userName.value
+                                ? ValidationStatus.Success
+                                : undefined
                         "
+                        v-bind="signinStore.userName"
+                        type="text"
                     >
                         <template #suffix>
                             <Button size="xs">Check</Button>
@@ -881,12 +893,16 @@
                         required
                         placeholder="enter your password"
                         label="Password"
-                        v-bind="signinStore.password"
+                        aria-label="Password"
                         :validation-status="
-                            signinStore.errors.password?.length > 0
-                                ? 'error'
-                                : 'success'
+                            signinStore.errors.password
+                                ? ValidationStatus.Error
+                                : signinStore.password.value
+                                ? ValidationStatus.Success
+                                : undefined
                         "
+                        v-bind="signinStore.password"
+                        type="password"
                     >
                         <template #validationMessage
                             >@{{ signinStore.errors.password }}</template
@@ -897,12 +913,16 @@
                         required
                         placeholder="enter your E-mail"
                         label="E-mail"
-                        v-bind="signinStore.email"
+                        aria-label="E-mail"
                         :validation-status="
-                            signinStore.errors.email?.length > 0
-                                ? 'error'
-                                : 'success'
+                            signinStore.errors.email
+                                ? ValidationStatus.Error
+                                : signinStore.email.value
+                                ? ValidationStatus.Success
+                                : undefined
                         "
+                        v-bind="signinStore.email"
+                        type="email"
                     >
                         <template #validationMessage
                             >@{{ signinStore.errors.email }}</template
@@ -913,12 +933,16 @@
                         required
                         placeholder="enter your phone number"
                         label="Phone number"
-                        v-bind="signinStore.phoneNumber"
+                        aria-label="Phone number"
                         :validation-status="
-                            signinStore.errors.phoneNumber?.length > 0
-                                ? 'error'
-                                : 'success'
+                            signinStore.errors.phoneNumber
+                                ? ValidationStatus.Error
+                                : signinStore.phoneNumber.value
+                                ? ValidationStatus.Success
+                                : undefined
                         "
+                        v-bind="signinStore.phoneNumber"
+                        type="number"
                     >
                         <template #validationMessage
                             >@{{ signinStore.errors.phoneNumber }}</template
@@ -1105,6 +1129,10 @@ function showModal() {
 }
 import { useSigninStore } from '@/store'
 const signinStore = useSigninStore()
+enum ValidationStatus {
+    Success = 'success',
+    Error = 'error'
+}
 </script>
 
 <style lang="less" scoped></style>
