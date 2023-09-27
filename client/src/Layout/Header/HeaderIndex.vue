@@ -824,9 +824,11 @@
             <div class="flex items-center text-lg">Sign In</div>
         </template>
         <template #body>
-            <form novalidate @submit="signinStore.signin">
-                <div class="field">
+            <form novalidate class="field">
+                <div>
                     <Input
+                        v-bind="signinStore.firstName"
+                        id="firstName"
                         required
                         placeholder="enter your first name"
                         label="First name"
@@ -838,7 +840,6 @@
                                 ? ValidationStatus.Success
                                 : undefined
                         "
-                        v-bind="signinStore.firstName"
                         type="text"
                     >
                         <template #validationMessage
@@ -847,6 +848,8 @@
                     </Input>
                     <br />
                     <Input
+                        v-bind="signinStore.lastName"
+                        id="lastName"
                         required
                         placeholder="enter your last name"
                         label="Last name"
@@ -858,7 +861,6 @@
                                 ? ValidationStatus.Success
                                 : undefined
                         "
-                        v-bind="signinStore.lastName"
                         type="text"
                     >
                         <template #validationMessage
@@ -867,6 +869,8 @@
                     </Input>
                     <br />
                     <Input
+                        v-bind="signinStore.userName"
+                        id="userName"
                         required
                         placeholder="enter your user name"
                         label="User name"
@@ -878,11 +882,10 @@
                                 ? ValidationStatus.Success
                                 : undefined
                         "
-                        v-bind="signinStore.userName"
                         type="text"
                     >
                         <template #suffix>
-                            <Button size="xs">Check</Button>
+                            <Button type="button" size="xs">Check</Button>
                         </template>
                         <template #validationMessage
                             >@{{ signinStore.errors.userName }}</template
@@ -890,6 +893,8 @@
                     </Input>
                     <br />
                     <Input
+                        v-bind="signinStore.password"
+                        id="password"
                         required
                         placeholder="enter your password"
                         label="Password"
@@ -901,7 +906,6 @@
                                 ? ValidationStatus.Success
                                 : undefined
                         "
-                        v-bind="signinStore.password"
                         type="password"
                     >
                         <template #validationMessage
@@ -910,6 +914,8 @@
                     </Input>
                     <br />
                     <Input
+                        v-bind="signinStore.email"
+                        id="email"
                         required
                         placeholder="enter your E-mail"
                         label="E-mail"
@@ -921,7 +927,6 @@
                                 ? ValidationStatus.Success
                                 : undefined
                         "
-                        v-bind="signinStore.email"
                         type="email"
                     >
                         <template #validationMessage
@@ -930,6 +935,8 @@
                     </Input>
                     <br />
                     <Input
+                        v-bind="signinStore.phoneNumber"
+                        id="phoneNumber"
                         required
                         placeholder="enter your phone number"
                         label="Phone number"
@@ -941,48 +948,34 @@
                                 ? ValidationStatus.Success
                                 : undefined
                         "
-                        v-bind="signinStore.phoneNumber"
-                        type="number"
+                        type="tel"
                     >
                         <template #validationMessage
                             >@{{ signinStore.errors.phoneNumber }}</template
                         >
                     </Input>
+                    <br />
+                </div>
+                <hr
+                    class="flex items-center justify-center border-t border-gray-200 p-4 dark:border-gray-600"
+                />
+                <div class="flex justify-between">
+                    <button
+                        type="reset"
+                        class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600"
+                        @click="resetModal"
+                    >
+                        Reset
+                    </button>
+                    <button
+                        type="submit"
+                        class="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        @submit="signinStore.signin"
+                    >
+                        Submit
+                    </button>
                 </div>
             </form>
-            <!-- <p
-                class="text-base leading-relaxed text-gray-500 dark:text-gray-400"
-            >
-                With less than a month to go before the European Union enacts
-                new consumer privacy laws for its citizens, companies around the
-                world are updating their terms of service agreements to comply.
-            </p>
-            <p
-                class="text-base leading-relaxed text-gray-500 dark:text-gray-400"
-            >
-                The European Union’s General Data Protection Regulation
-                (G.D.P.R.) goes into effect on May 25 and is meant to ensure a
-                common set of data rights in the European Union. It requires
-                organizations to notify users as soon as possible of high-risk
-                data breaches that could personally affect them.
-            </p> -->
-        </template>
-        <template #footer>
-            <div class="flex justify-between">
-                <button
-                    type="button"
-                    class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600"
-                    @click="closeModal"
-                >
-                    Decline
-                </button>
-                <button
-                    type="submit"
-                    class="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                    Submit
-                </button>
-            </div>
         </template>
     </Modal>
 </template>
@@ -1119,6 +1112,12 @@ onBeforeMount(() => {
         })
     }, 4500)
 })
+import { useSigninStore } from '@/store'
+const signinStore = useSigninStore()
+enum ValidationStatus {
+    Success = 'success',
+    Error = 'error'
+}
 const size = 'md'
 const isShowModal = ref(false)
 function closeModal() {
@@ -1127,11 +1126,13 @@ function closeModal() {
 function showModal() {
     isShowModal.value = true
 }
-import { useSigninStore } from '@/store'
-const signinStore = useSigninStore()
-enum ValidationStatus {
-    Success = 'success',
-    Error = 'error'
+function resetModal() {
+    document.getElementById('firstName')?.removeAttribute('value')
+    document.getElementById('lastName')?.removeAttribute('value')
+    document.getElementById('userName')?.removeAttribute('value')
+    document.getElementById('password')?.removeAttribute('value')
+    document.getElementById('email')?.removeAttribute('value')
+    document.getElementById('phoneNumber')?.removeAttribute('value')
 }
 </script>
 
