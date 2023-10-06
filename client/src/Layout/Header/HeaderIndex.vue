@@ -7,7 +7,7 @@
         >Navbar |</a
       > -->
                 <div class="xs:hidden flex-1"></div>
-                <a href="#" @click="showModal">註冊</a>
+                <a href="#" @click="showModal">@{{ $t('message.signUp') }}</a>
                 <!-- <p class="flex-1">
                     @{{ $t('message.Home') }} | @{{ $t('message.About') }}&nbsp;
                 </p> -->
@@ -821,139 +821,159 @@
     </div>
     <Modal v-if="isShowModal" :size="size" @close="closeModal">
         <template #header>
-            <div class="flex items-center text-lg">Sign In</div>
+            <div class="flex items-center text-lg">
+                @{{ $t('message.signUp') }}
+            </div>
         </template>
         <template #body>
-            <form novalidate class="field">
+            <!-- <ValidationProvider v-slot="{ errors }" rules="required">
+                <input v-model="value" type="text" />
+                <span id="error">{{ errors[0] }}</span>
+            </ValidationProvider> -->
+            <form class="field">
                 <div>
-                    <Input
-                        v-bind="signinStore.firstName"
-                        id="firstName"
-                        required
-                        placeholder="enter your first name"
-                        label="First name"
-                        aria-label="First name"
-                        :validation-status="
-                            signinStore.errors.firstName
-                                ? ValidationStatus.Error
-                                : signinStore.firstName.value
-                                ? ValidationStatus.Success
-                                : undefined
-                        "
-                        type="text"
-                    >
-                        <template #validationMessage
-                            >@{{ signinStore.errors.firstName }}</template
+                    <label for="name"
+                        >@{{ $t('message.firstName') }}
+                        <Input
+                            v-bind="signUpStore.firstName"
+                            id="firstName"
+                            :placeholder="$t('message.firstName_p')"
+                            name="firstName"
+                            aria-label="First name"
+                            :validation-status="
+                                signUpStore.errors.firstName
+                                    ? ValidationStatus.Error
+                                    : signUpStore.firstName.value
+                                    ? ValidationStatus.Success
+                                    : undefined
+                            "
+                            type="text"
                         >
-                    </Input>
+                            <template #validationMessage
+                                >@{{ signUpStore.errors.firstName }}</template
+                            >
+                        </Input>
+                    </label>
                     <br />
-                    <Input
-                        v-bind="signinStore.lastName"
-                        id="lastName"
-                        required
-                        placeholder="enter your last name"
-                        label="Last name"
-                        aria-label="Last name"
-                        :validation-status="
-                            signinStore.errors.lastName
-                                ? ValidationStatus.Error
-                                : signinStore.lastName.value
-                                ? ValidationStatus.Success
-                                : undefined
-                        "
-                        type="text"
-                    >
-                        <template #validationMessage
-                            >@{{ signinStore.errors.lastName }}</template
+                    <label for="name"
+                        >@{{ $t('message.lastName') }}
+                        <Input
+                            v-bind="signUpStore.lastName"
+                            id="lastName"
+                            required
+                            :placeholder="$t('message.lastName_p')"
+                            aria-label="Last name"
+                            :validation-status="
+                                signUpStore.errors.lastName
+                                    ? ValidationStatus.Error
+                                    : signUpStore.lastName.value
+                                    ? ValidationStatus.Success
+                                    : undefined
+                            "
+                            type="text"
                         >
-                    </Input>
+                            <template #validationMessage
+                                >@{{ signUpStore.errors.lastName }}</template
+                            >
+                        </Input>
+                    </label>
                     <br />
-                    <Input
-                        v-bind="signinStore.userName"
-                        id="userName"
-                        required
-                        placeholder="enter your user name"
-                        label="User name"
-                        aria-label="User name"
-                        :validation-status="
-                            signinStore.errors.userName
-                                ? ValidationStatus.Error
-                                : signinStore.userName.value
-                                ? ValidationStatus.Success
-                                : undefined
-                        "
-                        type="text"
-                    >
-                        <template #suffix>
-                            <Button type="button" size="xs">Check</Button>
-                        </template>
-                        <template #validationMessage
-                            >@{{ signinStore.errors.userName }}</template
+                    <label for="name"
+                        >@{{ $t('message.userName') }}
+                        <Input
+                            v-bind="signUpStore.userName"
+                            id="userName"
+                            required
+                            :placeholder="$t('message.userName_p')"
+                            aria-label="User name"
+                            :validation-status="
+                                signUpStore.errors.userName
+                                    ? ValidationStatus.Error
+                                    : signUpStore.userName.value
+                                    ? ValidationStatus.Success
+                                    : undefined
+                            "
+                            type="text"
                         >
-                    </Input>
+                            <template #suffix>
+                                <Button type="button" size="xs"
+                                    >@{{ $t('message.check') }}</Button
+                                >
+                            </template>
+                            <template #validationMessage
+                                >@{{ signUpStore.errors.userName }}</template
+                            >
+                        </Input>
+                    </label>
                     <br />
-                    <Input
-                        v-bind="signinStore.password"
-                        id="password"
-                        required
-                        placeholder="enter your password"
-                        label="Password"
-                        aria-label="Password"
-                        :validation-status="
-                            signinStore.errors.password
-                                ? ValidationStatus.Error
-                                : signinStore.password.value
-                                ? ValidationStatus.Success
-                                : undefined
-                        "
-                        type="password"
-                    >
-                        <template #validationMessage
-                            >@{{ signinStore.errors.password }}</template
+                    <label for="name"
+                        >@{{ $t('message.password') }}
+                        <Input
+                            v-bind="signUpStore.password"
+                            id="password"
+                            required
+                            :placeholder="$t('message.password_p')"
+                            aria-label="Password"
+                            :validation-status="
+                                signUpStore.errors.password
+                                    ? ValidationStatus.Error
+                                    : signUpStore.password.value
+                                    ? ValidationStatus.Success
+                                    : undefined
+                            "
+                            type="password"
                         >
-                    </Input>
+                            <template #validationMessage
+                                >@{{ signUpStore.errors.password }}</template
+                            >
+                        </Input>
+                    </label>
                     <br />
-                    <Input
-                        v-bind="signinStore.email"
-                        id="email"
-                        required
-                        placeholder="enter your E-mail"
-                        label="E-mail"
-                        aria-label="E-mail"
-                        :validation-status="
-                            signinStore.errors.email
-                                ? ValidationStatus.Error
-                                : signinStore.email.value
-                                ? ValidationStatus.Success
-                                : undefined
-                        "
-                        type="email"
-                    >
-                        <template #validationMessage
-                            >@{{ signinStore.errors.email }}</template
+                    <label for="name"
+                        >@{{ $t('message.email') }}
+                        <Input
+                            v-bind="signUpStore.email"
+                            id="email"
+                            required
+                            :placeholder="$t('message.email_p')"
+                            aria-label="E-mail"
+                            :validation-status="
+                                signUpStore.errors.email
+                                    ? ValidationStatus.Error
+                                    : signUpStore.email.value
+                                    ? ValidationStatus.Success
+                                    : undefined
+                            "
+                            type="email"
                         >
-                    </Input>
+                            <template #validationMessage
+                                >@{{ signUpStore.errors.email }}</template
+                            >
+                        </Input>
+                    </label>
                     <br />
-                    <Input
-                        v-bind="signinStore.phoneNumber"
-                        id="phoneNumber"
-                        required
-                        placeholder="enter your phone number"
-                        label="Phone number"
-                        aria-label="Phone number"
-                        :validation-status="
-                            signinStore.errors.phoneNumber
-                                ? ValidationStatus.Error
-                                : signinStore.phoneNumber.value
-                                ? ValidationStatus.Success
-                                : undefined
-                        "
-                        type="tel"
-                    >
-                        <template #validationMessage
-                            >@{{ signinStore.errors.phoneNumber }}</template
+                    <label for="name"
+                        >@{{ $t('message.phoneNumber') }}
+                        <Input
+                            v-bind="signUpStore.phoneNumber"
+                            id="phoneNumber"
+                            required
+                            :placeholder="$t('message.phoneNumber_p')"
+                            aria-label="Phone number"
+                            :validation-status="
+                                signUpStore.errors.phoneNumber
+                                    ? ValidationStatus.Error
+                                    : signUpStore.phoneNumber.value
+                                    ? ValidationStatus.Success
+                                    : undefined
+                            "
+                            type="tel"
                         >
-                    </Input>
+                            <template #validationMessage
+                                >@{{ signUpStore.errors.phoneNumber }}</template
+                            >
+                        </Input>
+                    </label>
                     <br />
                 </div>
                 <hr
@@ -965,14 +985,14 @@
                         class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600"
                         @click="resetModal"
                     >
-                        Reset
+                        @{{ $t('message.reset') }}
                     </button>
                     <button
                         type="submit"
                         class="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        @submit="signinStore.signin"
+                        @submit="signUpStore.signUp"
                     >
-                        Submit
+                        @{{ $t('message.submit') }}
                     </button>
                 </div>
             </form>
@@ -1112,8 +1132,8 @@ onBeforeMount(() => {
         })
     }, 4500)
 })
-import { useSigninStore } from '@/store'
-const signinStore = useSigninStore()
+import { useSignUpStore } from '@/store'
+const signUpStore = useSignUpStore()
 enum ValidationStatus {
     Success = 'success',
     Error = 'error'

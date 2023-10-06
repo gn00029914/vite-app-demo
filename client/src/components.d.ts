@@ -14,7 +14,6 @@ declare module 'vue' {
         Dropdown: (typeof import('flowbite-vue'))['Dropdown']
         EventCounter: (typeof import('./components/EventCounter.vue'))['default']
         FlowbiteThemable: (typeof import('flowbite-vue'))['FlowbiteThemable']
-        Form: (typeof import('flowbite-vue'))['Form']
         HeaderIndex: (typeof import('./Layout/Header/HeaderIndex.vue'))['default']
         HelloWorld: (typeof import('./components/HelloWorld.vue'))['default']
         HomePage: (typeof import('./pages/HomePage.vue'))['default']
