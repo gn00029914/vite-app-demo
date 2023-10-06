@@ -2,6 +2,23 @@
     "lang": "English",
     "message": {
         "Home": "Home",
-        "About": "About"
+        "About": "About",
+        "signUp": "Sign up",
+        "signIn": "Sign in",
+        "firstName": "First name",
+        "firstName_p": "enter your first name",
+        "lastName": "Last name",
+        "lastName_p": "enter your last name",
+        "userName": "User name",
+        "userName_p": "enter your user name",
+        "email": "E-mail",
+        "email_p": "enter your E-mail",
+        "password": "Password",
+        "password_p": "enter your password",
+        "phoneNumber": "Phone number",
+        "phoneNumber_p": "enter your phone number",
+        "check": "Check",
+        "reset": "Reset",
+        "submit": "Submit"
     }
 }
