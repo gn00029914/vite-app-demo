@@ -837,6 +837,7 @@
                         <Input
                             v-bind="signUpStore.firstName"
                             id="firstName"
+                            required
                             :placeholder="$t('message.firstName_p')"
                             name="firstName"
                             aria-label="First name"
