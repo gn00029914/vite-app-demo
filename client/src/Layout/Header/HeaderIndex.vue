@@ -125,7 +125,7 @@
                 </button>
                 <div class="overflow-y-auto py-4">
                     <ul class="space-y-2">
-                        <li>
+                        <!-- <li>
                             <a
                                 href="#"
                                 class="flex items-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
@@ -314,7 +314,6 @@
                             <a
                                 href="#"
                                 class="flex items-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                                @click="showModal"
                             >
                                 <svg
                                     aria-hidden="true"
@@ -333,11 +332,12 @@
                                     Sign In
                                 </span>
                             </a>
-                        </li>
+                        </li> -->
                         <li>
                             <a
                                 href="#"
                                 class="flex items-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                @click="showModal"
                             >
                                 <svg
                                     aria-hidden="true"
@@ -362,7 +362,7 @@
             </div>
 
             <!-- drawer init and toggle -->
-            <div class="xs:invisible xs:w-0 xs:hidden inline text-center">
+            <!-- <div class="xs:invisible xs:w-0 xs:hidden inline text-center">
                 <button
                     class="mb-2 mr-2 overflow-y-auto rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     type="button"
@@ -373,10 +373,10 @@
                 >
                     Show top drawer
                 </button>
-            </div>
+            </div> -->
 
             <!-- drawer component -->
-            <div
+            <!-- <div
                 id="drawer-top-example"
                 class="fixed inset-x-0 top-0 z-40 w-full -translate-y-full bg-white p-4 transition-transform dark:bg-gray-800"
                 tabindex="-1"
@@ -457,10 +457,10 @@
                         ></path>
                     </svg>
                 </a>
-            </div>
+            </div> -->
 
             <!-- drawer init and toggle -->
-            <div class="xs:invisible xs:w-0 xs:hidden inline text-center">
+            <!-- <div class="xs:invisible xs:w-0 xs:hidden inline text-center">
                 <button
                     class="mb-2 mr-2 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     type="button"
@@ -471,10 +471,10 @@
                 >
                     Show right drawer
                 </button>
-            </div>
+            </div> -->
 
             <!-- drawer component -->
-            <div
+            <!-- <div
                 id="drawer-right-example"
                 class="fixed right-0 top-0 z-40 h-screen w-80 translate-x-full overflow-y-auto bg-white p-4 transition-transform dark:bg-gray-800"
                 tabindex="-1"
@@ -555,10 +555,10 @@
                         </svg>
                     </a>
                 </div>
-            </div>
+            </div> -->
 
             <!-- drawer init and toggle -->
-            <div class="inline text-center">
+            <!-- <div class="inline text-center">
                 <button
                     class="mb-2 mr-2 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     type="button"
@@ -571,10 +571,10 @@
                 >
                     Show swipeable drawer
                 </button>
-            </div>
+            </div> -->
 
             <!-- drawer component -->
-            <div
+            <!-- <div
                 id="drawer-swipe"
                 class="fixed inset-x-0 bottom-[60px] z-40 w-full translate-y-full overflow-y-auto rounded-t-lg border-t border-gray-200 bg-white transition-transform dark:border-gray-700 dark:bg-gray-800"
                 tabindex="-1"
@@ -816,7 +816,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </nav>
     </div>
     <Modal v-if="isShowModal" :size="size" @close="closeModal">
@@ -1044,7 +1044,7 @@ const darkMode = () => {
         document.documentElement.classList.remove('dark')
         document.documentElement.classList.add('light')
         document.documentElement.style.background =
-            "linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('/vite-app-demo/lightbg.jpg') no-repeat center center"
+            "linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('/vite-app-demo/lightbg.jpg') no-repeat fixed center"
         document.documentElement.style.backgroundSize = 'cover'
         // document.documentElement.animate({ easing: ['ease-in'] }, 5000);
         // localStorage.theme = 'light'
@@ -1058,7 +1058,7 @@ const darkMode = () => {
         document.documentElement.classList.remove('light')
         document.documentElement.classList.add('dark')
         document.documentElement.style.background =
-            "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/vite-app-demo/darkbg.jpg') no-repeat center center"
+            "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/vite-app-demo/darkbg.jpg') no-repeat fixed center"
         document.documentElement.style.backgroundSize = 'cover'
         // document.documentElement.animate({ easing: ['ease-in'] }, 5000);
         // localStorage.theme = 'dark'

@@ -16,12 +16,12 @@
         ) {
             document.documentElement.classList.add('dark')
             document.documentElement.style.background =
-                "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/vite-app-demo/darkbg.jpg') no-repeat center center"
+                "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/vite-app-demo/darkbg.jpg') no-repeat fixed center"
             document.documentElement.style.backgroundSize = 'cover'
         } else {
             document.documentElement.classList.remove('dark')
             document.documentElement.style.background =
-                "linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('/vite-app-demo/lightbg.jpg') no-repeat center center"
+                "linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('/vite-app-demo/lightbg.jpg') no-repeat fixed center"
             document.documentElement.style.backgroundSize = 'cover'
         }
     </script>

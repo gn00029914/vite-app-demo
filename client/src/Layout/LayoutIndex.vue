@@ -5,7 +5,7 @@
         >
             <Header></Header>
         </div>
-        <div class="layout-content mb-16">
+        <div class="layout-content">
             <div class="layout-menu">
                 <Menu></Menu>
             </div>
