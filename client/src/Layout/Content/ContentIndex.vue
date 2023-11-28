@@ -10,14 +10,10 @@
         </section>
         <EventCounter :init="init" />
         ==================1
-        <ComponentA
-            class="prose lg:prose-xl dark:prose-invert prose-h1:text-[cadetblue] px-10 py-5"
-        />
     </div>
 </template>
 
 <script setup lang="ts">
-import ComponentA from '@pages/index.md'
 import EventCounter from '@components/EventCounter.vue'
 const init = 6
 </script>
