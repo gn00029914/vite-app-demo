@@ -32,7 +32,7 @@
     "sstcs": "pnpm shx mkdir -p client/node_modules/.vite/basic-ssl && pnpm exec shx cat server/https/fastify.key server/https/fastify.cert > client/node_modules/.vite/basic-ssl/_cert.pem",
     "npreg": "pnpm npri && concurrently \"pnpm shx cp ./server/.env.development ./server/.env\" \"pnpm shx sed -i \"s/postgresql/mysql/g\" server/prisma/schema.prisma\" && pnpm nppul && pnpm npg",
     "st": "pnpm snyk test --all-projects"
-  },
+  }, 
   "keywords": [],
   "author": {
     "name": "gn00029914"
@@ -42,8 +42,8 @@
     "pm2": "^5.3.0"
   },
   "devDependencies": {
-    "concurrently": "^8.2.1",
+    "concurrently": "^8.2.2",
     "shx": "^0.3.4",
-    "snyk": "^1.1234.0"
+    "snyk": "^1.1258.0"
   }
 }

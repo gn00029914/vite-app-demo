@@ -1,4 +1,3 @@
-client:
-- "client/*"
-server:
-- "server/*"
+packages:
+- 'client/**'
+- 'server/**'

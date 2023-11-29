@@ -3,7 +3,6 @@
 
 import { defineConfig, splitVendorChunkPlugin } from 'vite'
 import { resolve } from 'path'
-import { warmup } from 'vite-plugin-warmup'
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import { ViteMinifyPlugin } from 'vite-plugin-minify'
 import { VitePWA } from 'vite-plugin-pwa'
@@ -12,7 +11,7 @@ import VueRouter from 'unplugin-vue-router/vite'
 import vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
 import generateSitemap from 'vite-plugin-pages-sitemap'
-import ClientSideLayout from 'vite-plugin-vue-layouts'
+import MetaLayouts from 'vite-plugin-vue-meta-layouts'
 import VueI18nVitePlugin from '@intlify/unplugin-vue-i18n/vite'
 import Markdown from 'unplugin-vue-markdown/vite'
 import anchor from 'markdown-it-anchor'
@@ -59,11 +58,6 @@ export default defineConfig({
         }
     },
     plugins: [
-        // 優先由 non-blocking 方式載入
-        warmup({
-            // warm up the files and its imported JS modules recursively
-            clientFiles: ['./*.html']
-        }),
         // 解決 HMR 遺失 CSS 問題 https://github.com/vitejs/vite/issues/3033#issuecomment-1360691044
         // 如果有不同步的問題發生可改由 blocking 方式載入
         {
@@ -243,7 +237,7 @@ export default defineConfig({
             }
         }),
         Markdown({
-            headEnabled: 'unhead',
+            headEnabled: true,
             // default options passed to markdown-it
             // see: https://markdown-it.github.io/markdown-it/
             markdownItOptions: {
@@ -269,10 +263,10 @@ export default defineConfig({
                     // readable: true
                 })
         }),
-        ClientSideLayout({
-            layoutsDirs: 'src/Layout',
+        MetaLayouts({
+            target: 'src/Layout',
             defaultLayout: 'LayoutIndex',
-            importMode: () => 'async'
+            importMode: 'async'
         }),
         VueI18nVitePlugin({
             /* options */
@@ -421,7 +415,10 @@ export default defineConfig({
         }
     },
     server: {
-        https: true,
+        warmup: {
+            // warm up the files and its imported JS modules recursively
+            clientFiles: ['./*.html']
+        },
         open: true,
         port: 443,
         host: 'localhost',
