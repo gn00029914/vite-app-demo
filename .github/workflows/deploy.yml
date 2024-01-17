@@ -38,7 +38,7 @@ jobs:
       # 步驟三：生成快取初始值
       - name: Generate Cache Prime Numbers
         id: cache-primes
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             pnpm-lock.yaml
@@ -59,7 +59,7 @@ jobs:
       # 步驟五：讀取原先的快取
       - name: Restore cached Primes
         id: cache-primes-restore
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: |
             pnpm-lock.yaml
@@ -82,7 +82,7 @@ jobs:
       # 步驟七：快取存檔
       - name: Save Primes
         id: cache-primes-save
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         if: always()
         with:
           path: |
