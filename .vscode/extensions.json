@@ -2,6 +2,7 @@
   "recommendations": [
     "Vue.volar",
     "EditorConfig.EditorConfig",
-    "dbaeumer.vscode-eslint"
+    "dbaeumer.vscode-eslint",
+    "b3hr4d.colorful-darkplus"
   ]
 }

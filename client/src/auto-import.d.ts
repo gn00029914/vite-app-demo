@@ -51,7 +51,7 @@ declare global {
     const defineOffer: (typeof import('@unhead/schema-org-vue'))['defineOffer']
     const defineOpeningHours: (typeof import('@unhead/schema-org-vue'))['defineOpeningHours']
     const defineOrganization: (typeof import('@unhead/schema-org-vue'))['defineOrganization']
-    const definePage: (typeof import('unplugin-vue-router/runtime'))['_definePage']
+    const definePage: (typeof import('unplugin-vue-router/runtime'))['definePage']
     const definePerson: (typeof import('@unhead/schema-org-vue'))['definePerson']
     const definePlace: (typeof import('@unhead/schema-org-vue'))['definePlace']
     const defineProduct: (typeof import('@unhead/schema-org-vue'))['defineProduct']

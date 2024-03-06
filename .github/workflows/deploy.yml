@@ -53,7 +53,7 @@ jobs:
         if: steps.cache-primes.outputs.cache-hit != 'true'
         run: |
           corepack enable
-          corepack prepare pnpm@latest --activate
+          corepack use pnpm@latest
           pnpm config set shared-workspace-lockfile=false
           pnpm i --no-frozen-lockfile
       # 步驟五：讀取原先的快取
@@ -75,7 +75,7 @@ jobs:
       - name: Install and Build
         run: |
           corepack enable
-          corepack prepare pnpm@latest --activate
+          corepack use pnpm@latest
           pnpm config set shared-workspace-lockfile=false
           pnpm i --no-frozen-lockfile
           pnpm vb
