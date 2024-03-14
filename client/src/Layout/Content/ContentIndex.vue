@@ -4,7 +4,9 @@
         <!-- <div v-for="item in 100" :key="item" class="content-items">
             @{{ item }}
         </div> -->
-        <!-- <HomePage></HomePage> -->
+        <div v-if="$route.path === '/vite-app-demo/'">
+            <HomePage></HomePage>
+        </div>
         <section>
             <router-view></router-view>
         </section>
@@ -15,6 +17,7 @@
 
 <script setup lang="ts">
 import EventCounter from '@components/EventCounter.vue'
+import { RouterView } from 'vue-router'
 const init = 6
 </script>
 

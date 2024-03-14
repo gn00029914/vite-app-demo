@@ -52,18 +52,21 @@ const store = createPinia()
 const router = createRouter({
     history: createWebHistory(),
     extendRoutes: (router) => {
-        router.push(
-            {
-                component: () => import('./pages/HomePage.vue'),
-                name: 'home',
-                path: '/vite-app-demo/'
-            },
-            {
-                component: () => import('./pages/AboutPage.vue'),
-                name: 'about',
-                path: '/vite-app-demo/about'
-            }
-        )
+        // const HomePage = {
+        //     template: '<HomePage></HomePage>'
+        // }
+        // router.push(
+        //     {
+        //         component: HomePage,
+        //         name: 'home',
+        //         path: '/vite-app-demo/'
+        //     },
+        //     {
+        //         component: () => import('./pages/AboutPage.vue'),
+        //         name: 'about',
+        //         path: '/vite-app-demo/AboutPage'
+        //     }
+        // )
         setupLayouts(generatedRoutes)
         return router
     }
