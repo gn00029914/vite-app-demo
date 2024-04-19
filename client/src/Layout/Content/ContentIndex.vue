@@ -4,9 +4,9 @@
         <!-- <div v-for="item in 100" :key="item" class="content-items">
             @{{ item }}
         </div> -->
-        <div v-if="$route.path === '/vite-app-demo/'">
+        <!-- <div v-if="$route.path === '/vite-app-demo/'">
             <HomePage></HomePage>
-        </div>
+        </div> -->
         <section>
             <router-view></router-view>
         </section>
@@ -21,7 +21,7 @@ import { RouterView } from 'vue-router'
 const init = 6
 </script>
 
-<style lang="less" scoped>
+<style scoped>
 .content {
     flex: 1;
     margin: 20px;
@@ -29,10 +29,10 @@ const init = 6
     display: flex;
     flex-direction: column;
     overflow: auto;
+}
 
-    &-items {
-        padding: 20px;
-        border: 1px solid #ccc;
-    }
+.content-items {
+    padding: 20px;
+    border: 1px solid #ccc;
 }
 </style>

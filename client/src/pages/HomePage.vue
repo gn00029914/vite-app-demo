@@ -1,147 +1,154 @@
 <template>
     <div>首頁內容 HomePage Content</div>
-    <div id="default-carousel" class="relative w-full" data-carousel="slide">
-        <!-- Carousel wrapper -->
-        <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-            <!-- Item 1 -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img
-                    src="/images/img-1.jpg"
-                    class="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2"
-                    alt="..."
-                />
-            </div>
-            <!-- Item 2 -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img
-                    src="/images/img-2.jpg"
-                    class="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2"
-                    alt="..."
-                />
-            </div>
-            <!-- Item 3 -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img
-                    src="/images/img-3.jpg"
-                    class="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2"
-                    alt="..."
-                />
-            </div>
-            <!-- Item 4 -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img
-                    src="/images/img-4.jpg"
-                    class="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2"
-                    alt="..."
-                />
-            </div>
-            <!-- Item 5 -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img
-                    src="/images/img-5.jpg"
-                    class="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2"
-                    alt="..."
-                />
-            </div>
-        </div>
-        <!-- Slider indicators -->
-        <div
-            class="absolute bottom-5 left-1/2 z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse"
-        >
-            <button
-                type="button"
-                class="size-3 rounded-full"
-                aria-current="true"
-                aria-label="Slide 1"
-                data-carousel-slide-to="0"
-            ></button>
-            <button
-                type="button"
-                class="size-3 rounded-full"
-                aria-current="false"
-                aria-label="Slide 2"
-                data-carousel-slide-to="1"
-            ></button>
-            <button
-                type="button"
-                class="size-3 rounded-full"
-                aria-current="false"
-                aria-label="Slide 3"
-                data-carousel-slide-to="2"
-            ></button>
-            <button
-                type="button"
-                class="size-3 rounded-full"
-                aria-current="false"
-                aria-label="Slide 4"
-                data-carousel-slide-to="3"
-            ></button>
-            <button
-                type="button"
-                class="size-3 rounded-full"
-                aria-current="false"
-                aria-label="Slide 5"
-                data-carousel-slide-to="4"
-            ></button>
-        </div>
-        <!-- Slider controls -->
-        <button
-            type="button"
-            class="group absolute start-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
-            data-carousel-prev
-        >
-            <span
-                class="inline-flex size-10 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70"
+    <Button
+        class="p-button-raised"
+        :label="'count is' + count"
+        icon="pi pi-plus-circle"
+        @click="count++"
+    ></Button>
+    <Button label="Check" icon="pi pi-check"></Button>
+    <Carousel
+        :value="products"
+        :num-visible="5"
+        :num-scroll="1"
+        :responsive-options="responsiveOptions"
+        circular
+        :autoplay-interval="3000"
+        :pt="{
+            previousbutton: {
+                class: [
+                    'flex justify-center items-center self-center',
+                    'overflow-hidden w-auto h-8',
+                    'ml-1',
+                    'rounded-full',
+                    'border-0 bg-transparent',
+                    'text-surface-600',
+                    'transition duration-200 ease-in-out'
+                ]
+            },
+            nextbutton: {
+                class: [
+                    'flex justify-center items-center self-center',
+                    'overflow-hidden w-auto h-8',
+                    'mr-1',
+                    'rounded-full',
+                    'border-0 bg-transparent',
+                    'text-surface-600',
+                    'transition duration-200 ease-in-out'
+                ]
+            },
+            items: {
+                class: ['flex justify-content-evenly']
+            }
+            // itemsContent: {
+            //     class: ['flex justify-content-evenly w']
+            // }
+        }"
+    >
+        <template #item="slotProps">
+            <div
+                class="border-surface-200 dark:border-surface-700 m-2 rounded-md border p-3"
             >
-                <svg
-                    class="size-4 text-white rtl:rotate-180 dark:text-gray-800"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 6 10"
-                >
-                    <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 1 1 5l4 4"
-                    />
-                </svg>
-                <span class="sr-only">Previous</span>
-            </span>
-        </button>
-        <button
-            type="button"
-            class="group absolute end-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
-            data-carousel-next
-        >
-            <span
-                class="inline-flex size-10 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70"
-            >
-                <svg
-                    class="size-4 text-white rtl:rotate-180 dark:text-gray-800"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 6 10"
-                >
-                    <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="m1 9 4-4-4-4"
-                    />
-                </svg>
-                <span class="sr-only">Next</span>
-            </span>
-        </button>
-    </div>
-    <br />
+                <div class="mb-3">
+                    <div class="relative mx-auto">
+                        <img
+                            :src="
+                                'https://primefaces.org/cdn/primevue/images/product/' +
+                                slotProps.data.image
+                            "
+                            :alt="slotProps.data.name"
+                            class="w-full rounded-md"
+                        />
+                        <Tag
+                            :value="slotProps.data.inventoryStatus"
+                            :severity="
+                                getSeverity(
+                                    slotProps.data.inventoryStatus
+                                ) as HintedString<string>
+                            "
+                            class="!text-text-color absolute"
+                            style="left: 5px; top: 5px"
+                        />
+                    </div>
+                </div>
+                <div class="mb-3 font-medium">@{{ slotProps.data.name }}</div>
+                <div class="flex items-center justify-between">
+                    <div class="mt-0 text-xl font-semibold">
+                        $@{{ slotProps.data.price }}
+                    </div>
+                    <span class="flex">
+                        <Button
+                            icon="pi pi-heart"
+                            severity="secondary"
+                            outlined
+                        />
+                        <Button icon="pi pi-shopping-cart" class="ml-2" />
+                    </span>
+                </div>
+            </div>
+        </template>
+    </Carousel>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Button from 'primevue/button'
+const count = ref(0)
+import { ref, onMounted } from 'vue'
+import { ProductService } from '../service/ProductService'
+// import { HintedString } from '@/presets/ts-helpers' // https://github.com/primefaces/primevue-examples/issues/6#issuecomment-1959753222
+import { HintedString } from 'primevue/ts-helpers'
+
+// onMounted(() => {
+ProductService.getProductsSmall().then(
+    (data: string | unknown[]) => (products.value = data.slice(0, 9))
+)
+// })
+
+const products = ref()
+const responsiveOptions = ref([
+    {
+        breakpoint: '1800px',
+        numVisible: 5,
+        numScroll: 1
+    },
+    {
+        breakpoint: '1400px',
+        numVisible: 4,
+        numScroll: 1
+    },
+    {
+        breakpoint: '1199px',
+        numVisible: 3,
+        numScroll: 1
+    },
+    {
+        breakpoint: '767px',
+        numVisible: 2,
+        numScroll: 1
+    },
+    {
+        breakpoint: '575px',
+        numVisible: 1,
+        numScroll: 1
+    }
+])
+
+const getSeverity = (status: HintedString<string>) => {
+    switch (status) {
+        case 'INSTOCK':
+            return 'success'
+
+        case 'LOWSTOCK':
+            return 'warning'
+
+        case 'OUTOFSTOCK':
+            return 'danger'
+
+        default:
+            return null
+    }
+}
+</script>
 
 <style scoped>
 /* todo */

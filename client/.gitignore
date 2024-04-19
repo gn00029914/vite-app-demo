@@ -14,7 +14,8 @@ dev-dist
 *.local
 .pnpm
 # public/*
-# !public/vite.svg 
+# !public/vite.svg
+src/presets/ts-helpers.d.ts
 
 # Editor directories and files
 .vscode/*

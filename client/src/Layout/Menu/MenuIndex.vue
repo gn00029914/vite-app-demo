@@ -1,16 +1,14 @@
 <template>
-    <div class="menu xs:invisible xs:w-0 xs:hidden w-fit">
+    <div class="menu xs:invisible xs:w-0 xs:hidden">
         <div class="menu-bar">
-            Menu
+            <i-carbon-terminal />Menu
             <label for="check">
                 <input id="check" type="checkbox" @click="toggleMenu" />
-                <span class="bg-gray-900 dark:bg-white"></span>
-                <span class="bg-gray-900 dark:bg-white"></span>
-                <span class="bg-gray-900 dark:bg-white"></span>
+                <span class="!bg-primary-color"></span>
+                <span class="!bg-primary-color"></span>
+                <span class="!bg-primary-color"></span>
             </label>
         </div>
-        <br />
-        <i-carbon-terminal />
         <!-- <router-link v-slot="{ route }"></router-link> -->
         <!-- <router-link v-slot="{ href, route, navigate }" to="HomePage">
             <a :href="href" @click="navigate">
@@ -82,7 +80,7 @@ const items: [
 ]
 </script>
 
-<style lang="less" scoped>
+<style scoped>
 .menu {
     flex: 1;
     width: auto;
@@ -90,12 +88,14 @@ const items: [
     border-right: 1px solid #ccc;
     display: flex;
     flex-direction: column;
-    &-bar {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
 }
+
+.menu-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 label {
     display: flex;
     flex-direction: column;
@@ -104,7 +104,7 @@ label {
 }
 
 label span {
-    // background: #fff;
+    /* background: #fff; */
     border-radius: 10px;
     height: 2px;
     margin: 2px 0;

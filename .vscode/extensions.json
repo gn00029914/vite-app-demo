@@ -3,6 +3,7 @@
     "Vue.volar",
     "EditorConfig.EditorConfig",
     "dbaeumer.vscode-eslint",
-    "b3hr4d.colorful-darkplus"
+    "b3hr4d.colorful-darkplus",
+    "oderwat.indent-rainbow"
   ]
 }

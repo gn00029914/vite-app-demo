@@ -1,10 +1,13 @@
 <template>
-    <layout class="boder-gray-200 text-gray-900 dark:text-white"> </layout>
+    <layout class="boder-gray-200 light:text-gray-900 dark:text-white">
+    </layout>
+    <!-- <layout> </layout> -->
 </template>
 
 <script lang="ts" setup>
 import layout from './Layout/LayoutIndex.vue'
 import { useServerSeoMeta } from '@unhead/vue'
+import { usePrimeVue } from 'primevue/config'
 useSchemaOrg([
     // @todo Select Identity: http://unhead.unjs.io/schema-org/guides/identity
     defineWebSite({
@@ -20,5 +23,15 @@ useServerSeoMeta({
     ogImage: '/vite-app-demo/android-chrome-512x512.png',
     twitterCard: 'summary_large_image'
 })
+document.addEventListener('load', () => {
+    const scriptTags = document.getElementsByTagName('script')
+    // Convert the HTMLCollection to an array to use for...of
+    Array.from(scriptTags).forEach((script) => {
+        if (script.nonce) {
+            usePrimeVue().config.csp?.nonce?.replace(/.*/g, script.nonce)
+            return
+        }
+    })
+})
 </script>
-<style lang="less" scoped></style>
+<style scoped></style>
