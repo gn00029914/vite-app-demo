@@ -24,6 +24,7 @@ useServerSeoMeta({
     twitterCard: 'summary_large_image'
 })
 document.addEventListener('load', () => {
+    // 待 privevue 的 presets 完全支援 TypeScript，可移除此 EventListener (https://github.com/primefaces/primevue-tailwind/issues/66)
     const scriptTags = document.getElementsByTagName('script')
     // Convert the HTMLCollection to an array to use for...of
     Array.from(scriptTags).forEach((script) => {

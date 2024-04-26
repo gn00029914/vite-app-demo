@@ -96,7 +96,7 @@ const count = ref(0)
 import { ref, onMounted } from 'vue'
 import { ProductService } from '../service/ProductService'
 // import { HintedString } from '@/presets/ts-helpers' // https://github.com/primefaces/primevue-examples/issues/6#issuecomment-1959753222
-import { HintedString } from 'primevue/ts-helpers'
+// import { HintedString } from 'primevue/ts-helpers'
 
 // onMounted(() => {
 ProductService.getProductsSmall().then(

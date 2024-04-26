@@ -18,9 +18,10 @@ import generatedRoutes from 'virtual:generated-pages'
 import App from './App.vue'
 import PrimeVue from 'primevue/config' // import PrimeVue
 import { usePassThrough } from 'primevue/passthrough'
+import Tailwind from 'primevue/passthrough/tailwind'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
-import Wind from '@presets/wind' // https://tailwind.primevue.org/overview/#preset https://github.com/primefaces/primevue-tailwind/releases/tag/0.8.2 https://github.com/primefaces/primevue-examples/issues/6#issuecomment-1959753222
+import Wind from '@presets/wind/index' // https://tailwind.primevue.org/overview/#preset https://github.com/primefaces/primevue-tailwind/releases/tag/0.8.2 https://github.com/primefaces/primevue-examples/issues/6#issuecomment-1959753222 https://github.com/primefaces/primevue/issues/4883#issuecomment-1865040221 https://github.com/primefaces/primevue-tailwind/issues/66
 import BadgeDirective from 'primevue/badgedirective'
 import Tooltip from 'primevue/tooltip'
 import StyleClass from 'primevue/styleclass'
@@ -103,15 +104,11 @@ createApp(App)
         ripple: true,
         inputStyle: 'filled',
         // locale: 'zh-TW',
-        pt: usePassThrough(
-            Wind,
-            {}
-            // {
-            // mergeSections:,
-            // mergeProps:
-            // }
-        ),
-        csp: { nonce: '{{ nonce }}' } // 由此處設置 nonce 不太可行, 待完全轉由 TypeScript 檢查 presets 的型別後再從後台一同編譯 nonce 為佳
+        pt: usePassThrough(Tailwind, Wind, {
+            mergeSections: true,
+            mergeProps: false
+        }),
+        csp: { nonce: '{{ nonce }}' } // 由此處設置 nonce 不太可行, 待完全轉由 TypeScript 檢查 presets 的型別後再從後台一同編譯 nonce 為佳 (https://github.com/primefaces/primevue-tailwind/issues/66)
     })
     .directive('badge', BadgeDirective)
     .directive('tooltip', Tooltip)

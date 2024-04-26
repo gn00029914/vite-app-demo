@@ -5,7 +5,6 @@ import { defineConfig, splitVendorChunkPlugin } from 'vite'
 import browserslist from 'browserslist'
 import { browserslistToTargets } from 'lightningcss'
 import { resolve } from 'path'
-import commonjs from 'vite-plugin-commonjs'
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import { ViteMinifyPlugin } from 'vite-plugin-minify'
 import { VitePWA } from 'vite-plugin-pwa'
@@ -67,16 +66,6 @@ export default defineConfig({
         }
     },
     plugins: [
-        commonjs({
-            filter(id) {
-                // console.log(id)
-                // 預設會排除 `node_modules`，所以必須顯式的包含它explicitly
-                // https://github.com/vite-plugin/vite-plugin-commonjs/blob/v0.7.0/src/index.ts#L125-L127
-                if (id.includes('node_modules/primevue')) {
-                    return true
-                }
-            }
-        }),
         // 解決 HMR 遺失 CSS 問題 https://github.com/vitejs/vite/issues/3033#issuecomment-1360691044
         // 如果有不同步的問題發生可改由 blocking 方式載入
         {
@@ -352,21 +341,32 @@ export default defineConfig({
                 // 'vue-router',
                 VueRouterAutoImports,
                 'vue-i18n',
-                '@vueuse/core'
+                '@vueuse/core',
                 // 'vuex', // 以下按需引入
-                // {
-                //   // custom
-                //   '@vueuse/core': [
-                //     // named imports
-                //     'useMouse', // import { useMouse } from '@vueuse/core',
-                //     // alias
-                //     ['useFetch', 'useMyFetch']
-                //   ],
-                //   axios: [
-                //     // default imports
-                //     ['default', 'axios']
-                //   ]
-                // }
+                {
+                    // custom
+                    //   '@vueuse/core': [
+                    //     // named imports
+                    //     'useMouse', // import { useMouse } from '@vueuse/core',
+                    //     // alias
+                    //     ['useFetch', 'useMyFetch']
+                    //   ],
+                    //   axios: [
+                    //     // default imports
+                    //     ['default', 'axios']
+                    //   ]
+                    from: 'primevue/ts-helpers',
+                    imports: [
+                        'Booleanish',
+                        'Numberish',
+                        'Nullable',
+                        'PassThrough',
+                        'DefaultPassThrough',
+                        'HintedString'
+                    ],
+                    type: true,
+                    typeFrom: '@presets/wind/index'
+                }
             ],
             resolvers: [
                 // (autoImportName) => {

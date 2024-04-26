@@ -350,6 +350,7 @@ onBeforeMount(() => {
     }, 4500)
 })
 import { useSignUpStore } from '@/store'
+import { usePrimeVue } from 'primevue/config'
 const signUpStore = useSignUpStore()
 enum ValidationStatus {
     Success = 'success',
