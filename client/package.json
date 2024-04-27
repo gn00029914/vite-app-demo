@@ -20,7 +20,7 @@
         "coverage": "vitest run --coverage"
     },
     "dependencies": {
-        "@types/markdown-it": "^13.0.7",
+        "@types/markdown-it": "^14.0.0",
         "@vee-validate/i18n": "^4.12.5",
         "@vee-validate/rules": "^4.12.5",
         "@vueuse/components": "^10.7.2",
