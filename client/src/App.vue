@@ -1,5 +1,7 @@
 <template>
-    <layout class="boder-gray-200 text-gray-900 dark:text-white"> </layout>
+    <layout class="boder-gray-200 light:text-gray-900 dark:text-white">
+    </layout>
+    <!-- <layout> </layout> -->
 </template>
 
 <script lang="ts" setup>
@@ -21,4 +23,4 @@ useServerSeoMeta({
     twitterCard: 'summary_large_image'
 })
 </script>
-<style lang="less" scoped></style>
+<style scoped></style>

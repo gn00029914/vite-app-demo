@@ -9,7 +9,6 @@
   ],
   "vue.server.petiteVue.supportHtmlFile": true,
   "vue.server.vitePress.supportMdFile": true,
-  "typescript.experimental.aiQuickFix": true,
   "[vue]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },

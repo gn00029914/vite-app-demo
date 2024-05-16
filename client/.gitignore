@@ -14,7 +14,7 @@ dev-dist
 *.local
 .pnpm
 # public/*
-# !public/vite.svg 
+# !public/vite.svg
 
 # Editor directories and files
 .vscode/*

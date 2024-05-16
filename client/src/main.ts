@@ -1,7 +1,6 @@
 import './style.css'
 import '../node_modules/accessible-nprogress/dist/accessible-nprogress.min.css' // 不建議直接由 CDN 引入, 待完成專案部署後再由 CDN 重新導向
 import './nprogress-custom.css'
-
 import 'vite/modulepreload-polyfill'
 import { registerSW } from 'virtual:pwa-register'
 import NProgress from 'accessible-nprogress'
@@ -16,6 +15,21 @@ import { createRouter, createWebHistory } from 'vue-router/auto'
 import { setupLayouts } from 'virtual:meta-layouts'
 import generatedRoutes from 'virtual:generated-pages'
 import App from './App.vue'
+import PrimeVue from 'primevue/config' // import PrimeVue
+import { usePassThrough } from 'primevue/passthrough'
+import Tailwind from 'primevue/passthrough/tailwind'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import Wind from '@presets/wind/index' // https://tailwind.primevue.org/overview/#preset https://github.com/primefaces/primevue-tailwind/releases/tag/0.8.2 https://github.com/primefaces/primevue-examples/issues/6#issuecomment-1959753222 https://github.com/primefaces/primevue/issues/4883#issuecomment-1865040221 https://github.com/primefaces/primevue-tailwind/issues/66
+import BadgeDirective from 'primevue/badgedirective'
+import Tooltip from 'primevue/tooltip'
+import StyleClass from 'primevue/styleclass'
+import FocusTrap from 'primevue/focustrap'
+import Ripple from 'primevue/ripple'
+import AnimateOnScroll from 'primevue/animateonscroll'
+import '../node_modules/primeicons/primeicons.css' // icons
+// import '../node_modules/primeflex/primeflex.css' // PrimeFlex
+// import Button from 'primevue/button' // 改為auto-import
 // import { store } from './store'
 
 const i18n = createI18n({
@@ -61,7 +75,7 @@ const router = createRouter({
             {
                 component: () => import('./pages/AboutPage.vue'),
                 name: 'about',
-                path: '/vite-app-demo/about'
+                path: '/vite-app-demo/AboutPage'
             }
         )
         setupLayouts(generatedRoutes)
@@ -77,51 +91,60 @@ NProgress.configure({
         : true
 }).start()
 
+// 取得 privevue 所需的 nonce
+let _nonce
+const scriptTags = document.getElementsByTagName('script')
+// Convert the HTMLCollection to an array to use for...of
+Array.from(scriptTags).forEach((script) => {
+    if (script.nonce) {
+        _nonce = script.nonce
+        return
+    }
+})
+
 createApp(App)
     .use(i18n)
     .use(head)
     .use(store)
     .use(router)
+    // .component('router-link', RouterLink)
     .component('EventCounter', EventCounter)
+    .use(PrimeVue, {
+        unstyled: false,
+        ripple: true,
+        inputStyle: 'filled',
+        // locale: 'zh-TW',
+        pt: usePassThrough(Tailwind, Wind, {
+            mergeSections: true,
+            mergeProps: false
+        }),
+        csp: { nonce: _nonce } // 由此處設置 privevue 所需的 nonce
+    })
+    .directive('badge', BadgeDirective)
+    .directive('tooltip', Tooltip)
+    .directive('styleclass', StyleClass)
+    .directive('focustrap', FocusTrap)
+    .directive('ripple', Ripple)
+    .directive('animateonscroll', AnimateOnScroll)
+    // .component('Button', Button)  // register Button component
     .mount('#app')
 
 NProgress.done()
 
-import { Drawer } from 'flowbite'
-import type { DrawerOptions, DrawerInterface } from 'flowbite'
-
-// set the drawer menu element
-const $targetEl: HTMLElement | null = document.getElementById('drawer-button')
-const $buttonElement: HTMLElement | null = document.querySelector(
-    '#drawer-hide-button'
-)
-// options with default values
-const options: DrawerOptions = {
-    placement: 'right',
-    backdrop: true,
-    bodyScrolling: false,
-    edge: true,
-    edgeOffset: 'bottom-[60px]',
-    backdropClasses:
-        'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40',
-    onHide: () => {
-        console.log('drawer is hidden')
-    },
-    onShow: () => {
-        console.log('drawer is shown')
-    },
-    onToggle: () => {
-        console.log('drawer has been toggled')
+document.addEventListener('DOMContentLoaded', () => {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document
+            .getElementById('theme-toggle-light-icon')
+            ?.classList.remove('hidden')
+        document
+            .getElementById('theme-toggle-dark-icon')
+            ?.classList.add('hidden')
+    } else {
+        document
+            .getElementById('theme-toggle-dark-icon')
+            ?.classList.remove('hidden')
+        document
+            .getElementById('theme-toggle-light-icon')
+            ?.classList.add('hidden')
     }
-}
-/*
- * $targetEl: required
- * options: optional
- */
-const drawer: DrawerInterface = new Drawer($targetEl, options)
-$buttonElement?.addEventListener('click', () => {
-    drawer.hide()
-    $targetEl?.classList.remove('-translate-x-full')
 })
-// show the drawer
-// drawer.show()

@@ -45,13 +45,12 @@ declare global {
     const defineItemList: (typeof import('@unhead/schema-org-vue'))['defineItemList']
     const defineJobPosting: (typeof import('@unhead/schema-org-vue'))['defineJobPosting']
     const defineListItem: (typeof import('@unhead/schema-org-vue'))['defineListItem']
-    const defineLoader: (typeof import('vue-router/auto'))['defineLoader']
     const defineLocalBusiness: (typeof import('@unhead/schema-org-vue'))['defineLocalBusiness']
     const defineMovie: (typeof import('@unhead/schema-org-vue'))['defineMovie']
     const defineOffer: (typeof import('@unhead/schema-org-vue'))['defineOffer']
     const defineOpeningHours: (typeof import('@unhead/schema-org-vue'))['defineOpeningHours']
     const defineOrganization: (typeof import('@unhead/schema-org-vue'))['defineOrganization']
-    const definePage: (typeof import('unplugin-vue-router/runtime'))['_definePage']
+    const definePage: (typeof import('unplugin-vue-router/runtime'))['definePage']
     const definePerson: (typeof import('@unhead/schema-org-vue'))['definePerson']
     const definePlace: (typeof import('@unhead/schema-org-vue'))['definePlace']
     const defineProduct: (typeof import('@unhead/schema-org-vue'))['defineProduct']
@@ -346,4 +345,14 @@ declare global {
         WritableComputedRef
     } from 'vue'
     import('vue')
+    // @ts-ignore
+    export type {
+        Booleanish,
+        Numberish,
+        Nullable,
+        PassThrough,
+        DefaultPassThrough,
+        HintedString
+    } from 'primevue/ts-helpers'
+    import('primevue/ts-helpers')
 }

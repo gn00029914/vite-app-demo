@@ -2,6 +2,8 @@
 /// <reference types="vite/client" />
 
 import { defineConfig, splitVendorChunkPlugin } from 'vite'
+import browserslist from 'browserslist'
+import { browserslistToTargets } from 'lightningcss'
 import { resolve } from 'path'
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import { ViteMinifyPlugin } from 'vite-plugin-minify'
@@ -22,6 +24,7 @@ import { unheadVueComposablesImports } from '@unhead/vue'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import Components from 'unplugin-vue-components/vite'
 import IconsResolver from 'unplugin-icons/resolver'
+import { PrimeVueResolver } from 'unplugin-vue-components/resolvers'
 import Icons from 'unplugin-icons/vite'
 // loader helpers
 import { FileSystemIconLoader } from 'unplugin-icons/loaders'
@@ -33,7 +36,11 @@ import { constants } from 'zlib'
 // https://vitejs.dev/config/
 export default defineConfig({
     css: {
-        devSourcemap: process.env.NPM_ENV === 'development' ? true : false
+        devSourcemap: process.env.NPM_ENV === 'development' ? true : false,
+        // transformer: 'postcss' | 'lightningcss',
+        lightningcss: {
+            targets: browserslistToTargets(browserslist('>= 0.25%'))
+        }
     },
     optimizeDeps: {
         force: true
@@ -44,6 +51,7 @@ export default defineConfig({
         target: 'esnext',
         manifest: true,
         cssCodeSplit: true,
+        cssMinify: 'lightningcss',
         rollupOptions: {
             input: {
                 main: resolve(__dirname, './index.html')
@@ -214,7 +222,7 @@ export default defineConfig({
             {
                 injectAsStyleTag: false,
                 minifyCss: process.env.NPM_ENV === 'development' ? false : true,
-                async: true,
+                async: false,
                 cache: true // node_modules\.pnpm\vite-plugin-webfont-dl@3.6.0_vite@4.0.4\node_modules\flat-cache\.cache\vite-plugin-webfont-dl
             }
         ), // 注意網路連線特別是IPv6租約期限
@@ -333,25 +341,36 @@ export default defineConfig({
                 // 'vue-router',
                 VueRouterAutoImports,
                 'vue-i18n',
-                '@vueuse/core'
+                '@vueuse/core',
                 // 'vuex', // 以下按需引入
-                // {
-                //   // custom
-                //   '@vueuse/core': [
-                //     // named imports
-                //     'useMouse', // import { useMouse } from '@vueuse/core',
-                //     // alias
-                //     ['useFetch', 'useMyFetch']
-                //   ],
-                //   axios: [
-                //     // default imports
-                //     ['default', 'axios']
-                //   ]
-                // }
+                {
+                    // custom
+                    //   '@vueuse/core': [
+                    //     // named imports
+                    //     'useMouse', // import { useMouse } from '@vueuse/core',
+                    //     // alias
+                    //     ['useFetch', 'useMyFetch']
+                    //   ],
+                    //   axios: [
+                    //     // default imports
+                    //     ['default', 'axios']
+                    //   ]
+                    from: 'primevue/ts-helpers',
+                    imports: [
+                        'Booleanish',
+                        'Numberish',
+                        'Nullable',
+                        'PassThrough',
+                        'DefaultPassThrough',
+                        'HintedString'
+                    ],
+                    type: true,
+                    typeFrom: '@presets/wind/index'
+                }
             ],
             resolvers: [
                 // (autoImportName) => {
-                //   console.log(autoImportName) // 先查auto-import.d.ts再看runtime log
+                //     console.log(autoImportName) // 先查auto-import.d.ts再看runtime log
                 // }
             ],
             dts: 'src/auto-import.d.ts', // 變更路徑需手動清除舊檔
@@ -375,6 +394,7 @@ export default defineConfig({
                 IconsResolver({
                     prefix: 'i'
                 }),
+                PrimeVueResolver(),
                 (componentName) => {
                     // console.log(componentName) // 先查components.d.ts再看runtime log
                     // where `componentName` is always CapitalCase
@@ -384,15 +404,10 @@ export default defineConfig({
                             name: componentName,
                             from: 'vue-router'
                         }
-                    if (componentName.startsWith('EventCounter'))
+                    else if (componentName.startsWith('EventCounter'))
                         return {
                             name: componentName,
                             from: '@components/EventCounter.vue'
-                        }
-                    else
-                        return {
-                            name: componentName,
-                            from: 'flowbite-vue'
                         }
                 }
             ]
@@ -410,6 +425,7 @@ export default defineConfig({
             '@images': resolve(__dirname, 'src/assets/images'),
             '@views': resolve(__dirname, 'src/views'),
             '@store': resolve(__dirname, 'src/store'),
+            '@presets': resolve(__dirname, 'src/presets'),
             find: 'vue-i18n',
             replacement: 'vue-i18n/dist/vue-i18n.cjs.js'
         }

@@ -1,18 +1,19 @@
 #nprogress .bar {
-    @apply h-1 bg-tertiary-500;
+    height: 4px;
+    @apply bg-tert-500;
 }
 
 #nprogress .peg {
-    @apply shadow-tertiary-500 shadow-inner;
+    @apply shadow-tert-500 shadow-inner;
 }
 
 #nprogress .spinner {
     top: 50%;
     left: 50%;
-
-    @apply -translate-x-1/2 -translate-y-1/2;
+    @apply -translate-x-1/2 -translate-y-1/2 transform-gpu;
 }
 
 #nprogress .spinner-icon {
-    @apply m-auto animate-spinBounce border-t-tertiary-500 border-r-transparent border-b-transparent border-l-tertiary-500;
+    margin: auto;
+    @apply animate-spinBounce transform-gpu border-t-tert-500 border-r-transparent border-b-transparent border-l-tert-500;
 }
