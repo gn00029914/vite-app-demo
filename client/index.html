@@ -18,7 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#00bd7e" />
     <title>vite-app-demo</title>
-    <script nonce="{{ nonce }}">
+    <script nonce="{{{ nonce }}}">
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.getElementById('theme-link').setAttribute('href', '/vite-app-demo/themes/lara-dark-indigo/theme.min.css')

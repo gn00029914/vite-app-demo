@@ -9,7 +9,6 @@ import { createI18n } from 'vue-i18n'
 import messages from '@intlify/unplugin-vue-i18n/messages'
 import { SchemaOrgUnheadPlugin } from '@unhead/schema-org-vue'
 import { createHead } from '@unhead/vue'
-import { RouterLink } from 'vue-router'
 import EventCounter from './components/EventCounter.vue'
 import { createPinia } from 'pinia'
 import { createRouter, createWebHistory } from 'vue-router/auto'
@@ -92,6 +91,17 @@ NProgress.configure({
         : true
 }).start()
 
+// 取得 privevue 所需的 nonce
+let _nonce
+const scriptTags = document.getElementsByTagName('script')
+// Convert the HTMLCollection to an array to use for...of
+Array.from(scriptTags).forEach((script) => {
+    if (script.nonce) {
+        _nonce = script.nonce
+        return
+    }
+})
+
 createApp(App)
     .use(i18n)
     .use(head)
@@ -108,7 +118,7 @@ createApp(App)
             mergeSections: true,
             mergeProps: false
         }),
-        csp: { nonce: '{{ nonce }}' } // 由此處設置 nonce 不太可行, 待完全轉由 TypeScript 檢查 presets 的型別後再從後台一同編譯 nonce 為佳 (https://github.com/primefaces/primevue-tailwind/issues/66)
+        csp: { nonce: _nonce } // 由此處設置 privevue 所需的 nonce
     })
     .directive('badge', BadgeDirective)
     .directive('tooltip', Tooltip)

@@ -66,31 +66,32 @@ async function bootstrap() {
           // 'unpkg.com',
           // 'cdn.jsdelivr.net',
           'air-quality-api.open-meteo.com/v1/air-quality',
-          'primefaces.org/cdn/primevue/images/product/',
+          // 'primefaces.org/cdn/primevue/images/product/',
         ],
         styleSrc: [
           `'self'`,
-          // "'nonce-" + (global as any).nonce + "'",
+          "'nonce-" + (global as any).nonce + "'",
           // 'esm.sh', // 支援從 HTTP/2 回傳 HTTP 301, 然後重新導向至 HTTP/3 再回傳(稍慢)
-          `'unsafe-hashes'`,
           // `'unsafe-inline'`,
           // 'fonts.googleapis.com', // return @font-face
           // 'unpkg.com',
           // 'cdn.jsdelivr.net', // (較快)支援先從 HTTP/2 或直接連 HTTP/3 輪詢, 建議完整專案部署後再由 CDN 重新導向
-          "'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU='",
-          "'sha256-sbYZV251k33aGfnLMZtfDmTnfrINBs+qiS4fhEjVGeQ='",
+          `'unsafe-hashes'`, // (CSP3) primevue 的 presets https://github.com/primefaces/primevue-tailwind/issues/66 https://www.w3.org/TR/CSP3/#unsafe-hashes-usage
+          // ↓藉由 primevue 生成↓
+          // "'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU='",
+          // "'sha256-sbYZV251k33aGfnLMZtfDmTnfrINBs+qiS4fhEjVGeQ='",
           "'sha256-hxFrAADLXoprKKt0iWBhbeKAu0KVrVQsW4vRAf4hpmU='",
-          "'sha256-TJTxYFRSVDihcU3K7XDF4MEZc+epIm659c1VCxl13G0='",
-          "'sha256-fI4n6MflQImBULJAJb5wNHA9Dv2oAKihCDDbmPDuhNo='",
-          "'sha256-HUdXCpbnxeTgI9CG+KfxpQTcadF/S1KQIT/6ws+pNSM='",
-          "'sha256-o0F8kJ2e0ezyPfB+Q0BPF4+vUlswT88EusFC3vGgMm0='",
-          "'sha256-fzYhHwtyrW5UB3U4af2w7KmZeiqiAuIt1du8KgGnCSE='",
-          "'sha256-6RQXafjrj4H7emka4gtUsSrPc2lS1Ct/HF9enXbn0vk='",
+          // "'sha256-TJTxYFRSVDihcU3K7XDF4MEZc+epIm659c1VCxl13G0='",
+          // "'sha256-fI4n6MflQImBULJAJb5wNHA9Dv2oAKihCDDbmPDuhNo='",
+          // "'sha256-HUdXCpbnxeTgI9CG+KfxpQTcadF/S1KQIT/6ws+pNSM='",
+          // "'sha256-o0F8kJ2e0ezyPfB+Q0BPF4+vUlswT88EusFC3vGgMm0='",
+          // "'sha256-fzYhHwtyrW5UB3U4af2w7KmZeiqiAuIt1du8KgGnCSE='",
+          // "'sha256-6RQXafjrj4H7emka4gtUsSrPc2lS1Ct/HF9enXbn0vk='",
         ],
         fontSrc: [
           `'self'`,
           // "'nonce-" + (global as any).nonce + "'",
-          // `'unsafe-hashes'`,
+          // `'unsafe-hashes'`, // (CSP3) @font-face 的載入方式(已盡量迴避) https://www.w3.org/TR/CSP3/#unsafe-hashes-usage
           // `'unsafe-inline'`,
           // 'fonts.gstatic.com', // return .woff2
           // 'data:' // 瀏覽器擴充功能的引用要小心
@@ -112,12 +113,12 @@ async function bootstrap() {
           // `'unsafe-inline'`,
           // 'cdn.jsdelivr.net',
           // `'unsafe-eval'`,  // deprecated
-          "'sha256-orpHRvbW1vTRrLBpveohOQYg09DbCzFT80EkYyegr1M='",
+          // "'sha256-orpHRvbW1vTRrLBpveohOQYg09DbCzFT80EkYyegr1M='", // primevue
         ], // link webfonts.css return minified @font-face
         scriptSrcAttr: [
           // `'self'`,
           // "'nonce-" + (global as any).nonce + "'",
-          // `'unsafe-hashes'`,
+          // `'unsafe-hashes'`, // (CSP3) @font-face 的載入方式(已盡量迴避), Vue Router 的 javascript: navigation https://www.w3.org/TR/CSP3/#unsafe-hashes-usage
           // `'unsafe-inline'`,
         ],
         baseUri: [

@@ -66,7 +66,7 @@
                                     slotProps.data.inventoryStatus
                                 ) as HintedString<string>
                             "
-                            class="!text-text-color absolute"
+                            class="absolute"
                             style="left: 5px; top: 5px"
                         />
                     </div>
@@ -151,5 +151,19 @@ const getSeverity = (status: HintedString<string>) => {
 </script>
 
 <style scoped>
-/* todo */
+/* .p-tag-value {
+    color: var(text-text-color) !important;
+} */
+.p-tag-success {
+    color: var(--green-700);
+    background-color: var(--green-100);
+}
+.p-tag-warning {
+    color: var(--orange-700);
+    background-color: var(--orange-100);
+}
+.p-tag-danger {
+    color: var(--red-700);
+    background-color: var(--red-100);
+}
 </style>
