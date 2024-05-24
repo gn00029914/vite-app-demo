@@ -40,12 +40,12 @@
   },
   "license": "ISC",
   "dependencies": {
-    "pm2": "^5.3.1"
+    "pm2": "^5.4.0"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
     "shx": "^0.3.4",
     "snyk": "^1.1291.0"
   },
-  "packageManager": "pnpm@8.15.7+sha256.50783dd0fa303852de2dd1557cd4b9f07cb5b018154a6e76d0f40635d6cee019"
+  "packageManager": "pnpm@9.1.2+sha256.19c17528f9ca20bd442e4ca42f00f1b9808a9cb419383cd04ba32ef19322aba7"
 }

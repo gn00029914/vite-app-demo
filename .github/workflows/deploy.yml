@@ -29,71 +29,64 @@ jobs:
       # 步驟一：複製程式碼
       - name: Checkout
         uses: actions/checkout@v4.1.6
-      # 步驟二：裝設 Node.js
+      # 步驟二：安設 Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node_version }}
           architecture: ${{ matrix.architecture }}
-      # 步驟三：生成快取初始值
-      - name: Generate Cache Prime Numbers
+      # 步驟三：安設 pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+          run_install: false
+      # 步驟四：取得 pnpm 儲存目錄
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+      # 步驟五：生成快取初始值
+      - name: Generate cache prime numbers
         id: cache-primes
         uses: actions/cache@v4
         with:
-          path: |
-            pnpm-lock.yaml
-            node_modules
-            client/pnpm-lock.yaml
-            client/node_modules
-            server/pnpm-lock.yaml
-            server/node_modules
-          key: ${{ runner.os }}-node-primes
-      # 步驟四：檢查快取命中否則安裝
-      - name: Check Cache Hit
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-sotre-primes
+      # 步驟六：檢查快取命中否則安裝
+      - name: Check cache hit
         if: steps.cache-primes.outputs.cache-hit != 'true'
-        run: |
-          corepack enable
-          corepack use pnpm@latest
-          pnpm config set shared-workspace-lockfile=false
-          pnpm i --no-frozen-lockfile
-      # 步驟五：讀取原先的快取
-      - name: Restore cached Primes
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+          run_install: true
+      # 步驟七：讀取原先的快取
+      - name: Restore cached primes
         id: cache-primes-restore
         uses: actions/cache/restore@v4
         with:
-          path: |
-            pnpm-lock.yaml
-            node_modules
-            client/pnpm-lock.yaml
-            client/node_modules
-            server/pnpm-lock.yaml
-            server/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-node-
-      # 步驟六：安裝及編譯
-      - name: Install and Build
-        run: |
-          corepack enable
-          corepack use pnpm@latest
-          pnpm config set shared-workspace-lockfile=false
-          pnpm i --no-frozen-lockfile
-          pnpm vb
-      # 步驟七：快取存檔
-      - name: Save Primes
+            ${{ runner.os }}-pnpm-store-
+      # 步驟八：安裝
+      - name: Install
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+          run_install: true
+      # 步驟九：建置
+      - name: Build
+        run: pnpm vb
+      # 步驟十：快取存檔
+      - name: Save primes
         id: cache-primes-save
         uses: actions/cache/save@v4
         if: always()
         with:
-          path: |
-            pnpm-lock.yaml
-            node_modules
-            client/pnpm-lock.yaml
-            client/node_modules
-            server/pnpm-lock.yaml
-            server/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
-      # 步驟八：部署
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      # 步驟十一：部署
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         if: ${{ github.ref == 'refs/heads/main' }}
