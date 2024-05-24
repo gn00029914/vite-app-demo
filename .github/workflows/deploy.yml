@@ -39,7 +39,6 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: latest
           run_install: false
       # 步驟四：取得 pnpm 儲存目錄
       - name: Get pnpm store directory
@@ -58,7 +57,6 @@ jobs:
         if: steps.cache-primes.outputs.cache-hit != 'true'
         uses: pnpm/action-setup@v4
         with:
-          version: latest
           run_install: true
       # 步驟七：讀取原先的快取
       - name: Restore cached primes
@@ -73,7 +71,6 @@ jobs:
       - name: Install
         uses: pnpm/action-setup@v4
         with:
-          version: latest
           run_install: true
       # 步驟九：建置
       - name: Build
