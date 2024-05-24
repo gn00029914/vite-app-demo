@@ -67,11 +67,9 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
-      # 步驟八：安裝
-      - name: Install
-        uses: pnpm/action-setup@v4
-        with:
-          run_install: true
+      # 步驟八：安裝依賴套件
+      - name: Install dependencies
+        run: pnpm install
       # 步驟九：建置
       - name: Build
         run: pnpm vb
