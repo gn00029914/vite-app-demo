@@ -12,6 +12,7 @@ import { createHead } from '@unhead/vue'
 import EventCounter from './components/EventCounter.vue'
 import { createPinia } from 'pinia'
 import { createRouter, createWebHistory } from 'vue-router/auto'
+import { routes } from 'vue-router/auto-routes'
 import { setupLayouts } from 'virtual:meta-layouts'
 import generatedRoutes from 'virtual:generated-pages'
 import App from './App.vue'
@@ -65,19 +66,12 @@ head.use(
 const store = createPinia()
 const router = createRouter({
     history: createWebHistory(),
+    routes,
     extendRoutes: (router) => {
-        router.push(
-            {
-                component: () => import('./pages/HomePage.vue'),
-                name: 'home',
-                path: '/vite-app-demo/'
-            },
-            {
-                component: () => import('./pages/AboutPage.vue'),
-                name: 'about',
-                path: '/vite-app-demo/AboutPage'
-            }
-        )
+        router.push({
+            component: () => import('./pages/HomePage.vue'),
+            path: '/vite-app-demo/'
+        })
         setupLayouts(generatedRoutes)
         return router
     }

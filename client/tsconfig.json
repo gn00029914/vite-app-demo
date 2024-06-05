@@ -3,7 +3,7 @@
         "target": "ESNext",
         "useDefineForClassFields": true,
         "module": "ESNext",
-        "moduleResolution": "bundler",
+        "moduleResolution": "Bundler",
         "strict": true,
         "jsx": "preserve",
         "sourceMap": true,
@@ -33,7 +33,7 @@
         "src/**/*.d.ts",
         "src/**/*.tsx",
         "src/**/*.vue",
-        "typed-router.d.ts"
+        "./typed-router.d.ts"
     ],
     "references": [
         {

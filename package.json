@@ -25,7 +25,8 @@
     "pm2dev": "pnpm np && pnpm nb && pnpm pm2 start ecosystem.config.js --env development",
     "pm2pdyn": "concurrently \"pnpm vb\" \"pnpm np\" && concurrently \"pnpm shx cp -r client/dist/ server/public/\" \"pnpm shx mkdir server/views\" && concurrently \"pnpm shx rm server/public/index.html\" \"pnpm shx cp client/dist/index.html server/views/index.hbs\" && pnpm nb && pnpm pm2 start ./server/dist/main.js --env production",
     "pm2pwa": "concurrently \"pnpm vb\" \"pnpm np\" && concurrently \"pnpm shx cp -r client/dist/ server/public/\" \"pnpm shx mkdir server/views\" && pnpm shx cp client/dist/index.html server/views/index.hbs && pnpm nb && pnpm pm2 start ./server/dist/main.js --env production",
-    "pm2nonce": "concurrently \"pnpm vb\" \"pnpm np\" && concurrently \"pnpm shx cp -r client/dist/ server/public/\" \"pnpm shx mkdir server/views\" && pnpm shx cp client/dist/index.html server/views/index.hbs && pnpm shx sed -i \"s/ href=/ nonce='{{{ nonce }}}' href=/g\" server/views/index.hbs && pnpm shx sed -i \"s/ src=/ nonce='{{{ nonce }}}' src=/g\" server/views/index.hbs && pnpm nb && pnpm pm2 start ./server/dist/main.js --env production",
+    "pm2nonce_tmp": "concurrently \"pnpm vb\" \"pnpm np\" && concurrently \"pnpm shx cp -r client/dist/ server/public/\" \"pnpm shx mkdir server/views\" && pnpm shx cp client/dist/index.html server/views/index.hbs && pnpm shx sed -i \"s/ href=/ nonce='{{{ nonce }}}' href=/g\" server/views/index.hbs && pnpm shx sed -i \"s/ src=/ nonce='{{{ nonce }}}' src=/g\" server/views/index.hbs && pnpm nb && pnpm pm2 start ./server/dist/main.js --env production",
+    "pm2nonce": "concurrently \"pnpm vb\" \"pnpm np\" && concurrently \"pnpm shx cp -r client/dist/ server/public/\" \"pnpm shx mkdir server/views\" && pnpm shx cp client/dist/index.html server/views/index.hbs && pnpm shx sed -i \"s/ href=/ nonce='{{{ nonce }}}' href=/g\" server/views/index.hbs && pnpm shx sed -i \"s/ src=/ nonce='{{{ nonce }}}' src=/g\" server/views/index.hbs && pnpm nb && concurrently \"pnpm shx cp -r client/dist/ server/public/\" \"pnpm shx mkdir server/views\" && pnpm shx cp client/dist/index.html server/views/index.hbs && pnpm shx sed -i \"s/ href=/ nonce='{{{ nonce }}}' href=/g\" server/views/index.hbs && pnpm shx sed -i \"s/ src=/ nonce='{{{ nonce }}}' src=/g\" server/views/index.hbs && pnpm pm2 start ./server/dist/main.js --env production",
     "pm2stop": "pnpm pm2 stop all",
     "pm2cls": "concurrently \"pnpm pm2stop\" \"pnpm pm2 delete all\" \"pnpm pm2 flush\"",
     "vgi": "pnpm dlx vue-pwa-asset-generator -a client/public/vite.svg -o client/public/ --no-manifest",
@@ -45,7 +46,7 @@
   "devDependencies": {
     "concurrently": "^8.2.2",
     "shx": "^0.3.4",
-    "snyk": "^1.1291.0"
+    "snyk": "^1.1291.1"
   },
-  "packageManager": "pnpm@9.1.2+sha256.19c17528f9ca20bd442e4ca42f00f1b9808a9cb419383cd04ba32ef19322aba7"
+  "packageManager": "pnpm@9.2.0+sha512.98a80fd11c2e7096747762304106432b3ddc67dcf54b5a8c01c93f68a2cd5e05e6821849522a06fb76284d41a2660d5e334f2ee3bbf29183bf2e739b1dafa771"
 }
