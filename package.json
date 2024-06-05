@@ -45,7 +45,7 @@
   "devDependencies": {
     "concurrently": "^8.2.2",
     "shx": "^0.3.4",
-    "snyk": "^1.1291.0"
+    "snyk": "^1.1291.1"
   },
-  "packageManager": "pnpm@9.1.2+sha256.19c17528f9ca20bd442e4ca42f00f1b9808a9cb419383cd04ba32ef19322aba7"
+  "packageManager": "pnpm@9.1.4+sha256.30a1801ac4e723779efed13a21f4c39f9eb6c9fbb4ced101bce06b422593d7c9"
 }
