@@ -65,16 +65,17 @@ head.use(
 
 const store = createPinia()
 const router = createRouter({
-    history: createWebHistory(),
     routes,
-    extendRoutes: (router) => {
-        router.push({
-            component: () => import('./pages/HomePage.vue'),
-            path: '/vite-app-demo/'
-        })
-        setupLayouts(generatedRoutes)
-        return router
-    }
+    history: createWebHistory()
+    // https://github.com/posva/unplugin-vue-router/discussions/407#discussioncomment-9662935
+    // extendRoutes: (router) => {
+    //     router.push({
+    //         component: () => import('./pages/HomePage.vue'),
+    //         path: '/vite-app-demo/'
+    //     })
+    //     setupLayouts(generatedRoutes)
+    //     return router
+    // }
 })
 
 NProgress.configure({
