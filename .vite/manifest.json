@@ -335,24 +335,21 @@
     "file": "assets/6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwmxduz8A-C68DDdDD.woff2",
     "src": "6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwmxduz8A.woff2"
   },
-  "_CXuavceC.js": {
-    "file": "CXuavceC.js",
+  "_B-rBes9j.js": {
+    "file": "B-rBes9j.js",
     "name": "vendor"
   },
   "index.html": {
-    "file": "assets/main-D722QW6b.js",
+    "file": "assets/main-Bfsbt-gX.js",
     "name": "main",
     "src": "index.html",
     "isEntry": true,
     "imports": [
-      "_CXuavceC.js"
+      "_B-rBes9j.js"
     ],
     "dynamicImports": [
       "node_modules/.pnpm/workbox-window@7.1.0/node_modules/workbox-window/build/workbox-window.prod.es5.mjs",
-      "src/pages/AboutPage.vue",
-      "src/pages/HomePage.vue",
-      "src/Layout/Header/HeaderIndex.vue",
-      "src/pages/HomePage.vue",
+      "src/pages/index.vue",
       "src/pages/AboutPage.vue",
       "src/pages/HomePage.vue"
     ],
@@ -393,23 +390,13 @@
     "src": "node_modules/.pnpm/workbox-window@7.1.0/node_modules/workbox-window/build/workbox-window.prod.es5.mjs",
     "isDynamicEntry": true
   },
-  "src/Layout/Header/HeaderIndex.vue": {
-    "file": "COv3T0rb.js",
-    "name": "HeaderIndex",
-    "src": "src/Layout/Header/HeaderIndex.vue",
-    "isDynamicEntry": true,
-    "imports": [
-      "index.html",
-      "_CXuavceC.js"
-    ]
-  },
   "src/pages/AboutPage.vue": {
-    "file": "CP_Qz4H5.js",
+    "file": "yT3E0reR.js",
     "name": "AboutPage",
     "src": "src/pages/AboutPage.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_CXuavceC.js",
+      "_B-rBes9j.js",
       "index.html"
     ],
     "css": [
@@ -417,16 +404,27 @@
     ]
   },
   "src/pages/HomePage.vue": {
-    "file": "Bm-FCa9A.js",
+    "file": "DzcioVmd.js",
     "name": "HomePage",
     "src": "src/pages/HomePage.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_CXuavceC.js",
+      "_B-rBes9j.js",
       "index.html"
     ],
     "css": [
       "assets/HomePage-UVKq_lMC.css"
+    ]
+  },
+  "src/pages/index.vue": {
+    "file": "DXyp9bPH.js",
+    "name": "index",
+    "src": "src/pages/index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/pages/HomePage.vue",
+      "index.html",
+      "_B-rBes9j.js"
     ]
   },
   "webfonts.css": {
