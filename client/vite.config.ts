@@ -191,6 +191,7 @@ export default defineConfig({
                 sourcemap: process.env.NPM_ENV === 'development' ? true : false,
                 globPatterns: ['**'],
                 globIgnores: ['**/*.br'],
+                maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5 MiB
                 runtimeCaching: [
                     // {
                     //   urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
