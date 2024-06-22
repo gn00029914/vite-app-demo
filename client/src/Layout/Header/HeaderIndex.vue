@@ -263,7 +263,7 @@ const darkMode = () => {
         document.documentElement.style.background =
             "linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('/vite-app-demo/lightbg.jpg') no-repeat fixed center"
         document.documentElement.style.backgroundSize = 'cover'
-        linkElement.href = '/vite-app-demo/themes/lara-light-blue/theme.min.css'
+        linkElement.href = '/vite-app-demo/themes/aura-light-blue/theme.min.css'
     } else {
         document
             .getElementById('theme-toggle-light-icon')
@@ -276,7 +276,7 @@ const darkMode = () => {
             "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/vite-app-demo/darkbg.jpg') no-repeat fixed center"
         document.documentElement.style.backgroundSize = 'cover'
         linkElement.href =
-            '/vite-app-demo/themes/lara-dark-indigo/theme.min.css'
+            '/vite-app-demo/themes/aura-dark-indigo/theme.min.css'
     }
 }
 

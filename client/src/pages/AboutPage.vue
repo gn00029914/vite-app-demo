@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import ComponentA from '@pages/index.md'
+import ComponentA from '@components/index.md'
 </script>
 
 <style scoped>

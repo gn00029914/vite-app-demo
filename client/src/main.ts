@@ -13,15 +13,15 @@ import EventCounter from './components/EventCounter.vue'
 import { createPinia } from 'pinia'
 import { createRouter, createWebHistory } from 'vue-router/auto'
 import { routes } from 'vue-router/auto-routes'
-import { setupLayouts } from 'virtual:meta-layouts'
-import generatedRoutes from 'virtual:generated-pages'
+// import { setupLayouts } from 'virtual:meta-layouts'
+// import generatedRoutes from 'virtual:generated-pages'
 import App from './App.vue'
 import PrimeVue from 'primevue/config' // import PrimeVue
 import { usePassThrough } from 'primevue/passthrough'
 import Tailwind from 'primevue/passthrough/tailwind'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
-import Wind from '@presets/wind/index' // https://tailwind.primevue.org/overview/#preset https://github.com/primefaces/primevue-tailwind/releases/tag/0.8.2 https://github.com/primefaces/primevue-examples/issues/6#issuecomment-1959753222 https://github.com/primefaces/primevue/issues/4883#issuecomment-1865040221 https://github.com/primefaces/primevue-tailwind/issues/66
+import Wind from '@presets/wind/index' // https://tailwind.primevue.org/overview/#preset https://github.com/primefaces/primevue-tailwind/releases/tag/0.8.2 https://github.com/primefaces/primevue-examples/issues/6#issuecomment-1959753222 https://github.com/primefaces/primevue/issues/4883#issuecomment-1865040221 https://github.com/primefaces/primevue-tailwind/issues/66 https://github.com/primefaces/primevue-tailwind/issues/242
 import BadgeDirective from 'primevue/badgedirective'
 import Tooltip from 'primevue/tooltip'
 import StyleClass from 'primevue/styleclass'

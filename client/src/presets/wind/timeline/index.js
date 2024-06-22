@@ -99,10 +99,10 @@ export default {
             {
                 'min-h-0':
                     props.layout === 'vertical' &&
-                    context.index === context.count,
+                    context.index === context.count - 1,
                 'grow-0':
                     props.layout === 'horizontal' &&
-                    context.index === context.count
+                    context.index === context.count - 1
             }
         ]
     })

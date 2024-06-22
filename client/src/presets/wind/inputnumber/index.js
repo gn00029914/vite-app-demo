@@ -100,7 +100,8 @@ export default {
                 // Filled State *for FloatLabel
                 {
                     filled:
-                        parent.instance?.$name == 'FloatLabel' && context.filled
+                        parent.instance?.$parentInstance?.$name ==
+                            'FloatLabel' && parent.state.d_modelValue !== null
                 },
 
                 //Position
