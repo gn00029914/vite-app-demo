@@ -164,7 +164,7 @@ export default {
                 {
                     'text-surface-500 dark:text-surface-400':
                         parent.props.text &&
-                        parent.props.severity === 'secondary' &&
+                        parent.props.severity === 'success' &&
                         !parent.props.plain
                 },
                 // Success Outlined Button
@@ -647,7 +647,7 @@ export default {
                 {
                     'text-surface-500 dark:text-surface-400':
                         parent.props.text &&
-                        parent.props.severity === 'secondary' &&
+                        parent.props.severity === 'success' &&
                         !parent.props.plain
                 },
                 // Success Outlined Button

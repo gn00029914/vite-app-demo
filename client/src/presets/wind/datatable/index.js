@@ -83,7 +83,8 @@ export default {
             {
                 'sticky z-20 font-semibold':
                     instance.frozenRow && context.scrollable
-            }
+            },
+            'bg-surface-50 dark:bg-surface-800'
         ]
     }),
     tfoot: ({ context }) => ({
@@ -172,7 +173,7 @@ export default {
                 //Position
                 { 'sticky box-border border-b': parent.instance.frozenRow },
                 {
-                    'sticky box-border border-b':
+                    'sticky box-border border-b z-20':
                         props.frozen || props.frozen === ''
                 },
                 'text-sm',
@@ -1276,7 +1277,7 @@ export default {
                 'bg-surface-0 text-surface-600 dark:bg-surface-800':
                     !context.selected
             },
-            { 'bg-surface-0 dark:bg-surface-800': props.frozenRow },
+            { 'bg-surface-0 dark:bg-surface-800 z-20': props.frozenRow },
             {
                 'odd:bg-surface-0 odd:text-surface-600 dark:odd:bg-surface-800 even:bg-surface-50 even:text-surface-600 dark:even:bg-surface-900/60':
                     context.stripedRows && !context.selected

@@ -33,7 +33,7 @@
     "sstcs": "pnpm shx mkdir -p client/node_modules/.vite/basic-ssl && pnpm exec shx cat server/https/fastify.key server/https/fastify.cert > client/node_modules/.vite/basic-ssl/_cert.pem",
     "npreg": "pnpm npri && concurrently \"pnpm shx cp ./server/.env.development ./server/.env\" \"pnpm shx sed -i \"s/postgresql/mysql/g\" server/prisma/schema.prisma\" && pnpm nppul && pnpm npg",
     "st": "pnpm snyk test --all-projects",
-    "lm": "pnpm shx mkdir -p client/public/themes/{lara-dark-indigo,lara-light-blue} && concurrently \"pnpm shx cp -r client/node_modules/primevue/resources/themes/lara-dark-indigo/fonts client/public/themes/lara-dark-indigo/\" \"pnpm shx cp -r client/node_modules/primevue/resources/themes/lara-light-blue/fonts client/public/themes/lara-light-blue/\" \"pnpm dlx lightningcss-cli  --minify --bundle --targets '>= 0.25%' client/node_modules/primevue/resources/themes/lara-dark-indigo/theme.css -o client/public/themes/lara-dark-indigo/theme.min.css\" \"pnpm dlx lightningcss-cli  --minify --bundle --targets '>= 0.25%' client/node_modules/primevue/resources/themes/lara-light-blue/theme.css -o client/public/themes/lara-light-blue/theme.min.css\""
+    "lm": "pnpm shx mkdir -p client/public/themes/{aura-dark-indigo,aura-light-blue} && concurrently \"pnpm shx cp -r client/node_modules/primevue/resources/themes/aura-dark-indigo/fonts client/public/themes/aura-dark-indigo/\" \"pnpm shx cp -r client/node_modules/primevue/resources/themes/aura-light-blue/fonts client/public/themes/aura-light-blue/\" \"pnpm dlx lightningcss-cli  --minify --bundle --targets '>= 0.25%' client/node_modules/primevue/resources/themes/aura-dark-indigo/theme.css -o client/public/themes/aura-dark-indigo/theme.min.css\" \"pnpm dlx lightningcss-cli  --minify --bundle --targets '>= 0.25%' client/node_modules/primevue/resources/themes/aura-light-blue/theme.css -o client/public/themes/aura-light-blue/theme.min.css\""
   },
   "keywords": [],
   "author": {
@@ -41,12 +41,12 @@
   },
   "license": "ISC",
   "dependencies": {
-    "pm2": "^5.4.0"
+    "pm2": "^5.4.1"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
     "shx": "^0.3.4",
     "snyk": "^1.1291.1"
   },
-  "packageManager": "pnpm@9.3.0+sha512.ee7b93e0c2bd11409c6424f92b866f31d3ea1bef5fbe47d3c7500cdc3c9668833d2e55681ad66df5b640c61fa9dc25d546efa54d76d7f8bf54b13614ac293631"
+  "packageManager": "pnpm@9.4.0+sha512.f549b8a52c9d2b8536762f99c0722205efc5af913e77835dbccc3b0b0b2ca9e7dc8022b78062c17291c48e88749c70ce88eb5a74f1fa8c4bf5e18bb46c8bd83a"
 }
