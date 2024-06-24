@@ -124,5 +124,13 @@
     "cssnano": {
         "preset": "advanced"
     },
-    "browserslist": [">= 0.25%"]
+    "browserslist": [">= 0.25%"],
+    "pnpm": {
+        "overrides": {
+            "deep-equal": "npm:@nolyfill/deep-equal@latest",
+            "hasown": "npm:@nolyfill/hasown@latest",
+            "isarray": "npm:@nolyfill/isarray@latest",
+            "string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@latest"
+        }
+    }
 }

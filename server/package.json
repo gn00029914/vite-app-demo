@@ -91,5 +91,16 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "pnpm": {
+    "overrides": {
+      "function-bind": "npm:@nolyfill/function-bind@latest",
+      "has-proto": "npm:@nolyfill/has-proto@latest",
+      "has-symbols": "npm:@nolyfill/has-symbols@latest",
+      "hasown": "npm:@nolyfill/hasown@latest",
+      "isarray": "npm:@nolyfill/isarray@latest",
+      "set-function-length": "npm:@nolyfill/set-function-length@latest",
+      "side-channel": "npm:@nolyfill/side-channel@latest"
+    }
   }
 }
