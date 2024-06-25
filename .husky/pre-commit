@@ -1,2 +1,5 @@
+pnpm dlx nolyfill install --pm pnpm
+pnpm dlx nolyfill install client --pm pnpm
+pnpm dlx nolyfill install server --pm pnpm
 cd client
 pnpm exec lint-staged --quiet --verbose

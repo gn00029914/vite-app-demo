@@ -6,7 +6,7 @@ import eslint from '@eslint/js'
 import tseslint from 'typescript-eslint'
 import pluginVue from 'eslint-plugin-vue'
 import eslintPluginTailwindCSS from 'eslint-plugin-tailwindcss'
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier'
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import vuejsAccessibility from 'eslint-plugin-vuejs-accessibility'
 import globals from 'globals'
 import vueParser from 'vue-eslint-parser'
@@ -15,24 +15,25 @@ import tsParser from '@typescript-eslint/parser'
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
 // const compat = new FlatCompat({
-//     baseDirectory: __dirname,
-//     // recommendedConfig: js.configs.recommended,
-//     // allConfig: js.configs.all
+// baseDirectory: __dirname,
+// baseDirectory: process.cwd(),
+// recommendedConfig: eslint.configs.recommended,
+// allConfig: eslint.configs.all
 // });
 
 // export default tseslint.config([
 export default [
     {
         ignores: ['**/*.cjs', '**/auto-import.d.ts'],
-        files: ['**/*.js', '**/*.ts', '**/*.vue'],
+        files: ['**/*.js', '**/*.ts', '**/*.vue']
     },
     eslint.configs.recommended,
     ...tseslint.configs.recommended,
     ...tseslint.configs.stylistic,
     ...pluginVue.configs['flat/recommended'],
     ...eslintPluginTailwindCSS.configs['flat/recommended'],
-    eslintPluginPrettierRecommended,
-    vuejsAccessibility,
+    eslintPluginPrettierRecommended, // https://github.com/prettier/eslint-plugin-prettier/issues/659
+    ...vuejsAccessibility.configs['flat/recommended'],
     // ...compat.extends(
     // "eslint:recommended",
     // "plugin:@typescript-eslint/recommended",
@@ -96,5 +97,5 @@ export default [
             // 'no-sparse-arrays': 'warn' // [WIP] primevue/presets https://github.com/primefaces/primevue-examples/issues/6#issuecomment-1959753222
         }
     }
-// ])
+    // ])
 ]

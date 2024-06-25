@@ -8,7 +8,7 @@
         "build:staging": "vue-tsc --noEmit && vite build --mode staging",
         "build": "vite build --mode production",
         "preview": "vite preview --port=443",
-        "lint": "eslint --ext .js,.ts,.vue --ignore-pattern '.gitignore' --fix src/",
+        "lint": "eslint --fix src/",
         "lint:check": "eslint --ext .js,.ts,.vue --ignore-pattern '.gitignore' --fix-dry-run src/",
         "format": "prettier . --write --ignore-path .gitignore",
         "format:check": "prettier . --check --ignore-path .gitignore",
@@ -40,19 +40,19 @@
         "yup": "^1.4.0"
     },
     "devDependencies": {
-        "@algolia/client-search": "^4.23.3",
+        "@algolia/client-search": "^4.24.0",
         "@commitlint/cli": "^19.3.0",
         "@commitlint/config-conventional": "^19.2.2",
         "@csstools/css-tokenizer": "^2.3.1",
         "@eslint/eslintrc": "^3.1.0",
         "@eslint/js": "^9.5.0",
-        "@iconify/json": "^2.2.221",
+        "@iconify/json": "^2.2.222",
         "@intlify/unplugin-vue-i18n": "^4.0.0",
         "@tailwindcss/aspect-ratio": "^0.4.2",
         "@tailwindcss/typography": "^0.5.13",
         "@types/eslint__js": "^8.42.3",
         "@types/node": "^20.14.8",
-        "@typescript-eslint/parser": "^7.13.1",
+        "@typescript-eslint/parser": "^7.14.1",
         "@unhead/schema-org-vue": "^0.6.0",
         "@unhead/vue": "^1.9.14",
         "@vitejs/plugin-basic-ssl": "^1.1.0",
@@ -89,16 +89,16 @@
         "stylelint-config-standard": "^36.0.1",
         "tailwindcss": "^3.4.4",
         "typescript": "^5.5.2",
-        "typescript-eslint": "^7.13.1",
+        "typescript-eslint": "^7.14.1",
         "unplugin-auto-import": "^0.17.6",
         "unplugin-icons": "^0.19.0",
-        "unplugin-vue-components": "^0.27.0",
+        "unplugin-vue-components": "^0.27.1",
         "unplugin-vue-markdown": "^0.26.2",
         "unplugin-vue-router": "^0.10.0",
         "vite": "^5.3.1",
         "vite-plugin-compression2": "^1.1.1",
         "vite-plugin-minify": "^1.5.2",
-        "vite-plugin-pages": "^0.32.2",
+        "vite-plugin-pages": "^0.32.3",
         "vite-plugin-pages-sitemap": "^1.7.1",
         "vite-plugin-pwa": "^0.20.0",
         "vite-plugin-vue-meta-layouts": "^0.4.3",
@@ -124,5 +124,13 @@
     "cssnano": {
         "preset": "advanced"
     },
-    "browserslist": [">= 0.25%"]
+    "browserslist": [">= 0.25%"],
+    "pnpm": {
+        "overrides": {
+            "deep-equal": "npm:@nolyfill/deep-equal@latest",
+            "hasown": "npm:@nolyfill/hasown@latest",
+            "isarray": "npm:@nolyfill/isarray@latest",
+            "string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@latest"
+        }
+    }
 }
