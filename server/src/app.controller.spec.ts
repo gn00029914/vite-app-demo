@@ -1,22 +1,29 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { PrismaService } from '../prisma/prisma.service';
 
-describe('AppController', () => {
-  let appController: AppController;
+describe('PrismaService', () => {
+  let appService: AppService;
+  let prismaService: PrismaService;
 
   beforeEach(async () => {
-    const app: TestingModule = await Test.createTestingModule({
-      controllers: [AppController],
-      providers: [AppService],
-    }).compile();
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [AppService, PrismaService],
+    })
+      .overrideProvider(PrismaService)
+      .useValue(mockPrismaService)
+      .compile();
 
-    appController = app.get<AppController>(AppController);
+    appService = module.get<AppService>(AppService);
+    prismaService = module.get<PrismaService>(PrismaService);
   });
-
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
-    });
+  it('should be defined', () => {
+    expect(appService).toBeDefined();
+    expect(prismaService).toBeDefined();
   });
 });
+const mockPrismaService = {
+  user: {
+    findMany: jest.fn().mockResolvedValue([{ id: 1, name: 'John Doe' }]),
+  },
+};

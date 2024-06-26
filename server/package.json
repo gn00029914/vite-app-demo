@@ -50,10 +50,13 @@
     "@nestjs/schematics": "^10.1.1",
     "@nestjs/testing": "^10.3.9",
     "@prisma/client": "^5.15.1",
+    "@swc/cli": "^0.3.14",
+    "@swc/core": "^1.6.5",
+    "@swc/jest": "^0.2.36",
     "@types/eslint__js": "^8.42.3",
     "@types/express": "^4.17.21",
     "@types/jest": "29.5.12",
-    "@types/node": "^20.14.8",
+    "@types/node": "^20.14.9",
     "@types/supertest": "^6.0.2",
     "@typescript-eslint/parser": "^7.14.1",
     "dotenv-cli": "^7.4.2",
@@ -84,7 +87,7 @@
     "rootDir": "src",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
-      "^.+\\.(t|j)s$": "ts-jest"
+      "^.+\\.(t|j)s$": ["@swc/jest"]
     },
     "collectCoverageFrom": [
       "**/*.(t|j)s"
