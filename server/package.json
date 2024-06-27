@@ -87,7 +87,9 @@
     "rootDir": "src",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
-      "^.+\\.(t|j)s$": ["@swc/jest"]
+      "^.+\\.(t|j)s$": [
+        "@swc/jest"
+      ]
     },
     "collectCoverageFrom": [
       "**/*.(t|j)s"
@@ -97,13 +99,14 @@
   },
   "pnpm": {
     "overrides": {
-      "function-bind": "npm:@nolyfill/function-bind@latest",
-      "has-proto": "npm:@nolyfill/has-proto@latest",
-      "has-symbols": "npm:@nolyfill/has-symbols@latest",
-      "hasown": "npm:@nolyfill/hasown@latest",
-      "isarray": "npm:@nolyfill/isarray@latest",
-      "set-function-length": "npm:@nolyfill/set-function-length@latest",
-      "side-channel": "npm:@nolyfill/side-channel@latest"
+      "function-bind": "npm:@nolyfill/function-bind@^1",
+      "has-proto": "npm:@nolyfill/has-proto@^1",
+      "has-symbols": "npm:@nolyfill/has-symbols@^1",
+      "hasown": "npm:@nolyfill/hasown@^1",
+      "isarray": "npm:@nolyfill/isarray@^1",
+      "set-function-length": "npm:@nolyfill/set-function-length@^1",
+      "side-channel": "npm:@nolyfill/side-channel@^1",
+      "is-core-module": "npm:@nolyfill/is-core-module@^1"
     }
   }
 }

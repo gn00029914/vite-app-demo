@@ -5,8 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  globalthis: npm:@nolyfill/globalthis@latest
-  hasown: npm:@nolyfill/hasown@latest
+  globalthis: npm:@nolyfill/globalthis@^1
+  hasown: npm:@nolyfill/hasown@^1
+  is-core-module: npm:@nolyfill/is-core-module@^1
 
 importers:
 
@@ -23,8 +24,8 @@ importers:
         specifier: ^0.3.4
         version: 0.3.4
       snyk:
-        specifier: ^1.1291.1
-        version: 1.1291.1
+        specifier: ^1.1292.0
+        version: 1.1292.0
 
 packages:
 
@@ -36,8 +37,8 @@ packages:
     resolution: {integrity: sha512-5NYxV7CA0XCJ9wNmb2H1xIdxAi4e7U2kFjx/KJnuK1zm6zEajWkm/Z52nxTx4sH5+ji1hzCKPfgO1oD+EIQmOA==}
     engines: {node: '>=12.4.0'}
 
-  '@nolyfill/hasown@1.0.29':
-    resolution: {integrity: sha512-9h/nxZqmCy26r9VXGUz+Q77vq3eINXOYgE4st3dj6DoE7tulfJueCLw5d4hfDy3S8mKg4cFXaP+KxYQ+txvMzw==}
+  '@nolyfill/is-core-module@1.0.32':
+    resolution: {integrity: sha512-xmhh+wwmaCtNjY7slRZ/U+/NGjPii1dfKyYCv8iHofIbMkXFLyZTpdsIoiGbtf/JQRfQuwlohZ6B/sb2CrQbFw==}
     engines: {node: '>=12.4.0'}
 
   '@nolyfill/shared@1.0.28':
@@ -394,10 +395,6 @@ packages:
     resolution: {integrity: sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==}
     engines: {node: '>=8'}
 
-  is-core-module@2.14.0:
-    resolution: {integrity: sha512-a5dFJih5ZLYlRtDc0dZWP7RiKr6xIKzmn/oAYCDvdLThadVgyJwlaoQPmRtMSpz+rk0OGAgIu+TcM9HUF0fk1A==}
-    engines: {node: '>= 0.4'}
-
   is-extglob@2.1.1:
     resolution: {integrity: sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==}
     engines: {node: '>=0.10.0'}
@@ -647,8 +644,8 @@ packages:
     resolution: {integrity: sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==}
     engines: {node: '>= 6.0.0', npm: '>= 3.0.0'}
 
-  snyk@1.1291.1:
-    resolution: {integrity: sha512-a+phPmN0HrXzf81fx2qcaAnbZ7rK3WG1OhOHXoBHvRUIlAKIsoAozDSlWPSs0OuQI1hpQL/15O7xUFo3kDwrew==}
+  snyk@1.1292.0:
+    resolution: {integrity: sha512-CklC8WLl8Ti2noOToijYcENrh1alIE+Igr5zNrMul16NDSFV/sZ7YrN0V4xxVZP0ytc2mVJ8OKJMdgurGEJ+3A==}
     engines: {node: '>=12'}
     hasBin: true
 
@@ -779,7 +776,7 @@ snapshots:
     dependencies:
       '@nolyfill/shared': 1.0.28
 
-  '@nolyfill/hasown@1.0.29': {}
+  '@nolyfill/is-core-module@1.0.32': {}
 
   '@nolyfill/shared@1.0.28': {}
 
@@ -1158,10 +1155,6 @@ snapshots:
     dependencies:
       binary-extensions: 2.3.0
 
-  is-core-module@2.14.0:
-    dependencies:
-      hasown: '@nolyfill/hasown@1.0.29'
-
   is-extglob@2.1.1: {}
 
   is-fullwidth-code-point@3.0.0: {}
@@ -1405,7 +1398,7 @@ snapshots:
 
   resolve@1.22.8:
     dependencies:
-      is-core-module: 2.14.0
+      is-core-module: '@nolyfill/is-core-module@1.0.32'
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
 
@@ -1461,7 +1454,7 @@ snapshots:
 
   smart-buffer@4.2.0: {}
 
-  snyk@1.1291.1:
+  snyk@1.1292.0:
     dependencies:
       '@sentry/node': 7.118.0
       global-agent: 3.0.0
