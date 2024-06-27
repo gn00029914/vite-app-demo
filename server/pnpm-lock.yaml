@@ -169,6 +169,10 @@ importers:
         specifier: ^5.92.1
         version: 5.92.1(@swc/core@1.6.5)
 
+  ..: {}
+
+  ../client: {}
+
 packages:
 
   '@ampproject/remapping@2.3.0':
