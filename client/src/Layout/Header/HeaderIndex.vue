@@ -1,6 +1,16 @@
 <template>
-    <Button type="button" label="Search" icon="pi pi-search" />
-    <div>AQI: @{{ aqi }}</div>
+    <Button
+        type="button"
+        label="Search"
+        icon="pi pi-search"
+        :pt="{
+            root: { style: ['padding: 5px;'] },
+            label: { class: ['text-sm'] }
+        }"
+        class="p-0"
+    ></Button>
+    <div>目前地點位於: @{{ townVillagePointQuery }}</div>
+    <div>USAQI: @{{ aqi }}</div>
     <div class="border-b">
         <nav class="p-0">
             <div class="flex flex-row">
@@ -8,7 +18,7 @@
         >Navbar |</a
       > -->
                 <div class="xs:hidden flex-1"></div>
-                <a href="#" @click="showDialog">@{{ $t('message.signUp') }}</a>
+                <!-- <a href="#" @click="showDialog">@{{ $t('message.signUp') }}</a> -->
                 <!-- <p class="flex-1">
                     @{{ $t('message.Home') }} | @{{ $t('message.About') }}&nbsp;
                 </p> -->
@@ -57,18 +67,18 @@
             </div>
         </nav>
     </div>
-    <Dialog v-if="isShowDialog" :size="size" @close="closeDialog">
-        <template #header>
+    <!-- <Dialog v-if="isShowDialog" :size="size" @close="closeDialog"> -->
+    <!-- <template #header>
             <div class="flex items-center text-lg">
                 @{{ $t('message.signUp') }}
             </div>
-        </template>
-        <!-- <template #body> -->
-        <!-- <ValidationProvider v-slot="{ errors }" rules="required">
+        </template> -->
+    <!-- <template #body> -->
+    <!-- <ValidationProvider v-slot="{ errors }" rules="required">
                 <input v-model="value" type="text" />
                 <span id="error">{{ errors[0] }}</span>
             </ValidationProvider> -->
-        <!-- <form class="field">
+    <!-- <form class="field">
                 <div>
                     <label for="name"
                         >@{{ $t('message.firstName') }}
@@ -235,8 +245,8 @@
                     </button>
                 </div>
             </form> -->
-        <!-- </template> -->
-    </Dialog>
+    <!-- </template> -->
+    <!-- </Dialog> -->
 </template>
 
 <script setup lang="ts">
@@ -284,8 +294,10 @@ const darkMode = () => {
 // import { useGeolocation } from '@vueuse/core'
 // import { useFetch } from '@vueuse/core'
  */
+import { XMLParser } from 'fast-xml-parser'
 const { coords } = useGeolocation({ enableHighAccuracy: true })
 const aqi = ref()
+const townVillagePointQuery = ref()
 onBeforeMount(() => {
     setTimeout(() => {
         // 定義一個介面，描述fetch函數的參數類型
@@ -296,6 +308,28 @@ onBeforeMount(() => {
         const refetch = ref(true)
         function hour24() {
             return new Date().getHours().toString()
+        }
+        function fetchTownVillagePointQuery({ url, params }: FetchOptions) {
+            const queryStr = Object.keys(params)
+                .map((key) => `${params[key]}`)
+                .join('/')
+                .toString()
+            const fetchURL = `${url}/${queryStr}`
+            const { data } = useFetch(fetchURL, { refetch }).get()
+            townVillagePointQuery.value = computed(() => {
+                try {
+                    const parser = new XMLParser()
+                    const jsonObj = parser.parse(
+                        `${data.value}`
+                    ).townVillageItem
+                    let ctyName = jsonObj.ctyName
+                    let townName = jsonObj.townName
+                    let villageName = jsonObj.villageName
+                    return `${ctyName}${townName}${villageName}`
+                } catch (e) {
+                    return null
+                }
+            })
         }
         // 封裝一個function fetchAQI({ url, params })
         function fetchAQI({ url, params }: FetchOptions) {
@@ -326,6 +360,13 @@ onBeforeMount(() => {
             // 比對新舊小時數
             if (oldHour != newHour) {
                 oldHour = newHour
+                fetchTownVillagePointQuery({
+                    url: 'https://api.nlsc.gov.tw/other/TownVillagePointQuery',
+                    params: {
+                        longitude: coords.value.longitude,
+                        latitude: coords.value.latitude
+                    }
+                })
                 fetchAQI({
                     url: 'https://air-quality-api.open-meteo.com/v1/air-quality', // 請求的url
                     params: {
@@ -338,6 +379,13 @@ onBeforeMount(() => {
                 })
             }
         }, 1000)
+        fetchTownVillagePointQuery({
+            url: 'https://api.nlsc.gov.tw/other/TownVillagePointQuery',
+            params: {
+                longitude: coords.value.longitude,
+                latitude: coords.value.latitude
+            }
+        })
         fetchAQI({
             url: 'https://air-quality-api.open-meteo.com/v1/air-quality', // 請求的url
             params: {
@@ -349,29 +397,29 @@ onBeforeMount(() => {
         })
     }, 4500)
 })
-import { useSignUpStore } from '@/store'
-import { usePrimeVue } from 'primevue/config'
-const signUpStore = useSignUpStore()
-enum ValidationStatus {
-    Success = 'success',
-    Error = 'error'
-}
-const size = 'md'
-const isShowDialog = ref(false)
-function closeDialog() {
-    isShowDialog.value = false
-}
-function showDialog() {
-    isShowDialog.value = true
-}
-function resetDialog() {
-    document.getElementById('firstName')?.removeAttribute('value')
-    document.getElementById('lastName')?.removeAttribute('value')
-    document.getElementById('userName')?.removeAttribute('value')
-    document.getElementById('password')?.removeAttribute('value')
-    document.getElementById('email')?.removeAttribute('value')
-    document.getElementById('phoneNumber')?.removeAttribute('value')
-}
+// import { useSignUpStore } from '@/store'
+// import { usePrimeVue } from 'primevue/config'
+// const signUpStore = useSignUpStore()
+// enum ValidationStatus {
+//     Success = 'success',
+//     Error = 'error'
+// }
+// const size = 'md'
+// const isShowDialog = ref(false)
+// function closeDialog() {
+//     isShowDialog.value = false
+// }
+// function showDialog() {
+//     isShowDialog.value = true
+// }
+// function resetDialog() {
+//     document.getElementById('firstName')?.removeAttribute('value')
+//     document.getElementById('lastName')?.removeAttribute('value')
+//     document.getElementById('userName')?.removeAttribute('value')
+//     document.getElementById('password')?.removeAttribute('value')
+//     document.getElementById('email')?.removeAttribute('value')
+//     document.getElementById('phoneNumber')?.removeAttribute('value')
+// }
 </script>
 
 <style scoped></style>

@@ -1,12 +1,24 @@
 <template>
     <div>首頁內容 HomePage Content</div>
     <Button
-        class="p-button-raised"
-        :label="'count is' + count"
+        class="ml-1"
+        :label="'count is ' + count"
         icon="pi pi-plus-circle"
+        :pt="{
+            root: { style: ['padding: 5px;'] },
+            label: { class: ['text-sm'] }
+        }"
         @click="count++"
     ></Button>
-    <Button label="Check" icon="pi pi-check"></Button>
+    <Button
+        class="ml-1"
+        :pt="{
+            root: { style: ['padding: 5px;'] },
+            label: { class: ['text-sm'] }
+        }"
+        label="Check"
+        icon="pi pi-check"
+    ></Button>
     <Carousel
         :value="products"
         :num-visible="5"

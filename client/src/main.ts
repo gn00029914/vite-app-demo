@@ -22,13 +22,14 @@ import Tailwind from 'primevue/passthrough/tailwind'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import Wind from '@presets/wind/index' // https://tailwind.primevue.org/overview/#preset https://github.com/primefaces/primevue-tailwind/releases/tag/0.8.2 https://github.com/primefaces/primevue-examples/issues/6#issuecomment-1959753222 https://github.com/primefaces/primevue/issues/4883#issuecomment-1865040221 https://github.com/primefaces/primevue-tailwind/issues/66 https://github.com/primefaces/primevue-tailwind/issues/242
-import BadgeDirective from 'primevue/badgedirective'
-import Tooltip from 'primevue/tooltip'
-import StyleClass from 'primevue/styleclass'
-import FocusTrap from 'primevue/focustrap'
-import Ripple from 'primevue/ripple'
-import AnimateOnScroll from 'primevue/animateonscroll'
+// import BadgeDirective from 'primevue/badgedirective'
+// import Tooltip from 'primevue/tooltip'
+// import StyleClass from 'primevue/styleclass'
+// import FocusTrap from 'primevue/focustrap'
+// import Ripple from 'primevue/ripple'
+// import AnimateOnScroll from 'primevue/animateonscroll'
 import '../node_modules/primeicons/primeicons.css' // icons
+// import { size } from '@vee-validate/rules'
 // import '../node_modules/primeflex/primeflex.css' // PrimeFlex
 // import Button from 'primevue/button' // 改為auto-import
 // import { store } from './store'
@@ -105,23 +106,23 @@ createApp(App)
     // .component('router-link', RouterLink)
     .component('EventCounter', EventCounter)
     .use(PrimeVue, {
-        unstyled: false,
+        unstyled: true,
         ripple: true,
         inputStyle: 'filled',
         // locale: 'zh-TW',
         pt: usePassThrough(Tailwind, Wind, {
             mergeSections: true,
-            mergeProps: false
+            mergeProps: true
         }),
         csp: { nonce: _nonce } // 由此處設置 privevue 所需的 nonce
     })
-    .directive('badge', BadgeDirective)
-    .directive('tooltip', Tooltip)
-    .directive('styleclass', StyleClass)
-    .directive('focustrap', FocusTrap)
-    .directive('ripple', Ripple)
-    .directive('animateonscroll', AnimateOnScroll)
-    // .component('Button', Button)  // register Button component
+    // .directive('badge', BadgeDirective)
+    // .directive('tooltip', Tooltip)
+    // .directive('styleclass', StyleClass)
+    // .directive('focustrap', FocusTrap)
+    // .directive('ripple', Ripple)
+    // .directive('animateonscroll', AnimateOnScroll)
+    // .component('Button', Button) // register Button component
     .mount('#app')
 
 NProgress.done()
