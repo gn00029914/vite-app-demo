@@ -13,7 +13,6 @@ declare module 'vue' {
     Carousel: typeof import('primevue/carousel')['default']
     Components: typeof import('./components/index.md')['default']
     ContentIndex: typeof import('./Layout/Content/ContentIndex.vue')['default']
-    Dialog: typeof import('primevue/dialog')['default']
     EventCounter: typeof import('./components/EventCounter.vue')['default']
     HeaderIndex: typeof import('./Layout/Header/HeaderIndex.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
