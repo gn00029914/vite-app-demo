@@ -67,6 +67,7 @@ async function bootstrap() {
           // 'cdn.jsdelivr.net',
           'air-quality-api.open-meteo.com/v1/air-quality',
           // 'primefaces.org/cdn/primevue/images/product/',
+          'api.nlsc.gov.tw/other/TownVillagePointQuery/',
         ],
         styleSrc: [
           `'self'`,
@@ -80,7 +81,8 @@ async function bootstrap() {
           // ↓藉由 primevue 生成↓
           // "'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU='",
           // "'sha256-sbYZV251k33aGfnLMZtfDmTnfrINBs+qiS4fhEjVGeQ='",
-          "'sha256-hxFrAADLXoprKKt0iWBhbeKAu0KVrVQsW4vRAf4hpmU='",
+          // "'sha256-hxFrAADLXoprKKt0iWBhbeKAu0KVrVQsW4vRAf4hpmU='",
+          "'sha256-UoUTlj7u4bMFlfUR8WtfypFTmwYOxnqOsU7wKICCbyM='",
           // "'sha256-TJTxYFRSVDihcU3K7XDF4MEZc+epIm659c1VCxl13G0='",
           // "'sha256-fI4n6MflQImBULJAJb5wNHA9Dv2oAKihCDDbmPDuhNo='",
           // "'sha256-HUdXCpbnxeTgI9CG+KfxpQTcadF/S1KQIT/6ws+pNSM='",

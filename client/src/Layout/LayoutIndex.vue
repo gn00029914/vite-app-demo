@@ -22,15 +22,19 @@ import Content from './Content/ContentIndex.vue'
 </script>
 
 <style scoped>
+.layout {
+    min-height: 88dvh;
+}
+
 .layout-content {
+    min-height: 88dvh;
     flex: 1;
-    /* height: 50%; */
     display: flex;
     overflow: hidden;
 }
 
 .layout-menu {
-    /* height: 100vh; */
+    min-height: 88dvh;
     display: flex;
     overflow: hidden;
 }
