@@ -1,0 +1,1 @@
+import e from"./CIhlsosh.js";import{_ as n}from"./assets/main-CgZYOBH_.js";import{B as c,o as r}from"./umNa7KZI.js";const t={};function _(s,m){const o=e;return r(),c(o)}const i=n(t,[["render",_]]);export{i as default};
