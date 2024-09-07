@@ -23,7 +23,7 @@
         "@types/markdown-it": "^14.1.1",
         "@vee-validate/i18n": "^4.13.2",
         "@vee-validate/rules": "^4.13.2",
-        "@vueuse/components": "^10.11.0",
+        "@vueuse/components": "^11.0.0",
         "@vueuse/core": "^10.11.0",
         "@vueuse/integrations": "^10.11.0",
         "accessible-nprogress": "^2.1.2",
