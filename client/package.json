@@ -25,7 +25,7 @@
         "@vee-validate/rules": "^4.13.2",
         "@vueuse/components": "^10.11.0",
         "@vueuse/core": "^10.11.0",
-        "@vueuse/integrations": "^10.11.0",
+        "@vueuse/integrations": "^11.0.0",
         "accessible-nprogress": "^2.1.2",
         "fast-xml-parser": "^4.4.0",
         "markdown-it-anchor": "^9.0.1",
