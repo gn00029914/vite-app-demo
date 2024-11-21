@@ -91,10 +91,10 @@ export default [
             //   }
             // ]
             'no-empty-function': 'off',
-            '@typescript-eslint/no-empty-function': 'error'
+            '@typescript-eslint/no-empty-function': 'error',
             // "vuejs-accessibility/rule-name": "error"
-            // 'no-dupe-keys': 'warn', // [WIP] primevue/presets https://github.com/primefaces/primevue-examples/issues/6#issuecomment-1959753222
-            // 'no-sparse-arrays': 'warn' // [WIP] primevue/presets https://github.com/primefaces/primevue-examples/issues/6#issuecomment-1959753222
+            'vuejs-accessibility/label-has-for': 'warn'
+            // 'no-commonjs': 'warn' // [WIP] https://github.com/primefaces/tailwindcss-primeui/issues/1
         }
     }
     // ])

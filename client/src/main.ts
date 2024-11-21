@@ -17,11 +17,12 @@ import { routes } from 'vue-router/auto-routes'
 // import generatedRoutes from 'virtual:generated-pages'
 import App from './App.vue'
 import PrimeVue from 'primevue/config' // import PrimeVue
+import { definePreset } from '@primevue/themes'
 import { usePassThrough } from 'primevue/passthrough'
-import Tailwind from 'primevue/passthrough/tailwind'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-import Wind from '@presets/wind/index' // https://tailwind.primevue.org/overview/#preset https://github.com/primefaces/primevue-tailwind/releases/tag/0.8.2 https://github.com/primefaces/primevue-examples/issues/6#issuecomment-1959753222 https://github.com/primefaces/primevue/issues/4883#issuecomment-1865040221 https://github.com/primefaces/primevue-tailwind/issues/66 https://github.com/primefaces/primevue-tailwind/issues/242
+// // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// // @ts-expect-error
+// import Wind from '@presets/wind/index' // https://tailwind.primevue.org/overview/#preset https://github.com/primefaces/primevue-tailwind/releases/tag/0.8.2 https://github.com/primefaces/primevue-examples/issues/6#issuecomment-1959753222 https://github.com/primefaces/primevue/issues/4883#issuecomment-1865040221 https://github.com/primefaces/primevue-tailwind/issues/66 https://github.com/primefaces/primevue-tailwind/issues/242
+import Aura from '@primevue/themes/aura'
 // import BadgeDirective from 'primevue/badgedirective'
 // import Tooltip from 'primevue/tooltip'
 // import StyleClass from 'primevue/styleclass'
@@ -98,6 +99,45 @@ Array.from(scriptTags).forEach((script) => {
     }
 })
 
+const MyPreset = definePreset(Aura, {
+    semantic: {
+        colorScheme: {
+            light: {
+                primary: {
+                    0: '#ffffff',
+                    50: '{blue.50}',
+                    100: '{blue.100}',
+                    200: '{blue.200}',
+                    300: '{blue.300}',
+                    400: '{blue.400}',
+                    500: '{blue.500}',
+                    600: '{blue.600}',
+                    700: '{blue.700}',
+                    800: '{blue.800}',
+                    900: '{blue.900}',
+                    950: '{blue.950}'
+                }
+            },
+            dark: {
+                primary: {
+                    0: '#ffffff',
+                    50: '{indigo.50}',
+                    100: '{indigo.100}',
+                    200: '{indigo.200}',
+                    300: '{indigo.300}',
+                    400: '{indigo.400}',
+                    500: '{indigo.500}',
+                    600: '{indigo.600}',
+                    700: '{indigo.700}',
+                    800: '{indigo.800}',
+                    900: '{indigo.900}',
+                    950: '{indigo.950}'
+                }
+            }
+        }
+    }
+})
+
 createApp(App)
     .use(i18n)
     .use(head)
@@ -106,11 +146,19 @@ createApp(App)
     // .component('router-link', RouterLink)
     .component('EventCounter', EventCounter)
     .use(PrimeVue, {
-        unstyled: true,
+        theme: {
+            preset: MyPreset,
+            options: {
+                prefix: 'p',
+                darkModeSelector: '.dark',
+                cssLayer: false
+            }
+        },
+        unstyled: false,
         ripple: true,
         inputStyle: 'filled',
         // locale: 'zh-TW',
-        pt: usePassThrough(Tailwind, Wind, {
+        pt: usePassThrough(Aura, {
             mergeSections: true,
             mergeProps: true
         }),

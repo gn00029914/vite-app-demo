@@ -34,23 +34,23 @@
         <script nonce="{{{ nonce }}}">
             // On page load or when changing themes, best to add inline in `head` to avoid FOUC
             if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                document
-                    .getElementById('theme-link')
-                    .setAttribute(
-                        'href',
-                        '/vite-app-demo/themes/aura-dark-indigo/theme.min.css'
-                    )
+                // document
+                //     .getElementById('theme-link')
+                //     .setAttribute(
+                //         'href',
+                //         '/vite-app-demo/themes/aura-dark-indigo/theme.min.css'
+                //     )
                 document.documentElement.classList.add('dark')
                 document.documentElement.style.background =
                     "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/vite-app-demo/darkbg.jpg') no-repeat fixed center"
                 document.documentElement.style.backgroundSize = 'cover'
             } else {
-                document
-                    .getElementById('theme-link')
-                    .setAttribute(
-                        'href',
-                        '/vite-app-demo/themes/aura-light-blue/theme.min.css'
-                    )
+                // document
+                //     .getElementById('theme-link')
+                //     .setAttribute(
+                //         'href',
+                //         '/vite-app-demo/themes/aura-light-blue/theme.min.css'
+                //     )
                 document.documentElement.classList.remove('dark')
                 document.documentElement.style.background =
                     "linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('/vite-app-demo/lightbg.jpg') no-repeat fixed center"

@@ -19,6 +19,53 @@
       > -->
                 <div class="xs:hidden flex-1"></div>
                 <!-- <a href="#" @click="showDialog">@{{ $t('message.signUp') }}</a> -->
+                <a href="#" class="pi pi-user" @click="visible = true"
+                    >@{{ $t('message.signUp') }}</a
+                >
+                <Dialog
+                    v-model:visible="visible"
+                    modal
+                    header="Edit Profile"
+                    :style="{ width: '25rem' }"
+                >
+                    <span
+                        class="text-surface-500 dark:text-surface-400 mb-8 block"
+                        >Update your information.</span
+                    >
+                    <div class="mb-4 flex items-center gap-4">
+                        <label for="username" class="w-24 font-semibold"
+                            >Username</label
+                        >
+                        <InputText
+                            id="username"
+                            class="flex-auto"
+                            autocomplete="off"
+                        />
+                    </div>
+                    <div class="mb-8 flex items-center gap-4">
+                        <label for="email" class="w-24 font-semibold"
+                            >Email</label
+                        >
+                        <InputText
+                            id="email"
+                            class="flex-auto"
+                            autocomplete="off"
+                        />
+                    </div>
+                    <div class="flex justify-end gap-2">
+                        <Button
+                            type="button"
+                            label="Cancel"
+                            severity="secondary"
+                            @click="visible = false"
+                        ></Button>
+                        <Button
+                            type="button"
+                            label="Save"
+                            @click="visible = false"
+                        ></Button>
+                    </div>
+                </Dialog>
                 <!-- <p class="flex-1">
                     @{{ $t('message.Home') }} | @{{ $t('message.About') }}&nbsp;
                 </p> -->
@@ -260,7 +307,7 @@ const handleChangeLanguage = (e: any): void => {
     i18n.global.locale.value = e.target.value
 }
 
-const linkElement = document.getElementById('theme-link') as HTMLLinkElement
+// const linkElement = document.getElementById('theme-link') as HTMLLinkElement
 const darkMode = () => {
     if (document.documentElement.classList.contains('dark')) {
         document
@@ -273,7 +320,7 @@ const darkMode = () => {
         document.documentElement.style.background =
             "linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('/vite-app-demo/lightbg.jpg') no-repeat fixed center"
         document.documentElement.style.backgroundSize = 'cover'
-        linkElement.href = '/vite-app-demo/themes/aura-light-blue/theme.min.css'
+        // linkElement.href = '/vite-app-demo/themes/aura-light-blue/theme.min.css'
     } else {
         document
             .getElementById('theme-toggle-light-icon')
@@ -285,8 +332,8 @@ const darkMode = () => {
         document.documentElement.style.background =
             "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/vite-app-demo/darkbg.jpg') no-repeat fixed center"
         document.documentElement.style.backgroundSize = 'cover'
-        linkElement.href =
-            '/vite-app-demo/themes/aura-dark-indigo/theme.min.css'
+        // linkElement.href =
+        //     '/vite-app-demo/themes/aura-dark-indigo/theme.min.css'
     }
 }
 
@@ -397,6 +444,8 @@ onBeforeMount(() => {
         })
     }, 4500)
 })
+import { ref } from 'vue'
+const visible = ref(false)
 // import { useSignUpStore } from '@/store'
 // import { usePrimeVue } from 'primevue/config'
 // const signUpStore = useSignUpStore()
