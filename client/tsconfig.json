@@ -1,43 +1,45 @@
 {
-    "compilerOptions": {
-        "target": "ESNext",
-        "useDefineForClassFields": true,
-        "module": "ESNext",
-        "moduleResolution": "Bundler",
-        "strict": true,
-        "jsx": "preserve",
-        "sourceMap": true,
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "esModuleInterop": true,
-        "lib": ["ESNext", "WebWorker", "DOM"],
-        "baseUrl": ".",
-        "paths": {
-            "@/*": ["./src/*"]
-        },
-        // "skipLibCheck": true, -> true by default now
-        "skipLibCheck": true,
-        "types": [
-            "vite/client",
-            "vitest/globals",
-            "vite-plugin-pwa/client",
-            "@intlify/unplugin-vue-i18n/messages",
-            "unplugin-vue-router/client",
-            "unplugin-icons/types/vue",
-            "vite-plugin-pages/client",
-            "vite-plugin-vue-meta-layouts/client"
-        ]
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "lib": ["ESNext", "WebWorker", "DOM"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
     },
-    "include": [
-        "src/**/*.ts",
-        "src/**/*.d.ts",
-        "src/**/*.tsx",
-        "src/**/*.vue",
-        "./typed-router.d.ts"
-    ],
-    "references": [
-        {
-            "path": "./tsconfig.node.json"
-        }
+    // "skipLibCheck": true, -> true by default now
+    "skipLibCheck": true,
+    "types": [
+      "vite/client",
+      "vitest/globals",
+      "vite-plugin-pwa/client",
+      "@intlify/unplugin-vue-i18n/messages",
+      "unplugin-vue-router/client",
+      "unplugin-icons/types/vue",
+      "vite-plugin-pages/client",
+      "vite-plugin-vue-meta-layouts/client",
+      "./declarations.d.mts"
     ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "./**.ts",
+    "./**.mts"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }

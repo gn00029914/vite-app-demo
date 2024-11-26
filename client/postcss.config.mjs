@@ -1,8 +1,8 @@
-module.exports = {
+export default {
     plugins: {
         'postcss-import': {},
         //Some plugins, like tailwindcss/nesting, need to run before Tailwind,
-        tailwindcss: { config: './tailwindcss-config.cjs' },
+        tailwindcss: { config: './tailwindcss-config.mts' },
         //But others, like autoprefixer, need to run after,
         autoprefixer: {},
         cssnano:

@@ -385,4 +385,4 @@
   }
 }
 
-@config "../tailwindcss-config.cjs";
+@config "../tailwindcss-config.mts";

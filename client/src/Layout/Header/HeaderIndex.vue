@@ -1,131 +1,119 @@
 <template>
-    <Button
-        type="button"
-        label="Search"
-        icon="pi pi-search"
-        :pt="{
-            root: { style: ['padding: 5px;'] },
-            label: { class: ['text-sm'] }
-        }"
-        class="p-0"
-    ></Button>
-    <div>目前地點位於: @{{ townVillagePointQuery }}</div>
-    <div>USAQI: @{{ aqi }}</div>
-    <div class="border-b">
-        <nav class="p-0">
-            <div class="flex flex-row">
-                <!-- <a href="#" class="text-gray-900 hover:underline dark:text-white"
+  <Button
+    type="button"
+    label="Search"
+    icon="pi pi-search"
+    :pt="{
+      root: { style: ['padding: 5px;'] },
+      label: { class: ['text-sm'] },
+    }"
+    class="p-0"
+  ></Button>
+  <div>目前地點位於: @{{ townVillagePointQuery }}</div>
+  <div>USAQI: @{{ aqi }}</div>
+  <div class="border-b">
+    <nav class="p-0">
+      <div class="flex flex-row">
+        <!-- <a href="#" class="text-gray-900 hover:underline dark:text-white"
         >Navbar |</a
       > -->
-                <div class="xs:hidden flex-1"></div>
-                <!-- <a href="#" @click="showDialog">@{{ $t('message.signUp') }}</a> -->
-                <a href="#" class="pi pi-user" @click="visible = true"
-                    >@{{ $t('message.signUp') }}</a
-                >
-                <Dialog
-                    v-model:visible="visible"
-                    modal
-                    header="Edit Profile"
-                    :style="{ width: '25rem' }"
-                >
-                    <span
-                        class="text-surface-500 dark:text-surface-400 mb-8 block"
-                        >Update your information.</span
-                    >
-                    <div class="mb-4 flex items-center gap-4">
-                        <label for="username" class="w-24 font-semibold"
-                            >Username</label
-                        >
-                        <InputText
-                            id="username"
-                            class="flex-auto"
-                            autocomplete="off"
-                        />
-                    </div>
-                    <div class="mb-8 flex items-center gap-4">
-                        <label for="email" class="w-24 font-semibold"
-                            >Email</label
-                        >
-                        <InputText
-                            id="email"
-                            class="flex-auto"
-                            autocomplete="off"
-                        />
-                    </div>
-                    <div class="flex justify-end gap-2">
-                        <Button
-                            type="button"
-                            label="Cancel"
-                            severity="secondary"
-                            @click="visible = false"
-                        ></Button>
-                        <Button
-                            type="button"
-                            label="Save"
-                            @click="visible = false"
-                        ></Button>
-                    </div>
-                </Dialog>
-                <!-- <p class="flex-1">
+        <div class="xs:hidden flex-1"></div>
+        <!-- <a href="#" @click="showDialog">@{{ $t('message.signUp') }}</a> -->
+        <a href="#" class="pi pi-user" @click="visible = true"
+          >@{{ $t("message.signUp") }}</a
+        >
+        <Dialog
+          v-model:visible="visible"
+          modal
+          header="Edit Profile"
+          :style="{ width: '25rem' }"
+        >
+          <span class="text-surface-500 dark:text-surface-400 mb-8 block"
+            >Update your information.</span
+          >
+          <div class="mb-4 flex items-center gap-4">
+            <label for="username" class="w-24 font-semibold">Username</label>
+            <InputText id="username" class="flex-auto" autocomplete="off" />
+          </div>
+          <div class="mb-8 flex items-center gap-4">
+            <label for="email" class="w-24 font-semibold">Email</label>
+            <InputText id="email" class="flex-auto" autocomplete="off" />
+          </div>
+          <div class="flex justify-end gap-2">
+            <Button
+              type="button"
+              label="Cancel"
+              severity="secondary"
+              @click="visible = false"
+            ></Button>
+            <Button
+              type="button"
+              label="Save"
+              @click="visible = false"
+            ></Button>
+          </div>
+        </Dialog>
+        <!-- <p class="flex-1">
                     @{{ $t('message.Home') }} | @{{ $t('message.About') }}&nbsp;
                 </p> -->
-                <select
-                    v-model="$i18n.locale"
-                    aria-label="languages"
-                    class="dark:bg-gray-700"
-                    @blur="handleChangeLanguage"
-                >
-                    <option value="zh-TW">繁體中文</option>
-                    <option value="en-US">English</option>
-                </select>
-                <!-- darkMode button -->
-                <button
-                    id="theme-toggle"
-                    type="button"
-                    class="mx-2 animate-pulse rounded-lg p-1 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-                    aria-label="darkMode"
-                    @click="darkMode"
-                >
-                    <svg
-                        id="theme-toggle-dark-icon"
-                        class="hidden size-5"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
-                        ></path>
-                    </svg>
-                    <svg
-                        id="theme-toggle-light-icon"
-                        class="hidden size-5"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                        ></path>
-                    </svg>
-                </button>
-            </div>
-        </nav>
-    </div>
-    <!-- <Dialog v-if="isShowDialog" :size="size" @close="closeDialog"> -->
-    <!-- <template #header>
+        <select
+          v-model="$i18n.locale"
+          name="languages"
+          aria-label="languages"
+          class="dark:bg-gray-700"
+          @blur="handleChangeLanguage"
+        >
+          <option value="zh-TW">繁體中文</option>
+          <option value="en-US">English</option>
+        </select>
+        <!-- darkMode button -->
+        <button
+          id="theme-toggle"
+          type="button"
+          class="mx-2 animate-pulse rounded-lg p-1 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+          aria-label="darkMode"
+          @click="darkMode"
+        >
+          <svg
+            id="theme-toggle-dark-icon"
+            class="hidden size-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+            ></path>
+          </svg>
+          <svg
+            id="theme-toggle-light-icon"
+            class="hidden size-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+  <!-- <Dialog v-if="isShowDialog" :size="size" @close="closeDialog"> -->
+  <!-- <template #header>
             <div class="flex items-center text-lg">
                 @{{ $t('message.signUp') }}
             </div>
         </template> -->
-    <!-- <template #body> -->
-    <!-- <ValidationProvider v-slot="{ errors }" rules="required">
+  <!-- <template #body> -->
+  <!-- <ValidationProvider v-slot="{ errors }" rules="required">
                 <input v-model="value" type="text" />
                 <span id="error">{{ errors[0] }}</span>
             </ValidationProvider> -->
-    <!-- <form class="field">
+  <!-- <form class="field">
                 <div>
                     <label for="name"
                         >@{{ $t('message.firstName') }}
@@ -292,160 +280,151 @@
                     </button>
                 </div>
             </form> -->
-    <!-- </template> -->
-    <!-- </Dialog> -->
+  <!-- </template> -->
+  <!-- </Dialog> -->
 </template>
 
 <script setup lang="ts">
 // const theme = 'red' // 'blue', 'green', 'red', 'pink', 'purple'
 // const hover = false
-import i18n from '@/main'
+import i18n from "@/main";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const handleChangeLanguage = (e: any): void => {
-    // change locale via `global` property
-    // when vue-i18n is being used with legacy: false, note that i18n.global.locale is a ref, so we must set it via .value:
-    i18n.global.locale.value = e.target.value
-}
+  // change locale via `global` property
+  // when vue-i18n is being used with legacy: false, note that i18n.global.locale is a ref, so we must set it via .value:
+  i18n.global.locale.value = e.target.value;
+};
 
 // const linkElement = document.getElementById('theme-link') as HTMLLinkElement
 const darkMode = () => {
-    if (document.documentElement.classList.contains('dark')) {
-        document
-            .getElementById('theme-toggle-dark-icon')
-            ?.classList.remove('hidden')
-        document
-            .getElementById('theme-toggle-light-icon')
-            ?.classList.add('hidden')
-        document.documentElement.classList.remove('dark')
-        document.documentElement.style.background =
-            "linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('/vite-app-demo/lightbg.jpg') no-repeat fixed center"
-        document.documentElement.style.backgroundSize = 'cover'
-        // linkElement.href = '/vite-app-demo/themes/aura-light-blue/theme.min.css'
-    } else {
-        document
-            .getElementById('theme-toggle-light-icon')
-            ?.classList.remove('hidden')
-        document
-            .getElementById('theme-toggle-dark-icon')
-            ?.classList.add('hidden')
-        document.documentElement.classList.add('dark')
-        document.documentElement.style.background =
-            "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/vite-app-demo/darkbg.jpg') no-repeat fixed center"
-        document.documentElement.style.backgroundSize = 'cover'
-        // linkElement.href =
-        //     '/vite-app-demo/themes/aura-dark-indigo/theme.min.css'
-    }
-}
+  if (document.documentElement.classList.contains("dark")) {
+    document
+      .getElementById("theme-toggle-dark-icon")
+      ?.classList.remove("hidden");
+    document.getElementById("theme-toggle-light-icon")?.classList.add("hidden");
+    document.documentElement.classList.remove("dark");
+    document.documentElement.style.background =
+      "linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('/vite-app-demo/lightbg.jpg') no-repeat fixed center";
+    document.documentElement.style.backgroundSize = "cover";
+    // linkElement.href = '/vite-app-demo/themes/aura-light-blue/theme.min.css'
+  } else {
+    document
+      .getElementById("theme-toggle-light-icon")
+      ?.classList.remove("hidden");
+    document.getElementById("theme-toggle-dark-icon")?.classList.add("hidden");
+    document.documentElement.classList.add("dark");
+    document.documentElement.style.background =
+      "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/vite-app-demo/darkbg.jpg') no-repeat fixed center";
+    document.documentElement.style.backgroundSize = "cover";
+    // linkElement.href =
+    //     '/vite-app-demo/themes/aura-dark-indigo/theme.min.css'
+  }
+};
 
 /* auto-import
 // import { useGeolocation } from '@vueuse/core'
 // import { useFetch } from '@vueuse/core'
  */
-import { XMLParser } from 'fast-xml-parser'
-const { coords } = useGeolocation({ enableHighAccuracy: true })
-const aqi = ref()
-const townVillagePointQuery = ref()
+import { XMLParser } from "fast-xml-parser";
+const { coords } = useGeolocation({ enableHighAccuracy: true });
+const aqi = ref();
+const townVillagePointQuery = ref();
 onBeforeMount(() => {
-    setTimeout(() => {
-        // 定義一個介面，描述fetch函數的參數類型
-        interface FetchOptions {
-            url: string // 請求的url
-            params: Record<string, unknown> // 請求的參數
+  setTimeout(() => {
+    // 定義一個介面，描述fetch函數的參數類型
+    interface FetchOptions {
+      url: string; // 請求的url
+      params: Record<string, unknown>; // 請求的參數
+    }
+    const refetch = ref(true);
+    function hour24() {
+      return new Date().getHours().toString();
+    }
+    function fetchTownVillagePointQuery({ url, params }: FetchOptions) {
+      const queryStr = Object.keys(params)
+        .map((key) => `${params[key]}`)
+        .join("/")
+        .toString();
+      const fetchURL = `${url}/${queryStr}`;
+      const { data } = useFetch(fetchURL, { refetch }).get();
+      townVillagePointQuery.value = computed(() => {
+        try {
+          const parser = new XMLParser();
+          const jsonObj = parser.parse(`${data.value}`).townVillageItem;
+          let ctyName = jsonObj.ctyName;
+          let townName = jsonObj.townName;
+          let villageName = jsonObj.villageName;
+          return `${ctyName}${townName}${villageName}`;
+        } catch (e) {
+          return null;
         }
-        const refetch = ref(true)
-        function hour24() {
-            return new Date().getHours().toString()
+      });
+    }
+    // 封裝一個function fetchAQI({ url, params })
+    function fetchAQI({ url, params }: FetchOptions) {
+      // 將參數對象轉換為查詢字串
+      const queryStr = Object.keys(params)
+        .map((key) => `${key}=${params[key]}`)
+        .join("&");
+      // 設置fetchURL，拼接url和查詢字串，並添加回調函數名稱
+      const fetchURL = `${url}?${queryStr}`;
+      const { data } = useFetch(fetchURL, { refetch }).get();
+      aqi.value = computed(() => {
+        try {
+          return JSON.parse(data.value as string).hourly.us_aqi[hour24()];
+        } catch (e) {
+          return null;
         }
-        function fetchTownVillagePointQuery({ url, params }: FetchOptions) {
-            const queryStr = Object.keys(params)
-                .map((key) => `${params[key]}`)
-                .join('/')
-                .toString()
-            const fetchURL = `${url}/${queryStr}`
-            const { data } = useFetch(fetchURL, { refetch }).get()
-            townVillagePointQuery.value = computed(() => {
-                try {
-                    const parser = new XMLParser()
-                    const jsonObj = parser.parse(
-                        `${data.value}`
-                    ).townVillageItem
-                    let ctyName = jsonObj.ctyName
-                    let townName = jsonObj.townName
-                    let villageName = jsonObj.villageName
-                    return `${ctyName}${townName}${villageName}`
-                } catch (e) {
-                    return null
-                }
-            })
-        }
-        // 封裝一個function fetchAQI({ url, params })
-        function fetchAQI({ url, params }: FetchOptions) {
-            // 將參數對象轉換為查詢字串
-            const queryStr = Object.keys(params)
-                .map((key) => `${key}=${params[key]}`)
-                .join('&')
-            // 設置fetchURL，拼接url和查詢字串，並添加回調函數名稱
-            const fetchURL = `${url}?${queryStr}`
-            const { data } = useFetch(fetchURL, { refetch }).get()
-            aqi.value = computed(() => {
-                try {
-                    return JSON.parse(data.value as string).hourly.us_aqi[
-                        hour24()
-                    ]
-                } catch (e) {
-                    return null
-                }
-            })
-        }
-        let oldHour: string
-        let newHour: string
-        newHour = hour24()
-        oldHour = newHour
-        setInterval(() => {
-            // 更新newHour的值
-            newHour = hour24()
-            // 比對新舊小時數
-            if (oldHour != newHour) {
-                oldHour = newHour
-                fetchTownVillagePointQuery({
-                    url: 'https://api.nlsc.gov.tw/other/TownVillagePointQuery',
-                    params: {
-                        longitude: coords.value.longitude,
-                        latitude: coords.value.latitude
-                    }
-                })
-                fetchAQI({
-                    url: 'https://air-quality-api.open-meteo.com/v1/air-quality', // 請求的url
-                    params: {
-                        latitude: coords.value.latitude,
-                        longitude: coords.value.longitude,
-                        hourly: 'us_aqi',
-                        timezone:
-                            Intl.DateTimeFormat().resolvedOptions().timeZone
-                    } // 請求的參數
-                })
-            }
-        }, 1000)
+      });
+    }
+    let oldHour: string;
+    let newHour: string;
+    newHour = hour24();
+    oldHour = newHour;
+    setInterval(() => {
+      // 更新newHour的值
+      newHour = hour24();
+      // 比對新舊小時數
+      if (oldHour != newHour) {
+        oldHour = newHour;
         fetchTownVillagePointQuery({
-            url: 'https://api.nlsc.gov.tw/other/TownVillagePointQuery',
-            params: {
-                longitude: coords.value.longitude,
-                latitude: coords.value.latitude
-            }
-        })
+          url: "https://api.nlsc.gov.tw/other/TownVillagePointQuery",
+          params: {
+            longitude: coords.value.longitude,
+            latitude: coords.value.latitude,
+          },
+        });
         fetchAQI({
-            url: 'https://air-quality-api.open-meteo.com/v1/air-quality', // 請求的url
-            params: {
-                latitude: coords.value.latitude,
-                longitude: coords.value.longitude,
-                hourly: 'us_aqi',
-                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
-            } // 請求的參數
-        })
-    }, 4500)
-})
-import { ref } from 'vue'
-const visible = ref(false)
+          url: "https://air-quality-api.open-meteo.com/v1/air-quality", // 請求的url
+          params: {
+            latitude: coords.value.latitude,
+            longitude: coords.value.longitude,
+            hourly: "us_aqi",
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          }, // 請求的參數
+        });
+      }
+    }, 1000);
+    fetchTownVillagePointQuery({
+      url: "https://api.nlsc.gov.tw/other/TownVillagePointQuery",
+      params: {
+        longitude: coords.value.longitude,
+        latitude: coords.value.latitude,
+      },
+    });
+    fetchAQI({
+      url: "https://air-quality-api.open-meteo.com/v1/air-quality", // 請求的url
+      params: {
+        latitude: coords.value.latitude,
+        longitude: coords.value.longitude,
+        hourly: "us_aqi",
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      }, // 請求的參數
+    });
+  }, 4500);
+});
+import { ref } from "vue";
+const visible = ref(false);
 // import { useSignUpStore } from '@/store'
 // import { usePrimeVue } from 'primevue/config'
 // const signUpStore = useSignUpStore()

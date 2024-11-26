@@ -13,7 +13,7 @@ module.exports = {
   }, {
     name: "nestjs-server-demo",
     cwd: "./server/",
-    script: "./server/dist/main.js",
+    script: "./dist/main.js",
     node_args: "--expose-gc",
     exec_mode: "cluster",
     watch: true,

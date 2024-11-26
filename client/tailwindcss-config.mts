@@ -1,5 +1,9 @@
+import typographyPlugin from '@tailwindcss/typography'
+import aspectRatioPlugin from '@tailwindcss/aspect-ratio'
+import primeuiPlugin from 'tailwindcss-primeui'
+
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
     // darkMode: 'class',
     darkMode: ['selector', '.dark'],
     content: [
@@ -93,7 +97,7 @@ module.exports = {
                 },
                 quat: {
                     500: '#8500FF'
-                },
+                }
                 // 'text-color': 'var(--text-color)',
                 // 'text-color-secondary': 'var(--text-color-secondary)',
                 // 'border-radius': 'var(--border-radius',
@@ -326,8 +330,11 @@ module.exports = {
         aspectRatio: false
     },
     plugins: [
-        require('@tailwindcss/typography'),
-        require('@tailwindcss/aspect-ratio'),
-        require('tailwindcss-primeui') // https://github.com/primefaces/tailwindcss-primeui/issues/1
+        // require('@tailwindcss/typography'),
+        // require('@tailwindcss/aspect-ratio'),
+        // require('tailwindcss-primeui') // https://github.com/primefaces/tailwindcss-primeui/issues/1
+        typographyPlugin,
+        aspectRatioPlugin,
+        primeuiPlugin
     ]
 }
