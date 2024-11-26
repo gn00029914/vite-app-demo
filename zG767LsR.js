@@ -1,0 +1,1 @@
+import o from"./BjuZrgQJ.js";import{d as n,C as t,o as _}from"./nawONr8r.js";import"./assets/main-B5wtTsI_.js";const i=n({name:"PageIndex",__name:"index",setup(a){return(m,p)=>{const e=o;return _(),t(e)}}});export{i as default};
