@@ -49,7 +49,7 @@ export default defineConfig({
         modulePreload: true,
         sourcemap: process.env.NPM_ENV === 'development' ? true : false,
         target: 'esnext',
-        manifest: true,
+        manifest: false,
         cssCodeSplit: true,
         cssMinify: 'lightningcss',
         rollupOptions: {
