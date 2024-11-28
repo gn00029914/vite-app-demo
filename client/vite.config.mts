@@ -1,7 +1,6 @@
-/// <reference types="vitest" />
 /// <reference types="vite/client" />
 
-import { defineConfig, splitVendorChunkPlugin } from 'vite'
+import { defineConfig } from 'vite'
 import browserslist from 'browserslist'
 import { browserslistToTargets } from 'lightningcss'
 import { resolve } from 'path'
@@ -34,6 +33,7 @@ import { constants } from 'zlib'
 // console.log(process.env) // environment variables log for nodejs
 
 // https://vitejs.dev/config/
+/** @type {import('vite').UserConfig} */
 export default defineConfig({
     css: {
         devSourcemap: process.env.NPM_ENV === 'development' ? true : false,
@@ -68,18 +68,18 @@ export default defineConfig({
     plugins: [
         // 解決 HMR 遺失 CSS 問題 https://github.com/vitejs/vite/issues/3033#issuecomment-1360691044
         // 如果有不同步的問題發生可改由 blocking 方式載入
-        {
-            name: 'singleHMR',
-            handleHotUpdate({ modules }) {
-                modules.map((m) => {
-                    // m.importedModules = new Set() // vite v4.4.0 具有修正機制故交由框架隱式轉換 https://github.com/vitejs/vite/pull/13024
-                    m.importers = new Set()
-                })
+        // {
+        //     name: 'singleHMR',
+        //     handleHotUpdate({ modules }) {
+        //         modules.map((m) => {
+        //             // m.importedModules = new Set() // vite v4.4.0 具有修正機制故交由框架隱式轉換 https://github.com/vitejs/vite/pull/13024
+        //             m.importers = new Set()
+        //         })
 
-                return modules
-            }
-        },
-        splitVendorChunkPlugin(),
+        //         return modules
+        //     }
+        // },
+        // splitVendorChunkPlugin(),
         basicSsl(),
         process.env.NPM_ENV === 'development' ? false : ViteMinifyPlugin({}),
         VitePWA({
@@ -428,7 +428,8 @@ export default defineConfig({
             '@store': resolve(__dirname, 'src/store'),
             '@presets': resolve(__dirname, 'src/presets'),
             find: 'vue-i18n',
-            replacement: 'vue-i18n/dist/vue-i18n.cjs.js'
+            // replacement: 'vue-i18n/dist/vue-i18n.cjs.js'
+            replacement: process.env.NPM_ENV === 'development' ? 'vue-i18n/dist/vue-i18n.esm-bundler.js' : 'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js',
         }
     },
     server: {
@@ -452,16 +453,5 @@ export default defineConfig({
         //         rewrite: (path) => path.replace(/^\/aqi/, '/v1/air-quality')
         //     }
         // }
-    },
-    test: {
-        coverage: {
-            provider: 'v8',
-            reporter: ['html', 'json', 'text']
-        },
-        environment: 'happy-dom', // or edge-runtime ???
-        // exclude: ['cypress', 'lib', 'node_modules', 'docs'],
-        exclude: ['node_modules'],
-        globals: true
-        // setupFiles: './src/App.tests.ts'
     }
 })
