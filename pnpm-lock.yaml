@@ -26,8 +26,8 @@ importers:
         specifier: ^0.3.4
         version: 0.3.4
       snyk:
-        specifier: ^1.1294.1
-        version: 1.1294.1
+        specifier: ^1.1294.2
+        version: 1.1294.2
 
 packages:
 
@@ -612,8 +612,9 @@ packages:
     resolution: {integrity: sha512-8I8TjW5KMOKsZQTvoxjuSIa7foAwPWGOts+6o7sgjz41/qMD9VQHEDxi6PBvK2l0MXUmqZyNpUK+T2tQaaElvw==}
     engines: {node: '>=10'}
 
-  shell-quote@1.8.1:
-    resolution: {integrity: sha512-6j1W9l1iAs/4xYBI1SYOVZyFcCis9b4KCLQ8fgAGG07QvzaRLVVRQvAy85yNmmZSjYjg4MWh4gNvlPujU/5LpA==}
+  shell-quote@1.8.2:
+    resolution: {integrity: sha512-AzqKpGKjrj7EM6rKVQEPpB288oCfnrEIuyoT9cyF4nmGa7V8Zk6f7RRqYisX8X9m+Q7bd632aZW4ky7EhbQztA==}
+    engines: {node: '>= 0.4'}
 
   shelljs@0.8.5:
     resolution: {integrity: sha512-TiwcRcrkhHvbrZbnRcFYMLl30Dfov3HKqzp5tO5b4pt6G/SezKcYhmDg15zXVBswHmctSAQKznqNW2LO5tTDow==}
@@ -635,8 +636,8 @@ packages:
     resolution: {integrity: sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==}
     engines: {node: '>= 6.0.0', npm: '>= 3.0.0'}
 
-  snyk@1.1294.1:
-    resolution: {integrity: sha512-A4yXpzoaa3Be5W1XvhQtipEK24TwlhU7zC0cusq+e0ejPD2j1FKcRGGIbhEke5l0OjUN1R7N1h/N83OpMpe7Hw==}
+  snyk@1.1294.2:
+    resolution: {integrity: sha512-m6F+go3Fj///rfL+qfGZAslYBFxVtCgZ5PkKcoRjewmbgfisfTFPP6/SyWV6fH54hb7k00t2EEHYO02vRD4g+g==}
     engines: {node: '>=12'}
     hasBin: true
 
@@ -962,7 +963,7 @@ snapshots:
       chalk: 4.1.2
       lodash: 4.17.21
       rxjs: 7.8.1
-      shell-quote: 1.8.1
+      shell-quote: 1.8.2
       supports-color: 8.1.1
       tree-kill: 1.2.2
       yargs: 17.7.2
@@ -1409,7 +1410,7 @@ snapshots:
     dependencies:
       type-fest: 0.13.1
 
-  shell-quote@1.8.1: {}
+  shell-quote@1.8.2: {}
 
   shelljs@0.8.5:
     dependencies:
@@ -1428,7 +1429,7 @@ snapshots:
 
   smart-buffer@4.2.0: {}
 
-  snyk@1.1294.1:
+  snyk@1.1294.2:
     dependencies:
       '@sentry/node': 7.120.0
       global-agent: 3.0.0
