@@ -1,0 +1,1 @@
+import n from"./C8usq5sH.js";import{d as o,c as t,o as _}from"./assets/main-DlI-PhZS.js";const s=o({name:"PageIndex",__name:"index",setup(a){return(c,m)=>{const e=n;return _(),t(e)}}});export{s as default};
