@@ -2,8 +2,8 @@ module.exports = {
   apps: [{
     name: "vite-app-demo",
     cwd: "./client/",
-    script: "./client/node_modules/vite/bin/vite.js",
-    exec_interpreter: "jiti",
+    script: "./node_modules/vite/bin/vite.js --config ./vite.config.mts",
+    node_args: '--require jiti/register',
     env_production: {
       NODE_ENV: "production"
     },
@@ -14,8 +14,7 @@ module.exports = {
   }, {
     name: "nestjs-server-demo",
     cwd: "./server/",
-    script: "./dist/main.js",
-    exec_interpreter: "jiti",
+    script: "jiti ./dist/main.js",
     node_args: "--expose-gc",
     exec_mode: "cluster",
     watch: true,
