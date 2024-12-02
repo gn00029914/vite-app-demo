@@ -30,7 +30,7 @@ import { FileSystemIconLoader } from 'unplugin-icons/loaders'
 import { compression } from 'vite-plugin-compression2'
 import { constants } from 'zlib'
 
-console.log(process.env) // environment variables log for nodejs
+// console.log(process.env) // environment variables log for nodejs
 
 // https://vitejs.dev/config/
 /** @type {import('vite').UserConfig} */
