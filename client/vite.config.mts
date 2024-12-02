@@ -36,7 +36,7 @@ import { constants } from 'zlib'
 /** @type {import('vite').UserConfig} */
 export default defineConfig({
     css: {
-        devSourcemap: process.env.NPM_ENV === 'development' ? true : false,
+        devSourcemap: process.env.VITE_USER_NODE_ENV === 'development' ? true : false,
         // transformer: 'postcss' | 'lightningcss',
         lightningcss: {
             targets: browserslistToTargets(browserslist('>= 0.25%'))
@@ -47,7 +47,7 @@ export default defineConfig({
     },
     build: {
         modulePreload: true,
-        sourcemap: process.env.NPM_ENV === 'development' ? true : false,
+        sourcemap: process.env.VITE_USER_NODE_ENV === 'development' ? true : false,
         target: 'esnext',
         manifest: true,
         cssCodeSplit: true,
@@ -59,7 +59,7 @@ export default defineConfig({
             output: {
                 compact: true,
                 chunkFileNames:
-                    process.env.NPM_ENV === 'development'
+                    process.env.VITE_USER_NODE_ENV === 'development'
                         ? '[format]-[name]-[hash].js'
                         : '[hash].js'
             }
@@ -81,7 +81,7 @@ export default defineConfig({
         // },
         // splitVendorChunkPlugin(),
         basicSsl(),
-        process.env.NPM_ENV === 'development' ? false : ViteMinifyPlugin({}),
+        process.env.VITE_USER_NODE_ENV === 'development' ? false : ViteMinifyPlugin({}),
         VitePWA({
             useCredentials: true,
             manifest: {
@@ -188,7 +188,7 @@ export default defineConfig({
                 clientsClaim: true,
                 cleanupOutdatedCaches: true,
                 inlineWorkboxRuntime: true,
-                sourcemap: process.env.NPM_ENV === 'development' ? true : false,
+                sourcemap: process.env.VITE_USER_NODE_ENV === 'development' ? true : false,
                 globPatterns: ['**'],
                 globIgnores: ['**/*.br'],
                 maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5 MiB
@@ -222,7 +222,7 @@ export default defineConfig({
             ], // https://fonts.google.com/share?selection.family=Source%20Sans%20Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900
             {
                 injectAsStyleTag: false,
-                minifyCss: process.env.NPM_ENV === 'development' ? false : true,
+                minifyCss: process.env.VITE_USER_NODE_ENV === 'development' ? false : true,
                 async: false,
                 cache: true // node_modules\.pnpm\vite-plugin-webfont-dl@3.6.0_vite@4.0.4\node_modules\flat-cache\.cache\vite-plugin-webfont-dl
             }
@@ -429,7 +429,7 @@ export default defineConfig({
             '@presets': resolve(__dirname, 'src/presets'),
             find: 'vue-i18n',
             // replacement: 'vue-i18n/dist/vue-i18n.cjs.js'
-            replacement: process.env.NPM_ENV === 'development' ? 'vue-i18n/dist/vue-i18n.esm-bundler.js' : 'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js',
+            replacement: process.env.VITE_USER_NODE_ENV === 'development' ? 'vue-i18n/dist/vue-i18n.esm-bundler.js' : 'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js',
         }
     },
     server: {
@@ -438,9 +438,9 @@ export default defineConfig({
             clientFiles: ['./*.html']
         },
         open: true,
-        port: 443,
+        port: process.env.VITE_USER_NODE_ENV === 'development' ? 8443 : 443,
         host: 'localhost',
-        origin: 'https://localhost:443',
+        origin: process.env.VITE_USER_NODE_ENV === 'development' ? 'https://localhost:8443' : 'https://localhost:443',
         headers: {
             // 'content-encoding': 'br, deflate, gzip, identity', // Firefox 不支援
             'accept-encoding': 'br, deflate, gzip, identity'
