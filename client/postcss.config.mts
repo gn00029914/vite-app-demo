@@ -6,7 +6,7 @@ export default {
         //But others, like autoprefixer, need to run after,
         autoprefixer: {},
         cssnano:
-            process.env.NPM_ENV === 'production'
+            process.env.NODE_ENV === 'production'
                 ? { preset: 'advanced' }
                 : false
     }

@@ -42,7 +42,7 @@ export default [
     // "plugin:prettier/recommended",
     // "prettier",
     // "plugin:vuejs-accessibility/recommended",
-    // process.env.NPM_ENV === "development"
+    // process.env.NODE_ENV === "development"
     //         ? "./.eslintrc-auto-import.json"
     //         : "",
     // ),
