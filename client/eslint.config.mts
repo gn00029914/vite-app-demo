@@ -93,8 +93,11 @@ export default [
             'no-empty-function': 'off',
             '@typescript-eslint/no-empty-function': 'error',
             // "vuejs-accessibility/rule-name": "error"
-            'vuejs-accessibility/label-has-for': 'warn'
+            'vuejs-accessibility/label-has-for': 'warn',
             // 'no-commonjs': 'warn' // [WIP] https://github.com/primefaces/tailwindcss-primeui/issues/1
+            "vue/multi-word-component-names": ["error", {
+                "ignores": ["index"]
+            }]
         }
     }
     // ])

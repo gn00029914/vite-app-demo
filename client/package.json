@@ -7,7 +7,7 @@
     "dev": "vite --mode development",
     "build:staging": "vue-tsc --noEmit && vite build --mode staging",
     "build": "vite build --mode production",
-    "preview": "vite preview --port=443",
+    "preview": "vite preview --port=8443",
     "lint": "eslint --flag unstable_ts_config --flag unstable_config_lookup_from_file --config eslint.config.mts --fix src/",
     "lint:check": "eslint --flag unstable_ts_config --flag unstable_config_lookup_from_file --config eslint.config.mts --ext .js,.ts,.vue --ignore-pattern '.gitignore' --fix-dry-run src/",
     "format": "prettier . --write --ignore-path .gitignore",
