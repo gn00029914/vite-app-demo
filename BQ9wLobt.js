@@ -1,1 +1,0 @@
-import n from"./B8itpen9.js";import{d as o,c as t,o as _}from"./assets/main-QAHtkRQD.js";const s=o({name:"PageIndex",__name:"index",setup(a){return(c,m)=>{const e=n;return _(),t(e)}}});export{s as default};
