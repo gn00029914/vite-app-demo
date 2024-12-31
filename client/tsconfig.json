@@ -34,10 +34,14 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
+    "src/**/*.md",
     "./**.ts",
     "./**.mts",
     "./**.cts"
   ],
+  "vueCompilerOptions": {
+    "vitePressExtensions": [".md"]
+  },
   "references": [
     {
       "path": "./tsconfig.node.json"

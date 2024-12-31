@@ -1,11 +1,8 @@
 <template>
-  <HomePage></HomePage>
+  <!-- <HomePage></HomePage> -->
+  <FormValidation></FormValidation>
 </template>
 
-<script setup lang="ts">
-// defineOptions({
-//     name: 'PageIndex'
-// })
-</script>
+<script setup lang="ts"></script>
 
 <style scoped></style>

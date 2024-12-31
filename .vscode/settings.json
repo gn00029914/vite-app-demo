@@ -7,9 +7,11 @@
   "typescript.preferences.autoImportFileExcludePatterns": [
     "vue-router"
   ],
-  "vue.server.petiteVue.supportHtmlFile": true,
-  "vue.server.vitePress.supportMdFile": true,
   "[vue]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
+  "vue.server.includeLanguages": [
+    "vue",
+    "markdown"
+  ]
 }

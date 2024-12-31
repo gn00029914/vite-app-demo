@@ -39,6 +39,10 @@
             <label for="email" class="w-24 font-semibold">Email</label>
             <InputText id="email" class="flex-auto" autocomplete="off" />
           </div>
+          <FormValidation
+            :input-class="'flex mb-4'"
+            :label-class="'w-25 font-semibold mr-4'"
+          ></FormValidation>
           <div class="flex justify-end gap-2">
             <Button
               type="button"
