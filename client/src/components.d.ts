@@ -26,7 +26,6 @@ declare module 'vue' {
     Pages: typeof import('./pages/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SanitizeExample: typeof import('./components/SanitizeExample.vue')['default']
     Tag: typeof import('primevue/tag')['default']
   }
 }

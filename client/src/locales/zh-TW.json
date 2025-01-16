@@ -22,6 +22,7 @@
     "submit": "傳送"
   },
   "validation": {
+    "sanitizeError": "無效的字元",
     "invalidEmail": "無效的電子郵件",
     "emailRequired": "電子郵件是必填項",
     "passwordMin": "密碼至少需要6個字符",
