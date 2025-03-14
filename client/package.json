@@ -31,7 +31,7 @@
     "fast-xml-parser": "^4.5.0",
     "markdown-it-anchor": "^9.2.0",
     "markdown-it-prism": "^2.3.0",
-    "pinia": "^2.2.8",
+    "pinia": "^3.0.1",
     "primeicons": "^7.0.0",
     "primevue": "^4.2.4",
     "tailwindcss-primeui": "^0.3.4",
