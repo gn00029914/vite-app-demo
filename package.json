@@ -43,7 +43,7 @@
   "license": "ISC",
   "dependencies": {
     "jiti": "^2.4.1",
-    "pm2": "^5.4.3"
+    "pm2": "^6.0.9"
   },
   "devDependencies": {
     "concurrently": "^9.1.0",
